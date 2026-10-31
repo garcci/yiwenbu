@@ -1,0 +1,71 @@
+name: 小说出有声和短视频
+
+on:
+  workflow_dispatch:
+    inputs:
+      chapter:
+        description: "第几章"
+        required: true
+        default: "1"
+      only:
+        description: "只做一部分"
+        type: choice
+        options: ["全部", "audio", "shorts"]
+        default: "全部"
+  push:
+    paths: ["novel/request.json"]   # 改这个文件里的章节号并推送，也会触发一次
+
+permissions:
+  contents: write   # 把标注、短视频稿和AI画面提交回仓库，下次复用
+  models: read      # 免费调用 GitHub Models 标注说话人、写短视频稿
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装依赖
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          pip install -q requests pillow edge-tts boto3
+      - name: 出有声书和短视频
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          # 和异闻簿共用档位开关（仓库 Variables）
+          IMAGE_PROVIDER: ${{ vars.IMAGE_PROVIDER || 'cloudflare' }}
+          TTS_PROVIDER: ${{ vars.TTS_PROVIDER || 'edge' }}
+          VIDEO_PROVIDER: ${{ vars.VIDEO_PROVIDER || 'none' }}
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            CH="${{ github.event.inputs.chapter }}"; ONLY="${{ github.event.inputs.only }}"
+          else
+            CH=$(python -c "import json;print(json.load(open('novel/request.json'))['chapter'])")
+            ONLY=$(python -c "import json;print(json.load(open('novel/request.json')).get('only',''))")
+          fi
+          ARGS="--chapter $CH"
+          if [ "$ONLY" = "audio" ] || [ "$ONLY" = "shorts" ]; then ARGS="$ARGS --only $ONLY"; fi
+          python novel/novel.py $ARGS
+      - name: 备份一份到 Actions 产物（保留30天，主存放在云盘）
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: novel-${{ github.run_number }}
+          path: output/
+          retention-days: 30
+      - name: 提交标注、短视频稿和画面
+        if: always()
+        run: |
+          git config user.name "yiwenbu-bot"
+          git config user.email "yiwenbu-bot@users.noreply.github.com"
+          git add novel/chapters/ work/
+          git diff --cached --quiet || (git commit -m "小说：新增标注、短视频稿和画面" && git push origin HEAD:${{ github.ref_name }})

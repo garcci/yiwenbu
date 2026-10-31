@@ -4,3 +4,5 @@ __pycache__/
 work/**/*
 !work/*/
 !work/*/img*.jpg
+!work/novel/*/
+!work/novel/*/img*.jpg

@@ -1,0 +1,33 @@
+{
+  "series_name": "录异簿",
+  "tagline": "怪事多半有破绽，剩下那一分没人说得清",
+  "visual_style": "realistic cinematic film still from a historical drama set two thousand years ago, 35mm film photography, dark low-key lighting lit only by paper lanterns and oil lamps, cold desaturated teal and grey tones, ancient small county town in northern China in deep winter, rammed earth walls, wooden houses, snow on the ground, Han dynasty clothing, heavy film grain, eerie quiet atmosphere, shallow depth of field",
+  "accent_color": "#B23A2B",
+  "voice": "zh-CN-YunjianNeural",
+  "outro_text": "{source} · 原创小说 · 内容由AI辅助生成",
+  "audio_disclaimer": "本节目由AI辅助创作和配音，故事纯属虚构。录异簿，第{n}章，{title}。",
+  "character": "a lean young man of nineteen in a plain dark grey robe with a black cloth headband, a thin bound notebook tucked at his waist",
+  "gdrive_text_folder": "15-gog-ebKAsGBQsZU8jFk6AhGvlae4r7",
+  "gdrive_output_folder": "1YD9y4TsKR_HpmOars1CEvDW8VXNjA2Ih",
+  "cast": {
+    "narrator": "旁白：讲古人，第三人称叙述",
+    "shenyan": "沈砚：19岁男，新任录异吏，冷静较真",
+    "suwan": "苏晚：17岁女，药铺孙女，说话快，胆大",
+    "laozhou": "老周：60岁男，更夫，胆小嘴碎",
+    "elder_man": "其他中老年男性配角，如门房、县令、韩员外",
+    "young_man": "其他青壮年男性配角，如马六、衙役",
+    "woman": "其他女性配角",
+    "ghost": "来历不明、说不清是人是鬼的声音，如半夜敲门借火的人"
+  },
+  "voices": {
+    "narrator": {"edge": "zh-CN-YunjianNeural", "minimax": "male-qn-jingying"},
+    "shenyan":  {"edge": "zh-CN-YunxiNeural",   "minimax": "male-qn-qingse"},
+    "suwan":    {"edge": "zh-CN-XiaoyiNeural",  "minimax": "female-shaonv"},
+    "laozhou":  {"edge": "zh-CN-YunyangNeural", "minimax": "presenter_male"},
+    "elder_man":{"edge": "zh-CN-YunyangNeural", "minimax": "presenter_male"},
+    "young_man":{"edge": "zh-CN-YunxiNeural",   "minimax": "male-qn-badao"},
+    "woman":    {"edge": "zh-CN-XiaoxiaoNeural","minimax": "female-chengshu"},
+    "ghost":    {"edge": "zh-CN-YunyangNeural", "minimax": "presenter_male"}
+  },
+  "names": {"沈砚": "shenyan", "苏晚": "suwan", "老周": "laozhou", "门房": "elder_man", "马六": "young_man", "县令": "elder_man", "韩员外": "elder_man"}
+}

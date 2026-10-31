@@ -1,0 +1,12 @@
+你是有声书导演。下面是小说《录异簿》一章拆好的片段，每段有编号。请给每一段标注：
+- who：由谁来读。只能从这些角色里选：
+{cast}
+  叙述文字一律是 narrator。引号「」里的台词，按上下文判断是谁说的。
+- tone：normal（平常）、slow（低沉缓慢，用于紧张前的铺垫、回忆、结尾）、whisper（压低声音、害怕）、tense（急促）。
+- sfx（可选）：这一段读之前先放的音效，只能是 knock（敲门）、footsteps（脚步）、gust（一阵风）、water（水声）、thump（低沉重音）、sting（紧张的嘶声）。只在原文明确写到这个声音时才加，一章不超过8个。
+
+只输出 JSON，格式：{"labels": [{"i": 0, "who": "narrator", "tone": "normal"}, {"i": 1, "who": "shenyan", "tone": "normal", "sfx": "knock"}]}
+每个编号都要有，不要改动原文。
+
+片段：
+{units}
