@@ -7,7 +7,7 @@
   python compile_long.py --from 1 --to 50        # 指定第1到第50集
   python compile_long.py --target-min 60         # 凑满约60分钟就停
 """
-import argparse, json
+import argparse, json, os
 from pathlib import Path
 
 from make_episode import HW, HH, ROOT, SERIES, render, run
