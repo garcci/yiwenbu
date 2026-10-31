@@ -78,10 +78,19 @@ def llm(prompt, provider):
         last = ""
         # LLM_MODEL 可以写多个（逗号分隔），前一个不可用（404/403/额度不足）就换下一个
         for model in [m.strip() for m in os.environ["LLM_MODEL"].split(",") if m.strip()]:
-            r = requests.post(f"{base}/chat/completions", headers={"Authorization": f"Bearer {key}"},
-                              json={"model": model,
-                                    "messages": [{"role": "user", "content": prompt}], "temperature": 0.9},
-                              timeout=600)
+            for wait in (0, 30, 60, 90, 120):  # 429 限流：等一会儿再试
+                time.sleep(wait)
+                try:
+                    r = requests.post(f"{base}/chat/completions", headers={"Authorization": f"Bearer {key}"},
+                                      json={"model": model,
+                                            "messages": [{"role": "user", "content": prompt}], "temperature": 0.9},
+                                      timeout=600)
+                except requests.RequestException as e:
+                    print(f"    {model} 网络错误：{e}")
+                    continue
+                if r.status_code not in (429, 500, 502, 503, 504):
+                    break
+                print(f"    {model} 返回 {r.status_code}，稍后重试")
             if r.ok:
                 print(f"    （{model} 写稿）")
                 return r.json()["choices"][0]["message"]["content"]
