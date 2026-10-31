@@ -14,7 +14,7 @@
   python make_episode.py --episode episodes/ep01.json  # 用现成稿件出片
   本地离线试跑：加 --images placeholder --tts silent
 """
-import argparse, asyncio, base64, json, os, re, subprocess, sys, textwrap
+import argparse, asyncio, base64, json, os, re, subprocess, sys, textwrap, time
 from pathlib import Path
 
 import requests
@@ -37,8 +37,11 @@ TONES = {
 MOTIONS = ["push_in", "pan_right", "drift_up", "pull_out", "pan_left", "push_in"]
 
 
-def run(cmd):
-    p = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True)
+def run(cmd, timeout=900):
+    try:
+        p = subprocess.run(cmd, stdout=subprocess.DEVNULL, stderr=subprocess.PIPE, text=True, timeout=timeout)
+    except subprocess.TimeoutExpired:
+        raise SystemExit(f"ffmpeg 超时（{timeout}秒）：{' '.join(map(str, cmd))[:300]}")
     if p.returncode:
         raise SystemExit(f"ffmpeg 出错：{' '.join(map(str, cmd))[:300]}\n{p.stderr[-1500:]}")
 
@@ -111,7 +114,16 @@ def voice_line(text, tone, wav, tts_provider):
     if not wav.exists():
         if tts_provider == "edge":
             mp3 = wav.with_suffix(".mp3")
-            asyncio.run(_edge(text, mp3, rate, pitch, vol))
+            for attempt in range(4):  # edge-tts 是微软免费接口，偶尔断线，重试几次
+                try:
+                    asyncio.run(asyncio.wait_for(_edge(text, mp3, rate, pitch, vol), 60))
+                    if mp3.exists() and mp3.stat().st_size > 1000:
+                        break
+                except Exception as e:  # noqa: BLE001
+                    print(f"    配音第{attempt + 1}次失败：{e}")
+                time.sleep(3 * (attempt + 1))
+            else:
+                raise SystemExit(f"配音失败：{text}")
             # 轻微的房间混响，让声音像在屋里讲故事，而不是播报
             run(["ffmpeg", "-y", "-i", str(mp3), "-af", "aecho=0.8:0.6:45|90:0.18|0.10,highpass=f=70",
                  "-ar", str(SR), "-ac", "1", str(wav)])
@@ -192,8 +204,19 @@ class NSFWBlocked(Exception):
 
 def cf_run(model, payload):
     acc, tok = os.environ["CF_ACCOUNT_ID"].strip(), os.environ["CF_API_TOKEN"].strip()
-    r = requests.post(f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{model}",
-                      headers={"Authorization": f"Bearer {tok}"}, json=payload, timeout=180)
+    for attempt in range(4):  # 网络抖动或 5xx/429 时退避重试
+        try:
+            r = requests.post(f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{model}",
+                              headers={"Authorization": f"Bearer {tok}"}, json=payload, timeout=180)
+            if r.status_code < 500 and r.status_code != 429:
+                break
+            print(f"    Cloudflare 返回 {r.status_code}，稍后重试")
+        except requests.RequestException as e:
+            print(f"    Cloudflare 网络错误：{e}")
+            r = None
+        time.sleep(5 * 2 ** attempt)
+    if r is None:
+        raise SystemExit("Cloudflare 连续网络错误")
     if not r.ok:  # 把 Cloudflare 返回的具体原因打出来，方便排查
         if "NSFW" in r.text:
             raise NSFWBlocked(r.text[:200])
@@ -364,10 +387,11 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
     build_ass(ep["title"], cues, total, outro_start, outro, subs, w, h)
     # 统一调色：压暗、降饱和、偏冷，加暗角和胶片颗粒
     grade = ("eq=contrast=1.08:saturation=0.72:gamma=0.95,colorbalance=bs=0.05:bm=0.03:rh=-0.02,"
-             "vignette=PI/4.5,noise=alls=9:allf=t")
+             "vignette=PI/4.5,noise=alls=5:allf=t")
     run(["ffmpeg", "-y", "-i", str(workdir / f"{tag}video.mp4"), "-i", str(workdir / "mix.wav"),
          "-vf", f"{grade},ass={subs}", "-map", "0:v", "-map", "1:a",
-         "-c:v", "libx264", "-preset", "medium", "-crf", "20", "-c:a", "aac", "-b:a", "192k",
+         "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-maxrate", "6M", "-bufsize", "12M",
+         "-c:a", "aac", "-b:a", "192k",
          "-t", f"{total:.2f}", "-movflags", "+faststart", str(out_mp4)])
     if not caption:
         return total
@@ -419,7 +443,9 @@ def main():
 
     mp4 = out_dir / f"{ep_path.stem}.mp4"
     work = ROOT / "work" / ep_path.stem
+    t0 = time.time()
     render(ep, work, mp4, args.images, args.tts)
+    print(f"视频耗时 {time.time() - t0:.0f} 秒，文件 {mp4.stat().st_size / 1e6:.1f} MB")
     make_audio(ep, work, mp4.with_suffix(".mp3"), args.tts)
     import make_assets  # 每集封面：竖版3:4、横版16:9、方形1:1
     make_assets.OUT.mkdir(parents=True, exist_ok=True)

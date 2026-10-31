@@ -56,7 +56,7 @@ def _folder(h, path):
     return parent
 
 
-def _put(h, path, parent):
+def _put_once(h, path, parent):
     mime = mimetypes.guess_type(path.name)[0] or "application/octet-stream"
     existing = _find(h, path.name, parent)
     meta = {"name": path.name} if existing else {"name": path.name, "parents": [parent]}
@@ -70,6 +70,17 @@ def _put(h, path, parent):
         r2 = requests.put(r.headers["Location"], headers={"Content-Type": mime}, data=f, timeout=3600)
     r2.raise_for_status()
     return "更新" if existing else "新建"
+
+
+def _put(h, path, parent):
+    import time
+    for attempt in range(3):  # 网络抖动时整文件重传
+        try:
+            return _put_once(h, path, parent)
+        except requests.RequestException as e:
+            print(f"  上传 {path.name} 第{attempt + 1}次失败：{e}")
+            time.sleep(10 * (attempt + 1))
+    raise SystemExit(f"上传云盘失败：{path.name}")
 
 
 def upload(paths, subfolder):
