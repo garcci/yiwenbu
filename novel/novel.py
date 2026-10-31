@@ -42,16 +42,21 @@ def cn_num(n):
     return CN[n // 10] + "十" + (CN[n % 10] if n % 10 else "")
 
 
-def ask(prompt, provider=None):
+def ask(prompt, provider=None, creative=False):
     """调模型，出错时把返回内容打出来。和异闻簿共用一把钥匙：
     顺序：任意 OpenAI 兼容接口（LLM_API_KEY，如智谱 glm-4-flash 免费）→ Cloudflare。
     GitHub Models 已于 2026-07-30 下线，不再使用。"""
     # 注意：火山方舟订阅套餐的文本模型不允许脚本调用（可能封号），这里不用 ARK_API_KEY
     order = (["openai"] if os.environ.get("LLM_API_KEY") else []) + ["cloudflare"]
+    if os.environ.get("GEMINI_API_KEY"):  # 写短视频稿这类创作活优先用 Gemini（免费额度），标注用 GLM
+        order.insert(0 if creative else len(order) - 1, "gemini")
     for p in order:
         try:
-            if p in ("ark", "openai"):
-                if p == "ark":  # 火山方舟订阅套餐：必须走 /api/plan/v3，走 /api/v3 会额外计费
+            if p in ("ark", "openai", "gemini"):
+                if p == "gemini":
+                    base, key = "https://generativelanguage.googleapis.com/v1beta/openai", os.environ["GEMINI_API_KEY"]
+                    model = os.environ.get("GEMINI_MODEL") or "gemini-2.5-flash"
+                elif p == "ark":  # 火山方舟订阅套餐：必须走 /api/plan/v3，走 /api/v3 会额外计费
                     base = (os.environ.get("ARK_BASE_URL") or "https://ark.cn-beijing.volces.com/api/plan/v3").rstrip("/")
                     key = os.environ["ARK_API_KEY"]
                     model = os.environ.get("ARK_LLM_MODEL") or "doubao-seed-2.1-pro"
@@ -268,7 +273,7 @@ def make_shorts(n, title, text, provider):
               .replace("{cast_keys}", "、".join(BOOK["voices"])))
     for attempt in range(4):
         try:
-            shorts = me.parse_json(ask(prompt, provider))["shorts"]
+            shorts = me.parse_json(ask(prompt, provider, creative=True))["shorts"]
             ok = [s for s in shorts if 6 <= len(s["shots"]) <= 11]
             if len(ok) >= 2:
                 path.write_text(json.dumps({"shorts": ok[:3]}, ensure_ascii=False, indent=2), encoding="utf-8")
