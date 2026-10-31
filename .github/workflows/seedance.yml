@@ -22,7 +22,8 @@ jobs:
       - run: pip install -q requests pillow
       - name: 出 Seedance 小样（按量付费，约 3 元）
         env:
-          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          # 按量付费要用普通 API Key（套餐 Key 在 /api/v3 上会报 401）
+          ARK_API_KEY: ${{ secrets.ARK_PAYG_API_KEY || secrets.ARK_API_KEY }}
           SEEDANCE_FAST_MODEL: ${{ github.event.inputs.fast_model }}
           SEEDANCE_MINI_MODEL: ${{ github.event.inputs.mini_model }}
           GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
