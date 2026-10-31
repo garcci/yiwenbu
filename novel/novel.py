@@ -42,21 +42,22 @@ def cn_num(n):
     return CN[n // 10] + "十" + (CN[n % 10] if n % 10 else "")
 
 
-def ask(prompt, provider):
-    """调模型，出错时把返回内容打出来；GitHub Models 不行就换 Cloudflare 再试。"""
-    order = [provider] + [p for p in ("github", "cloudflare") if p != provider]
+def ask(prompt, provider=None):
+    """调模型，出错时把返回内容打出来。和异闻簿共用一把钥匙：
+    配了 LLM_API_KEY（任意 OpenAI 兼容接口，如智谱 glm-4-flash、Gemini）就先用它，否则用 Cloudflare。
+    GitHub Models 已于 2026-07-30 下线，不再使用。"""
+    order = (["openai"] if os.environ.get("LLM_API_KEY") else []) + ["cloudflare"]
     for p in order:
         try:
-            if p == "github":
-                r = requests.post(
-                    "https://models.github.ai/inference/chat/completions",
-                    headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
-                             "Content-Type": "application/json", "Accept": "application/json"},
-                    json={"model": os.environ.get("LLM_MODEL", "openai/gpt-4.1"),
-                          "messages": [{"role": "user", "content": prompt}], "temperature": 0.6},
-                    timeout=300)
+            if p == "openai":
+                base = os.environ.get("LLM_BASE_URL", "https://open.bigmodel.cn/api/paas/v4").rstrip("/")
+                r = requests.post(f"{base}/chat/completions",
+                                  headers={"Authorization": f"Bearer {os.environ['LLM_API_KEY'].strip()}"},
+                                  json={"model": os.environ.get("LLM_MODEL") or "glm-4-flash",
+                                        "messages": [{"role": "user", "content": prompt}], "temperature": 0.6},
+                                  timeout=300)
                 if not r.ok or not r.text.strip().startswith("{"):
-                    print(f"    GitHub Models 返回 {r.status_code}：{r.text[:300]!r}")
+                    print(f"    模型接口返回 {r.status_code}：{r.text[:300]!r}")
                     continue
                 return r.json()["choices"][0]["message"]["content"]
             if p == "cloudflare" and os.environ.get("CF_API_TOKEN"):
@@ -66,7 +67,7 @@ def ask(prompt, provider):
                 return res if isinstance(res, str) else json.dumps(res, ensure_ascii=False)
         except (requests.RequestException, KeyError, ValueError, SystemExit) as e:
             print(f"    {p} 调用出错：{e}")
-    raise RuntimeError("所有模型都没返回可用结果")
+    raise RuntimeError("没有可用的模型（请配置 LLM_API_KEY，或等 Cloudflare 免费额度重置）")
 
 
 # ---------------- 正文 ----------------
@@ -251,7 +252,7 @@ def main():
     ap.add_argument("--chapter", type=int, required=True)
     ap.add_argument("--only", choices=["audio", "shorts"])
     ap.add_argument("--text", help="本地正文文件（离线试跑用），不给就从云盘读")
-    ap.add_argument("--llm", default=os.environ.get("LLM_PROVIDER", "github"), choices=["github", "cloudflare", "none"])
+    ap.add_argument("--llm", default="auto", choices=["auto", "none"])
     ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"),
                     choices=["cloudflare", "seedream", "placeholder"])
     ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "silent"])

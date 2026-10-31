@@ -17,7 +17,6 @@ on:
 
 permissions:
   contents: write   # 把标注、短视频稿和AI画面提交回仓库，下次复用
-  models: read      # 免费调用 GitHub Models 标注说话人、写短视频稿
 
 jobs:
   render:
@@ -41,6 +40,10 @@ jobs:
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          # 写稿和标注用的大模型，和异闻簿共用（任意 OpenAI 兼容接口）
+          LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
+          LLM_MODEL: ${{ vars.LLM_MODEL }}
           # 和异闻簿共用档位开关（仓库 Variables）
           IMAGE_PROVIDER: ${{ vars.IMAGE_PROVIDER || 'cloudflare' }}
           TTS_PROVIDER: ${{ vars.TTS_PROVIDER || 'edge' }}
