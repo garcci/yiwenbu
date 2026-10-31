@@ -95,7 +95,13 @@ def main():
             errors.append(f"{clip['file']} / {used}: 任务失败")
             continue
         out = work / clip["file"]
-        out.write_bytes(requests.get(q["content"]["video_url"], timeout=300).content)
+        try:
+            v = requests.get(q["content"]["video_url"], timeout=300)
+            v.raise_for_status()
+        except requests.RequestException as e:
+            errors.append(f"{clip['file']} / {used}: 下载失败 {e}")
+            continue
+        out.write_bytes(v.content)
         tokens = (q.get("usage") or {}).get("total_tokens") or 0
         cost = tokens / 1e6 * PRICE[clip["tier"]]
         total += cost
