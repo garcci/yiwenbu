@@ -64,7 +64,7 @@ def ask(prompt, provider):
                 r = me.cf_run(model, {"messages": [{"role": "user", "content": prompt}], "max_tokens": 6000})
                 res = r.json()["result"]["response"]
                 return res if isinstance(res, str) else json.dumps(res, ensure_ascii=False)
-        except (requests.RequestException, KeyError, ValueError) as e:
+        except (requests.RequestException, KeyError, ValueError, SystemExit) as e:
             print(f"    {p} 调用出错：{e}")
     raise RuntimeError("所有模型都没返回可用结果")
 

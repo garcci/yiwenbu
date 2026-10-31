@@ -1,0 +1,472 @@
+[
+ {
+  "t": "沈砚到临河县的第一夜，就有人来敲门借火。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "那是腊月十三，雪从后半晌开始下，到二更天已经没过了脚面。县衙后院最靠墙的一间小屋，门楣上钉着一块发黑的木牌，写着“录异房”三个字。屋里一张桌子、一张窄床、一口掉了漆的木箱，墙角堆着没人收拾的旧炭。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "带他来的门房把钥匙往桌上一放，没进屋。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "沈书吏，这屋子三年没人住了，你将就一宿。",
+  "kind": "say",
+  "who": "elder_man",
+  "tone": "normal"
+ },
+ {
+  "t": "门房缩着脖子，眼睛一直往院墙那边瞟，",
+  "kind": "narr",
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "夜里要是有人敲门，你别开。",
+  "kind": "say",
+  "para_end": true,
+  "who": "elder_man",
+  "tone": "whisper"
+ },
+ {
+  "t": "沈砚正在解包袱，抬头问：",
+  "kind": "narr",
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "为什么？",
+  "kind": "say",
+  "para_end": true,
+  "who": "shenyan",
+  "tone": "normal"
+ },
+ {
+  "t": "县衙后院，夜里能有谁？",
+  "kind": "say",
+  "who": "elder_man",
+  "tone": "normal"
+ },
+ {
+  "t": "门房说完这一句，就踩着雪走了，脚步越走越快。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "沈砚没往心里去。他十九岁，读过几年书，考了两回都没中，托人谋了这么个差事。来之前他就打听过，“录异吏”是县衙里最没人愿意干的闲职：乡下谁家井水变红了，谁家母鸡打鸣了，报到县里，就归录异吏去看一眼，写进簿子，再呈给县令。",
+  "kind": "narr",
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "说白了，就是替县太爷听闲话的。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他点上油灯，打开那口木箱。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "箱子里只有一本册子，青布封皮，边角磨得起了毛。封皮上四个字：录异簿。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他翻开第一页，是上一任录异吏的字，瘦而硬，一笔不苟。每一条记录都分四栏：所见、所闻、所查、存疑。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "东乡王家井夜鸣。所见：井口有白气。所闻：如人叹息。所查：井壁有裂，夜寒气出，过裂有声。存疑：王家老妇言，叹息之声，与其亡夫相类。",
+  "kind": "say",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "沈砚看了一会儿，笑了一下。前面三栏写得明明白白，就是天冷井壁裂了，风过有声；偏偏最后一栏，又给留了一个口子。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他往后翻，一条一条都是这样。有破了的，也有没破的，可不管破没破，最后那一栏都不空着。翻到册子最后，有一页夹着一张纸条，上面只有一行字：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "存疑一栏，不许空。——陆",
+  "kind": "say",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "上一任录异吏姓陆。沈砚来之前听人提过一句，说陆先生三年前出城办差，就再没回来。县里查了一阵，没查出什么，这差事就空了三年。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他合上册子，吹了灯，躺下。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "雪落在屋顶上，几乎没有声音。远处更夫敲了二更，梆子声被雪压得闷闷的，像是隔着一层棉被。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "不知道过了多久，门响了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "不是风。是指节敲在门板上，三下，不轻不重，很有规矩。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow",
+  "sfx": "knock"
+ },
+ {
+  "t": "沈砚一下子醒了。他没出声，听着。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "whisper"
+ },
+ {
+  "t": "又是三下。然后门外有人说话，声音不高，像是怕吵着别人：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow",
+  "sfx": "knock"
+ },
+ {
+  "t": "借个火。",
+  "kind": "say",
+  "para_end": true,
+  "who": "ghost",
+  "tone": "whisper"
+ },
+ {
+  "t": "是个男人的声音，听不出年纪，有点哑，像是在外面站了很久。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "沈砚坐起来，摸到桌边的火镰，没有马上去开门。他想起门房那句话，又觉得自己好笑：县衙后院有高墙，有门房，能进来的总归是人。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "哪位？",
+  "kind": "say",
+  "who": "shenyan",
+  "tone": "tense"
+ },
+ {
+  "t": "他问。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "门外没有回答，过了一会儿，又是那三个字：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "借个火。",
+  "kind": "say",
+  "para_end": true,
+  "who": "ghost",
+  "tone": "whisper"
+ },
+ {
+  "t": "沈砚把油灯点上，端着走到门口，拔了门闩。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "tense"
+ },
+ {
+  "t": "冷风夹着雪一下子扑进来，灯苗歪了歪，差点灭了。他用手护着灯，往外看。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "tense",
+  "sfx": "gust"
+ },
+ {
+  "t": "门外没有人。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "只有一盏纸灯笼，端端正正放在门槛外面的雪地上。灯笼是最常见的那种，竹骨，糊着白纸，纸上没有字。里面的蜡烛已经灭了，烛芯还冒着一缕细细的烟。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "沈砚蹲下去，伸手碰了一下灯笼的竹柄。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "是热的。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "whisper",
+  "sfx": "thump"
+ },
+ {
+  "t": "不是被蜡烛烤热的那种热，是被人手攥了很久、攥出来的温热。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "他抬起头，提着油灯往院子里照。雪地上有一行脚印，从院墙那边过来，停在他门口，然后又往回走。脚印不大，鞋底是平的，一步一步，走得很稳，没有一点慌张。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "沈砚顺着脚印走过去。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal",
+  "sfx": "footsteps"
+ },
+ {
+  "t": "雪还在下，灯光只能照出身前一小圈。他走得很慢，每一步都踩在那行脚印的旁边，不去踩坏它。走了二十来步，脚印拐了个弯，往后院西角去了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "西角有一口井。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "井上搭着木架，辘轳上缠着冻硬了的井绳。脚印一直走到井沿边上，就没了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "井沿上没有雪。不是被扫过，是一圈薄薄的雪化成了水，又重新冻上，结成一层亮晶晶的冰。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "沈砚站在井边，把灯举高了，往井里看。井很深，灯光照下去，只看见黑。他屏住气听，井里没有声音，连水声都没有。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "whisper"
+ },
+ {
+  "t": "他又绕着井走了一圈。井的四周雪地平平整整，除了他自己的脚印，再没有第二行。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "那个人走到井边，就没再离开。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow",
+  "sfx": "thump"
+ },
+ {
+  "t": "沈砚在雪里站了很久，直到手冻得握不住灯。他回到屋里，把那盏灯笼也提了进来，放在桌上。烛芯已经不冒烟了。他凑近闻了闻，灯油的味道有点怪，不像寻常人家用的菜籽油，带着一股说不出的涩。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他没有再睡。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他把录异簿摊开，翻到空白的一页，研了墨，一笔一笔写下去：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "腊月十三，二更后。所见：门外纸灯笼一盏，烛新灭，柄温。足迹一行，自院墙来，至西角井沿而止，井沿冰。所闻：叩门三声，男声，言借火，凡二次。所查：",
+  "kind": "say",
+  "para_end": true,
+  "who": "shenyan",
+  "tone": "slow"
+ },
+ {
+  "t": "写到这里，他停了笔。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "所查，他还什么都没查。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他盯着那一栏空白看了一会儿，又往下写：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "存疑：来人借火，火未借，灯已灭。灯留门外，人不知所往。",
+  "kind": "say",
+  "para_end": true,
+  "who": "shenyan",
+  "tone": "slow"
+ },
+ {
+  "t": "写完，他搁下笔，揉了揉冻僵的手指。窗外已经透出一点青白色，雪停了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他想把簿子合上，手一滑，册子往前翻了好几页，停在中间。那一页的纸比别处黄一些，是陆先生的字。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal",
+  "sfx": "gust"
+ },
+ {
+  "t": "沈砚低头看了一眼，就没能再移开眼睛。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "腊月十三，二更后。所见：门外纸灯笼一盏。所闻：叩门三声，言借火。所查：",
+  "kind": "say",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "whisper",
+  "sfx": "sting"
+ },
+ {
+  "t": "后面就没有了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "那一页下面，是一道撕痕。紧挨着的几页，都被人从根上撕掉了，断口参差，像是撕得很急。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "沈砚往前翻了一页，看那一条的年份。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "三年前。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow",
+  "sfx": "thump"
+ },
+ {
+  "t": "正是陆先生失踪的那一年。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "",
+  "pause": 1.6,
+  "tone": "normal"
+ }
+]
