@@ -42,6 +42,33 @@ def cn_num(n):
     return CN[n // 10] + "十" + (CN[n % 10] if n % 10 else "")
 
 
+def ask(prompt, provider):
+    """调模型，出错时把返回内容打出来；GitHub Models 不行就换 Cloudflare 再试。"""
+    order = [provider] + [p for p in ("github", "cloudflare") if p != provider]
+    for p in order:
+        try:
+            if p == "github":
+                r = requests.post(
+                    "https://models.github.ai/inference/chat/completions",
+                    headers={"Authorization": f"Bearer {os.environ['GITHUB_TOKEN']}",
+                             "Content-Type": "application/json", "Accept": "application/json"},
+                    json={"model": os.environ.get("LLM_MODEL", "openai/gpt-4.1"),
+                          "messages": [{"role": "user", "content": prompt}], "temperature": 0.6},
+                    timeout=300)
+                if not r.ok or not r.text.strip().startswith("{"):
+                    print(f"    GitHub Models 返回 {r.status_code}：{r.text[:300]!r}")
+                    continue
+                return r.json()["choices"][0]["message"]["content"]
+            if p == "cloudflare" and os.environ.get("CF_API_TOKEN"):
+                model = os.environ.get("CF_LLM_MODEL", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
+                r = me.cf_run(model, {"messages": [{"role": "user", "content": prompt}], "max_tokens": 6000})
+                res = r.json()["result"]["response"]
+                return res if isinstance(res, str) else json.dumps(res, ensure_ascii=False)
+        except (requests.RequestException, KeyError, ValueError) as e:
+            print(f"    {p} 调用出错：{e}")
+    raise RuntimeError("所有模型都没返回可用结果")
+
+
 # ---------------- 正文 ----------------
 def fetch_chapter(n):
     """从云盘「正文」文件夹导出「第XX章-…」谷歌文档的纯文本。"""
@@ -86,6 +113,8 @@ def split_units(paras):
         if p == "§":
             units.append({"t": "", "pause": 1.6})
             continue
+        # 「录异房」这种短的、不带标点的引号是名称，不是台词，留在叙述里
+        p = re.sub(r"「([^」，。！？：]{1,6})」", r"“\1”", p)
         for k, part in enumerate(re.split(r"(「[^」]*」)", p)):
             part = part.strip()
             if not part:
@@ -130,7 +159,7 @@ def label(units, provider):
         listing = "\n".join(f"[{i}] {'台词' if units[i]['kind'] == 'say' else '叙述'}：{units[i]['t']}" for i in chunk)
         for attempt in range(3):
             try:
-                got = me.parse_json(me.llm(tpl.replace("{units}", listing), provider))["labels"]
+                got = me.parse_json(ask(tpl.replace("{units}", listing), provider))["labels"]
                 for g in got:
                     i = int(g["i"])
                     if i not in chunk or (start and i < idx[start]):
@@ -206,7 +235,7 @@ def make_shorts(n, title, text, provider):
               .replace("{cast_keys}", "、".join(BOOK["voices"])))
     for attempt in range(4):
         try:
-            shorts = me.parse_json(me.llm(prompt, provider))["shorts"]
+            shorts = me.parse_json(ask(prompt, provider))["shorts"]
             ok = [s for s in shorts if 6 <= len(s["shots"]) <= 11]
             if len(ok) >= 2:
                 path.write_text(json.dumps({"shorts": ok[:3]}, ensure_ascii=False, indent=2), encoding="utf-8")
@@ -239,7 +268,6 @@ def main():
 
     out = me.ROOT / "output" / tag
     out.mkdir(parents=True, exist_ok=True)
-    files = []
     if a.only in (None, "audio"):
         lab = HERE / "chapters" / f"{tag}_labels.json"
         units = split_units(paras)
@@ -253,7 +281,7 @@ def main():
         lab.write_text(json.dumps(units, ensure_ascii=False, indent=1), encoding="utf-8")
         mp3 = out / f"录异簿-第{n:02d}章-{title}-有声书.mp3"
         make_audiobook(n, title, units, me.ROOT / "work" / "novel" / tag / "audio", mp3, a.tts)
-        files.append(mp3)
+        upload([mp3], n)
     if a.only in (None, "shorts"):
         for k, ep in enumerate(make_shorts(n, title, text, a.llm), 1):
             ep["source"] = f"《录异簿》第{cn_num(n)}章"
@@ -265,8 +293,10 @@ def main():
                 f"{ep['title']}\n\n原创志怪连载《录异簿》第{cn_num(n)}章《{title}》节选，完整有声书见主页专辑。\n"
                 f"本视频由AI辅助创作和配音，故事纯属虚构。\n\n#民间故事 #志怪 #悬疑 #有声小说 #录异簿",
                 encoding="utf-8")
-            files += [mp4, mp4.with_suffix(".txt")]
+            upload([mp4, mp4.with_suffix(".txt")], n)
 
+
+def upload(files, n):
     if gdrive.enabled():
         os.environ["GDRIVE_FOLDER_ID"] = BOOK["gdrive_output_folder"]
         gdrive.upload(files, f"第{n:02d}章")
