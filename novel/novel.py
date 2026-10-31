@@ -230,6 +230,7 @@ def main():
     n = a.chapter
     tag = f"ch{n:02d}"
 
+    (HERE / "chapters").mkdir(exist_ok=True)
     raw = Path(a.text).read_text(encoding="utf-8") if a.text else fetch_chapter(n)
     (HERE / "chapters" / f"{tag}.txt").write_text(raw, encoding="utf-8")
     title, paras = clean(raw)
