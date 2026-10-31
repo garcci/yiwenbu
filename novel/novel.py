@@ -27,7 +27,7 @@ BOOK = json.loads((HERE / "book.json").read_text(encoding="utf-8"))
 # 把异闻簿的栏目设定换成小说的：栏目名、画风、声线、片尾和音频声明
 me.SERIES.update({k: BOOK[k] for k in ["series_name", "tagline", "visual_style", "accent_color", "voice",
                                        "outro_text", "audio_disclaimer"]})
-me.VOICES = BOOK["voices"]
+me.VOICES = me.SERIES["voices"] = BOOK["voices"]
 # 敲门声：三下闷响
 me.SFX["knock"] = ("anoisesrc=c=brown:a=1:r={sr}:d=0.09,lowpass=f=700,afade=t=out:st=0.01:d=0.08,volume=4,"
                    "apad=pad_dur=0.42,aloop=loop=2:size=22000", 1.6)
