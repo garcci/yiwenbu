@@ -528,12 +528,22 @@ def gen_video(frame, out, prompt):
     return False
 
 
+VIDEO_SLOW = float(os.environ.get("VIDEO_SLOW", "1.5"))  # 省钱：动态片段最多放慢到 1.5 倍铺满旁白（补帧，不卡顿）
+
+
 def video_clip(src, out, dur, fx, w, h):
-    """把图生视频铺满画面；旁白比视频长时，先正放再倒放接上，不会突然定格。"""
+    """把图生视频铺满画面；旁白比视频长时先补帧放慢（最多 VIDEO_SLOW 倍），还不够再正放接倒放，不会突然定格。"""
     vd = duration(src)
-    loops = int(dur // (2 * vd)) + 1
-    base = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1,split[a][b];"
-            f"[b]reverse[r];[a][r]concat=n=2:v=1:a=0,loop={loops}:size={int(2 * vd * FPS)}")
+    slow = min(max(dur / vd, 1.0), VIDEO_SLOW)
+    vd2 = vd * slow
+    base = f"[0:v]setpts={slow:.4f}*PTS"
+    if slow > 1.05:
+        base += f",minterpolate=fps={FPS}:mi_mode=mci:mc_mode=aobmc:vsbmc=1"
+    base += f",scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1"
+    if dur > vd2 + 0.05:
+        loops = int(dur // (2 * vd2)) + 1
+        base += (f",split[a][b];[b]reverse[r];[a][r]concat=n=2:v=1:a=0,"
+                 f"loop={loops}:size={int(2 * vd2 * FPS)}")
     chain = []
     if "flicker" in fx:
         chain.append("eq=brightness='0.03*sin(2*PI*t*2.3)':eval=frame")
@@ -628,7 +638,7 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
             # 用户不要静图推拉：每个镜头都用首帧生成真动态，时长跟旁白走；失败才退回推拉
             import seedance
             vprompt = shot.get("video_prompt") or shot["image_prompt"]
-            if not seedance.gen(frame, vid, vprompt, seedance.seconds_for(t - shot_start)):
+            if not seedance.gen(frame, vid, vprompt, seedance.seconds_for((t - shot_start) / VIDEO_SLOW)):
                 print(f"    镜头 {i + 1} 动态生成失败，这一镜改用推拉")
         if vid.exists():
             video_clip(vid, clip, t - shot_start, shot.get("fx", []), w, h)
@@ -655,8 +665,8 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
     subs = workdir / f"{tag}subs.ass"
     build_ass(ep["title"], cues, total, outro_start, outro, subs, w, h, ep.get("hook_text", ""))
     # 统一调色：压暗、降饱和、偏冷，加暗角和胶片颗粒
-    grade = ("eq=contrast=1.08:saturation=0.72:gamma=0.95,colorbalance=bs=0.05:bm=0.03:rh=-0.02,"
-             "vignette=PI/4.5,noise=alls=5:allf=t")
+    grade = SERIES.get("grade") or ("eq=contrast=1.08:saturation=0.72:gamma=0.95,colorbalance=bs=0.05:bm=0.03:rh=-0.02,"
+                                    "vignette=PI/4.5,noise=alls=5:allf=t")
     run(["ffmpeg", "-y", "-i", str(workdir / f"{tag}video.mp4"), "-i", str(workdir / "mix.wav"),
          "-vf", f"{grade},ass={subs}", "-map", "0:v", "-map", "1:a",
          "-c:v", "libx264", "-preset", "veryfast", "-crf", "21", "-maxrate", "6M", "-bufsize", "12M",
