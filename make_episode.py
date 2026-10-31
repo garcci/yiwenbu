@@ -74,8 +74,8 @@ def llm(prompt, provider):
     if provider == "openai":  # 任何 OpenAI 兼容接口：Gemini、智谱 GLM、DeepSeek、MiniMax 等
         # 没单独配 LLM 时，直接用火山方舟（同一个 ARK_API_KEY）
         key = (os.environ.get("LLM_API_KEY") or os.environ["ARK_API_KEY"]).strip()
-        base = (os.environ.get("LLM_BASE_URL") or "https://ark.cn-beijing.volces.com/api/v3").strip().rstrip("/")
-        model = (os.environ.get("LLM_MODEL") or "doubao-seed-1-6-250615").strip()
+        base = (os.environ.get("LLM_BASE_URL") or ARK_BASE).strip().rstrip("/")
+        model = (os.environ.get("LLM_MODEL") or "doubao-seed-2.1-pro").strip()
         r = requests.post(f"{base}/chat/completions", headers={"Authorization": f"Bearer {key}"},
                           json={"model": model,
                                 "messages": [{"role": "user", "content": prompt}], "temperature": 0.8},
@@ -141,6 +141,8 @@ VOICES = SERIES.get("voices", {})
 MINIMAX_EMOTION = {"normal": "calm", "slow": "sad", "whisper": "fearful", "tense": "fearful"}
 MINIMAX_SPEED = {"normal": 0.95, "slow": 0.82, "whisper": 0.85, "tense": 1.08}
 MINIMAX_HOST = os.environ.get("MINIMAX_HOST", "https://api.minimaxi.com")
+# 火山方舟套餐（Coding/Agent Plan）走 /api/plan/v3；按量付费账号可把 ARK_BASE 设成 https://ark.cn-beijing.volces.com/api/v3
+ARK_BASE = (os.environ.get("ARK_BASE") or "https://ark.cn-beijing.volces.com/api/plan/v3").rstrip("/")
 
 
 def _minimax_tts(text, out, who, tone):
@@ -305,12 +307,12 @@ FALLBACK_PROMPT = "an empty misty country road at night in ancient rural China, 
 
 def _seedream(prompt, out):
     """火山方舟 Seedream：直接出竖版 9:16，写实质感比 FLUX schnell 好得多。"""
-    body = {"model": os.environ.get("SEEDREAM_MODEL", "doubao-seedream-4-0-250828"), "prompt": prompt,
+    body = {"model": os.environ.get("SEEDREAM_MODEL") or "doubao-seedream-5.0-pro", "prompt": prompt,
             "size": "1440x2560", "response_format": "b64_json", "watermark": False}
     h = {"Authorization": f"Bearer {os.environ['ARK_API_KEY'].strip()}"}
     for attempt in range(4):
         try:
-            r = requests.post("https://ark.cn-beijing.volces.com/api/v3/images/generations",
+            r = requests.post(f"{ARK_BASE}/images/generations",
                               headers=h, json=body, timeout=180)
             if r.ok:
                 out.write_bytes(base64.b64decode(r.json()["data"][0]["b64_json"]))

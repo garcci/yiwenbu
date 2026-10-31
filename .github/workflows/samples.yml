@@ -39,7 +39,7 @@ jobs:
           CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
-          SEEDREAM_MODEL: ${{ vars.SEEDREAM_MODEL || 'doubao-seedream-4-0-250828' }}
+          SEEDREAM_MODEL: ${{ vars.SEEDREAM_MODEL || 'doubao-seedream-5.0-pro' }}
           GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
           GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
           GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
