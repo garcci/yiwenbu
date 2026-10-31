@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Seedance 图生视频小样：用定妆图当首帧，每段 5 秒 720p，成片写进云盘「小样/<name>」。
+"""Seedance 图生视频小样：用定妆图当首帧，每段 5 秒（默认 720p，可按段指定 resolution），成片写进云盘「小样/<name>」。
 
   python samples/seedance_sample.py samples/seedance.json
 
@@ -36,13 +36,13 @@ def data_url(path):
     return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
-def submit(model, prompt, image):
+def submit(model, prompt, image, res="720p"):
     """先用顶层参数提交；老模型不认顶层参数时改成写在提示词末尾的 --rs/--dur 写法。"""
     content = [{"type": "image_url", "image_url": {"url": image}, "role": "first_frame"}]
     tries = [
         {"model": model, "content": [{"type": "text", "text": prompt}] + content,
-         "resolution": "720p", "ratio": "adaptive", "duration": 5, "watermark": False},
-        {"model": model, "content": [{"type": "text", "text": prompt + " --rs 720p --rt adaptive --dur 5 --wm false"}]
+         "resolution": res, "ratio": "adaptive", "duration": 5, "watermark": False},
+        {"model": model, "content": [{"type": "text", "text": prompt + f" --rs {res} --rt adaptive --dur 5 --wm false"}]
          + content},
     ]
     last = None
@@ -83,7 +83,7 @@ def main():
         task, used = None, None
         for model in MODELS[clip["tier"]]:
             print(f"  试模型 {model}")
-            task, err = submit(model, clip["prompt"], image)
+            task, err = submit(model, clip["prompt"], image, clip.get("resolution", "720p"))
             if task:
                 used = model
                 break
