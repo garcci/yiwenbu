@@ -34,7 +34,7 @@ TONES = {
     "whisper": ("-18%", "-8Hz", "-25%", 0.70),
     "tense":   ("+6%",  "+0Hz", "+5%",  0.25),
 }
-VIDEO_PROVIDER = os.environ.get("VIDEO_PROVIDER", "none")  # none / minimax
+VIDEO_PROVIDER = os.environ.get("VIDEO_PROVIDER", "none")  # none / minimax / seedance（seedance：每个镜头都生成动态）
 MOTIONS = ["push_in", "pan_right", "drift_up", "pull_out", "pan_left", "push_in"]
 
 
@@ -624,6 +624,12 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
         vid = workdir / f"vid{i:02d}.mp4"
         if shot.get("video_prompt") and VIDEO_PROVIDER == "minimax" and not vid.exists():
             gen_video(frame, vid, shot["video_prompt"])
+        if VIDEO_PROVIDER == "seedance" and not vid.exists():
+            # 用户不要静图推拉：每个镜头都用首帧生成真动态，时长跟旁白走；失败才退回推拉
+            import seedance
+            vprompt = shot.get("video_prompt") or shot["image_prompt"]
+            if not seedance.gen_long(frame, vid, vprompt, t - shot_start):
+                print(f"    镜头 {i + 1} 动态生成失败，这一镜改用推拉")
         if vid.exists():
             video_clip(vid, clip, t - shot_start, shot.get("fx", []), w, h)
         else:
