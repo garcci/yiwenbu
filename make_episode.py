@@ -642,7 +642,7 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
         return total
 
     caption_txt = (f"{ep['title']}\n\n{SERIES['series_name']}｜{SERIES['tagline']}\n"
-                   f"本集改编自{ep['source']}，内容由AI辅助生成。\n\n#民间故事 #志怪 #聊斋 #诡异 #异闻簿")
+                   f"{SERIES['outro_text']}\n\n#诡异故事 #悬疑 #真实经历 #细思极恐 #异闻簿")
     out_mp4.with_suffix(".txt").write_text(caption_txt, encoding="utf-8")
     print(f"完成：{out_mp4}（{total:.1f} 秒）")
     return total
