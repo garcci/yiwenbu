@@ -44,16 +44,22 @@ def cn_num(n):
 
 def ask(prompt, provider=None):
     """调模型，出错时把返回内容打出来。和异闻簿共用一把钥匙：
-    配了 LLM_API_KEY（任意 OpenAI 兼容接口，如智谱 glm-4-flash、Gemini）就先用它，否则用 Cloudflare。
+    顺序：火山方舟豆包（ARK_API_KEY）→ 任意 OpenAI 兼容接口（LLM_API_KEY）→ Cloudflare。
     GitHub Models 已于 2026-07-30 下线，不再使用。"""
-    order = (["openai"] if os.environ.get("LLM_API_KEY") else []) + ["cloudflare"]
+    order = (["ark"] if os.environ.get("ARK_API_KEY") else []) + \
+            (["openai"] if os.environ.get("LLM_API_KEY") else []) + ["cloudflare"]
     for p in order:
         try:
-            if p == "openai":
-                base = os.environ.get("LLM_BASE_URL", "https://open.bigmodel.cn/api/paas/v4").rstrip("/")
+            if p in ("ark", "openai"):
+                if p == "ark":  # 火山方舟（豆包），和出图共用 ARK_API_KEY，每章花费不到一分钱
+                    base, key = "https://ark.cn-beijing.volces.com/api/v3", os.environ["ARK_API_KEY"]
+                    model = os.environ.get("ARK_LLM_MODEL") or "doubao-seed-1-6-flash-250828"
+                else:
+                    base = (os.environ.get("LLM_BASE_URL") or "https://open.bigmodel.cn/api/paas/v4").rstrip("/")
+                    key, model = os.environ["LLM_API_KEY"], os.environ.get("LLM_MODEL") or "glm-4-flash"
                 r = requests.post(f"{base}/chat/completions",
-                                  headers={"Authorization": f"Bearer {os.environ['LLM_API_KEY'].strip()}"},
-                                  json={"model": os.environ.get("LLM_MODEL") or "glm-4-flash",
+                                  headers={"Authorization": f"Bearer {key.strip()}"},
+                                  json={"model": model,
                                         "messages": [{"role": "user", "content": prompt}], "temperature": 0.6},
                                   timeout=300)
                 if not r.ok or not r.text.strip().startswith("{"):
