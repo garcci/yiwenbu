@@ -628,7 +628,7 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
             # 用户不要静图推拉：每个镜头都用首帧生成真动态，时长跟旁白走；失败才退回推拉
             import seedance
             vprompt = shot.get("video_prompt") or shot["image_prompt"]
-            if not seedance.gen(frame, vid, vprompt, seedance.seconds_for(t - shot_start)):
+            if not seedance.gen_long(frame, vid, vprompt, t - shot_start):
                 print(f"    镜头 {i + 1} 动态生成失败，这一镜改用推拉")
         if vid.exists():
             video_clip(vid, clip, t - shot_start, shot.get("fx", []), w, h)

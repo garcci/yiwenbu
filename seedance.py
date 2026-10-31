@@ -6,7 +6,8 @@
 - 模型：SEEDANCE_MODEL，默认 doubao-seedance-1-0-pro-fast-251015（2.x 系列要余额满200元才能开通）
 - 价格：1.0 pro fast 4.2 元/百万 token；720p 5 秒约 10.4 万 token ≈ 0.44 元（2026-10-31 实测）
 """
-import base64, io, math, os, time
+import base64, io, math, os, subprocess, tempfile, time
+from pathlib import Path
 
 import requests
 from PIL import Image
@@ -20,7 +21,7 @@ spent = 0.0  # 本次运行累计估算花费
 
 
 def _key():
-    return (os.environ.get("ARK_PAYG_API_KEY") or os.environ["ARK_API_KEY"]).strip()
+    return (os.environ.get("ARK_PAYG_API_KEY") or os.environ.get("ARK_API_KEY") or "").strip()
 
 
 def _data_url(path):
@@ -31,14 +32,43 @@ def _data_url(path):
     return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 
+MAX_SEC = 12  # 单段上限
+
+
 def seconds_for(dur):
-    """旁白多长就生成多长（2~12 秒），不用倒放凑时长。"""
-    return max(2, min(12, math.ceil(dur)))
+    """旁白多长就生成多长（2~12 秒）；更长的镜头用 gen_long 分段接上。"""
+    return max(2, min(MAX_SEC, math.ceil(dur)))
+
+
+def gen_long(frame, out, prompt, dur):
+    """按旁白时长生成：超过 12 秒就拆成几段，每段以上一段最后一帧为首帧，接成一条连续的视频，不倒放。"""
+    n = max(1, math.ceil(dur / MAX_SEC))
+    if n == 1:
+        return gen(frame, out, prompt, seconds_for(dur))
+    each = seconds_for(dur / n)
+    tmp = Path(tempfile.mkdtemp(prefix="seedance_"))
+    parts, first = [], Path(frame)
+    for k in range(n):
+        part = tmp / f"part{k}.mp4"
+        if not gen(first, part, prompt, each):
+            return False
+        parts.append(part)
+        first = tmp / f"last{k}.jpg"
+        subprocess.run(["ffmpeg", "-y", "-sseof", "-0.1", "-i", str(part), "-frames:v", "1", "-q:v", "2", str(first)],
+                       stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    (tmp / "list.txt").write_text("".join(f"file '{p.name}'\n" for p in parts))
+    subprocess.run(["ffmpeg", "-y", "-f", "concat", "-safe", "0", "-i", str(tmp / "list.txt"),
+                    "-c:v", "libx264", "-preset", "veryfast", "-pix_fmt", "yuv420p", "-an", str(out)],
+                   stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+    return True
 
 
 def gen(frame, out, prompt, seconds=5, res=None, model=None):
     """以 frame 为首帧生成视频写到 out；成功返回 True，失败返回 False（调用方退回推拉）。"""
     global spent
+    if not _key():
+        print("    没配置 ARK_PAYG_API_KEY，跳过动态")
+        return False
     h = {"Authorization": f"Bearer {_key()}", "Content-Type": "application/json"}
     body = {"model": model or MODEL,
             "content": [{"type": "text", "text": prompt + STYLE},
