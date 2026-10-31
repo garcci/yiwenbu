@@ -44,10 +44,10 @@ def cn_num(n):
 
 def ask(prompt, provider=None):
     """调模型，出错时把返回内容打出来。和异闻簿共用一把钥匙：
-    顺序：火山方舟豆包（ARK_API_KEY）→ 任意 OpenAI 兼容接口（LLM_API_KEY）→ Cloudflare。
+    顺序：任意 OpenAI 兼容接口（LLM_API_KEY，如智谱 glm-4-flash 免费）→ Cloudflare。
     GitHub Models 已于 2026-07-30 下线，不再使用。"""
-    order = (["ark"] if os.environ.get("ARK_API_KEY") else []) + \
-            (["openai"] if os.environ.get("LLM_API_KEY") else []) + ["cloudflare"]
+    # 注意：火山方舟订阅套餐的文本模型不允许脚本调用（可能封号），这里不用 ARK_API_KEY
+    order = (["openai"] if os.environ.get("LLM_API_KEY") else []) + ["cloudflare"]
     for p in order:
         try:
             if p in ("ark", "openai"):
