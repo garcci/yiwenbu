@@ -71,6 +71,16 @@ def llm(prompt, provider):
         if not r.ok:
             raise RuntimeError(f"GitHub Models 返回 {r.status_code}：{r.text[:300]}")
         return r.json()["choices"][0]["message"]["content"]
+    if provider == "openai":  # 任何 OpenAI 兼容接口：Gemini、智谱 GLM、DeepSeek、MiniMax 等
+        base = os.environ["LLM_BASE_URL"].strip().rstrip("/")
+        r = requests.post(f"{base}/chat/completions",
+                          headers={"Authorization": f"Bearer {os.environ['LLM_API_KEY'].strip()}"},
+                          json={"model": os.environ["LLM_MODEL"].strip(),
+                                "messages": [{"role": "user", "content": prompt}], "temperature": 0.8},
+                          timeout=300)
+        if not r.ok:
+            raise RuntimeError(f"LLM 返回 {r.status_code}：{r.text[:300]}")
+        return r.json()["choices"][0]["message"]["content"]
     if provider == "cloudflare":
         model = os.environ.get("CF_LLM_MODEL", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
         r = cf_run(model, {"messages": [{"role": "user", "content": prompt}], "max_tokens": 3000})
@@ -561,7 +571,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--next", action="store_true", help="取 topics.json 里下一个未做的选题")
     ap.add_argument("--episode", help="已有稿件 JSON")
-    ap.add_argument("--llm", default=os.environ.get("LLM_PROVIDER", "github"), choices=["github", "cloudflare"])
+    ap.add_argument("--llm", default=os.environ.get("LLM_PROVIDER", "openai" if os.environ.get("LLM_API_KEY") else "cloudflare"), choices=["openai", "github", "cloudflare"])
     ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"), choices=["cloudflare", "seedream", "placeholder"])
     ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "silent"])
     args = ap.parse_args()
