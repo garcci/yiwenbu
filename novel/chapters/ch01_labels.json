@@ -1,0 +1,572 @@
+[
+ {
+  "t": "爷爷死后第三天，我在他的簿子上，看到了他记下的、当天夜里的事。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "这话得从头说。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "1998年腊月十一，我在县城汽修厂躺在一辆东风车底下换油底壳，传达室的老孙头扯着嗓子喊我接电话。电话是村里小卖部打来的，二叔的声音隔着线路沙沙地响：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "砚儿，你爷没了。回来吧。",
+  "kind": "say",
+  "para_end": true,
+  "who": "erhshu",
+  "tone": "normal"
+ },
+ {
+  "t": "我请了假，倒了两趟车，又走了十几里山路，天擦黑才进黑水湾。三年没回来，村口那棵老槐树还在，树底下多了一根电线杆，挂着一盏不太亮的灯泡。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "爷爷的灵棚搭在院子里。白布，白纸，供桌上一碗倒头饭，插着一双筷子。院门两边挂着白灯笼，竹骨糊白纸，是村里扎纸的老周给扎的。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "二叔迎出来，眼睛是红的，嘴里一股烟味。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "你爷前天夜里走的。",
+  "kind": "say",
+  "who": "erhshu",
+  "tone": "normal"
+ },
+ {
+  "t": "他说，",
+  "kind": "narr",
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "在老井边上。",
+  "kind": "say",
+  "para_end": true,
+  "who": "erhshu",
+  "tone": "normal"
+ },
+ {
+  "t": "井边？",
+  "kind": "say",
+  "para_end": true,
+  "who": "shenyan",
+  "tone": "normal"
+ },
+ {
+  "t": "早上起来，人就在井沿边上坐着，脸朝着村子，手里攥着一盏白灯笼，没点。",
+  "kind": "say",
+  "who": "erhshu",
+  "tone": "normal"
+ },
+ {
+  "t": "二叔嗓子哑了，",
+  "kind": "narr",
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "卫生所苏大夫来看过，说是冻的。八十一了，夜里不知道出去干什么。",
+  "kind": "say",
+  "para_end": true,
+  "who": "erhshu",
+  "tone": "normal"
+ },
+ {
+  "t": "我爷是村里的“看事人”。谁家里出了说不清的事，牲口半夜叫，孩子发烧说胡话，都来找他。他不收钱，不画符，就去看一眼，回来往一个本子上记。小时候我问他记那些干啥，他说，记下来，就不怕忘了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "他那个本子呢？",
+  "kind": "say",
+  "who": "shenyan",
+  "tone": "normal"
+ },
+ {
+  "t": "我问。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "二叔指了指堂屋：",
+  "kind": "narr",
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "在他屋里那个木匣子里。你爷早说了，那东西留给你。",
+  "kind": "say",
+  "para_end": true,
+  "who": "erhshu",
+  "tone": "normal"
+ },
+ {
+  "t": "",
+  "pause": 1.6,
+  "tone": "normal"
+ },
+ {
+  "t": "守灵是我一个人。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "二叔说他明早还得去乡里开火化证明，熬不动。村里的规矩，头三夜灵前不能断人。我裹着爷爷那件黑棉袄，坐在灵前的小板凳上，脚边一盆炭火。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "那个木匣子我搬出来了，就放在腿上。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "簿子是牛皮纸封面的，用麻绳装订，边角都磨毛了。封面上三个毛笔字：看事簿。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我翻开第一页。不是记录，是一页规矩，爷爷的字，一笔一画，像是怕人看不清：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "一、下雪的夜里有人敲门借火，不开门，不应声。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "二、扎纸人不点眼睛。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "三、叫魂只叫三声，第四声有人答应，不要回头。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "四、河上漂来的灯，不捞。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "五、小卖部的电话半夜响，不接。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "六、存疑一栏不许空。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "七、",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "第七条后面，被人撕掉了。不是那一行，是那一页的下半截，撕得整整齐齐。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我往后翻。每一条记录都分四栏：所见，所闻，所查，存疑。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "一九八三年三月，东头王家牛棚夜鸣。所见：牛跪地，不起。所闻：棚外有人叹气。所查：棚后墙根有獾子洞，夜风过洞有声。存疑：王家老太说，叹气那声，像她死了的男人。",
+  "kind": "say",
+  "para_end": true,
+  "who": "grandpa",
+  "tone": "slow"
+ },
+ {
+  "t": "我看了一会儿，有点想笑。前面三栏，明明白白就是獾子洞走风。偏偏最后一栏，又给留个口子。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "往后翻，五十年，一条一条全是这样。查清了的，没查清的，最后一栏都不空着。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "雪是十一点多开始下的。我听见了，簌簌地落在灵棚的白布顶上。远处谁家的狗叫了两声，就不叫了。炭盆里的火慢慢暗下去，我往里添了两块蜂窝煤。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我是被敲门声弄醒的。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "不知道什么时候靠着供桌睡着了。灵前那两根白蜡烛还亮着，蜡油流了一桌子。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "院门响了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "不是风。是指节敲在木门上，三下，不轻不重，很有规矩。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal",
+  "sfx": "knock"
+ },
+ {
+  "t": "我一下子坐直了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "又是三下。然后门外有人说话，声音不高，像是怕吵着灵前的人：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "借个火。",
+  "kind": "say",
+  "para_end": true,
+  "who": "ghost",
+  "tone": "normal"
+ },
+ {
+  "t": "是个男人的声音。听不出年纪，有点哑，像是在雪地里站了很久。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我没动。我想起簿子第一页上那句话：下雪的夜里有人敲门借火，不开门，不应声。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我跟自己说，这是哪个邻居。半夜灶膛灭了，来借个火，多大点事。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "可我还是没出声。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "门外安静了很久。我听见雪落在门楼上的声音。然后又是那三个字：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "借个火。",
+  "kind": "say",
+  "para_end": true,
+  "who": "ghost",
+  "tone": "normal"
+ },
+ {
+  "t": "这一回，近了一点。像是那个人把脸贴在了门缝上。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我攥着炭盆边上的火钳，站起来，走到院门后头。手搭在门闩上，凉得像冰。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我拔开门闩，拉开了门。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "门外没有人。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "只有一盏白纸灯笼，端端正正放在门槛外面的雪地上。跟院门两边挂着的，一模一样。里面的蜡烛刚灭，烛芯还冒着一缕细细的烟。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我蹲下去，伸手碰了一下灯笼的竹柄。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "是热的。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "不是被蜡烛烤热的那种热，是被人手攥了很久、攥出来的那种温热。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我抬起头，往院外照。门口的雪地上有一行脚印，从村道那边过来，停在门口，又往回走。鞋印不大，是平底的布鞋，一步一步，走得很稳，一点不慌。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我顺着脚印往前走。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "雪还在下，手电光只能照出身前一小圈。脚印拐过二叔家的后墙，往村西去了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "村西有一口老井。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "井上搭着木头辘轳，井绳冻得梆硬。脚印一直走到井沿边上，就没了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "井沿上没有雪。是一圈薄薄的雪化成了水，又冻上了，结成一层亮晶晶的冰。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "就是爷爷坐着死的地方。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "我把手电往井里照。井很深，光照下去，只看见黑。我屏住气听，井里没有声音。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我又绕着井走了一圈。四周的雪地平平整整，除了我自己的脚印，再没有第二行。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "那个人走到井边，就再也没离开。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "",
+  "pause": 1.6,
+  "tone": "normal"
+ },
+ {
+  "t": "我回到灵棚，把那盏灯笼也提了回来，放在供桌底下。后半夜，我一眼也没合。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "天快亮的时候，我想把昨晚的事记下来。爷爷说，记下来，就不怕忘了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "我翻开簿子，想找一页空白的。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "翻到最后，手停住了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "最后一页不是空白。上面有一条新写的记录，墨迹还很黑，是爷爷的字，瘦而硬，一笔不苟：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "腊月十三。所见：门外白纸灯笼一盏，烛新灭，柄温。足迹一行，自村道来，至西井而止，井沿冰。所闻：叩门三声，言借火，凡二次。所查：",
+  "kind": "say",
+  "para_end": true,
+  "who": "grandpa",
+  "tone": "slow"
+ },
+ {
+  "t": "后面空着。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "存疑那一栏，只有一行字：",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "来借火的，是我。",
+  "kind": "say",
+  "para_end": true,
+  "who": "grandpa",
+  "tone": "slow"
+ },
+ {
+  "t": "我看了一眼墙上的挂历。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "1998年，腊月十三。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "normal"
+ },
+ {
+  "t": "就是今天。爷爷三天前，就已经死了。",
+  "kind": "narr",
+  "para_end": true,
+  "who": "narrator",
+  "tone": "slow"
+ },
+ {
+  "t": "",
+  "pause": 1.6,
+  "tone": "normal"
+ }
+]
