@@ -57,7 +57,8 @@ def ask(prompt, provider=None):
                     model = os.environ.get("ARK_LLM_MODEL") or "doubao-seed-2.1-pro"
                 else:
                     base = (os.environ.get("LLM_BASE_URL") or "https://open.bigmodel.cn/api/paas/v4").rstrip("/")
-                    key, model = os.environ["LLM_API_KEY"], os.environ.get("LLM_MODEL") or "glm-4-flash"
+                    # 小说默认用免费的 glm-4.7-flash，不跟随 LLM_MODEL（避免误用收费的 glm-4.7）
+                    key, model = os.environ["LLM_API_KEY"], os.environ.get("NOVEL_LLM_MODEL") or "glm-4.7-flash"
                 r = requests.post(f"{base}/chat/completions",
                                   headers={"Authorization": f"Bearer {key.strip()}"},
                                   json={"model": model,

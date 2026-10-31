@@ -45,7 +45,7 @@ jobs:
           ARK_LLM_MODEL: ${{ vars.ARK_LLM_MODEL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
-          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          NOVEL_LLM_MODEL: ${{ vars.NOVEL_LLM_MODEL }}
           # 档位开关：小说单独用 NOVEL_ 开头的仓库变量，花钱前先经用户同意
           IMAGE_PROVIDER: ${{ vars.NOVEL_IMAGE_PROVIDER || 'cloudflare' }}   # 小说单独的开关，默认免费
           TTS_PROVIDER: ${{ vars.NOVEL_TTS_PROVIDER || 'edge' }}
