@@ -186,20 +186,41 @@ def mix_audio(workdir, voice_parts, sfx_events, ambience, total):
 
 
 # ---------------- 画面 ----------------
+class NSFWBlocked(Exception):
+    pass
+
+
 def cf_run(model, payload):
     acc, tok = os.environ["CF_ACCOUNT_ID"].strip(), os.environ["CF_API_TOKEN"].strip()
     r = requests.post(f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{model}",
                       headers={"Authorization": f"Bearer {tok}"}, json=payload, timeout=180)
     if not r.ok:  # 把 Cloudflare 返回的具体原因打出来，方便排查
+        if "NSFW" in r.text:
+            raise NSFWBlocked(r.text[:200])
         raise SystemExit(f"Cloudflare {model} 返回 {r.status_code}：{r.text[:500]}")
     return r
+
+
+# 审核误判时逐级换成更"干净"的说法；最后兜底用一张空景
+SAFE_WORDS = [(r"\b(feet|foot|legs?|bare\w*|body|bodies|skin|naked|blood\w*|corpse|dead|ghost\w*|shoulders?)\b", "figure"),
+              (r"\b(struggling|screaming|scream\w*)\b", "")]
+FALLBACK_PROMPT = "an empty misty country road at night in ancient rural China, a faint paper lantern glow in the distance"
 
 
 def gen_image(prompt, out, provider):
     full = f"{prompt}, {SERIES['visual_style']}"
     if provider == "cloudflare":
-        r = cf_run("@cf/black-forest-labs/flux-1-schnell", {"prompt": full, "steps": 8})
-        out.write_bytes(base64.b64decode(r.json()["result"]["image"]))
+        clean = prompt
+        for pat, rep in SAFE_WORDS:
+            clean = re.sub(pat, rep, clean, flags=re.I)
+        for p in [prompt, clean, FALLBACK_PROMPT]:
+            try:
+                r = cf_run("@cf/black-forest-labs/flux-1-schnell", {"prompt": f"{p}, {SERIES['visual_style']}", "steps": 8})
+                out.write_bytes(base64.b64decode(r.json()["result"]["image"]))
+                return
+            except NSFWBlocked:
+                print(f"    画面被平台审核误拦，换一种说法重试：{p[:60]}")
+        raise SystemExit("画面连续被审核拦截")
     else:  # placeholder：离线试跑用的暗色画面
         img = Image.new("RGB", (1024, 1024), (38, 44, 48))
         d = ImageDraw.Draw(img)

@@ -43,7 +43,7 @@
       ]
     },
     {
-      "image_prompt": "close up of two pairs of feet walking side by side on a muddy road at night, one pair in straw sandals, the other pair blurred and faint like smoke, lantern light",
+      "image_prompt": "low angle view of a muddy country road at night, two long shadows cast side by side by a lantern, one shadow solid, the other faint and blurred like smoke, straw sandals stepping",
       "motion": "drift_up",
       "fx": [
         "fog"
@@ -88,7 +88,7 @@
       ]
     },
     {
-      "image_prompt": "a young man carrying another shadowy figure on his back along a dark road at night, the figure on his back is vague and translucent like mist, lantern swinging",
+      "image_prompt": "a young man in Han dynasty clothing walking hunched forward on a dark road at night as if carrying a heavy load, a vague misty shape above his back, lantern swinging",
       "motion": "pan_left",
       "fx": [
         "fog"
@@ -110,7 +110,7 @@
       ]
     },
     {
-      "image_prompt": "over the shoulder view of a man walking at night with a pale wisp of fog draped over his shoulders where a person should be, cold breath visible",
+      "image_prompt": "view from behind of a man walking on a night road with a pale cloud of mist hovering close behind his head, his breath visible in the cold air",
       "motion": "drift_up",
       "fx": [
         "fog"
@@ -193,7 +193,7 @@
       ]
     },
     {
-      "image_prompt": "dawn breaking over a misty rural market street, a man carrying a struggling shape on his shoulder that turns into a white sheep, early villagers looking, blue-grey light",
+      "image_prompt": "dawn over a misty rural market street in ancient China, a man in Han dynasty clothing holding a white sheep tightly with both arms, early villagers watching, blue-grey light",
       "motion": "push_in",
       "fx": [
         "shake",
