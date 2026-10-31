@@ -1,8 +1,9 @@
 name: 每日出片
 
 on:
-  schedule:
-    - cron: "30 0 * * *"   # 北京时间每天8:30（Cloudflare 免费额度在北京时间8点重置，必须排在它之后）
+  # 定时暂停：质量小样通过用户确认之前不自动出片。恢复时去掉下面两行的 #
+  # schedule:
+  #   - cron: "30 0 * * *"   # 北京时间每天8:30（Cloudflare 免费额度在北京时间8点重置，必须排在它之后）
   workflow_dispatch:
     inputs:
       episode:
