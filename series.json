@@ -32,5 +32,12 @@
       "edge": "zh-CN-YunyangNeural",
       "minimax": "presenter_male"
     }
+  },
+  "ref_images": [
+    "samples/ref_heroine.jpg"
+  ],
+  "cast": {
+    "heroine": "samples/ref_heroine.jpg",
+    "rabbit": "samples/ref_heroine2.jpg"
   }
 }
