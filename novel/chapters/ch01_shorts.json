@@ -21,7 +21,8 @@
        "tone": "normal",
        "who": "narrator"
       }
-     ]
+     ],
+     "key": true
     },
     {
      "image_prompt": "a white mourning shed in a snowy village courtyard at night, white paper lanterns hanging by the gate, two white candles burning",
@@ -93,7 +94,8 @@
        "who": "narrator"
       }
      ],
-     "sfx": "gust"
+     "sfx": "gust",
+     "reuse": 2
     },
     {
      "image_prompt": "a closed old wooden courtyard gate at night from inside, snow drifting under it, faint shadow outside",
@@ -163,7 +165,8 @@
        "tone": "slow",
        "who": "narrator"
       }
-     ]
+     ],
+     "reuse": 6
     },
     {
      "image_prompt": "black frame with faint snowfall, a single white paper lantern far away in darkness",
@@ -202,7 +205,8 @@
        "tone": "normal",
        "who": "narrator"
       }
-     ]
+     ],
+     "key": true
     },
     {
      "image_prompt": "close-up of a white paper lantern, a thin wisp of smoke rising from a just-extinguished candle wick",
@@ -260,7 +264,8 @@
        "tone": "slow",
        "who": "narrator"
       }
-     ]
+     ],
+     "reuse": 3
     },
     {
      "image_prompt": "a single line of flat-soled cloth shoe prints in fresh snow leading away from a gate along a village lane, flashlight beam",
@@ -358,7 +363,8 @@
        "tone": "slow",
        "who": "narrator"
       }
-     ]
+     ],
+     "reuse": 7
     }
    ]
   },
@@ -383,7 +389,8 @@
        "tone": "slow",
        "who": "narrator"
       }
-     ]
+     ],
+     "key": true
     },
     {
      "image_prompt": "hands flipping pages of an old kraft-paper notebook, dense handwritten columns, soft candlelight",
@@ -421,7 +428,8 @@
        "tone": "normal",
        "who": "narrator"
       }
-     ]
+     ],
+     "reuse": 2
     },
     {
      "image_prompt": "a closed wooden gate at night with snow, a white paper lantern on the ground outside",
@@ -514,7 +522,8 @@
        "who": "grandpa"
       }
      ],
-     "sfx": "heartbeat"
+     "sfx": "heartbeat",
+     "reuse": 6
     },
     {
      "image_prompt": "an old paper wall calendar hanging on a whitewashed brick wall in dim dawn light",
