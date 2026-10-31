@@ -20,7 +20,7 @@
 2. Cloudflare 后台：记下 Account ID；在“我的个人资料 → API 令牌”新建令牌，权限选 Workers AI。
 3. 仓库 Settings → Secrets and variables → Actions，添加 `CF_ACCOUNT_ID`、`CF_API_TOKEN`。
 4. 云盘自动写入：按发布手册“配置云盘”一节，用 `get_drive_token.py` 拿令牌，添加 `GDRIVE_CLIENT_ID`、`GDRIVE_CLIENT_SECRET`、`GDRIVE_REFRESH_TOKEN`、`GDRIVE_FOLDER_ID` 四个 Secrets。不配也能出片，只是不会进云盘。
-5. Actions 页面手动运行一次“每日出片”（episode 填 `episodes/ep01.json`），之后每天早上6点自动跑下一集。成片会出现在云盘“异闻簿-成片/第XX集”。
+5. Actions 页面手动运行一次“每日出片”（episode 填 `episodes/ep01.json`），之后每天北京时间8:30自动跑下一集。成片会出现在云盘“异闻簿-成片/第XX集”。
 6. 运行一次“账号素材与长合集”，选“账号素材”，拿到头像、专辑封面、频道横幅。
 
 ## 本地跑

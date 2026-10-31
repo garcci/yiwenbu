@@ -2,7 +2,7 @@ name: 每日出片
 
 on:
   schedule:
-    - cron: "0 22 * * *"   # 北京时间每天早上6点
+    - cron: "30 0 * * *"   # 北京时间每天8:30（Cloudflare 免费额度在北京时间8点重置，必须排在它之后）
   workflow_dispatch:
     inputs:
       episode:

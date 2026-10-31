@@ -208,6 +208,8 @@ def cf_run(model, payload):
         try:
             r = requests.post(f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{model}",
                               headers={"Authorization": f"Bearer {tok}"}, json=payload, timeout=180)
+            if "4006" in r.text or "daily free allocation" in r.text:
+                raise SystemExit("Cloudflare 今天的免费额度（每天1万 neurons，北京时间8点重置）已用完，明天再跑")
             if r.status_code < 500 and r.status_code != 429:
                 break
             print(f"    Cloudflare 返回 {r.status_code}，稍后重试")
