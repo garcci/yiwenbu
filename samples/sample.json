@@ -1,0 +1,23 @@
+{
+  "name": "宋定伯开头30秒",
+  "character": "a lean young man in his twenties with a short beard and a worried face, wearing a grey hemp robe and a dark cloth headscarf, hair tied in a topknot",
+  "ambience": "wind",
+  "lines": [
+    {"t": "老家有个规矩。", "tone": "slow", "who": "narrator"},
+    {"t": "夜里走路，要是身后有人问你：你是人，还是鬼？", "tone": "normal", "who": "narrator"},
+    {"t": "千万……别说你是人。", "tone": "whisper", "who": "narrator", "sfx": "sting"},
+    {"t": "这规矩怎么来的，我爷爷讲过一回。", "tone": "slow", "who": "narrator"},
+    {"t": "南阳有个后生叫宋定伯。那年腊月，他半夜赶路去宛城。", "tone": "normal", "who": "narrator"},
+    {"t": "路上没有灯，只有他自己的脚步声。", "tone": "slow", "who": "narrator", "sfx": "footsteps"},
+    {"t": "走着走着，脚步声变成了两个。", "tone": "slow", "who": "narrator"},
+    {"t": "他停，那个也停。他走，那个也走。", "tone": "tense", "who": "narrator"},
+    {"t": "然后有个声音，贴着他后脑勺问：", "tone": "whisper", "who": "narrator", "sfx": "heartbeat"},
+    {"t": "你是人……还是鬼？", "tone": "whisper", "who": "ghost"}
+  ],
+  "shots": [
+    {"image_prompt": "medium shot, the man walks alone on a narrow dirt road at night holding a small paper lantern that lights his worried face, frozen winter fields on both sides, bare trees",
+     "video_prompt": "the man walks slowly toward the camera, the lantern sways and its light flickers on his face, thin mist drifts across the road"},
+    {"image_prompt": "low angle close shot of a frozen muddy road at night, the man's straw sandals and the hem of his robe in lantern light, on the ground beside his shadow there is a second long shadow with nobody casting it"},
+    {"image_prompt": "over the shoulder shot from behind the man holding a lantern on a dark road, a few steps behind him in the mist stands a tall dark human figure in an old robe, its face hidden in shadow"}
+  ]
+}

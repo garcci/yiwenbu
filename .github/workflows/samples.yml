@@ -1,0 +1,55 @@
+name: 质量小样
+
+on:
+  workflow_dispatch:
+    inputs:
+      spec:
+        description: "小样配置"
+        default: "samples/sample.json"
+      tts:
+        description: "配音"
+        type: choice
+        options: [minimax, edge]
+        default: minimax
+      images:
+        description: "出图"
+        type: choice
+        options: [seedream, cloudflare]
+        default: seedream
+      video:
+        description: "图生视频"
+        type: choice
+        options: [minimax, none]
+        default: minimax
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装依赖
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          pip install -q requests pillow edge-tts
+      - name: 出小样
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          TTS_PROVIDER: ${{ github.event.inputs.tts }}
+          IMAGE_PROVIDER: ${{ github.event.inputs.images }}
+          VIDEO_PROVIDER: ${{ github.event.inputs.video }}
+        run: python samples/make_sample.py "${{ github.event.inputs.spec }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: sample
+          path: work/sample/
+          retention-days: 7
