@@ -107,7 +107,7 @@ def cf_run(model, payload):
 def gen_image(prompt, out, provider, seed):
     full = f"{prompt}, {SERIES['visual_style']}"
     if provider == "cloudflare":
-        r = cf_run("@cf/black-forest-labs/flux-1-schnell", {"prompt": full, "steps": 8, "seed": seed})
+        r = cf_run("@cf/black-forest-labs/flux-1-schnell", {"prompt": full, "steps": 8})
         out.write_bytes(base64.b64decode(r.json()["result"]["image"]))
     else:  # placeholder：离线试跑用的素色画面
         img = Image.new("RGB", (1024, 1024), (196, 202, 204))
