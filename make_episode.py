@@ -75,14 +75,19 @@ def llm(prompt, provider):
         # 注意：火山方舟 Agent Plan 套餐的文本模型禁止在 API/脚本里调用（可能封号），这里不能拿 ARK_API_KEY 写稿
         key = os.environ["LLM_API_KEY"].strip()
         base = os.environ["LLM_BASE_URL"].strip().rstrip("/")
-        model = os.environ["LLM_MODEL"].strip()
-        r = requests.post(f"{base}/chat/completions", headers={"Authorization": f"Bearer {key}"},
-                          json={"model": model,
-                                "messages": [{"role": "user", "content": prompt}], "temperature": 0.8},
-                          timeout=300)
-        if not r.ok:
-            raise RuntimeError(f"LLM 返回 {r.status_code}：{r.text[:300]}")
-        return r.json()["choices"][0]["message"]["content"]
+        last = ""
+        # LLM_MODEL 可以写多个（逗号分隔），前一个不可用（404/403/额度不足）就换下一个
+        for model in [m.strip() for m in os.environ["LLM_MODEL"].split(",") if m.strip()]:
+            r = requests.post(f"{base}/chat/completions", headers={"Authorization": f"Bearer {key}"},
+                              json={"model": model,
+                                    "messages": [{"role": "user", "content": prompt}], "temperature": 0.9},
+                              timeout=600)
+            if r.ok:
+                print(f"    （{model} 写稿）")
+                return r.json()["choices"][0]["message"]["content"]
+            last = f"{model} 返回 {r.status_code}：{r.text[:300]}"
+            print(f"    {last}")
+        raise RuntimeError(last)
     if provider == "cloudflare":
         model = os.environ.get("CF_LLM_MODEL", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
         r = cf_run(model, {"messages": [{"role": "user", "content": prompt}], "max_tokens": 3000})
@@ -690,8 +695,10 @@ def main():
             topic = topics[tid.strip()]
             print(f"写剧本：{topic['id']} {topic['source']}")
             ep = write_script(topic, args.llm)
-            (dd / f"{topic['id']}.json").write_text(json.dumps(ep, ensure_ascii=False, indent=2), encoding="utf-8")
-            txt = dd / f"{topic['id']}_{ep['title']}.txt"
+            tag = os.environ.get("DRAFT_TAG", "")
+            stem = f"{topic['id']}_{tag}" if tag else topic["id"]
+            (dd / f"{stem}.json").write_text(json.dumps(ep, ensure_ascii=False, indent=2), encoding="utf-8")
+            txt = dd / f"{stem}_{ep['title']}.txt"
             txt.write_text(readable(ep), encoding="utf-8")
             outs.append(txt)
         import gdrive
