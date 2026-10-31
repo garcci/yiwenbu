@@ -12,6 +12,10 @@ import make_episode as me  # noqa: E402
 import gdrive  # noqa: E402
 
 spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+if spec.get("style"):      # 小样可以覆盖全局画风
+    me.SERIES["visual_style"] = spec["style"]
+for who, v in spec.get("voices", {}).items():   # 以及各角色的声音
+    me.VOICES[who] = v
 work = me.ROOT / "work" / "sample"
 work.mkdir(parents=True, exist_ok=True)
 outs = []

@@ -5,7 +5,7 @@ on:
     inputs:
       spec:
         description: "小样配置"
-        default: "samples/sample.json"
+        default: "samples/beauty.json"
       tts:
         description: "配音"
         type: choice
