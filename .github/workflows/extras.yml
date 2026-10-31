@@ -1,0 +1,51 @@
+name: 账号素材与长合集
+
+on:
+  workflow_dispatch:
+    inputs:
+      task:
+        description: "要做什么"
+        type: choice
+        options:
+          - 账号素材（头像、专辑封面、频道横幅）
+          - 横屏长合集（YouTube/B站）
+        default: 账号素材（头像、专辑封面、频道横幅）
+      range:
+        description: "合集集数范围，如 1-50（只对长合集有效）"
+        required: false
+        default: "1-50"
+
+permissions:
+  contents: read
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装依赖
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-noto-cjk
+          pip install -q requests pillow edge-tts boto3
+      - name: 运行
+        env:
+          CF_ACCOUNT_ID: ${{ secrets.CF_ACCOUNT_ID }}
+          CF_API_TOKEN: ${{ secrets.CF_API_TOKEN }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: |
+          if [[ "${{ github.event.inputs.task }}" == 账号素材* ]]; then
+            python make_assets.py --brand
+          else
+            R="${{ github.event.inputs.range }}"
+            python compile_long.py --from "${R%-*}" --to "${R#*-}"
+          fi
+      - uses: actions/upload-artifact@v4
+        with:
+          name: extras-${{ github.run_number }}
+          path: output/
+          retention-days: 30

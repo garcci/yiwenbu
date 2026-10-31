@@ -1,0 +1,21 @@
+{
+  "series_name": "异闻簿",
+  "tagline": "古书里的怪事，多半有破绽",
+  "narrator": "录异人：一个翻古籍、找破绽的说书人，只露手和书页，不露脸",
+  "visual_style": "Song dynasty ink wash painting with light color, muted blue-grey palette, a single touch of vermilion red, rice paper texture, soft natural light, cinematic composition, no text, no gore, not scary",
+  "accent_color": "#B23A2B",
+  "voice": "zh-CN-YunjianNeural",
+  "voice_rate": "+0%",
+  "font_file": "",
+  "width": 1080,
+  "height": 1920,
+  "outro_text": "本集改编自{source} · 内容由AI辅助生成",
+  "rules": [
+    "不出现血腥、惊吓特写、丑化恐怖形象",
+    "不涉及真实刑案、真实在世人物",
+    "只用公版古籍，改编为原创口播稿",
+    "每集结尾点出一个破绽或看点，再留下一集的钩子"
+  ],
+  "font_name": "Noto Sans CJK SC",
+  "audio_disclaimer": "本节目由AI辅助创作和配音。异闻簿，古书里的怪事，多半有破绽。本集改编自{source}：{title}。"
+}

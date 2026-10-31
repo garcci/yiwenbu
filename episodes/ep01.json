@@ -1,0 +1,71 @@
+{
+  "title": "一个人，演了一屋子神仙",
+  "source": "《聊斋志异·口技》",
+  "shots": [
+    {
+      "image_prompt": "a dim village courtyard at dusk, villagers gathered outside a small house with a closed curtain door, lantern light",
+      "lines": [
+        "一间小屋，请来了三位神仙",
+        "可屋里自始至终，只有一个人"
+      ]
+    },
+    {
+      "image_prompt": "a young woman with a medicine box arriving at a rural village, simple clothes, calm expression, villagers watching curiously",
+      "lines": [
+        "蒲松龄记过一件事，村里来了个卖药的女子",
+        "有人求医，她说自己不会开方，要请神仙开"
+      ]
+    },
+    {
+      "image_prompt": "night, a small room sealed with a curtain, candle glow behind paper window, silhouettes of villagers listening outside",
+      "lines": [
+        "天一黑，她进屋拉上帘子",
+        "村民挤在门外，大气都不敢出"
+      ]
+    },
+    {
+      "image_prompt": "close up of a paper window glowing with warm candle light, faint shadow of a single woman inside, quiet night",
+      "lines": [
+        "没多久，屋里传出脚步声和寒暄声",
+        "九姑来了，六姑来了，四姑也来了",
+        "有人带着丫鬟，丫鬟还抱着个孩子"
+      ]
+    },
+    {
+      "image_prompt": "a sleepy cat on a wooden floor next to a cradle, soft candle light, cozy ancient chinese interior",
+      "lines": [
+        "孩子哭，猫在叫，几位姑娘说说笑笑",
+        "门外的人听得清清楚楚，越听越信"
+      ]
+    },
+    {
+      "image_prompt": "a hand passing a folded prescription paper through a curtain gap, villagers reaching for it, warm light",
+      "lines": [
+        "最后神仙商量好了药方",
+        "帘子一掀，递出来一张方子",
+        "买药的人当场排起了队"
+      ]
+    },
+    {
+      "image_prompt": "the same young woman alone in the small room, smiling slightly, holding a fan, single candle, no one else in the room",
+      "lines": [
+        "可屋里根本没有第二个人",
+        "那些声音，全是她一张嘴变出来的"
+      ]
+    },
+    {
+      "image_prompt": "an old book open on a wooden desk, a hand holding a brush pointing at the page, a vermilion seal beside it",
+      "lines": [
+        "蒲松龄最后点破：原来是口技",
+        "破绽在哪？神仙开的方子，药只在她这儿有卖"
+      ]
+    },
+    {
+      "image_prompt": "a lone traveler walking at night holding a lantern, a strange shadow following on the road behind him, misty",
+      "lines": [
+        "下一集，有人半夜走路，被鬼搭了个伴",
+        "结果吃亏的，反而是鬼"
+      ]
+    }
+  ]
+}

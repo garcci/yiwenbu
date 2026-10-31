@@ -1,0 +1,6 @@
+output/
+__pycache__/
+# work/ 里只保留AI生成的画面（合集时复用，避免重复花额度），其余中间文件不进仓库
+work/**/*
+!work/*/
+!work/*/img*.jpg
