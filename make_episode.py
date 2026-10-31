@@ -195,7 +195,7 @@ def voice_line(text, tone, wav, tts_provider, who="narrator"):
 # ---------------- 环境声与音效（ffmpeg 现场合成，免版权） ----------------
 AMBIENCE = {
     "wind":    "anoisesrc=c=brown:a=0.6:r={sr},lowpass=f=500,tremolo=f=0.12:d=0.7,volume=0.9",
-    "night":   "anoisesrc=c=brown:a=0.4:r={sr},lowpass=f=350,tremolo=f=0.08:d=0.5[n];"
+    "night":   "anoisesrc=c=brown:a=0.4:r={sr},lowpass=f=350,tremolo=f=0.1:d=0.5[n];"
                "sine=f=4400:r={sr},tremolo=f=28:d=1,tremolo=f=0.7:d=0.9,volume=0.02[c];[n][c]amix=2",
     "rain":    "anoisesrc=c=pink:a=0.5:r={sr},highpass=f=900,lowpass=f=6000,volume=0.6",
     "drone":   "sine=f=55:r={sr},volume=0.35[a];sine=f=82.4:r={sr},tremolo=f=0.2:d=0.6,volume=0.25[b];"
