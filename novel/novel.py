@@ -185,6 +185,30 @@ def label(units, provider):
             except Exception as e:  # noqa: BLE001
                 print(f"  标注第{attempt + 1}次失败：{e}")
     heuristic_labels(units)
+    review_speakers(units, cast)
+
+
+def review_speakers(units, cast):
+    """第二遍校对说话人（参考 alexandria-audiobook 的 review 步骤）：只看台词，结合前后文找错配。"""
+    says = [i for i, u in enumerate(units) if u.get("kind") == "say"]
+    for start in range(0, len(says), 40):
+        lines = []
+        for i in says[start:start + 40]:
+            before = units[i - 1]["t"][-40:] if i and units[i - 1].get("kind") == "narr" else ""
+            after = units[i + 1]["t"][:30] if i + 1 < len(units) and units[i + 1].get("kind") == "narr" else ""
+            lines.append(f"[{i}] 前文：{before}｜台词（现标 {units[i]['who']}）：{units[i]['t']}｜后文：{after}")
+        prompt = ("你是有声书校对。下面是小说台词和当前标注的说话人。两人对话时一般一来一回交替；"
+                  "「XX问」「XX说」通常指向紧挨着的台词；自报姓名的台词是那个人自己说的。\n"
+                  f"角色：\n{cast}\n\n找出标错的，只输出 JSON：{{\"fix\": [{{\"i\": 编号, \"who\": \"正确角色\"}}]}}，没有错就输出空列表。\n\n"
+                  + "\n".join(lines))
+        try:
+            for f in me.parse_json(ask(prompt))["fix"]:
+                i = int(f["i"])
+                if i in says and f.get("who") in BOOK["voices"] and f["who"] != units[i]["who"]:
+                    print(f"  校对：[{i}] {units[i]['who']} → {f['who']}：{units[i]['t'][:16]}")
+                    units[i]["who"] = f["who"]
+        except Exception as e:  # noqa: BLE001
+            print(f"  说话人校对跳过：{e}")
 
 
 # ---------------- 有声书 ----------------
