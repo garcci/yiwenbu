@@ -96,10 +96,11 @@ def tts(text, out, provider):
 
 # ---------------- 画面 ----------------
 def cf_run(model, payload):
-    acc, tok = os.environ["CF_ACCOUNT_ID"], os.environ["CF_API_TOKEN"]
+    acc, tok = os.environ["CF_ACCOUNT_ID"].strip(), os.environ["CF_API_TOKEN"].strip()
     r = requests.post(f"https://api.cloudflare.com/client/v4/accounts/{acc}/ai/run/{model}",
                       headers={"Authorization": f"Bearer {tok}"}, json=payload, timeout=180)
-    r.raise_for_status()
+    if not r.ok:  # 把 Cloudflare 返回的具体原因打出来，方便排查密钥填错等问题
+        raise SystemExit(f"Cloudflare {model} 返回 {r.status_code}：{r.text[:500]}")
     return r
 
 
