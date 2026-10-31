@@ -9,8 +9,8 @@ on:
       llm:
         description: "写稿模型"
         type: choice
-        options: [glm, gemini]
-        default: glm
+        options: [gemini, glm]
+        default: gemini
 
 permissions:
   contents: write
