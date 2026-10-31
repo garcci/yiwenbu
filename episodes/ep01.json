@@ -1,103 +1,126 @@
 {
-  "title": "半夜有人搭话：我是鬼，你呢",
-  "source": "《搜神记·宋定伯捉鬼》",
-  "character": "a lean young man in his twenties with a short beard, wearing a grey hemp robe and a dark headscarf, hair tied in a topknot",
-  "ambience": "wind",
+  "title": "凌晨的外卖单：放门口，别敲门",
+  "hook_text": "备注：别敲门",
+  "source": "原创",
+  "ambience": "night",
+  "core": "奶奶生前每晚给晚归的孙子留面，孙子欠她一次生日；没结清的账借外卖单找回来。",
   "shots": [
     {
-      "image_prompt": "night, a narrow dirt road between dark wheat fields, the man walks alone holding a dim paper lantern, behind him in the mist a second faint shadow keeps exactly the same pace",
-      "video_prompt": "mist drifts slowly across the road, the lantern sways gently, a faint shadow behind the man moves in step with him",
+      "cast": "heroine",
+      "image_prompt": "她坐在古色古香的房间里，面前桌上摊着一本旧线装账本和一支毛笔，抬眼直视镜头，嘴角带一点笑，暖色烛光，近景。",
       "motion": "push_in",
-      "fx": [
-        "fog"
-      ],
+      "fx": [],
       "sfx": "sting",
       "lines": [
         {
-          "t": "夜里赶路，最怕身后的脚步……",
+          "t": "送外卖的都知道：备注写“别敲门”的，千万别敲。",
           "tone": "slow",
           "who": "narrator"
         },
         {
-          "t": "跟你走得一模一样。",
+          "t": "可小周那天，敲了。",
           "tone": "whisper",
           "who": "narrator"
         }
       ]
     },
     {
-      "image_prompt": "an old man's weathered hands warming over a small clay stove at night, firelight, a dark rural kitchen with hanging dried herbs",
-      "motion": "drift_up",
-      "fx": [
-        "flicker"
-      ],
+      "cast": "none",
+      "image_prompt": "深夜的城市老街，一个二十多岁的外卖骑手戴着头盔骑电动车，车把上手机屏幕亮着，路灯昏黄，路面潮湿反光，真实手机抓拍质感，中景。",
+      "motion": "pan_right",
+      "fx": [],
       "lines": [
         {
-          "t": "这事是我爷爷讲的。",
+          "t": "每晚十一点，他都会接到同一单：",
+          "tone": "normal",
+          "who": "narrator"
+        },
+        {
+          "t": "一碗牛肉面，送到东风巷三单元五〇二。",
+          "tone": "normal",
+          "who": "narrator"
+        },
+        {
+          "t": "备注就一句：放门口，别敲门。",
           "tone": "slow",
           "who": "narrator"
-        },
-        {
-          "t": "南阳有个后生，叫宋定伯，",
-          "tone": "normal",
-          "who": "narrator"
-        },
-        {
-          "t": "那年冬天，他连夜去宛城卖东西。",
-          "tone": "normal",
-          "who": "narrator"
         }
       ]
     },
     {
-      "image_prompt": "close low shot of a muddy country road at night, straw sandals stepping, lantern light on the mud, beside them a second set of footprints appearing in the mud with no feet visible",
-      "motion": "pan_right",
-      "fx": [
-        "fog"
-      ],
-      "sfx": "footsteps",
-      "lines": [
-        {
-          "t": "走到半道，他听见旁边有脚步。",
-          "tone": "normal",
-          "who": "narrator"
-        },
-        {
-          "t": "他快，那边也快；他停，那边也停。",
-          "tone": "tense",
-          "who": "narrator"
-        }
-      ]
-    },
-    {
-      "image_prompt": "the man stops on the dark road and slowly raises his lantern toward the mist beside him, a tall dark silhouette stands just outside the light, no face visible",
-      "video_prompt": "the man slowly raises the lantern, the light trembles, the tall silhouette in the mist stays perfectly still",
+      "cast": "none",
+      "image_prompt": "夜里一栋待拆迁的老式六层居民楼，窗户全黑，楼门口拉着警戒带，墙上画着红色圆圈，周围一片空地，远处有一盏路灯，冷清，真实照片质感，远景。",
       "motion": "push_in",
       "fx": [
-        "flicker",
         "fog"
       ],
       "sfx": "gust",
       "lines": [
         {
-          "t": "谁？",
-          "tone": "tense",
-          "who": "man"
-        },
-        {
-          "t": "那边隔了好一会儿，才回话：",
+          "t": "可那栋楼，上个月就封了，等着拆。",
           "tone": "slow",
           "who": "narrator"
         },
         {
-          "t": "我是鬼。……你呢？",
+          "t": "楼道里，连灯都没有。",
           "tone": "whisper",
-          "who": "ghost"
+          "who": "narrator"
         }
       ]
     },
     {
-      "image_prompt": "extreme close up of the man's face in profile lit by lantern from below, cold breath in the air, eyes looking sideways, sweat on his temple",
+      "cast": "none",
+      "image_prompt": "漆黑的老楼道里，外卖骑手用手机电筒照着，把一个外卖袋轻轻放在一扇旧绿色铁门前的地上，门上贴着褪色的福字，近景，手电光是唯一光源。",
+      "motion": "drift_up",
+      "fx": [
+        "flicker"
+      ],
+      "sfx": "footsteps",
+      "lines": [
+        {
+          "t": "他还是送上去了。",
+          "tone": "normal",
+          "who": "narrator"
+        },
+        {
+          "t": "第二天再去，袋子没了，",
+          "tone": "normal",
+          "who": "narrator"
+        },
+        {
+          "t": "门口摆着一双洗干净的筷子。",
+          "tone": "slow",
+          "who": "narrator"
+        }
+      ]
+    },
+    {
+      "cast": "none",
+      "image_prompt": "特写：外卖骑手的手拿着手机，屏幕亮着显示订单界面（屏幕内容模糊不可读），背景是夜里电动车的车把和头盔，浅景深。",
+      "motion": "push_in",
+      "fx": [],
+      "lines": [
+        {
+          "t": "下单的号码，尾号零九一七。他越看越眼熟。",
+          "tone": "normal",
+          "who": "narrator"
+        },
+        {
+          "t": "这单还给了五星好评，评语就两个字：",
+          "tone": "normal",
+          "who": "narrator"
+        },
+        {
+          "t": "趁热。",
+          "tone": "whisper",
+          "who": "narrator"
+        }
+      ],
+      "reuse": 2
+    },
+    {
+      "cast": "none",
+      "image_prompt": "漆黑楼梯间里，年轻外卖骑手蹲在台阶上，手机屏幕朝下扣着，只有一线窗外的冷光照在他侧脸上，他屏住呼吸盯着上方的门，紧张，近景。",
       "motion": "pull_out",
       "fx": [
         "fog"
@@ -105,197 +128,115 @@
       "sfx": "heartbeat",
       "lines": [
         {
-          "t": "宋定伯后背一下子全湿了。",
-          "tone": "normal",
+          "t": "第三天，他没走。蹲在楼梯口，关了手电。",
+          "tone": "tense",
           "who": "narrator"
         },
         {
-          "t": "他咽了口唾沫，说：",
-          "tone": "slow",
-          "who": "narrator"
-        },
-        {
-          "t": "巧了……我也是鬼。",
+          "t": "十一点零七分，门里有人说话：",
           "tone": "whisper",
-          "who": "man"
-        }
-      ]
-    },
-    {
-      "image_prompt": "the man walking on a night road bent forward, carrying on his back a vague grey shape made of mist, the lantern hanging from his hand",
-      "motion": "pan_left",
-      "fx": [
-        "fog"
-      ],
-      "lines": [
+          "who": "narrator"
+        },
         {
-          "t": "路还远，咱俩换着背吧。",
+          "t": "放门口吧……别吵醒他。",
           "tone": "whisper",
           "who": "ghost"
+        }
+      ],
+      "reuse": 4
+    },
+    {
+      "cast": "none",
+      "image_prompt": "二十年前的老式厨房，一位穿碎花棉袄的老奶奶背影，正把一碗热气腾腾的面放进搪瓷碗里，暖黄的白炽灯，怀旧胶片质感，中景。",
+      "motion": "drift_up",
+      "fx": [],
+      "lines": [
+        {
+          "t": "这句话，他太熟了。",
+          "tone": "slow",
+          "who": "narrator"
         },
         {
-          "t": "轮到他背的时候，背上轻飘飘的，",
+          "t": "高中那几年，他天天半夜才回家，",
           "tone": "normal",
           "who": "narrator"
         },
         {
-          "t": "一股凉气，顺着后脖子往衣服里钻。",
+          "t": "奶奶总把面放在门口，说：别敲门，吵醒你爷爷。",
           "tone": "slow",
           "who": "narrator"
         }
       ]
     },
     {
-      "image_prompt": "the man being carried on the back of a tall shadowy figure along the road at night, seen from far behind, the lantern light swinging",
-      "motion": "drift_up",
-      "fx": [
-        "fog"
-      ],
+      "cast": "none",
+      "image_prompt": "特写：一部旧的翻盖手机躺在抽屉里，旁边是一张泛黄的祖孙合影的背面，台灯暖光，怀旧质感，浅景深。",
+      "motion": "push_in",
+      "fx": [],
       "sfx": "thump",
       "lines": [
         {
-          "t": "换鬼背他。走了没几步，鬼停下了：",
+          "t": "零九一七，是他高中时候的手机号。",
+          "tone": "tense",
+          "who": "narrator"
+        },
+        {
+          "t": "奶奶走那年，他答应回来给她过生日。",
           "tone": "normal",
           "who": "narrator"
         },
         {
-          "t": "你怎么这么沉？",
-          "tone": "whisper",
-          "who": "ghost"
-        },
-        {
-          "t": "我新死的，身上还有阳气。",
-          "tone": "tense",
-          "who": "man"
-        }
-      ]
-    },
-    {
-      "image_prompt": "a black river at night under thick fog, the man wading knee deep holding his robe up, ripples around him, a few steps ahead a shadow crosses the water leaving no ripple at all",
-      "video_prompt": "fog rolls over the black water, ripples spread around the man's legs, the shadow ahead glides across leaving the water perfectly still",
-      "motion": "pan_right",
-      "fx": [
-        "fog"
-      ],
-      "sfx": "water",
-      "lines": [
-        {
-          "t": "前面一条河。鬼先过，水面一点动静都没有。",
+          "t": "一次，也没回。",
           "tone": "slow",
           "who": "narrator"
-        },
-        {
-          "t": "他一下去，哗啦哗啦。",
-          "tone": "tense",
-          "who": "narrator"
-        },
-        {
-          "t": "……你过河，怎么有声音？",
-          "tone": "whisper",
-          "who": "ghost"
         }
-      ]
+      ],
+      "key": true
     },
     {
-      "image_prompt": "the man standing on the riverbank dripping wet in the dark, facing a tall shadow in the mist, both completely still, a faint grey light on the horizon",
+      "cast": "none",
+      "image_prompt": "老楼里一间空荡荡的旧屋，门半开着，屋里家具都搬空了，只有正中一张旧木桌，桌上一碗牛肉面冒着热气，窗外冷蓝夜色，屋里一盏暖黄灯泡，中景。",
       "motion": "push_in",
       "fx": [
         "fog"
       ],
       "lines": [
         {
-          "t": "刚死，还不会。你别见怪。",
-          "tone": "normal",
-          "who": "man"
-        },
-        {
-          "t": "他顺口又问：咱们做鬼的，最怕什么？",
-          "tone": "normal",
-          "who": "narrator"
-        },
-        {
-          "t": "最怕……人往身上吐唾沫。",
-          "tone": "whisper",
-          "who": "ghost"
-        }
-      ]
-    },
-    {
-      "image_prompt": "first grey light of dawn over the misty edge of an ancient market town, the man running with a struggling white shape clutched on his shoulder, villagers' silhouettes far away",
-      "video_prompt": "the man runs forward through the dawn mist gripping the white shape on his shoulder, mist swirls around him",
-      "motion": "push_in",
-      "fx": [
-        "shake",
-        "fog"
-      ],
-      "sfx": "thump",
-      "lines": [
-        {
-          "t": "天快亮了。",
-          "tone": "tense",
-          "who": "narrator"
-        },
-        {
-          "t": "宋定伯一把把鬼扛上肩，死死按住。",
-          "tone": "tense",
-          "who": "narrator"
-        },
-        {
-          "t": "肩上的东西叫得像小孩哭，一落地……",
-          "tone": "tense",
-          "who": "narrator"
-        },
-        {
-          "t": "是一只白羊。",
+          "t": "最后一单，备注改了：这次，敲门吧。",
           "tone": "slow",
           "who": "narrator"
-        }
-      ]
-    },
-    {
-      "image_prompt": "a white sheep tied with a rope at a misty early morning market, people in Han dynasty clothes passing by without looking, the sheep stands perfectly still staring straight at the camera",
-      "motion": "drift_up",
-      "fx": [
-        "fog"
-      ],
-      "lines": [
+        },
         {
-          "t": "他朝羊身上啐了一口，让它变不回去，",
-          "tone": "normal",
+          "t": "他敲了三下。门开了，屋里是空的，",
+          "tone": "tense",
           "who": "narrator"
         },
         {
-          "t": "牵到集上，卖了一千五百钱。",
-          "tone": "normal",
+          "t": "桌上一碗面，还冒着热气。",
+          "tone": "whisper",
           "who": "narrator"
         }
-      ]
+      ],
+      "key": true
     },
     {
-      "image_prompt": "an empty misty market street in the early morning, a coiled rope lying on the ground where the sheep stood, a single paper lantern still glowing on the ground",
-      "video_prompt": "mist drifts slowly through the empty street, the lantern flame flickers, nothing else moves",
+      "cast": "heroine",
+      "image_prompt": "她坐在古色古香的房间里，提起毛笔在旧账本上轻轻划了一道，然后抬头看向镜头温柔一笑，暖色烛光，近景。",
       "motion": "pull_out",
-      "fx": [
-        "flicker",
-        "fog"
-      ],
+      "fx": [],
       "lines": [
         {
-          "t": "我爷爷讲到这儿，总要停一下。",
+          "t": "这笔账，我划了。",
           "tone": "slow",
           "who": "narrator"
         },
         {
-          "t": "他说，那只羊被人牵走的时候，",
-          "tone": "slow",
-          "who": "narrator"
-        },
-        {
-          "t": "回头看了宋定伯一眼……",
+          "t": "你最近，有没有接到过一单，备注很奇怪？",
           "tone": "whisper",
           "who": "narrator"
         }
-      ]
+      ],
+      "reuse": 1
     }
   ]
 }

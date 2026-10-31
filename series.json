@@ -2,7 +2,7 @@
   "series_name": "异闻簿",
   "tagline": "人走了，账还在",
   "narrator": "阿绾：红青汉服的古风美人，对着镜头讲老辈怪事，好像每件事都亲眼见过",
-  "visual_style": "realistic cinematic film still from a historical drama set two thousand years ago, 35mm film photography, dark low-key lighting lit only by paper lanterns and oil lamps, cold desaturated teal and grey tones, thin mist, ancient rural northern China with dirt roads, rammed earth walls and wooden houses with thatched roofs, Han dynasty clothing, heavy film grain, eerie quiet atmosphere, shallow depth of field",
+  "visual_style": "9:16竖幅，真实手机摄影质感，照片级真实，自然光影，浅景深，非卡通、非三维渲染，画面不出现可读文字",
   "accent_color": "#B23A2B",
   "voice": "zh-CN-YunjianNeural",
   "voice_rate": "+0%",
@@ -21,16 +21,19 @@
   "audio_disclaimer": "本节目由AI辅助创作和配音，故事为原创虚构，请勿当真。异闻簿，你身边的怪事。本集：{title}。",
   "voices": {
     "narrator": {
-      "edge": "zh-CN-YunjianNeural",
-      "minimax": "male-qn-jingying"
+      "edge": "zh-CN-XiaoxiaoNeural",
+      "minimax": "female-yujie",
+      "doubao": "zh_female_vv_uranus_bigtts"
     },
     "man": {
       "edge": "zh-CN-YunxiNeural",
-      "minimax": "male-qn-qingse"
+      "minimax": "male-qn-qingse",
+      "doubao": "zh_male_m191_uranus_bigtts"
     },
     "ghost": {
-      "edge": "zh-CN-YunyangNeural",
-      "minimax": "presenter_male"
+      "edge": "zh-CN-XiaoxiaoNeural",
+      "minimax": "female-chengshu",
+      "doubao": "zh_female_vv_uranus_bigtts"
     }
   },
   "ref_images": [

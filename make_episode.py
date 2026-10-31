@@ -393,7 +393,11 @@ def _data_url(path):
 
 def _seedream(prompt, out, refs=None):
     """火山方舟 Seedream：直接出竖版 9:16，写实质感比 FLUX schnell 好得多。"""
-    body = {"model": os.environ.get("SEEDREAM_MODEL") or "doubao-seedream-5.0-pro", "prompt": prompt,
+    model = os.environ.get("SEEDREAM_MODEL") or "doubao-seedream-5.0-pro"
+    if os.environ.get("SEEDREAM_TIER") == "flash":
+        model = os.environ.get("SEEDREAM_FLASH_MODEL") or "doubao-seedream-5.0-flash"
+    print(f"    出图：{model}")
+    body = {"model": model, "prompt": prompt,
             "size": "1440x2560", "response_format": "b64_json", "watermark": False}
     refs = REF_IMAGES if refs is None else refs
     if refs:  # 定妆参考图：让每个镜头都是同一张脸、同样的妆容和拍摄质感
@@ -591,8 +595,13 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
 
     for i, shot in enumerate(ep["shots"]):
         print(f"  镜头 {i + 1}/{len(ep['shots'])}")
-        raw, frame = workdir / f"img{i:02d}.jpg", workdir / f"{tag}frame{i:02d}.jpg"
+        # 省钱：reuse 指向前面某个镜头的序号（从1数），直接复用那张图，换个运镜和裁切
+        src_i = shot["reuse"] - 1 if isinstance(shot.get("reuse"), int) else i
+        raw, frame = workdir / f"img{src_i:02d}.jpg", workdir / f"{tag}frame{i:02d}.jpg"
         if not raw.exists():
+            # 省钱：有女主或标了 key 的关键镜头用 pro，其余空镜用便宜的 flash
+            key = shot.get("key") or shot.get("cast") in ("heroine", "rabbit")
+            os.environ["SEEDREAM_TIER"] = "pro" if key else "flash"
             cast = SERIES.get("cast", {}).get(shot.get("cast", ""))
             refs = [ROOT / cast] if cast else ([] if shot.get("cast") == "none" else None)
             prompt = shot["image_prompt"]

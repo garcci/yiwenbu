@@ -42,6 +42,8 @@
 - cast：这个镜头里出现谁，"heroine"（阿绾）/"rabbit"（小白）/"none"（不出现两位女主）。第一个和最后一个镜头必须是阿绾对着镜头。
 - image_prompt：中文画面描述，写清楚谁在哪、在干什么、光从哪来、什么景别。一眼能看懂。故事画面是现代中国的真实场景（手机屏幕、楼道、电动车、出租屋、老家院子），真人照片质感。阿绾的镜头是她穿古装在古色古香的房间里对镜头讲，不用写长相（会用定妆参考图）。故事里的其他人物写清楚年龄、穿着，可以只给背影或侧脸。手机屏幕上的文字内容不要写进画面（画面不出现可读文字）。
 - lines：1 到 3 句，{"t": 句子, "tone": normal/slow/whisper/tense, "who": narrator/man/ghost}。阿绾讲的都是 narrator；故事里男人或女人说的话是 man；怪的那一方是 ghost。
+- reuse（可选，省钱）：想复用前面第几个镜头的画面就写那个序号（从1数），换个运镜即可；全集独立画面控制在 6 到 7 张。
+- key（可选）：反转、关键线索这类最重要的空镜写 true，会用高画质模型。
 - motion：push_in / pull_out / pan_left / pan_right / drift_up；fx：flicker / shake / fog 可选；sfx：sting / thump / heartbeat / footsteps / water / gust 可选，全集最多 5 个。
 - ambience：wind / night / rain / drone 选一。
 
