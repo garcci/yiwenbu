@@ -22,6 +22,9 @@ on:
         options: [none, minimax]
         default: none
 
+permissions:
+  contents: write
+
 jobs:
   sample:
     runs-on: ubuntu-latest
@@ -48,6 +51,12 @@ jobs:
           IMAGE_PROVIDER: ${{ github.event.inputs.images }}
           VIDEO_PROVIDER: ${{ github.event.inputs.video }}
         run: python samples/make_sample.py "${{ github.event.inputs.spec }}"
+      - name: 提交预览拼图
+        if: success()
+        run: |
+          git config user.name "yiwenbu-bot"
+          git config user.email "yiwenbu-bot@users.noreply.github.com"
+          git add -f samples/preview.jpg && (git diff --cached --quiet || (git commit -m "小样预览" && git push)) || true
       - uses: actions/upload-artifact@v4
         if: always()
         with:

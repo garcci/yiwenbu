@@ -373,7 +373,6 @@ def _seedream(prompt, out):
             "size": "1440x2560", "response_format": "b64_json", "watermark": False}
     if REF_IMAGES:  # 定妆参考图：让每个镜头都是同一张脸、同样的妆容和拍摄质感
         body["image"] = [_data_url(p) for p in REF_IMAGES]
-        body["sequential_image_generation"] = "disabled"
     h = {"Authorization": f"Bearer {os.environ['ARK_API_KEY'].strip()}"}
     for attempt in range(4):
         try:

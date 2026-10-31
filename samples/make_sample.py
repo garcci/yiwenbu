@@ -51,6 +51,13 @@ for k, shot in enumerate(spec["shots"] if img_p != "none" else []):
         if me.gen_video(frame, vid, shot["video_prompt"]):
             outs.append(vid)
 
+# 小缩略拼图，提交回仓库方便检查
+ims = [me.Image.open(o).convert("RGB").resize((300, 533)) for o in outs if o.suffix == ".jpg"]
+if ims:
+    sheet = me.Image.new("RGB", (300 * len(ims), 533))
+    for k, im in enumerate(ims):
+        sheet.paste(im, (300 * k, 0))
+    sheet.save(me.ROOT / "samples" / "preview.jpg", quality=80)
 gdrive.upload(outs, f"小样/{spec['name']}")
 for o in outs:
     print("已出：", o.name)
