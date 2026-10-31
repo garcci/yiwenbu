@@ -4,11 +4,13 @@
   "voices": {
     "narrator": {
       "minimax": "female-yujie",
-      "edge": "zh-CN-XiaoxiaoNeural"
+      "edge": "zh-CN-XiaoxiaoNeural",
+      "doubao": "zh_female_vv_uranus_bigtts"
     },
     "ghost": {
       "minimax": "presenter_male",
-      "edge": "zh-CN-YunyangNeural"
+      "edge": "zh-CN-YunyangNeural",
+      "doubao": "zh_male_m191_uranus_bigtts"
     }
   },
   "ambience": "wind",

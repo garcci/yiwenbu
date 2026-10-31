@@ -26,7 +26,7 @@ def main():
     ap.add_argument("--to", dest="end", type=int, default=9999)
     ap.add_argument("--target-min", type=float, default=60)
     ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"), choices=["cloudflare", "seedream", "placeholder"])
-    ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "silent"])
+    ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "doubao", "silent"])
     args = ap.parse_args()
 
     eps = sorted((ROOT / "episodes").glob("ep*.json"))

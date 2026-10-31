@@ -9,7 +9,7 @@ on:
       tts:
         description: "配音"
         type: choice
-        options: [none, minimax, edge]
+        options: [none, doubao, minimax, edge]
         default: none
       images:
         description: "出图"

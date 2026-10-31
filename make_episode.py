@@ -171,6 +171,54 @@ def _minimax_tts(text, out, who, tone):
     raise SystemExit(f"MiniMax 配音失败：{text}")
 
 
+DOUBAO_TTS_URL = os.environ.get("DOUBAO_TTS_URL", "https://openspeech.bytedance.com/api/v3/plan/tts/unidirectional")
+DOUBAO_STYLE = {"normal": "用低沉、平稳、讲故事的语气", "slow": "放慢语速，压低声音，带一点神秘感",
+                "whisper": "压低嗓音，像贴着耳朵小声说，带一点害怕", "tense": "语速加快，声音紧张"}
+
+
+def _doubao_tts(text, out, who, tone):
+    """豆包语音合成 2.0（火山方舟 Agent Plan 套餐里的 seed-tts-2.0），HTTP 流式返回分段 base64 音频。"""
+    v = VOICES.get(who, VOICES.get("narrator", {})).get("doubao", "zh_female_vv_uranus_bigtts")
+    key = os.environ["ARK_API_KEY"].strip()
+    h = {"X-Api-Key": key, "Authorization": f"Bearer {key}", "X-Api-Resource-Id": "seed-tts-2.0",
+         "Content-Type": "application/json"}
+    if os.environ.get("DOUBAO_APPID"):
+        h.update({"X-Api-App-Id": os.environ["DOUBAO_APPID"], "X-Api-Access-Key": os.environ.get("DOUBAO_TOKEN", "")})
+    speed = {"normal": -10, "slow": -25, "whisper": -20, "tense": 10}.get(tone, -10)
+    req = {"text": text.replace("……", "…"), "speaker": v,
+           "audio_params": {"format": "mp3", "sample_rate": 24000, "speech_rate": speed},
+           "additions": json.dumps({"context_texts": [DOUBAO_STYLE.get(tone, DOUBAO_STYLE["normal"])]}, ensure_ascii=False)}
+    for attempt in range(4):
+        try:
+            r = requests.post(DOUBAO_TTS_URL, headers=h, json={"user": {"uid": "yiwenbu"}, "req_params": req},
+                              stream=True, timeout=120)
+            if not r.ok:
+                print(f"    豆包配音返回 {r.status_code}：{r.text[:300]}")
+            else:
+                audio, last = b"", ""
+                for raw in r.iter_lines():
+                    if not raw:
+                        continue
+                    last = raw.decode("utf-8", "ignore")
+                    j = json.loads(raw)
+                    if j.get("data"):
+                        audio += base64.b64decode(j["data"])
+                    if j.get("code", 0) not in (0, 20000000):
+                        print(f"    豆包配音出错：{last[:300]}")
+                        break
+                if audio:
+                    out.write_bytes(audio)
+                    return
+                print(f"    豆包配音没返回音频：{last[:300]}")
+                if "additions" in req:   # 不支持语气提示时去掉再试
+                    req.pop("additions")
+                    continue
+        except (requests.RequestException, ValueError) as e:
+            print(f"    豆包配音网络错误：{e}")
+        time.sleep(3 * (attempt + 1))
+    raise SystemExit(f"豆包配音失败：{text}")
+
+
 def voice_line(text, tone, wav, tts_provider, who="narrator"):
     """配一句，已有缓存就复用。返回该句后的停顿秒数。"""
     rate, pitch, vol, pause = TONES.get(tone, TONES["normal"])
@@ -180,6 +228,8 @@ def voice_line(text, tone, wav, tts_provider, who="narrator"):
         mp3 = wav.with_suffix(".mp3")
         if tts_provider == "minimax":
             _minimax_tts(text, mp3, who, tone)
+        elif tts_provider == "doubao":
+            _doubao_tts(text, mp3, who, tone)
         elif tts_provider == "edge":
             ev = VOICES.get(who, {}).get("edge") or SERIES["voice"]
             if who == "ghost":  # 免费音色里让“鬼”更低更虚
@@ -194,7 +244,7 @@ def voice_line(text, tone, wav, tts_provider, who="narrator"):
                 time.sleep(3 * (attempt + 1))
             else:
                 raise SystemExit(f"配音失败：{text}")
-        if tts_provider in ("minimax", "edge"):
+        if tts_provider in ("minimax", "edge", "doubao"):
             # 轻微的房间混响，让声音像在屋里讲故事；“鬼”的声音再加一层空洞回声
             af = "aecho=0.8:0.6:45|90:0.18|0.10,highpass=f=70"
             if who == "ghost":
@@ -577,7 +627,7 @@ def main():
     ap.add_argument("--episode", help="已有稿件 JSON")
     ap.add_argument("--llm", default=os.environ.get("LLM_PROVIDER", "openai" if os.environ.get("LLM_API_KEY") else "cloudflare"), choices=["openai", "github", "cloudflare"])
     ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"), choices=["cloudflare", "seedream", "placeholder"])
-    ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "silent"])
+    ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "doubao", "silent"])
     args = ap.parse_args()
 
     out_dir = ROOT / "output"
