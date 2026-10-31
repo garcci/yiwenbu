@@ -72,10 +72,10 @@ def llm(prompt, provider):
             raise RuntimeError(f"GitHub Models 返回 {r.status_code}：{r.text[:300]}")
         return r.json()["choices"][0]["message"]["content"]
     if provider == "openai":  # 任何 OpenAI 兼容接口：Gemini、智谱 GLM、DeepSeek、MiniMax 等
-        # 没单独配 LLM 时，直接用火山方舟（同一个 ARK_API_KEY）
-        key = (os.environ.get("LLM_API_KEY") or os.environ["ARK_API_KEY"]).strip()
-        base = (os.environ.get("LLM_BASE_URL") or ARK_BASE).strip().rstrip("/")
-        model = (os.environ.get("LLM_MODEL") or "doubao-seed-2.1-pro").strip()
+        # 注意：火山方舟 Agent Plan 套餐的文本模型禁止在 API/脚本里调用（可能封号），这里不能拿 ARK_API_KEY 写稿
+        key = os.environ["LLM_API_KEY"].strip()
+        base = os.environ["LLM_BASE_URL"].strip().rstrip("/")
+        model = os.environ["LLM_MODEL"].strip()
         r = requests.post(f"{base}/chat/completions", headers={"Authorization": f"Bearer {key}"},
                           json={"model": model,
                                 "messages": [{"role": "user", "content": prompt}], "temperature": 0.8},
@@ -575,7 +575,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--next", action="store_true", help="取 topics.json 里下一个未做的选题")
     ap.add_argument("--episode", help="已有稿件 JSON")
-    ap.add_argument("--llm", default=os.environ.get("LLM_PROVIDER", "openai" if (os.environ.get("LLM_API_KEY") or os.environ.get("ARK_API_KEY")) else "cloudflare"), choices=["openai", "github", "cloudflare"])
+    ap.add_argument("--llm", default=os.environ.get("LLM_PROVIDER", "openai" if os.environ.get("LLM_API_KEY") else "cloudflare"), choices=["openai", "github", "cloudflare"])
     ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"), choices=["cloudflare", "seedream", "placeholder"])
     ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "silent"])
     args = ap.parse_args()
