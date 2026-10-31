@@ -355,10 +355,25 @@ SAFE_WORDS = [(r"\b(feet|foot|legs?|bare\w*|body|bodies|skin|naked|blood\w*|corp
 FALLBACK_PROMPT = "an empty misty country road at night in ancient rural China, a faint paper lantern glow in the distance"
 
 
+REF_IMAGES = [ROOT / p for p in SERIES.get("ref_images", [])]
+
+
+def _data_url(path):
+    import io
+    img = Image.open(path).convert("RGB")
+    img.thumbnail((1280, 1280))
+    buf = io.BytesIO()
+    img.save(buf, "JPEG", quality=90)
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
 def _seedream(prompt, out):
     """火山方舟 Seedream：直接出竖版 9:16，写实质感比 FLUX schnell 好得多。"""
     body = {"model": os.environ.get("SEEDREAM_MODEL") or "doubao-seedream-5.0-pro", "prompt": prompt,
             "size": "1440x2560", "response_format": "b64_json", "watermark": False}
+    if REF_IMAGES:  # 定妆参考图：让每个镜头都是同一张脸、同样的妆容和拍摄质感
+        body["image"] = [_data_url(p) for p in REF_IMAGES]
+        body["sequential_image_generation"] = "disabled"
     h = {"Authorization": f"Bearer {os.environ['ARK_API_KEY'].strip()}"}
     for attempt in range(4):
         try:
