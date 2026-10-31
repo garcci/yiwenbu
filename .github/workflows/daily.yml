@@ -9,6 +9,12 @@ on:
       episode:
         description: "指定稿件（如 episodes/ep01.json），留空则取下一个选题"
         required: false
+      images:
+        description: "出图"
+        default: ""
+      tts:
+        description: "配音"
+        default: ""
 
 permissions:
   contents: write   # 把新生成的稿件提交回仓库，记录进度
@@ -38,11 +44,11 @@ jobs:
           ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
           SEEDREAM_MODEL: ${{ vars.SEEDREAM_MODEL || 'doubao-seedream-5.0-pro' }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
-          LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
-          LLM_MODEL: ${{ vars.LLM_MODEL }}
+          LLM_BASE_URL: ${{ vars.LLM_BASE_URL || 'https://open.bigmodel.cn/api/paas/v4' }}
+          LLM_MODEL: ${{ vars.LLM_MODEL || 'glm-4.7' }}
           # 档位开关：仓库 Settings → Secrets and variables → Actions → Variables 里改，不用动代码
-          IMAGE_PROVIDER: ${{ vars.IMAGE_PROVIDER || 'cloudflare' }}
-          TTS_PROVIDER: ${{ vars.TTS_PROVIDER || 'edge' }}
+          IMAGE_PROVIDER: ${{ github.event.inputs.images || vars.IMAGE_PROVIDER || 'cloudflare' }}
+          TTS_PROVIDER: ${{ github.event.inputs.tts || vars.TTS_PROVIDER || 'edge' }}
           VIDEO_PROVIDER: ${{ vars.VIDEO_PROVIDER || 'none' }}
         run: |
           if [ -n "${{ github.event.inputs.episode }}" ]; then

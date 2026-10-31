@@ -1,0 +1,86 @@
+{
+  "name": "兔耳美人-定妆",
+  "style": "9:16竖幅，真人手机摄影，近距离，暖色室内灯光，皮肤水润有光泽，自然碎发，浅景深虚化，照片级真实质感，和参考图一样的拍摄风格与色调，非卡通、非三维渲染，画面不出现文字",
+  "voices": {
+    "narrator": {
+      "minimax": "female-yujie",
+      "edge": "zh-CN-XiaoxiaoNeural",
+      "doubao": "zh_female_vv_uranus_bigtts"
+    },
+    "ghost": {
+      "minimax": "presenter_male",
+      "edge": "zh-CN-YunyangNeural",
+      "doubao": "zh_male_m191_uranus_bigtts"
+    }
+  },
+  "ambience": "wind",
+  "lines": [
+    {
+      "t": "老家有个规矩。",
+      "tone": "slow",
+      "who": "narrator"
+    },
+    {
+      "t": "夜里走路，要是身后有人问你：你是人，还是鬼？",
+      "tone": "normal",
+      "who": "narrator"
+    },
+    {
+      "t": "千万……别说你是人。",
+      "tone": "whisper",
+      "who": "narrator",
+      "sfx": "sting"
+    },
+    {
+      "t": "这规矩怎么来的，我爷爷讲过一回。",
+      "tone": "slow",
+      "who": "narrator"
+    },
+    {
+      "t": "南阳有个后生叫宋定伯。那年腊月，他半夜赶路去宛城。",
+      "tone": "normal",
+      "who": "narrator"
+    },
+    {
+      "t": "路上没有灯，只有他自己的脚步声。",
+      "tone": "slow",
+      "who": "narrator",
+      "sfx": "footsteps"
+    },
+    {
+      "t": "走着走着，脚步声变成了两个。",
+      "tone": "slow",
+      "who": "narrator"
+    },
+    {
+      "t": "他停，那个也停。他走，那个也走。",
+      "tone": "tense",
+      "who": "narrator"
+    },
+    {
+      "t": "然后有个声音，贴着他后脑勺问：",
+      "tone": "whisper",
+      "who": "narrator",
+      "sfx": "heartbeat"
+    },
+    {
+      "t": "你是人……还是鬼？",
+      "tone": "whisper",
+      "who": "ghost"
+    }
+  ],
+  "shots": [
+    {
+      "image_prompt": "参考图中的这位女子（完全相同的脸、五官、妆容、齐刘海、粉白毛绒兔耳发饰、珍珠步摇和黑色粉花立领盘扣衣裙），手机前置自拍视角，歪头对镜头甜笑，暖色室内灯光，背景是古色古香的木格窗和纱帐，轻微虚化。"
+    },
+    {
+      "image_prompt": "参考图中的这位女子（完全相同的脸、五官、妆容、齐刘海、粉白毛绒兔耳发饰、珍珠步摇和黑色粉花立领盘扣衣裙），夜晚月光下站在古宅后院的竹林边，回眸看向镜头，嘴角含笑，眼神狡黠，身后草丛里隐约有一只白兔的影子，面部被柔和暖光照亮，浅景深。"
+    },
+    {
+      "image_prompt": "参考图中的这位女子（完全相同的脸、五官、妆容、齐刘海、粉白毛绒兔耳发饰、珍珠步摇和黑色粉花立领盘扣衣裙），坐在古式书房的灯下，单手托腮看着镜头微笑，桌上一盏油灯和一卷翻开的旧书，书页上投着一个兔耳形状的影子，暖色灯光，面部清晰，浅景深。"
+    }
+  ],
+  "ref_images": [
+    "samples/ref_heroine2.jpg"
+  ]
+}

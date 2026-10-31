@@ -75,14 +75,28 @@ def llm(prompt, provider):
         # 注意：火山方舟 Agent Plan 套餐的文本模型禁止在 API/脚本里调用（可能封号），这里不能拿 ARK_API_KEY 写稿
         key = os.environ["LLM_API_KEY"].strip()
         base = os.environ["LLM_BASE_URL"].strip().rstrip("/")
-        model = os.environ["LLM_MODEL"].strip()
-        r = requests.post(f"{base}/chat/completions", headers={"Authorization": f"Bearer {key}"},
-                          json={"model": model,
-                                "messages": [{"role": "user", "content": prompt}], "temperature": 0.8},
-                          timeout=300)
-        if not r.ok:
-            raise RuntimeError(f"LLM 返回 {r.status_code}：{r.text[:300]}")
-        return r.json()["choices"][0]["message"]["content"]
+        last = ""
+        # LLM_MODEL 可以写多个（逗号分隔），前一个不可用（404/403/额度不足）就换下一个
+        for model in [m.strip() for m in os.environ["LLM_MODEL"].split(",") if m.strip()]:
+            for wait in (0, 30, 60, 90, 120):  # 429 限流：等一会儿再试
+                time.sleep(wait)
+                try:
+                    r = requests.post(f"{base}/chat/completions", headers={"Authorization": f"Bearer {key}"},
+                                      json={"model": model,
+                                            "messages": [{"role": "user", "content": prompt}], "temperature": 0.9},
+                                      timeout=600)
+                except requests.RequestException as e:
+                    print(f"    {model} 网络错误：{e}")
+                    continue
+                if r.status_code not in (429, 500, 502, 503, 504):
+                    break
+                print(f"    {model} 返回 {r.status_code}，稍后重试")
+            if r.ok:
+                print(f"    （{model} 写稿）")
+                return r.json()["choices"][0]["message"]["content"]
+            last = f"{model} 返回 {r.status_code}：{r.text[:300]}"
+            print(f"    {last}")
+        raise RuntimeError(last)
     if provider == "cloudflare":
         model = os.environ.get("CF_LLM_MODEL", "@cf/meta/llama-3.3-70b-instruct-fp8-fast")
         r = cf_run(model, {"messages": [{"role": "user", "content": prompt}], "max_tokens": 3000})
@@ -97,8 +111,13 @@ def parse_json(text):
     return json.loads(m.group(0))
 
 
-def write_script(topic, provider):
-    """一次写 3 稿，再让模型当责编挑最好的一稿并精修。"""
+def _script_ok(ep):
+    chars = sum(len(l["t"]) for s in ep["shots"] for l in lines_of(s))
+    return 260 <= chars <= 520 and 7 <= len(ep["shots"]) <= 12, chars
+
+
+def write_script(topic, provider, rounds=2):
+    """一次写 3 稿 → 责编按 8 项打分、挑一稿精修 → 任何一项低于 8 分就带着意见再改，最多 rounds 轮。"""
     tpl = (ROOT / "episode_prompt.txt").read_text(encoding="utf-8")
     prompt = tpl.replace("{source}", topic["source"]).replace("{summary}", topic["summary"])
     drafts = []
@@ -107,8 +126,8 @@ def write_script(topic, provider):
             break
         try:
             ep = parse_json(llm(prompt, provider))
-            chars = sum(len(l["t"]) for s in ep["shots"] for l in lines_of(s))
-            if 280 <= chars <= 520 and 8 <= len(ep["shots"]) <= 13:
+            ok, chars = _script_ok(ep)
+            if ok:
                 drafts.append(ep)
             else:
                 print(f"  稿件长度不合格（{chars}字/{len(ep['shots'])}镜），重写")
@@ -116,16 +135,21 @@ def write_script(topic, provider):
             print(f"  第{attempt + 1}次生成失败：{e}")
     if not drafts:
         raise SystemExit("稿件生成失败")
+    edit = (ROOT / "editor_prompt.txt").read_text(encoding="utf-8")
     best = drafts[0]
-    if len(drafts) > 1:
-        edit = (ROOT / "editor_prompt.txt").read_text(encoding="utf-8")
+    for r in range(rounds):
         listing = "\n\n".join(f"【第{k + 1}稿】\n{json.dumps(d, ensure_ascii=False)}" for k, d in enumerate(drafts))
         try:
-            best = parse_json(llm(edit.replace("{drafts}", listing), provider))
-            assert best["shots"]
+            cand = parse_json(llm(edit.replace("{drafts}", listing), provider))
+            if cand.get("shots") and _script_ok(cand)[0]:
+                best = cand
         except Exception as e:  # noqa: BLE001
-            print(f"  精修失败，用第1稿：{e}")
-            best = drafts[0]
+            print(f"  精修失败：{e}")
+        scores = best.get("scores", {})
+        print(f"  第{r + 1}轮责编打分：{scores}  {best.get('notes', '')}")
+        if scores and min(int(v) for v in scores.values()) >= 8:
+            break
+        drafts = [best]  # 带着意见再精修一轮
     best["source"] = topic["source"]
     return best
 
@@ -355,10 +379,29 @@ SAFE_WORDS = [(r"\b(feet|foot|legs?|bare\w*|body|bodies|skin|naked|blood\w*|corp
 FALLBACK_PROMPT = "an empty misty country road at night in ancient rural China, a faint paper lantern glow in the distance"
 
 
-def _seedream(prompt, out):
+REF_IMAGES = [ROOT / p for p in SERIES.get("ref_images", [])]
+
+
+def _data_url(path):
+    import io
+    img = Image.open(path).convert("RGB")
+    img.thumbnail((1280, 1280))
+    buf = io.BytesIO()
+    img.save(buf, "JPEG", quality=90)
+    return "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
+
+
+def _seedream(prompt, out, refs=None):
     """火山方舟 Seedream：直接出竖版 9:16，写实质感比 FLUX schnell 好得多。"""
-    body = {"model": os.environ.get("SEEDREAM_MODEL") or "doubao-seedream-5.0-pro", "prompt": prompt,
+    model = os.environ.get("SEEDREAM_MODEL") or "doubao-seedream-5.0-pro"
+    if os.environ.get("SEEDREAM_TIER") == "flash":
+        model = os.environ.get("SEEDREAM_FLASH_MODEL") or "doubao-seedream-5.0-flash"
+    print(f"    出图：{model}")
+    body = {"model": model, "prompt": prompt,
             "size": "1440x2560", "response_format": "b64_json", "watermark": False}
+    refs = REF_IMAGES if refs is None else refs
+    if refs:  # 定妆参考图：让每个镜头都是同一张脸、同样的妆容和拍摄质感
+        body["image"] = [_data_url(p) for p in refs]
     h = {"Authorization": f"Bearer {os.environ['ARK_API_KEY'].strip()}"}
     for attempt in range(4):
         try:
@@ -376,13 +419,13 @@ def _seedream(prompt, out):
     raise SystemExit("Seedream 出图失败")
 
 
-def gen_image(prompt, out, provider, character=""):
+def gen_image(prompt, out, provider, character="", refs=None):
     # 主角外貌描述写在每集的 character 里，凡是画到人的镜头都带上，保证前后是同一个人
     if character and re.search(r"\b(man|he|his|traveler|figure|person)\b", prompt, re.I):
         prompt = f"{prompt}. The man is {character}"
     full = f"{prompt}, {SERIES['visual_style']}"
     if provider == "seedream":
-        return _seedream(full, out)
+        return _seedream(full, out, refs)
     if provider == "cloudflare":
         clean = prompt
         for pat, rep in SAFE_WORDS:
@@ -507,7 +550,7 @@ def ass_time(t):
     return f"{int(h)}:{int(m):02d}:{s:05.2f}"
 
 
-def build_ass(title, cues, total, outro_start, outro_text, out, w=W, h=H):
+def build_ass(title, cues, total, outro_start, outro_text, out, w=W, h=H, hook=""):
     font = os.environ.get("FONT_NAME") or SERIES.get("font_name", "Noto Sans CJK SC")
     accent = SERIES["accent_color"].lstrip("#")
     accent_ass = f"&H00{accent[4:6]}{accent[2:4]}{accent[0:2]}"
@@ -515,6 +558,7 @@ def build_ass(title, cues, total, outro_start, outro_text, out, w=W, h=H):
         styles = f"""Style: Series,{font},40,{accent_ass},&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,10,0,1,2,0,8,60,60,120,1
 Style: Title,{font},60,&H00F0F0F0,&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,2,0,1,3,1,8,60,60,180,1
 Style: Sub,{font},64,&H00FFFFFF,&H00FFFFFF,&H00101010,&H64000000,1,0,0,0,100,100,1,0,1,4,1,2,80,80,420,1
+Style: Hook,{font},96,&H00FFFFFF,&H00FFFFFF,&H00101010,&H96000000,1,0,0,0,100,100,4,0,1,6,2,5,60,60,0,1
 Style: Outro,{font},38,&H00D0D0D0,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,2,0,2,60,60,260,1"""
     else:
         styles = f"""Style: Series,{font},34,{accent_ass},&H00FFFFFF,&H00000000,&H64000000,1,0,0,0,100,100,6,0,1,2,0,7,50,50,40,1
@@ -535,6 +579,8 @@ Format: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text
 """
     ev = [f"Dialogue: 0,0:00:00.00,{ass_time(total)},Series,,0,0,0,,{SERIES['series_name']}",
           f"Dialogue: 0,0:00:00.00,{ass_time(total)},Title,,0,0,0,,{title}"]
+    if hook and h > w:  # 前 3 秒屏幕大字钩子：静音刷到的人也能被勾住
+        ev.append(f"Dialogue: 1,0:00:00.00,0:00:03.00,Hook,,0,0,0,,{{\\fad(0,300)}}{hook}")
     for start, end, text in cues:
         ev.append(f"Dialogue: 0,{ass_time(start)},{ass_time(end)},Sub,,0,0,0,,{{\\fad(120,120)}}{text}")
     ev.append(f"Dialogue: 0,{ass_time(outro_start)},{ass_time(total)},Outro,,0,0,0,,{outro_text}")
@@ -549,9 +595,19 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
 
     for i, shot in enumerate(ep["shots"]):
         print(f"  镜头 {i + 1}/{len(ep['shots'])}")
-        raw, frame = workdir / f"img{i:02d}.jpg", workdir / f"{tag}frame{i:02d}.jpg"
+        # 省钱：reuse 指向前面某个镜头的序号（从1数），直接复用那张图，换个运镜和裁切
+        src_i = shot["reuse"] - 1 if isinstance(shot.get("reuse"), int) else i
+        raw, frame = workdir / f"img{src_i:02d}.jpg", workdir / f"{tag}frame{i:02d}.jpg"
         if not raw.exists():
-            gen_image(shot["image_prompt"], raw, img_provider, ep.get("character", ""))
+            # 省钱：有女主或标了 key 的关键镜头用 pro，其余空镜用便宜的 flash
+            key = shot.get("key") or shot.get("cast") in ("heroine", "rabbit")
+            os.environ["SEEDREAM_TIER"] = "pro" if key else "flash"
+            cast = SERIES.get("cast", {}).get(shot.get("cast", ""))
+            refs = [ROOT / cast] if cast else ([] if shot.get("cast") == "none" else None)
+            prompt = shot["image_prompt"]
+            if cast:
+                prompt = "参考图中的这位女子（完全相同的脸、五官、妆容、发饰和衣着），" + prompt
+            gen_image(prompt, raw, img_provider, ep.get("character", ""), refs)
         frame_from(raw, frame, w, h)
         shot_start = t if i else 0.0
         if shot.get("sfx") in SFX:
@@ -591,7 +647,7 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
 
     outro = SERIES["outro_text"].format(source=ep["source"])
     subs = workdir / f"{tag}subs.ass"
-    build_ass(ep["title"], cues, total, outro_start, outro, subs, w, h)
+    build_ass(ep["title"], cues, total, outro_start, outro, subs, w, h, ep.get("hook_text", ""))
     # 统一调色：压暗、降饱和、偏冷，加暗角和胶片颗粒
     grade = ("eq=contrast=1.08:saturation=0.72:gamma=0.95,colorbalance=bs=0.05:bm=0.03:rh=-0.02,"
              "vignette=PI/4.5,noise=alls=5:allf=t")
@@ -604,7 +660,7 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
         return total
 
     caption_txt = (f"{ep['title']}\n\n{SERIES['series_name']}｜{SERIES['tagline']}\n"
-                   f"本集改编自{ep['source']}，内容由AI辅助生成。\n\n#民间故事 #志怪 #聊斋 #诡异 #异闻簿")
+                   f"{SERIES['outro_text']}\n\n#诡异故事 #悬疑 #真实经历 #细思极恐 #异闻簿")
     out_mp4.with_suffix(".txt").write_text(caption_txt, encoding="utf-8")
     print(f"完成：{out_mp4}（{total:.1f} 秒）")
     return total
@@ -621,10 +677,26 @@ def make_audio(ep, workdir, out_mp3, tts_provider):
     print(f"完成：{out_mp3}")
 
 
+def readable(ep):
+    """给人看的剧本：台词按镜头排，附悬念/线索/反转和责编打分。"""
+    who = {"narrator": "阿绾", "man": "男", "ghost": "怪"}
+    out = [f"《{ep['title']}》  改编自{ep.get('source', '')}", f"屏幕大字：{ep.get('hook_text', '')}",
+           f"悬念：{ep.get('question', '')}", f"线索：{ep.get('clue', '')}", f"反转：{ep.get('twist', '')}",
+           f"责编打分：{ep.get('scores', '')}  {ep.get('notes', '')}", ""]
+    for i, sh in enumerate(ep["shots"], 1):
+        out.append(f"【镜头{i}｜{ {'heroine': '阿绾', 'rabbit': '小白'}.get(sh.get('cast'), '无女主')}】{sh.get('image_prompt', '')}")
+        for l in lines_of(sh):
+            out.append(f"    {who.get(l.get('who', 'narrator'), '阿绾')}（{l.get('tone', 'normal')}）：{l['t']}")
+    chars = sum(len(l["t"]) for s in ep["shots"] for l in lines_of(s))
+    out.append(f"\n共 {chars} 字，约 {chars / 4.2:.0f} 秒")
+    return "\n".join(out)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--next", action="store_true", help="取 topics.json 里下一个未做的选题")
     ap.add_argument("--episode", help="已有稿件 JSON")
+    ap.add_argument("--drafts", help="只写剧本不出片：逗号分隔的选题 id（如 ep01,ep02），稿件放 episodes/drafts/ 并把可读版传云盘“剧本待审”")
     ap.add_argument("--llm", default=os.environ.get("LLM_PROVIDER", "openai" if os.environ.get("LLM_API_KEY") else "cloudflare"), choices=["openai", "github", "cloudflare"])
     ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"), choices=["cloudflare", "seedream", "placeholder"])
     ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "doubao", "silent"])
@@ -632,6 +704,24 @@ def main():
 
     out_dir = ROOT / "output"
     out_dir.mkdir(exist_ok=True)
+    if args.drafts:
+        topics = {t["id"]: t for t in json.loads((ROOT / "topics.json").read_text(encoding="utf-8"))}
+        dd = ROOT / "episodes" / "drafts"
+        dd.mkdir(parents=True, exist_ok=True)
+        outs = []
+        for tid in args.drafts.split(","):
+            topic = topics[tid.strip()]
+            print(f"写剧本：{topic['id']} {topic['source']}")
+            ep = write_script(topic, args.llm)
+            tag = os.environ.get("DRAFT_TAG", "")
+            stem = f"{topic['id']}_{tag}" if tag else topic["id"]
+            (dd / f"{stem}.json").write_text(json.dumps(ep, ensure_ascii=False, indent=2), encoding="utf-8")
+            txt = dd / f"{stem}_{ep['title']}.txt"
+            txt.write_text(readable(ep), encoding="utf-8")
+            outs.append(txt)
+        import gdrive
+        gdrive.upload(outs, "剧本待审")
+        return
     if args.next:
         topics = json.loads((ROOT / "topics.json").read_text(encoding="utf-8"))
         todo = [t for t in topics if not (ROOT / "episodes" / f"{t['id']}.json").exists()]

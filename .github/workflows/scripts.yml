@@ -1,0 +1,41 @@
+name: 只写剧本
+
+on:
+  workflow_dispatch:
+    inputs:
+      topics:
+        description: "选题 id，逗号分隔"
+        default: "ep01,ep02,ep03"
+      llm:
+        description: "写稿模型"
+        type: choice
+        options: [glm, gemini]
+        default: glm
+
+permissions:
+  contents: write
+
+jobs:
+  write:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests pillow
+      - name: 写剧本
+        env:
+          LLM_API_KEY: ${{ github.event.inputs.llm == 'gemini' && secrets.GEMINI_API_KEY || secrets.LLM_API_KEY }}
+          LLM_BASE_URL: ${{ github.event.inputs.llm == 'gemini' && 'https://generativelanguage.googleapis.com/v1beta/openai' || 'https://open.bigmodel.cn/api/paas/v4' }}
+          LLM_MODEL: ${{ github.event.inputs.llm == 'gemini' && 'gemini-2.5-flash' || 'glm-4.7' }}
+          DRAFT_TAG: ${{ github.event.inputs.llm }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: python make_episode.py --drafts "${{ github.event.inputs.topics }}" --llm openai
+      - name: 提交稿件
+        if: always()
+        run: |
+          git config user.name "yiwenbu-bot"
+          git config user.email "yiwenbu-bot@users.noreply.github.com"
+          git add episodes/drafts/ && (git diff --cached --quiet || (git commit -m "剧本待审" && git push)) || true

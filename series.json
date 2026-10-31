@@ -1,36 +1,47 @@
 {
   "series_name": "异闻簿",
-  "tagline": "老辈人讲的怪事，八分真，二分说不清",
-  "narrator": "讲古人：深夜坐在灶台边讲老辈怪事的人，声音低，不紧不慢，只讲不评",
-  "visual_style": "realistic cinematic film still from a historical drama set two thousand years ago, 35mm film photography, dark low-key lighting lit only by paper lanterns and oil lamps, cold desaturated teal and grey tones, thin mist, ancient rural northern China with dirt roads, rammed earth walls and wooden houses with thatched roofs, Han dynasty clothing, heavy film grain, eerie quiet atmosphere, shallow depth of field",
+  "tagline": "人走了，账还在",
+  "narrator": "阿绾：红青汉服的古风美人，对着镜头讲老辈怪事，好像每件事都亲眼见过",
+  "visual_style": "9:16竖幅，真实手机摄影质感，照片级真实，自然光影，浅景深，非卡通、非三维渲染，画面不出现可读文字",
   "accent_color": "#B23A2B",
   "voice": "zh-CN-YunjianNeural",
   "voice_rate": "+0%",
   "font_file": "",
   "width": 1080,
   "height": 1920,
-  "outro_text": "本集改编自{source} · 内容由AI辅助生成",
+  "outro_text": "原创故事 · 内容由AI辅助生成，请勿当真",
   "rules": [
-    "不出现血腥、伤口、尸体、惊吓脸特写、丑化恐怖形象",
-    "怪的部分只用影子、背影、声音、雾、反常细节暗示，不正面露脸",
-    "不涉及真实刑案、真实在世人物、封建迷信宣传",
-    "只用公版古籍，改编为原创口播稿；八分写实生活细节，二分留白说不清",
-    "结尾不点破、不说教，留一句老辈人的话或一个说不清的细节"
+    "原创现代故事，像真事，像可能发生在你身上",
+    "不出现血腥、伤口、尸体、惊吓脸、恐怖特写、擦边",
+    "不涉及真实刑案、真实在世人物、真实地名机构，不宣扬迷信",
+    "怪的部分只给一半：声音、影子、温度、对不上的数字",
+    "结尾留白加互动，不说教"
   ],
   "font_name": "Noto Sans CJK SC",
-  "audio_disclaimer": "本节目由AI辅助创作和配音，故事改编自古籍，请勿当真。异闻簿，老辈人讲的怪事。本集改编自{source}：{title}。",
+  "audio_disclaimer": "本节目由AI辅助创作和配音，故事为原创虚构，请勿当真。异闻簿，你身边的怪事。本集：{title}。",
   "voices": {
     "narrator": {
-      "edge": "zh-CN-YunjianNeural",
-      "minimax": "male-qn-jingying"
+      "edge": "zh-CN-XiaoxiaoNeural",
+      "minimax": "female-yujie",
+      "doubao": "zh_female_vv_uranus_bigtts"
     },
     "man": {
       "edge": "zh-CN-YunxiNeural",
-      "minimax": "male-qn-qingse"
+      "minimax": "male-qn-qingse",
+      "doubao": "zh_male_m191_uranus_bigtts"
     },
     "ghost": {
-      "edge": "zh-CN-YunyangNeural",
-      "minimax": "presenter_male"
+      "edge": "zh-CN-XiaoxiaoNeural",
+      "minimax": "female-chengshu",
+      "doubao": "zh_female_vv_uranus_bigtts"
     }
-  }
+  },
+  "ref_images": [
+    "samples/ref_heroine.jpg"
+  ],
+  "cast": {
+    "heroine": "samples/ref_heroine.jpg",
+    "rabbit": "samples/ref_heroine2.jpg"
+  },
+  "premise": "异闻簿是一本账：人走了，账还在。阿绾是收账的人，记了一千年。"
 }
