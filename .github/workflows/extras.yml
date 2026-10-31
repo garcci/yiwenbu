@@ -39,6 +39,7 @@ jobs:
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          ARK_PAYG_API_KEY: ${{ secrets.ARK_PAYG_API_KEY }}  # Seedance 视频按量付费用
           # 档位开关：仓库 Settings → Secrets and variables → Actions → Variables 里改，不用动代码
           IMAGE_PROVIDER: ${{ vars.IMAGE_PROVIDER || 'cloudflare' }}
           TTS_PROVIDER: ${{ vars.TTS_PROVIDER || 'edge' }}
