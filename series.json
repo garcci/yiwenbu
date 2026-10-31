@@ -43,5 +43,6 @@
     "heroine": "samples/ref_heroine.jpg",
     "rabbit": "samples/ref_heroine2.jpg"
   },
-  "premise": "异闻簿是一本账：人走了，账还在。阿绾是收账的人，记了一千年。"
+  "premise": "异闻簿是一本账：人走了，账还在。阿绾是收账的人，记了一千年。",
+  "grade": "eq=contrast=1.04:saturation=0.95,vignette=PI/6,noise=alls=3:allf=t"
 }

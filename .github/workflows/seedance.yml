@@ -1,0 +1,39 @@
+name: Seedance 动态小样
+
+on:
+  workflow_dispatch:
+    inputs:
+      spec:
+        description: "小样配置"
+        default: "samples/seedance.json"
+      fast_model:
+        description: "1.0 pro fast 的模型ID（留空自动试）"
+        default: ""
+      mini_model:
+        description: "2.0 mini 的模型ID（留空自动试）"
+        default: ""
+
+jobs:
+  sample:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests pillow
+      - name: 出 Seedance 小样（按量付费，约 3 元）
+        env:
+          # 按量付费要用普通 API Key（套餐 Key 在 /api/v3 上会报 401）
+          ARK_API_KEY: ${{ secrets.ARK_PAYG_API_KEY || secrets.ARK_API_KEY }}
+          SEEDANCE_FAST_MODEL: ${{ github.event.inputs.fast_model }}
+          SEEDANCE_MINI_MODEL: ${{ github.event.inputs.mini_model }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: python samples/seedance_sample.py "${{ github.event.inputs.spec }}"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: seedance
+          path: work/seedance/
+          retention-days: 7

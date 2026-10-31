@@ -16,9 +16,22 @@ permissions:
   contents: write
 
 jobs:
-  write:
+  plan:
     runs-on: ubuntu-latest
-    timeout-minutes: 40
+    outputs:
+      ids: ${{ steps.s.outputs.ids }}
+    steps:
+      - id: s
+        run: echo "ids=$(echo '${{ github.event.inputs.topics }}' | tr -d ' ' | jq -Rc 'split(",")')" >> "$GITHUB_OUTPUT"
+  write:
+    needs: plan
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        topic: ${{ fromJson(needs.plan.outputs.ids) }}
     steps:
       - uses: actions/checkout@v4
       - run: pip install -q requests pillow
@@ -26,16 +39,19 @@ jobs:
         env:
           LLM_API_KEY: ${{ github.event.inputs.llm == 'gemini' && secrets.GEMINI_API_KEY || secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ github.event.inputs.llm == 'gemini' && 'https://generativelanguage.googleapis.com/v1beta/openai' || 'https://open.bigmodel.cn/api/paas/v4' }}
-          LLM_MODEL: ${{ github.event.inputs.llm == 'gemini' && 'gemini-2.5-flash' || 'glm-4.7' }}
+          LLM_MODEL: ${{ github.event.inputs.llm == 'gemini' && 'gemini-3.8-flash,gemini-flash-latest' || 'glm-4.7' }}
           DRAFT_TAG: ${{ github.event.inputs.llm }}
           GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
           GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
           GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
-        run: python make_episode.py --drafts "${{ github.event.inputs.topics }}" --llm openai
+        run: python -u make_episode.py --drafts "${{ matrix.topic }}" --llm openai
       - name: 提交稿件
         if: always()
         run: |
           git config user.name "yiwenbu-bot"
           git config user.email "yiwenbu-bot@users.noreply.github.com"
-          git add episodes/drafts/ && (git diff --cached --quiet || (git commit -m "剧本待审" && git push)) || true
+          git add episodes/drafts/
+          git diff --cached --quiet && exit 0
+          git commit -m "剧本待审 ${{ matrix.topic }}"
+          for i in 1 2 3 4 5; do git pull --rebase -q origin main && git push && break; sleep $((i*5)); done
