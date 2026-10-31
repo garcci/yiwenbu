@@ -40,6 +40,7 @@ jobs:
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          ARK_PAYG_API_KEY: ${{ secrets.ARK_PAYG_API_KEY }}  # Seedance 动态按量付费
           # 写稿和标注用的大模型，和异闻簿共用（任意 OpenAI 兼容接口）
           SEEDREAM_MODEL: ${{ vars.SEEDREAM_MODEL || 'doubao-seedream-5.0-pro' }}
           ARK_LLM_MODEL: ${{ vars.ARK_LLM_MODEL }}
@@ -59,6 +60,8 @@ jobs:
             CH=$(python -c "import json;print(json.load(open('novel/request.json'))['chapter'])")
             ONLY=$(python -c "import json;print(json.load(open('novel/request.json')).get('only',''))")
           fi
+          VID=$(python -c "import json;print(json.load(open('novel/request.json')).get('video',''))")
+          if [ -n "$VID" ]; then export VIDEO_PROVIDER="$VID"; fi   # request.json 里写 "video":"seedance" 就出真动态（按量付费）
           ARGS="--chapter $CH"
           if [ "$ONLY" = "audio" ] || [ "$ONLY" = "shorts" ]; then ARGS="$ARGS --only $ONLY"; fi
           python novel/novel.py $ARGS

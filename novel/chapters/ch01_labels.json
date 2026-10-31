@@ -305,7 +305,7 @@
   "kind": "say",
   "para_end": true,
   "who": "ghost",
-  "tone": "normal"
+  "tone": "whisper"
  },
  {
   "t": "是个男人的声音。听不出年纪，有点哑，像是在雪地里站了很久。",
@@ -347,7 +347,7 @@
   "kind": "say",
   "para_end": true,
   "who": "ghost",
-  "tone": "normal"
+  "tone": "whisper"
  },
  {
   "t": "这一回，近了一点。像是那个人把脸贴在了门缝上。",
