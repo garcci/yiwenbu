@@ -9,8 +9,8 @@ on:
       tts:
         description: "配音"
         type: choice
-        options: [minimax, edge]
-        default: minimax
+        options: [none, minimax, edge]
+        default: none
       images:
         description: "出图"
         type: choice
@@ -19,8 +19,8 @@ on:
       video:
         description: "图生视频"
         type: choice
-        options: [minimax, none]
-        default: minimax
+        options: [none, minimax]
+        default: none
 
 jobs:
   sample:

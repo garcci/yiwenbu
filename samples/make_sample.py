@@ -21,19 +21,21 @@ work.mkdir(parents=True, exist_ok=True)
 outs = []
 
 tts = me.os.environ.get("TTS_PROVIDER", "edge")
-parts, sfx, t = [], [], 0.8
-for k, line in enumerate(spec["lines"]):
-    wav = work / f"line{k:02d}.wav"
-    pause = me.voice_line(line["t"], line.get("tone", "normal"), wav, tts, line.get("who", "narrator"))
-    if line.get("sfx") in me.SFX:
-        sfx.append((line["sfx"], max(t - 0.2, 0)))
-    parts.append((wav, t))
-    t += me.duration(wav) + pause
-me.mix_audio(work, parts, sfx, spec.get("ambience", "wind"), t + 1.5)
-voice = work / f"配音小样_{tts}.mp3"
-me.run(["ffmpeg", "-y", "-i", str(work / "mix.wav"), "-b:a", "192k", str(voice)])
-outs.append(voice)
-print(f"配音 {t:.1f} 秒")
+if tts != "none":  # none：只出画面
+    parts, sfx, t = [], [], 0.8
+    for k, line in enumerate(spec["lines"]):
+        wav = work / f"line{k:02d}.wav"
+        pause = me.voice_line(line["t"], line.get("tone", "normal"), wav, tts, line.get("who", "narrator"))
+        if line.get("sfx") in me.SFX:
+            sfx.append((line["sfx"], max(t - 0.2, 0)))
+        parts.append((wav, t))
+        t += me.duration(wav) + pause
+    me.mix_audio(work, parts, sfx, spec.get("ambience", "wind"), t + 1.5)
+    voice = work / f"配音小样_{tts}.mp3"
+    me.run(["ffmpeg", "-y", "-i", str(work / "mix.wav"), "-b:a", "192k", str(voice)])
+    outs.append(voice)
+    print(f"配音 {t:.1f} 秒")
+
 
 img_p = me.os.environ.get("IMAGE_PROVIDER", "cloudflare")
 for k, shot in enumerate(spec["shots"]):
