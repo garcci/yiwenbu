@@ -1,70 +1,261 @@
 {
-  "title": "一个人，演了一屋子神仙",
-  "source": "《聊斋志异·口技》",
+  "title": "半夜有人搭话：我是鬼，你呢",
+  "source": "《搜神记·宋定伯捉鬼》",
+  "ambience": "wind",
   "shots": [
     {
-      "image_prompt": "a dim village courtyard at dusk, villagers gathered outside a small house with a closed curtain door, lantern light",
+      "image_prompt": "a lone traveler seen from behind walking on a narrow dirt road at night in the countryside, holding a small paper lantern, a second dim figure walking beside him half hidden in mist, bare trees",
+      "motion": "push_in",
+      "fx": [
+        "fog"
+      ],
+      "sfx": "sting",
       "lines": [
-        "一间小屋，请来了三位神仙",
-        "可屋里自始至终，只有一个人"
+        {
+          "t": "半夜走夜路，身边多了一个人……",
+          "tone": "slow"
+        },
+        {
+          "t": "他说，他是鬼。",
+          "tone": "whisper"
+        }
       ]
     },
     {
-      "image_prompt": "a young woman with a medicine box arriving at a rural village, simple clothes, calm expression, villagers watching curiously",
+      "image_prompt": "wide shot of an empty rural road between dark fields under a moonless sky, a distant walled town barely visible, thin fog over the ground",
+      "motion": "pan_right",
+      "fx": [
+        "fog"
+      ],
       "lines": [
-        "蒲松龄记过一件事，村里来了个卖药的女子",
-        "有人求医，她说自己不会开方，要请神仙开"
+        {
+          "t": "南阳有个叫宋定伯的年轻人。",
+          "tone": "normal"
+        },
+        {
+          "t": "那天他赶夜路去宛城，",
+          "tone": "normal"
+        },
+        {
+          "t": "一路上，一盏灯都没有。",
+          "tone": "slow"
+        }
       ]
     },
     {
-      "image_prompt": "night, a small room sealed with a curtain, candle glow behind paper window, silhouettes of villagers listening outside",
+      "image_prompt": "close up of two pairs of feet walking side by side on a muddy road at night, one pair in straw sandals, the other pair blurred and faint like smoke, lantern light",
+      "motion": "drift_up",
+      "fx": [
+        "fog"
+      ],
+      "sfx": "footsteps",
       "lines": [
-        "天一黑，她进屋拉上帘子",
-        "村民挤在门外，大气都不敢出"
+        {
+          "t": "走着走着，旁边多了一串脚步声，",
+          "tone": "normal"
+        },
+        {
+          "t": "跟他的步子，一模一样。",
+          "tone": "slow"
+        },
+        {
+          "t": "他问：你是谁？",
+          "tone": "tense"
+        }
       ]
     },
     {
-      "image_prompt": "close up of a paper window glowing with warm candle light, faint shadow of a single woman inside, quiet night",
+      "image_prompt": "side profile of a young man in Han dynasty clothing holding a lantern, looking sideways into darkness, a tall dark silhouette standing next to him in the mist, face not visible",
+      "motion": "push_in",
+      "fx": [
+        "flicker",
+        "fog"
+      ],
+      "sfx": "gust",
       "lines": [
-        "没多久，屋里传出脚步声和寒暄声",
-        "九姑来了，六姑来了，四姑也来了",
-        "有人带着丫鬟，丫鬟还抱着个孩子"
+        {
+          "t": "那边说：我是鬼。你呢？",
+          "tone": "whisper"
+        },
+        {
+          "t": "宋定伯心里一凉，",
+          "tone": "normal"
+        },
+        {
+          "t": "嘴上说：巧了，我也是鬼。",
+          "tone": "whisper"
+        }
       ]
     },
     {
-      "image_prompt": "a sleepy cat on a wooden floor next to a cradle, soft candle light, cozy ancient chinese interior",
+      "image_prompt": "a young man carrying another shadowy figure on his back along a dark road at night, the figure on his back is vague and translucent like mist, lantern swinging",
+      "motion": "pan_left",
+      "fx": [
+        "fog"
+      ],
+      "sfx": "thump",
       "lines": [
-        "孩子哭，猫在叫，几位姑娘说说笑笑",
-        "门外的人听得清清楚楚，越听越信"
+        {
+          "t": "鬼说，路远，咱们轮流背着走。",
+          "tone": "normal"
+        },
+        {
+          "t": "鬼背起他，说：你怎么这么沉？",
+          "tone": "tense"
+        },
+        {
+          "t": "他说：我是新死的，身子还重。",
+          "tone": "normal"
+        }
       ]
     },
     {
-      "image_prompt": "a hand passing a folded prescription paper through a curtain gap, villagers reaching for it, warm light",
+      "image_prompt": "over the shoulder view of a man walking at night with a pale wisp of fog draped over his shoulders where a person should be, cold breath visible",
+      "motion": "drift_up",
+      "fx": [
+        "fog"
+      ],
       "lines": [
-        "最后神仙商量好了药方",
-        "帘子一掀，递出来一张方子",
-        "买药的人当场排起了队"
+        {
+          "t": "轮到他背鬼。",
+          "tone": "normal"
+        },
+        {
+          "t": "背上轻飘飘的，像背着一团雾，",
+          "tone": "slow"
+        },
+        {
+          "t": "凉气顺着后脖子往下走……",
+          "tone": "whisper"
+        }
       ]
     },
     {
-      "image_prompt": "the same young woman alone in the small room, smiling slightly, holding a fan, single candle, no one else in the room",
+      "image_prompt": "two figures walking side by side at night seen from far behind, one solid with a lantern, the other a faint tall shadow, the road narrowing into darkness",
+      "motion": "push_in",
+      "fx": [
+        "flicker",
+        "fog"
+      ],
       "lines": [
-        "可屋里根本没有第二个人",
-        "那些声音，全是她一张嘴变出来的"
+        {
+          "t": "他随口问：咱们做鬼的，最怕什么？",
+          "tone": "normal"
+        },
+        {
+          "t": "鬼想了想，说：",
+          "tone": "slow"
+        },
+        {
+          "t": "最怕人朝身上吐唾沫。",
+          "tone": "whisper"
+        }
       ]
     },
     {
-      "image_prompt": "a closed antique thread-bound book on a wooden desk beside an ink brush and a small oil lamp, warm light",
+      "image_prompt": "a dark river at night with mist on the water, a man wading across with clothes rolled up, ripples around his legs, beside him a faint shadow crossing without any ripple",
+      "motion": "pan_right",
+      "fx": [
+        "fog"
+      ],
+      "sfx": "water",
       "lines": [
-        "蒲松龄最后点破：原来是口技",
-        "破绽在哪？神仙开的方子，药只在她这儿有卖"
+        {
+          "t": "前面一条河。鬼过河，一点声音都没有。",
+          "tone": "normal"
+        },
+        {
+          "t": "他一下水，哗啦哗啦。",
+          "tone": "tense"
+        },
+        {
+          "t": "鬼停下来问：你怎么有声音？",
+          "tone": "whisper"
+        }
       ]
     },
     {
-      "image_prompt": "a lone traveler walking at night holding a lantern, a strange shadow following on the road behind him, misty",
+      "image_prompt": "a man standing on a riverbank at night, water dripping from his clothes, a tall shadow figure facing him in the mist, tense silence, faint first light at the horizon",
+      "motion": "pull_out",
+      "fx": [
+        "fog"
+      ],
+      "sfx": "heartbeat",
       "lines": [
-        "下一集，有人半夜走路，被鬼搭了个伴",
-        "结果吃亏的，反而是鬼"
+        {
+          "t": "他说：新死的，还不会过河，",
+          "tone": "normal"
+        },
+        {
+          "t": "你别见怪……",
+          "tone": "slow"
+        }
+      ]
+    },
+    {
+      "image_prompt": "dawn breaking over a misty rural market street, a man carrying a struggling shape on his shoulder that turns into a white sheep, early villagers looking, blue-grey light",
+      "motion": "push_in",
+      "fx": [
+        "shake",
+        "fog"
+      ],
+      "sfx": "thump",
+      "lines": [
+        {
+          "t": "天快亮了，他一把将鬼扛上肩，死死按住。",
+          "tone": "tense"
+        },
+        {
+          "t": "鬼在肩上尖声乱叫，",
+          "tone": "tense"
+        },
+        {
+          "t": "落地的时候，变成了一只羊。",
+          "tone": "slow"
+        }
+      ]
+    },
+    {
+      "image_prompt": "a white sheep tied with a rope in a misty early morning market, people in Han dynasty clothes walking past, the sheep staring directly ahead, quiet and still",
+      "motion": "drift_up",
+      "fx": [
+        "fog"
+      ],
+      "lines": [
+        {
+          "t": "他朝羊身上吐了口唾沫，让它变不回去，",
+          "tone": "normal"
+        },
+        {
+          "t": "卖了一千五百钱。",
+          "tone": "normal"
+        },
+        {
+          "t": "那天集上，没人知道自己买的是什么。",
+          "tone": "slow"
+        }
+      ]
+    },
+    {
+      "image_prompt": "an old empty country road at night disappearing into fog, a single paper lantern lying on the ground still glowing, no people",
+      "motion": "pull_out",
+      "fx": [
+        "flicker",
+        "fog"
+      ],
+      "lines": [
+        {
+          "t": "老辈人说，",
+          "tone": "slow"
+        },
+        {
+          "t": "夜里有人跟你搭话，",
+          "tone": "slow"
+        },
+        {
+          "t": "别急着回头。",
+          "tone": "whisper"
+        }
       ]
     }
   ]

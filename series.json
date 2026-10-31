@@ -1,8 +1,8 @@
 {
   "series_name": "异闻簿",
-  "tagline": "古书里的怪事，多半有破绽",
-  "narrator": "录异人：一个翻古籍、找破绽的说书人，只露手和书页，不露脸",
-  "visual_style": "soft muted watercolor illustration, desaturated blue-grey palette with warm candle light accents, cinematic lighting, gentle film grain, set in ancient rural China, wide clean composition with empty plain corners, calm and gentle mood",
+  "tagline": "老辈人讲的怪事，八分真，二分说不清",
+  "narrator": "讲古人：深夜坐在灶台边讲老辈怪事的人，声音低，不紧不慢，只讲不评",
+  "visual_style": "realistic cinematic film still, 35mm film photography, dark low-key lighting, cold desaturated teal and grey tones, thin mist, ancient rural northern China, Han dynasty clothing and buildings, heavy film grain, eerie quiet atmosphere, shallow depth of field",
   "accent_color": "#B23A2B",
   "voice": "zh-CN-YunjianNeural",
   "voice_rate": "+0%",
@@ -11,11 +11,12 @@
   "height": 1920,
   "outro_text": "本集改编自{source} · 内容由AI辅助生成",
   "rules": [
-    "不出现血腥、惊吓特写、丑化恐怖形象",
-    "不涉及真实刑案、真实在世人物",
-    "只用公版古籍，改编为原创口播稿",
-    "每集结尾点出一个破绽或看点，再留下一集的钩子"
+    "不出现血腥、伤口、尸体、惊吓脸特写、丑化恐怖形象",
+    "怪的部分只用影子、背影、声音、雾、反常细节暗示，不正面露脸",
+    "不涉及真实刑案、真实在世人物、封建迷信宣传",
+    "只用公版古籍，改编为原创口播稿；八分写实生活细节，二分留白说不清",
+    "结尾不点破、不说教，留一句老辈人的话或一个说不清的细节"
   ],
   "font_name": "Noto Sans CJK SC",
-  "audio_disclaimer": "本节目由AI辅助创作和配音。异闻簿，古书里的怪事，多半有破绽。本集改编自{source}：{title}。"
+  "audio_disclaimer": "本节目由AI辅助创作和配音，故事改编自古籍，请勿当真。异闻簿，老辈人讲的怪事。本集改编自{source}：{title}。"
 }
