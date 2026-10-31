@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""《录异簿》小说流水线：一章正文 → 多声线有声书 + 3 条竖屏短视频，写进云盘「小说/成品/第XX章」。
+"""《七条规矩》小说流水线：一章正文 → 多声线有声书 + 3 条竖屏短视频，写进云盘「小说/成品/第XX章」。
 
 正文以云盘「小说/正文」里的谷歌文档为准（你在云盘里改过的字会直接生效），每次运行先导出一份到
 novel/chapters/chXX.txt 存档。配音、出图、合成、上传全部复用《异闻簿》的 make_episode.py。
@@ -127,7 +127,7 @@ def split_units(paras):
         if p == "§":
             units.append({"t": "", "pause": 1.6})
             continue
-        # 「录异房」这种短的、不带标点的引号是名称，不是台词，留在叙述里
+        # 「看事簿」这种短的、不带标点的引号是名称，不是台词，留在叙述里
         p = re.sub(r"「([^」，。！？：]{1,6})」", r"“\1”", p)
         for k, part in enumerate(re.split(r"(「[^」]*」)", p)):
             part = part.strip()
@@ -317,19 +317,19 @@ def main():
         else:
             heuristic_labels(units)
         lab.write_text(json.dumps(units, ensure_ascii=False, indent=1), encoding="utf-8")
-        mp3 = out / f"录异簿-第{n:02d}章-{title}-有声书.mp3"
+        mp3 = out / f"七条规矩-第{n:02d}章-{title}-有声书.mp3"
         make_audiobook(n, title, units, me.ROOT / "work" / "novel" / tag / "audio", mp3, a.tts)
         upload([mp3], n)
     if a.only in (None, "shorts"):
         for k, ep in enumerate(make_shorts(n, title, text, a.llm), 1):
-            ep["source"] = f"《录异簿》第{cn_num(n)}章"
+            ep["source"] = f"《七条规矩》第{cn_num(n)}章"
             ep["character"] = BOOK["character"]
-            mp4 = out / f"录异簿-第{n:02d}章-短视频{k}-{ep['title']}.mp4"
+            mp4 = out / f"七条规矩-第{n:02d}章-短视频{k}-{ep['title']}.mp4"
             print(f"短视频 {k}：{ep['title']}")
             me.render(ep, me.ROOT / "work" / "novel" / f"{tag}s{k}", mp4, a.images, a.tts, caption=False)
             mp4.with_suffix(".txt").write_text(
-                f"{ep['title']}\n\n原创志怪连载《录异簿》第{cn_num(n)}章《{title}》节选，完整有声书见主页专辑。\n"
-                f"本视频由AI辅助创作和配音，故事纯属虚构。\n\n#民间故事 #志怪 #悬疑 #有声小说 #录异簿",
+                f"{ep['title']}\n\n原创农村悬疑连载《七条规矩》第{cn_num(n)}章《{title}》节选，完整有声书见主页专辑。\n"
+                f"本视频由AI辅助创作和配音，故事纯属虚构。\n\n#悬疑 #灵异故事 #农村怪事 #有声小说 #七条规矩",
                 encoding="utf-8")
             upload([mp4, mp4.with_suffix(".txt")], n)
 

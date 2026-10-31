@@ -1,56 +1,541 @@
-{"shorts": [
-{"title": "到任第一夜，门外有人借火", "ambience": "wind", "shots": [
- {"image_prompt": "close-up of a weathered wooden door at night, snow drifting in the gap under it, faint lantern glow outside", "motion": "push_in", "fx": ["fog"], "sfx": "knock",
-  "lines": [{"t": "半夜，有人敲门。", "tone": "slow", "who": "narrator"}, {"t": "借个火。", "tone": "whisper", "who": "ghost"}]},
- {"image_prompt": "the man walks behind an old gatekeeper through a snowy courtyard at dusk toward a small dark room at the back wall", "motion": "pan_right", "fx": ["fog"],
-  "lines": [{"t": "沈砚十九岁，刚当上县里的录异吏，", "tone": "normal", "who": "narrator"}, {"t": "专管乡下报上来的怪事。", "tone": "normal", "who": "narrator"}]},
- {"image_prompt": "an old gatekeeper standing in snow outside a doorway, hunched, looking sideways toward the courtyard wall, lantern in hand", "motion": "push_in", "fx": ["flicker"],
-  "lines": [{"t": "门房把钥匙一放，没进屋，只说了一句：", "tone": "normal", "who": "narrator"}, {"t": "夜里要是有人敲门，你别开。", "tone": "whisper", "who": "elder_man"}]},
- {"image_prompt": "the man sits up on a narrow wooden bed in a dark small room, only the outline visible, a faint glow under the door", "motion": "drift_up", "fx": ["fog", "flicker"], "sfx": "heartbeat",
-  "lines": [{"t": "二更天，门真响了。三下，不轻不重。", "tone": "slow", "who": "narrator"}, {"t": "门外的声音有点哑，像是站了很久。", "tone": "whisper", "who": "narrator"}]},
- {"image_prompt": "the man holds an oil lamp at an open door, snow blowing in, the doorway outside empty and dark", "motion": "push_in", "fx": ["shake"], "sfx": "gust",
-  "lines": [{"t": "他点上灯，拔了门闩。", "tone": "tense", "who": "narrator"}, {"t": "门外没有人。", "tone": "slow", "who": "narrator"}]},
- {"image_prompt": "a plain white paper lantern sitting on fresh snow at a threshold, a thin wisp of smoke rising from inside it, low angle", "motion": "pull_out", "fx": ["fog"],
-  "lines": [{"t": "只有一盏灯笼，端端正正放在雪地上。", "tone": "normal", "who": "narrator"}, {"t": "蜡烛刚灭，还冒着一缕烟。", "tone": "normal", "who": "narrator"}]},
- {"image_prompt": "close-up of a young man's hand touching the bamboo handle of a paper lantern in the snow, lamplight", "motion": "push_in", "fx": ["flicker"], "sfx": "thump",
-  "lines": [{"t": "他摸了一下灯笼柄。", "tone": "slow", "who": "narrator"}, {"t": "是热的，像被人攥了很久。", "tone": "whisper", "who": "narrator"}]},
- {"image_prompt": "a dark snowy courtyard at night seen from a doorway, a single line of footprints leading away into the mist", "motion": "drift_up", "fx": ["fog"],
-  "lines": [{"t": "完整故事，在《录异簿》第一章。", "tone": "slow", "who": "narrator"}]}
-]},
-{"title": "雪地上的脚印，走到井边就断了", "ambience": "wind", "shots": [
- {"image_prompt": "a single line of footprints in fresh snow ending exactly at the edge of an old stone well at night", "motion": "push_in", "fx": ["fog"], "sfx": "sting",
-  "lines": [{"t": "脚印走到井边，就没了。", "tone": "slow", "who": "narrator"}]},
- {"image_prompt": "the man crouches by a doorway at night holding an oil lamp, looking at footprints in the snow, seen from behind", "motion": "pan_left", "fx": ["flicker"],
-  "lines": [{"t": "半夜有人敲门借火，开门却没人。", "tone": "normal", "who": "narrator"}, {"t": "沈砚举着灯，往雪地上照。", "tone": "normal", "who": "narrator"}]},
- {"image_prompt": "close-up of flat-soled footprints in snow, evenly spaced, lamplight from the side, snowflakes falling", "motion": "drift_up", "fx": ["fog"], "sfx": "footsteps",
-  "lines": [{"t": "一行脚印，鞋底是平的，", "tone": "normal", "who": "narrator"}, {"t": "一步一步，走得很稳，一点不慌。", "tone": "slow", "who": "narrator"}]},
- {"image_prompt": "the man walks slowly through a snowy courtyard at night beside a line of footprints, lamp held low, mist", "motion": "pan_right", "fx": ["fog"],
-  "lines": [{"t": "他贴着脚印旁边走，一步也不踩坏它。", "tone": "normal", "who": "narrator"}, {"t": "走了二十来步，脚印拐向西角。", "tone": "normal", "who": "narrator"}]},
- {"image_prompt": "an old stone well with a wooden windlass and a frozen rope in a snowy corner of a courtyard at night, lantern light", "motion": "push_in", "fx": ["fog", "flicker"],
-  "lines": [{"t": "西角有一口井。", "tone": "slow", "who": "narrator"}, {"t": "井沿上的雪，化成水又冻成了冰。", "tone": "whisper", "who": "narrator"}]},
- {"image_prompt": "looking down into a deep dark well from above, a lamp held over the opening, only blackness below", "motion": "push_in", "fx": ["shake"], "sfx": "heartbeat",
-  "lines": [{"t": "他往井里照，只看见黑。", "tone": "tense", "who": "narrator"}, {"t": "连水声都没有。", "tone": "whisper", "who": "narrator"}]},
- {"image_prompt": "wide shot of a snowy courtyard around an old well at night, untouched snow all around, one figure standing beside it", "motion": "pull_out", "fx": ["fog"],
-  "lines": [{"t": "他绕着井走了一圈。四周的雪平平整整。", "tone": "normal", "who": "narrator"}, {"t": "那个人走到井边，就再没离开。", "tone": "slow", "who": "narrator"}]},
- {"image_prompt": "a paper lantern resting on the icy rim of a well at night, mist rising from the dark opening", "motion": "drift_up", "fx": ["fog"],
-  "lines": [{"t": "完整故事，在《录异簿》第一章。", "tone": "slow", "who": "narrator"}]}
-]},
-{"title": "三年前，他也写过同一句话", "ambience": "drone", "shots": [
- {"image_prompt": "an old thread-bound notebook open on a wooden desk by oil lamp light, one page torn out at the root, close-up", "motion": "push_in", "fx": ["flicker"], "sfx": "sting",
-  "lines": [{"t": "这本簿子，被人撕掉了七页。", "tone": "slow", "who": "narrator"}]},
- {"image_prompt": "the man opens an old wooden chest in a dim room, an old notebook with a blue cloth cover inside, lamplight", "motion": "pan_right", "fx": ["flicker"],
-  "lines": [{"t": "沈砚当上录异吏，接手了上一任留下的《录异簿》。", "tone": "normal", "who": "narrator"}, {"t": "上一任姓陆，三年前出城办差，再没回来。", "tone": "normal", "who": "narrator"}]},
- {"image_prompt": "close-up of a slip of paper tucked between pages of an old notebook, oil lamp glow, shallow depth of field", "motion": "drift_up", "fx": ["fog", "flicker"],
-  "lines": [{"t": "簿子里夹着一张纸条：", "tone": "normal", "who": "narrator"}, {"t": "存疑一栏，不许空。", "tone": "slow", "who": "narrator"}]},
- {"image_prompt": "the man writing with a brush in a notebook at night by an oil lamp, frost on the window, seen from the side", "motion": "push_in", "fx": ["flicker"],
-  "lines": [{"t": "到任头一夜，有人敲门借火，门外只剩一盏灯笼。", "tone": "normal", "who": "narrator"}, {"t": "他把这件事，一笔一笔记了下来。", "tone": "normal", "who": "narrator"}]},
- {"image_prompt": "pages of an old notebook flipping by themselves on a desk, the lamp flame bending, dark room", "motion": "pan_left", "fx": ["shake", "flicker"], "sfx": "gust",
-  "lines": [{"t": "手一滑，簿子往前翻了好几页。", "tone": "tense", "who": "narrator"}]},
- {"image_prompt": "extreme close-up of an old yellowed page with dense handwriting, lamp light, the writing out of focus", "motion": "push_in", "fx": ["fog"], "sfx": "heartbeat",
-  "lines": [{"t": "那一页，是陆先生的字。", "tone": "slow", "who": "narrator"}, {"t": "腊月十三，二更后。叩门三声，言借火。", "tone": "whisper", "who": "narrator"}]},
- {"image_prompt": "the man sits motionless at a desk at dawn, the oil lamp burned low, pale blue light at the window", "motion": "pull_out", "fx": ["fog"], "sfx": "thump",
-  "lines": [{"t": "和他今夜写的，一字不差。", "tone": "slow", "who": "narrator"}, {"t": "后面几页，都被撕掉了。", "tone": "whisper", "who": "narrator"}]},
- {"image_prompt": "an old notebook closed on a desk beside a cold paper lantern, early morning light, quiet room", "motion": "drift_up", "fx": ["fog"],
-  "lines": [{"t": "完整故事，在《录异簿》第一章。", "tone": "slow", "who": "narrator"}]}
-]}
-]}
+{
+ "shorts": [
+  {
+   "title": "爷爷留下七条规矩，第一条就应验了",
+   "ambience": "wind",
+   "shots": [
+    {
+     "image_prompt": "a worn kraft-paper notebook tied with hemp string lying open on a knee, handwritten rules on the page out of focus, charcoal brazier glow",
+     "motion": "push_in",
+     "fx": [
+      "flicker"
+     ],
+     "lines": [
+      {
+       "t": "我爷爷死后，留给我一本簿子。",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "第一页，是七条规矩。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "a white mourning shed in a snowy village courtyard at night, white paper lanterns hanging by the gate, two white candles burning",
+     "motion": "pan_right",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "1998年腊月，我回村给他守灵。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "他是村里的看事人，谁家出了怪事都找他。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "close-up of the young man's hand holding the notebook near a brazier, page torn neatly halfway down",
+     "motion": "push_in",
+     "fx": [
+      "flicker"
+     ],
+     "lines": [
+      {
+       "t": "规矩一条一条往下写，",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "写到第七条，那半页被人撕掉了。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "the young man seen from behind sitting alone on a low stool before a candlelit altar, snow falling outside the shed",
+     "motion": "drift_up",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "第一条写的是：",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "下雪的夜里有人敲门借火，不开门，不应声。",
+       "tone": "slow",
+       "who": "grandpa"
+      }
+     ]
+    },
+    {
+     "image_prompt": "snow falling on the white cloth roof of a mourning shed at night, a dim bulb on a pole beyond the wall",
+     "motion": "pan_left",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "那天夜里十一点多，下雪了。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ],
+     "sfx": "gust"
+    },
+    {
+     "image_prompt": "a closed old wooden courtyard gate at night from inside, snow drifting under it, faint shadow outside",
+     "motion": "push_in",
+     "fx": [
+      "fog",
+      "flicker"
+     ],
+     "lines": [
+      {
+       "t": "后半夜，院门响了。三下，不轻不重。",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "借个火。",
+       "tone": "whisper",
+       "who": "ghost"
+      }
+     ],
+     "sfx": "knock"
+    },
+    {
+     "image_prompt": "the young man's hand resting on a wooden door bolt, knuckles pale in cold blue light",
+     "motion": "push_in",
+     "fx": [
+      "shake"
+     ],
+     "lines": [
+      {
+       "t": "我没出声。门外静了很久。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "然后那声音近了，像脸贴在门缝上。",
+       "tone": "tense",
+       "who": "narrator"
+      },
+      {
+       "t": "借个火。",
+       "tone": "whisper",
+       "who": "ghost"
+      }
+     ],
+     "sfx": "heartbeat"
+    },
+    {
+     "image_prompt": "the young man standing behind the gate holding fire tongs, back to camera, breath visible in cold air",
+     "motion": "pull_out",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "我跟自己说，是邻居，灶膛灭了。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "我拔开了门闩。",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "门外有什么，我后来想了一整夜。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "black frame with faint snowfall, a single white paper lantern far away in darkness",
+     "motion": "drift_up",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "完整故事，在《七条规矩》第一章。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "门外没人，只有一盏还温着的灯笼",
+   "ambience": "night",
+   "shots": [
+    {
+     "image_prompt": "an open courtyard gate at night, nobody outside, a single white paper lantern sitting upright on the snow at the threshold",
+     "motion": "push_in",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "我拉开院门，门外没有人。",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "只有一盏白纸灯笼，端端正正放在雪地上。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "close-up of a white paper lantern, a thin wisp of smoke rising from a just-extinguished candle wick",
+     "motion": "push_in",
+     "fx": [
+      "flicker"
+     ],
+     "lines": [
+      {
+       "t": "跟我家门口挂的，一模一样。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "蜡烛刚灭，烛芯还冒着烟。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "the young man's fingers touching a bamboo lantern handle in the snow, close-up",
+     "motion": "push_in",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "我伸手碰了一下竹柄。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "是热的。",
+       "tone": "whisper",
+       "who": "narrator"
+      }
+     ],
+     "sfx": "sting"
+    },
+    {
+     "image_prompt": "extreme close-up of the bamboo handle, frost around it, a faint warm glow",
+     "motion": "drift_up",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "不是蜡烛烤的那种热，",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "是被人手攥了很久，攥出来的温热。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "a single line of flat-soled cloth shoe prints in fresh snow leading away from a gate along a village lane, flashlight beam",
+     "motion": "pan_right",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "雪地上有一行脚印，平底布鞋。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "走得很稳，一点不慌。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ],
+     "sfx": "footsteps"
+    },
+    {
+     "image_prompt": "the young man walking with a flashlight along a dark snowy village lane past a brick wall, seen from behind",
+     "motion": "pan_right",
+     "fx": [
+      "fog",
+      "flicker"
+     ],
+     "lines": [
+      {
+       "t": "我顺着脚印往村西走。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "村西，有一口老井。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "an old village well with a wooden windlass in snow at night, the stone rim glazed with thin shining ice, flashlight beam",
+     "motion": "push_in",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "脚印走到井沿，就没了。",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "井沿上没有雪，结着一层亮冰。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "flashlight beam pointing down into a deep black well, nothing visible",
+     "motion": "drift_up",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "那是我爷爷坐着死去的地方。",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "四周雪地平平整整，没有第二行脚印。",
+       "tone": "whisper",
+       "who": "narrator"
+      }
+     ],
+     "sfx": "heartbeat"
+    },
+    {
+     "image_prompt": "dark snowy field around the well, the flashlight lying on the snow",
+     "motion": "pull_out",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "那个人走到井边，就再没离开。",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "完整故事，在《七条规矩》第一章。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "死去三天的爷爷，写下了今晚的事",
+   "ambience": "drone",
+   "shots": [
+    {
+     "image_prompt": "the young man sitting before a candlelit altar at dawn, a white paper lantern under the table, exhausted",
+     "motion": "push_in",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "我爷爷死了三天。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "可今天早上，我在他的簿子上，看到了他的字。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "hands flipping pages of an old kraft-paper notebook, dense handwritten columns, soft candlelight",
+     "motion": "pan_left",
+     "fx": [
+      "flicker"
+     ],
+     "lines": [
+      {
+       "t": "他是村里的看事人，记了五十年怪事。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "每条都分四栏：所见，所闻，所查，存疑。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "close-up of a page, a column of handwriting with the last section partly visible, out of focus",
+     "motion": "push_in",
+     "fx": [
+      "flicker"
+     ],
+     "lines": [
+      {
+       "t": "前三栏查得清清楚楚，",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "最后一栏，从来不空着。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "a closed wooden gate at night with snow, a white paper lantern on the ground outside",
+     "motion": "drift_up",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "昨晚有人敲门借火。门外只剩一盏灯笼，",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "脚印走到老井，就没了。",
+       "tone": "normal",
+       "who": "narrator"
+      }
+     ],
+     "sfx": "knock"
+    },
+    {
+     "image_prompt": "dawn light through a window onto the notebook, the young man's hand stops on the last page",
+     "motion": "push_in",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "天快亮，我想把这事记下来。",
+       "tone": "normal",
+       "who": "narrator"
+      },
+      {
+       "t": "翻到最后一页，手停住了。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "macro shot of fresh black ink on old paper, wet sheen, handwriting blurred",
+     "motion": "push_in",
+     "fx": [
+      "flicker"
+     ],
+     "lines": [
+      {
+       "t": "上面有一条新写的，墨还没干。",
+       "tone": "tense",
+       "who": "narrator"
+      },
+      {
+       "t": "腊月十三。门外白纸灯笼一盏，烛新灭，柄温。",
+       "tone": "slow",
+       "who": "grandpa"
+      }
+     ],
+     "sfx": "sting"
+    },
+    {
+     "image_prompt": "the young man's face in shadow, side profile, looking at the page, candle flicker",
+     "motion": "push_in",
+     "fx": [
+      "shake"
+     ],
+     "lines": [
+      {
+       "t": "瘦而硬，一笔不苟。是我爷爷的字。",
+       "tone": "whisper",
+       "who": "narrator"
+      },
+      {
+       "t": "存疑一栏，只有一行：",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    },
+    {
+     "image_prompt": "black frame, faint candle glow at the edge",
+     "motion": "drift_up",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "来借火的，是我。",
+       "tone": "slow",
+       "who": "grandpa"
+      }
+     ],
+     "sfx": "heartbeat"
+    },
+    {
+     "image_prompt": "an old paper wall calendar hanging on a whitewashed brick wall in dim dawn light",
+     "motion": "pull_out",
+     "fx": [
+      "fog"
+     ],
+     "lines": [
+      {
+       "t": "我看了一眼挂历。腊月十三，就是今天。",
+       "tone": "slow",
+       "who": "narrator"
+      },
+      {
+       "t": "完整故事，在《七条规矩》第一章。",
+       "tone": "slow",
+       "who": "narrator"
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

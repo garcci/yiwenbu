@@ -1,34 +1,41 @@
 {
-  "series_name": "录异簿",
-  "tagline": "怪事多半有破绽，剩下那一分没人说得清",
-  "visual_style": "realistic cinematic film still from a historical drama set two thousand years ago, 35mm film photography, dark low-key lighting lit only by paper lanterns and oil lamps, cold desaturated teal and grey tones, ancient small county town in northern China in deep winter, rammed earth walls, wooden houses, snow on the ground, Han dynasty clothing, heavy film grain, eerie quiet atmosphere, shallow depth of field",
+  "series_name": "七条规矩",
+  "tagline": "爷爷留下七条规矩，第七条被撕掉了",
+  "visual_style": "realistic cinematic film still, 35mm film photography, a poor village in the hills of northern China in the winter of 1998, brick and mud houses, bare trees, snow on the ground, single dim tungsten bulbs and paper lanterns, cold blue night with warm small lights, desaturated tones, heavy film grain, quiet eerie atmosphere, shallow depth of field",
   "accent_color": "#B23A2B",
   "voice": "zh-CN-YunjianNeural",
   "outro_text": "{source} · 原创小说 · 内容由AI辅助生成",
-  "audio_disclaimer": "本节目由AI辅助创作和配音，故事纯属虚构。录异簿，第{n}章，{title}。",
-  "character": "a lean young man of nineteen in a plain dark grey robe with a black cloth headband, a thin bound notebook tucked at his waist",
+  "audio_disclaimer": "本节目由AI辅助创作和配音，故事纯属虚构。七条规矩，第{n}章，{title}。",
+  "character": "a lean young man of twenty-two in an old black padded cotton coat and dark trousers, short hair, holding a small worn kraft-paper notebook tied with hemp string",
   "gdrive_text_folder": "15-gog-ebKAsGBQsZU8jFk6AhGvlae4r7",
   "gdrive_output_folder": "1YD9y4TsKR_HpmOars1CEvDW8VXNjA2Ih",
   "cast": {
-    "narrator": "旁白：讲古人，第三人称叙述",
-    "shenyan": "沈砚：19岁男，新任录异吏，冷静较真",
-    "suwan": "苏晚：17岁女，药铺孙女，说话快，胆大",
-    "laozhou": "老周：60岁男，更夫，胆小嘴碎",
-    "elder_man": "其他中老年男性配角，如门房、县令、韩员外",
-    "young_man": "其他青壮年男性配角，如马六、衙役",
-    "woman": "其他女性配角",
-    "ghost": "来历不明、说不清是人是鬼的声音，如半夜敲门借火的人"
+    "narrator": "我（沈砚）：第一人称叙述，22岁男，在县城汽修厂当学徒，冷静较真",
+    "shenyan": "沈砚（我）说出口的台词，和叙述同一个人",
+    "grandpa": "爷爷沈怀山：81岁去世的看事人，只在回忆和看事簿的字里出现",
+    "suwan": "苏晚：村卫生所的年轻女大夫，说话快，胆大",
+    "laozhou": "老周：60多岁的扎纸匠，嘴碎，知道得比说的多",
+    "erhshu": "二叔：50岁男，沈砚的二叔，给韩老板的煤窑当工头，烟嗓",
+    "elder_man": "其他中老年男性，如韩老板、老孙头、村支书",
+    "young_man": "其他青壮年男性，如刘二、窑工",
+    "woman": "其他女性",
+    "ghost": "说不清是人是鬼的声音，如半夜敲门借火的人"
   },
   "voices": {
     "narrator": {
-      "edge": "zh-CN-YunjianNeural",
-      "minimax": "male-qn-jingying",
-      "doubao": "zh_male_m191_uranus_bigtts"
+      "edge": "zh-CN-YunxiNeural",
+      "minimax": "male-qn-qingse",
+      "doubao": "zh_male_ruyayichen_uranus_bigtts"
     },
     "shenyan": {
       "edge": "zh-CN-YunxiNeural",
       "minimax": "male-qn-qingse",
       "doubao": "zh_male_ruyayichen_uranus_bigtts"
+    },
+    "grandpa": {
+      "edge": "zh-CN-YunjianNeural",
+      "minimax": "presenter_male",
+      "doubao": "zh_male_m191_uranus_bigtts"
     },
     "suwan": {
       "edge": "zh-CN-XiaoyiNeural",
@@ -40,10 +47,15 @@
       "minimax": "presenter_male",
       "doubao": "zh_male_m191_uranus_bigtts"
     },
+    "erhshu": {
+      "edge": "zh-CN-YunjianNeural",
+      "minimax": "male-qn-jingying",
+      "doubao": "zh_male_m191_uranus_bigtts"
+    },
     "elder_man": {
       "edge": "zh-CN-YunyangNeural",
       "minimax": "presenter_male",
-      "doubao": "zh_male_ruyayichen_uranus_bigtts"
+      "doubao": "zh_male_m191_uranus_bigtts"
     },
     "young_man": {
       "edge": "zh-CN-YunxiNeural",
@@ -56,19 +68,22 @@
       "doubao": "zh_female_tianmeixiaoyuan_uranus_bigtts"
     },
     "ghost": {
-      "edge": "zh-CN-YunyangNeural",
+      "edge": "zh-CN-YunjianNeural",
       "minimax": "presenter_male",
       "doubao": "zh_male_m191_uranus_bigtts"
     }
   },
   "names": {
     "沈砚": "shenyan",
+    "砚儿": "shenyan",
+    "爷爷": "grandpa",
     "苏晚": "suwan",
+    "苏大夫": "suwan",
     "老周": "laozhou",
-    "门房": "elder_man",
-    "马六": "young_man",
-    "县令": "elder_man",
-    "韩员外": "elder_man"
+    "二叔": "erhshu",
+    "韩老板": "elder_man",
+    "老孙头": "elder_man",
+    "刘二": "young_man"
   },
-  "_voices_note": "doubao 是豆包语音2.0的 voice_type（_uranus_bigtts 结尾）。已确认可用：m191（云舟）、vv；其余按公开列表填写。目前2.0男声可选少，老周和旁白暂共用云舟，靠语气区分，找到更合适的再换"
+  "_voices_note": "doubao 是豆包语音2.0的 voice_type（_uranus_bigtts 结尾）。已确认可用：m191（云舟）、vv。第一人称叙述和沈砚台词同一声线；鬼声用爷爷那一路的低沉男声，靠 whisper 语气区分。"
 }
