@@ -34,6 +34,7 @@ TONES = {
     "whisper": ("-18%", "-8Hz", "-25%", 0.70),
     "tense":   ("+6%",  "+0Hz", "+5%",  0.25),
 }
+VIDEO_PROVIDER = os.environ.get("VIDEO_PROVIDER", "none")  # none / minimax
 MOTIONS = ["push_in", "pan_right", "drift_up", "pull_out", "pan_left", "push_in"]
 
 
@@ -85,38 +86,93 @@ def parse_json(text):
 
 
 def write_script(topic, provider):
+    """一次写 3 稿，再让模型当责编挑最好的一稿并精修。"""
     tpl = (ROOT / "episode_prompt.txt").read_text(encoding="utf-8")
     prompt = tpl.replace("{source}", topic["source"]).replace("{summary}", topic["summary"])
-    for attempt in range(3):
+    drafts = []
+    for attempt in range(6):
+        if len(drafts) == 3:
+            break
         try:
             ep = parse_json(llm(prompt, provider))
             chars = sum(len(l["t"]) for s in ep["shots"] for l in lines_of(s))
-            if 240 <= chars <= 480 and 7 <= len(ep["shots"]) <= 12:
-                ep["source"] = topic["source"]
-                return ep
-            print(f"  稿件长度不合格（{chars}字/{len(ep['shots'])}镜），重写")
+            if 280 <= chars <= 520 and 8 <= len(ep["shots"]) <= 13:
+                drafts.append(ep)
+            else:
+                print(f"  稿件长度不合格（{chars}字/{len(ep['shots'])}镜），重写")
         except Exception as e:  # noqa: BLE001
             print(f"  第{attempt + 1}次生成失败：{e}")
-    raise SystemExit("稿件生成失败")
+    if not drafts:
+        raise SystemExit("稿件生成失败")
+    best = drafts[0]
+    if len(drafts) > 1:
+        edit = (ROOT / "editor_prompt.txt").read_text(encoding="utf-8")
+        listing = "\n\n".join(f"【第{k + 1}稿】\n{json.dumps(d, ensure_ascii=False)}" for k, d in enumerate(drafts))
+        try:
+            best = parse_json(llm(edit.replace("{drafts}", listing), provider))
+            assert best["shots"]
+        except Exception as e:  # noqa: BLE001
+            print(f"  精修失败，用第1稿：{e}")
+            best = drafts[0]
+    best["source"] = topic["source"]
+    return best
 
 
 # ---------------- 配音 ----------------
-async def _edge(text, out, rate, pitch, volume):
+async def _edge(text, out, voice, rate, pitch, volume):
     import edge_tts
-    await edge_tts.Communicate(text, SERIES["voice"], rate=rate, pitch=pitch, volume=volume).save(str(out))
+    await edge_tts.Communicate(text, voice, rate=rate, pitch=pitch, volume=volume).save(str(out))
 
 
-def voice_line(text, tone, wav, tts_provider):
+# 角色 → 声音。series.json 的 voices 里可以覆盖；edge 是免费音色，minimax 是付费高品质音色
+VOICES = SERIES.get("voices", {})
+MINIMAX_EMOTION = {"normal": "calm", "slow": "sad", "whisper": "fearful", "tense": "fearful"}
+MINIMAX_SPEED = {"normal": 0.95, "slow": 0.82, "whisper": 0.85, "tense": 1.08}
+MINIMAX_HOST = os.environ.get("MINIMAX_HOST", "https://api.minimaxi.com")
+
+
+def _minimax_tts(text, out, who, tone):
+    """MiniMax T2A v2。……换成 <#秒#> 停顿标记，让模型在句中自然换气。"""
+    v = VOICES.get(who, VOICES.get("narrator", {})).get("minimax", "male-qn-jingying")
+    t = re.sub(r"……$", "", text).replace("……", "<#0.6#>")
+    body = {"model": os.environ.get("MINIMAX_TTS_MODEL", "speech-2.8-hd"), "text": t, "stream": False,
+            "voice_setting": {"voice_id": v, "speed": MINIMAX_SPEED.get(tone, 0.95), "vol": 1,
+                              "pitch": -2 if who == "ghost" else 0, "emotion": MINIMAX_EMOTION.get(tone, "calm")},
+            "audio_setting": {"sample_rate": 44100, "format": "mp3", "channel": 1}}
+    h = {"Authorization": f"Bearer {os.environ['MINIMAX_API_KEY'].strip()}"}
+    for attempt in range(4):
+        try:
+            r = requests.post(f"{MINIMAX_HOST}/v1/t2a_v2", headers=h, json=body, timeout=90).json()
+            code = r.get("base_resp", {}).get("status_code")
+            if code == 0:
+                out.write_bytes(bytes.fromhex(r["data"]["audio"]))
+                return
+            print(f"    MiniMax 配音返回 {code}：{r.get('base_resp')}")
+            if code == 2013 and "emotion" in body["voice_setting"]:  # 参数不被支持时去掉情绪再试
+                body["voice_setting"].pop("emotion")
+                continue
+        except requests.RequestException as e:
+            print(f"    MiniMax 网络错误：{e}")
+        time.sleep(3 * (attempt + 1))
+    raise SystemExit(f"MiniMax 配音失败：{text}")
+
+
+def voice_line(text, tone, wav, tts_provider, who="narrator"):
     """配一句，已有缓存就复用。返回该句后的停顿秒数。"""
     rate, pitch, vol, pause = TONES.get(tone, TONES["normal"])
     if text.endswith(("……", "…")):
         pause += 0.4
     if not wav.exists():
-        if tts_provider == "edge":
-            mp3 = wav.with_suffix(".mp3")
+        mp3 = wav.with_suffix(".mp3")
+        if tts_provider == "minimax":
+            _minimax_tts(text, mp3, who, tone)
+        elif tts_provider == "edge":
+            ev = VOICES.get(who, {}).get("edge") or SERIES["voice"]
+            if who == "ghost":  # 免费音色里让“鬼”更低更虚
+                pitch = f"{int(pitch.rstrip('Hz')) - 6:+d}Hz"
             for attempt in range(4):  # edge-tts 是微软免费接口，偶尔断线，重试几次
                 try:
-                    asyncio.run(asyncio.wait_for(_edge(text, mp3, rate, pitch, vol), 60))
+                    asyncio.run(asyncio.wait_for(_edge(text, mp3, ev, rate, pitch, vol), 60))
                     if mp3.exists() and mp3.stat().st_size > 1000:
                         break
                 except Exception as e:  # noqa: BLE001
@@ -124,9 +180,12 @@ def voice_line(text, tone, wav, tts_provider):
                 time.sleep(3 * (attempt + 1))
             else:
                 raise SystemExit(f"配音失败：{text}")
-            # 轻微的房间混响，让声音像在屋里讲故事，而不是播报
-            run(["ffmpeg", "-y", "-i", str(mp3), "-af", "aecho=0.8:0.6:45|90:0.18|0.10,highpass=f=70",
-                 "-ar", str(SR), "-ac", "1", str(wav)])
+        if tts_provider in ("minimax", "edge"):
+            # 轻微的房间混响，让声音像在屋里讲故事；“鬼”的声音再加一层空洞回声
+            af = "aecho=0.8:0.6:45|90:0.18|0.10,highpass=f=70"
+            if who == "ghost":
+                af = "aecho=0.8:0.7:60|140|260:0.35|0.25|0.15,highpass=f=120,lowpass=f=5000"
+            run(["ffmpeg", "-y", "-i", str(mp3), "-af", af, "-ar", str(SR), "-ac", "1", str(wav)])
         else:  # silent：离线试跑，按语速估时长
             sec = max(1.2, len(text) / (4.6 if tone in ("normal", "tense") else 3.6))
             run(["ffmpeg", "-y", "-f", "lavfi", "-i", f"anullsrc=r={SR}:cl=mono", "-t", f"{sec:.2f}", str(wav)])
@@ -232,8 +291,34 @@ SAFE_WORDS = [(r"\b(feet|foot|legs?|bare\w*|body|bodies|skin|naked|blood\w*|corp
 FALLBACK_PROMPT = "an empty misty country road at night in ancient rural China, a faint paper lantern glow in the distance"
 
 
-def gen_image(prompt, out, provider):
+def _seedream(prompt, out):
+    """火山方舟 Seedream：直接出竖版 9:16，写实质感比 FLUX schnell 好得多。"""
+    body = {"model": os.environ.get("SEEDREAM_MODEL", "doubao-seedream-4-0-250828"), "prompt": prompt,
+            "size": "1440x2560", "response_format": "b64_json", "watermark": False}
+    h = {"Authorization": f"Bearer {os.environ['ARK_API_KEY'].strip()}"}
+    for attempt in range(4):
+        try:
+            r = requests.post("https://ark.cn-beijing.volces.com/api/v3/images/generations",
+                              headers=h, json=body, timeout=180)
+            if r.ok:
+                out.write_bytes(base64.b64decode(r.json()["data"][0]["b64_json"]))
+                return
+            print(f"    Seedream 返回 {r.status_code}：{r.text[:300]}")
+            if r.status_code == 400 and "sensitive" in r.text.lower():
+                body["prompt"] = f"{FALLBACK_PROMPT}, {SERIES['visual_style']}"
+        except requests.RequestException as e:
+            print(f"    Seedream 网络错误：{e}")
+        time.sleep(5 * (attempt + 1))
+    raise SystemExit("Seedream 出图失败")
+
+
+def gen_image(prompt, out, provider, character=""):
+    # 主角外貌描述写在每集的 character 里，凡是画到人的镜头都带上，保证前后是同一个人
+    if character and re.search(r"\b(man|he|his|traveler|figure|person)\b", prompt, re.I):
+        prompt = f"{prompt}. The man is {character}"
     full = f"{prompt}, {SERIES['visual_style']}"
+    if provider == "seedream":
+        return _seedream(full, out)
     if provider == "cloudflare":
         clean = prompt
         for pat, rep in SAFE_WORDS:
@@ -301,6 +386,56 @@ def shot_clip(frame, out, dur, kind, fx, w, h):
          "-t", f"{dur:.3f}", "-r", str(FPS), "-pix_fmt", "yuv420p", "-c:v", "libx264", "-preset", "veryfast", str(out)])
 
 
+def gen_video(frame, out, prompt):
+    """MiniMax 海螺图生视频：以本镜头画面为首帧，生成 6 秒真实运动（雾流、灯晃、人走）。"""
+    h = {"Authorization": f"Bearer {os.environ['MINIMAX_API_KEY'].strip()}"}
+    img = Image.open(frame).convert("RGB")
+    img.thumbnail((1080, 1920))
+    import io
+    buf = io.BytesIO()
+    img.save(buf, "JPEG", quality=92)
+    body = {"model": os.environ.get("MINIMAX_VIDEO_MODEL", "MiniMax-Hailuo-02"),
+            "prompt": prompt + ", slow subtle cinematic motion, static camera, no cuts",
+            "first_frame_image": "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode(),
+            "duration": 6, "resolution": os.environ.get("MINIMAX_VIDEO_RES", "768P")}
+    r = requests.post(f"{MINIMAX_HOST}/v1/video_generation", headers=h, json=body, timeout=120).json()
+    task = r.get("task_id")
+    if not task:
+        print(f"    图生视频提交失败，这个镜头改用推拉：{r.get('base_resp')}")
+        return False
+    for _ in range(120):  # 最多等 20 分钟
+        time.sleep(10)
+        q = requests.get(f"{MINIMAX_HOST}/v1/query/video_generation", headers=h,
+                         params={"task_id": task}, timeout=60).json()
+        st = q.get("status")
+        if st == "Success":
+            f = requests.get(f"{MINIMAX_HOST}/v1/files/retrieve", headers=h,
+                             params={"file_id": q["file_id"]}, timeout=60).json()
+            data = requests.get(f["file"]["download_url"], timeout=300).content
+            out.write_bytes(data)
+            return True
+        if st == "Fail":
+            print(f"    图生视频失败，这个镜头改用推拉：{q}")
+            return False
+    print("    图生视频等待超时，这个镜头改用推拉")
+    return False
+
+
+def video_clip(src, out, dur, fx, w, h):
+    """把图生视频铺满画面；旁白比视频长时，先正放再倒放接上，不会突然定格。"""
+    vd = duration(src)
+    loops = int(dur // (2 * vd)) + 1
+    base = (f"[0:v]scale={w}:{h}:force_original_aspect_ratio=increase,crop={w}:{h},fps={FPS},setsar=1,split[a][b];"
+            f"[b]reverse[r];[a][r]concat=n=2:v=1:a=0,loop={loops}:size={int(2 * vd * FPS)}")
+    chain = []
+    if "flicker" in fx:
+        chain.append("eq=brightness='0.03*sin(2*PI*t*2.3)':eval=frame")
+    g = base + ("," + ",".join(chain) if chain else "") + ",format=yuv420p[base]"
+    g += f";[base]fade=t=in:st=0:d=0.3,fade=t=out:st={max(dur - 0.3, 0):.3f}:d=0.3[v]"
+    run(["ffmpeg", "-y", "-i", str(src), "-filter_complex", g, "-map", "[v]", "-t", f"{dur:.3f}",
+         "-r", str(FPS), "-pix_fmt", "yuv420p", "-c:v", "libx264", "-preset", "veryfast", str(out)])
+
+
 # ---------------- 字幕 ----------------
 def ass_time(t):
     h, rem = divmod(t, 3600)
@@ -352,21 +487,27 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
         print(f"  镜头 {i + 1}/{len(ep['shots'])}")
         raw, frame = workdir / f"img{i:02d}.jpg", workdir / f"{tag}frame{i:02d}.jpg"
         if not raw.exists():
-            gen_image(shot["image_prompt"], raw, img_provider)
+            gen_image(shot["image_prompt"], raw, img_provider, ep.get("character", ""))
         frame_from(raw, frame, w, h)
         shot_start = t if i else 0.0
         if shot.get("sfx") in SFX:
             sfx_events.append((shot["sfx"], max(t - 0.2, 0)))
         for j, line in enumerate(lines_of(shot)):
             a = workdir / f"a{i:02d}_{j}.wav"
-            pause = voice_line(line["t"], line.get("tone", "normal"), a, tts_provider)
+            pause = voice_line(line["t"], line.get("tone", "normal"), a, tts_provider, line.get("who", "narrator"))
             d = duration(a)
             cues.append((t, t + d, line["t"]))
             voice_parts.append((a, t))
             t += d + pause
         clip = workdir / f"{tag}clip{i:02d}.mp4"
         kind = shot.get("motion") or MOTIONS[i % len(MOTIONS)]
-        shot_clip(frame, clip, t - shot_start, kind, shot.get("fx", ["fog"]), w, h)
+        vid = workdir / f"vid{i:02d}.mp4"
+        if shot.get("video_prompt") and VIDEO_PROVIDER == "minimax" and not vid.exists():
+            gen_video(frame, vid, shot["video_prompt"])
+        if vid.exists():
+            video_clip(vid, clip, t - shot_start, shot.get("fx", []), w, h)
+        else:
+            shot_clip(frame, clip, t - shot_start, kind, shot.get("fx", ["fog"]), w, h)
         clips.append(clip)
 
     # 片尾：最后一个画面慢慢暗下去，显示出处和 AI 标识
@@ -421,8 +562,8 @@ def main():
     ap.add_argument("--next", action="store_true", help="取 topics.json 里下一个未做的选题")
     ap.add_argument("--episode", help="已有稿件 JSON")
     ap.add_argument("--llm", default=os.environ.get("LLM_PROVIDER", "github"), choices=["github", "cloudflare"])
-    ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"), choices=["cloudflare", "placeholder"])
-    ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "silent"])
+    ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"), choices=["cloudflare", "seedream", "placeholder"])
+    ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "silent"])
     args = ap.parse_args()
 
     out_dir = ROOT / "output"

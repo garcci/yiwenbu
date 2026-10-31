@@ -18,5 +18,19 @@
     "结尾不点破、不说教，留一句老辈人的话或一个说不清的细节"
   ],
   "font_name": "Noto Sans CJK SC",
-  "audio_disclaimer": "本节目由AI辅助创作和配音，故事改编自古籍，请勿当真。异闻簿，老辈人讲的怪事。本集改编自{source}：{title}。"
+  "audio_disclaimer": "本节目由AI辅助创作和配音，故事改编自古籍，请勿当真。异闻簿，老辈人讲的怪事。本集改编自{source}：{title}。",
+  "voices": {
+    "narrator": {
+      "edge": "zh-CN-YunjianNeural",
+      "minimax": "male-qn-jingying"
+    },
+    "man": {
+      "edge": "zh-CN-YunxiNeural",
+      "minimax": "male-qn-qingse"
+    },
+    "ghost": {
+      "edge": "zh-CN-YunyangNeural",
+      "minimax": "presenter_male"
+    }
+  }
 }

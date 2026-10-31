@@ -16,7 +16,7 @@ permissions:
 jobs:
   render:
     runs-on: ubuntu-latest
-    timeout-minutes: 45
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - name: 安装依赖
@@ -33,6 +33,12 @@ jobs:
           GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
           GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
           GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+          MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          # 档位开关：仓库 Settings → Secrets and variables → Actions → Variables 里改，不用动代码
+          IMAGE_PROVIDER: ${{ vars.IMAGE_PROVIDER || 'cloudflare' }}
+          TTS_PROVIDER: ${{ vars.TTS_PROVIDER || 'edge' }}
+          VIDEO_PROVIDER: ${{ vars.VIDEO_PROVIDER || 'none' }}
         run: |
           if [ -n "${{ github.event.inputs.episode }}" ]; then
             python make_episode.py --episode "${{ github.event.inputs.episode }}"
