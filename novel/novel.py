@@ -51,9 +51,10 @@ def ask(prompt, provider=None):
     for p in order:
         try:
             if p in ("ark", "openai"):
-                if p == "ark":  # 火山方舟（豆包），和出图共用 ARK_API_KEY，每章花费不到一分钱
-                    base, key = "https://ark.cn-beijing.volces.com/api/v3", os.environ["ARK_API_KEY"]
-                    model = os.environ.get("ARK_LLM_MODEL") or "doubao-seed-1-6-flash-250828"
+                if p == "ark":  # 火山方舟订阅套餐：必须走 /api/plan/v3，走 /api/v3 会额外计费
+                    base = (os.environ.get("ARK_BASE_URL") or "https://ark.cn-beijing.volces.com/api/plan/v3").rstrip("/")
+                    key = os.environ["ARK_API_KEY"]
+                    model = os.environ.get("ARK_LLM_MODEL") or "doubao-seed-2.1-pro"
                 else:
                     base = (os.environ.get("LLM_BASE_URL") or "https://open.bigmodel.cn/api/paas/v4").rstrip("/")
                     key, model = os.environ["LLM_API_KEY"], os.environ.get("LLM_MODEL") or "glm-4-flash"
