@@ -31,6 +31,28 @@ me.VOICES = me.SERIES["voices"] = BOOK["voices"]
 # 敲门声：三下闷响
 me.SFX["knock"] = ("anoisesrc=c=brown:a=1:r={sr}:d=0.09,lowpass=f=700,afade=t=out:st=0.01:d=0.08,volume=4,"
                    "apad=pad_dur=0.42,aloop=loop=2:size=22000", 1.6)
+
+# 豆包2.0里只确认过云舟（m191）和vv两个音色；其他音色要是接口不认，换成同性别的已确认音色重试，别让整章失败
+_SAFE_DOUBAO = {"zh_male_m191_uranus_bigtts", "zh_female_vv_uranus_bigtts"}
+_orig_doubao = me._doubao_tts
+
+
+def _doubao_safe(text, out, who, tone):
+    try:
+        return _orig_doubao(text, out, who, tone)
+    except BaseException as e:  # noqa: BLE001
+        v = me.VOICES.get(who, {}).get("doubao", "")
+        if v in _SAFE_DOUBAO or not v:
+            raise
+        fb = "zh_female_vv_uranus_bigtts" if "female" in v else "zh_male_m191_uranus_bigtts"
+        print(f"    音色 {v} 不可用（{e}），{who} 改用 {fb}")
+        for vv in me.VOICES.values():
+            if vv.get("doubao") == v:
+                vv["doubao"] = fb
+        return _orig_doubao(text, out, who, tone)
+
+
+me._doubao_tts = _doubao_safe
 CN = "零一二三四五六七八九十"
 
 

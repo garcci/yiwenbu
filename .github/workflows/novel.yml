@@ -41,7 +41,7 @@ jobs:
           MINIMAX_API_KEY: ${{ secrets.MINIMAX_API_KEY }}
           ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
           # 写稿和标注用的大模型，和异闻簿共用（任意 OpenAI 兼容接口）
-          SEEDREAM_MODEL: ${{ vars.SEEDREAM_MODEL || 'doubao-seedream-4-0-250828' }}
+          SEEDREAM_MODEL: ${{ vars.SEEDREAM_MODEL || 'doubao-seedream-5.0-pro' }}
           ARK_LLM_MODEL: ${{ vars.ARK_LLM_MODEL }}
           LLM_API_KEY: ${{ secrets.LLM_API_KEY }}
           LLM_BASE_URL: ${{ vars.LLM_BASE_URL }}
@@ -49,8 +49,8 @@ jobs:
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL }}
           NOVEL_LLM_MODEL: ${{ vars.NOVEL_LLM_MODEL }}
           # 档位开关：小说单独用 NOVEL_ 开头的仓库变量，花钱前先经用户同意
-          IMAGE_PROVIDER: ${{ vars.NOVEL_IMAGE_PROVIDER || 'cloudflare' }}   # 小说单独的开关，默认免费
-          TTS_PROVIDER: ${{ vars.NOVEL_TTS_PROVIDER || 'edge' }}
+          IMAGE_PROVIDER: ${{ vars.NOVEL_IMAGE_PROVIDER || 'seedream' }}   # 小说单独的开关，默认用火山套餐里的 Seedream 5.0 pro
+          TTS_PROVIDER: ${{ vars.NOVEL_TTS_PROVIDER || 'doubao' }}   # 默认用火山套餐里的豆包语音2.0
           VIDEO_PROVIDER: ${{ vars.NOVEL_VIDEO_PROVIDER || 'none' }}
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
