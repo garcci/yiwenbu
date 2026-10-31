@@ -38,7 +38,7 @@ if tts != "none":  # none：只出画面
 
 
 img_p = me.os.environ.get("IMAGE_PROVIDER", "cloudflare")
-for k, shot in enumerate(spec["shots"]):
+for k, shot in enumerate(spec["shots"] if img_p != "none" else []):
     img = work / f"画面{k + 1}_{img_p}.jpg"
     me.gen_image(shot["image_prompt"], img, img_p, spec.get("character", ""))
     outs.append(img)
