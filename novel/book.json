@@ -23,42 +23,42 @@
     "narrator": {
       "edge": "zh-CN-YunjianNeural",
       "minimax": "male-qn-jingying",
-      "doubao": "zh_male_jieshuonansheng_mars_bigtts"
+      "doubao": "zh_male_m191_uranus_bigtts"
     },
     "shenyan": {
       "edge": "zh-CN-YunxiNeural",
       "minimax": "male-qn-qingse",
-      "doubao": "zh_male_qingshuangnanda_mars_bigtts"
+      "doubao": "zh_male_ruyayichen_uranus_bigtts"
     },
     "suwan": {
       "edge": "zh-CN-XiaoyiNeural",
       "minimax": "female-shaonv",
-      "doubao": "zh_female_linjianvhai_moon_bigtts"
+      "doubao": "zh_female_vv_uranus_bigtts"
     },
     "laozhou": {
       "edge": "zh-CN-YunyangNeural",
       "minimax": "presenter_male",
-      "doubao": "zh_male_xionger_mars_bigtts"
+      "doubao": "zh_male_m191_uranus_bigtts"
     },
     "elder_man": {
       "edge": "zh-CN-YunyangNeural",
       "minimax": "presenter_male",
-      "doubao": "zh_male_dongfanghaoran_moon_bigtts"
+      "doubao": "zh_male_ruyayichen_uranus_bigtts"
     },
     "young_man": {
       "edge": "zh-CN-YunxiNeural",
       "minimax": "male-qn-badao",
-      "doubao": "zh_male_yangguangqingnian_moon_bigtts"
+      "doubao": "zh_male_ruyayichen_uranus_bigtts"
     },
     "woman": {
       "edge": "zh-CN-XiaoxiaoNeural",
       "minimax": "female-chengshu",
-      "doubao": "zh_female_wenrouxiaoya_moon_bigtts"
+      "doubao": "zh_female_tianmeixiaoyuan_uranus_bigtts"
     },
     "ghost": {
       "edge": "zh-CN-YunyangNeural",
       "minimax": "presenter_male",
-      "doubao": "zh_male_jieshuonansheng_mars_bigtts"
+      "doubao": "zh_male_m191_uranus_bigtts"
     }
   },
   "names": {
@@ -70,5 +70,5 @@
     "县令": "elder_man",
     "韩员外": "elder_man"
   },
-  "_voices_note": "doubao 一栏是豆包语音的 voice_type，接入时按控制台音色列表核对，不可用的换掉"
+  "_voices_note": "doubao 是豆包语音2.0的 voice_type（_uranus_bigtts 结尾）。已确认可用：m191（云舟）、vv；其余按公开列表填写。目前2.0男声可选少，老周和旁白暂共用云舟，靠语气区分，找到更合适的再换"
 }

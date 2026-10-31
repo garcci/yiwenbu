@@ -262,7 +262,7 @@ def main():
     ap.add_argument("--llm", default="auto", choices=["auto", "none"])
     ap.add_argument("--images", default=os.environ.get("IMAGE_PROVIDER", "cloudflare"),
                     choices=["cloudflare", "seedream", "placeholder"])
-    ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "silent"])
+    ap.add_argument("--tts", default=os.environ.get("TTS_PROVIDER", "edge"), choices=["edge", "minimax", "doubao", "silent"])
     a = ap.parse_args()
     n = a.chapter
     tag = f"ch{n:02d}"
