@@ -55,6 +55,14 @@ class PreviewChecks(unittest.TestCase):
     def test_timestamp_rollover(self):
         self.assertEqual(mod.stamp(59.9996), "00:01:00,000")
 
+    def test_network_diagnostics_redact_credentials(self):
+        exc = RuntimeError('failed Bearer fake-secret https://user:password@host/path?token=private')
+        result = mod.safe_network_error(exc, {"Authorization": "Bearer fake-secret"})
+        message = result["message"]
+        for secret in ("fake-secret", "password", "private"):
+            self.assertNotIn(secret, message)
+        self.assertIn("RuntimeError", result["chain"])
+
     def test_restore_rejects_bad_hash_before_writing(self):
         cfg = copy.deepcopy(self.cfg)
         cfg["resume"] = {"file_id": "test", "sha256": "0" * 64}
