@@ -45,5 +45,11 @@
   "resume": {
     "file_id": "1Ggz5XdFAEBdrA09DJClVWmVx_GGaJzlD",
     "sha256": "3c83b86f582b33b06d93a3fac2eb83aa8ca66642848ade8b542809f5cbaf3a08"
+  },
+  "reuse_frames": {
+    "0": {
+      "file_id": "1-7gR1aeDjN2haBBKqtrZotsZsAjKi1CT",
+      "sha256": "e5fb76bc243720a2257e01658e946ab3b1fb5fd3a6545aeb41f62cb62a50895e"
+    }
   }
 }
