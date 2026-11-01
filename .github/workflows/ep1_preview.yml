@@ -1,0 +1,47 @@
+name: 第一集D声线开场预览
+
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/ep1_preview/request.json"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ep1-d-preview
+  cancel-in-progress: false
+
+jobs:
+  preview:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: 本次成本与稿件校验
+        run: |
+          python -m unittest discover -s tests -p test_ep1_preview.py
+          python video/ep1_preview/run.py
+      - name: 安装音画处理依赖
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg fonts-noto-cjk
+          pip install requests pillow numpy faster-whisper
+      - name: 生成D开场并上传云盘
+        env:
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+        run: python -u video/ep1_preview/run.py --execute
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: ep1-d-preview-review
+          path: work/ep1-preview/
+          retention-days: 1
+          if-no-files-found: ignore
