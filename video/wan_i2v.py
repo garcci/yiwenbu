@@ -22,9 +22,13 @@ img = "data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode()
 
 task = None
 for model in req["models"]:
-    body = {"model": model, "input": {"prompt": req["prompt"], "img_url": img},
-            "parameters": {"resolution": req.get("resolution", "720P"), "duration": req.get("duration", 5),
-                           "prompt_extend": False, "audio": False}}
+    params = {"resolution": req.get("resolution", "720P"), "duration": req.get("duration", 5),
+              "prompt_extend": False, "audio": False}
+    if model.startswith("wan3"):  # 万相3.0：首帧放在 media 里；免费额度30秒（仅北京地域，wan3.0-video 和 -prime 共用）
+        body = {"model": model, "input": {"prompt": req["prompt"], "media": [{"type": "first_frame", "url": img}]},
+                "parameters": {**params, "ratio": "adaptive"}}
+    else:
+        body = {"model": model, "input": {"prompt": req["prompt"], "img_url": img}, "parameters": params}
     if req.get("negative_prompt"):
         body["input"]["negative_prompt"] = req["negative_prompt"]
     r = requests.post(f"{BASE}/services/aigc/video-generation/video-synthesis", json=body, timeout=120,
