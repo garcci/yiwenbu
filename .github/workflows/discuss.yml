@@ -1,9 +1,6 @@
 name: 和Gemini讨论设定
 
 on:
-  push:
-    branches: [claude/project-thread-l4wz3r]
-    paths: ["discuss/r*_prompt.md"]
   workflow_dispatch:
 
 permissions:
