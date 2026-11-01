@@ -1,9 +1,13 @@
 import copy
 import datetime as dt
 import importlib.util
+import hashlib
+import io
 import json
 from pathlib import Path
 import unittest
+import tempfile
+import zipfile
 from unittest import mock
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,6 +54,23 @@ class PreviewChecks(unittest.TestCase):
 
     def test_timestamp_rollover(self):
         self.assertEqual(mod.stamp(59.9996), "00:01:00,000")
+
+    def test_restore_rejects_bad_hash_before_writing(self):
+        cfg = copy.deepcopy(self.cfg)
+        cfg["resume"] = {"file_id": "test", "sha256": "0" * 64}
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(mod, "download_drive", return_value=b"corrupted"):
+            with self.assertRaises(ValueError): mod.restore_audio(cfg, {}, Path(folder))
+            self.assertEqual(list(Path(folder).iterdir()), [])
+
+    def test_restore_rejects_path_escape(self):
+        data = io.BytesIO()
+        with zipfile.ZipFile(data, "w") as z: z.writestr("../outside.wav", "audio")
+        blob = data.getvalue()
+        cfg = copy.deepcopy(self.cfg)
+        cfg["resume"] = {"file_id": "test", "sha256": hashlib.sha256(blob).hexdigest()}
+        with tempfile.TemporaryDirectory() as folder, mock.patch.object(mod, "download_drive", return_value=blob):
+            with self.assertRaises(ValueError): mod.restore_audio(cfg, {}, Path(folder))
+            self.assertEqual(list(Path(folder).iterdir()), [])
 
 
 if __name__ == "__main__": unittest.main()
