@@ -10,6 +10,12 @@ on:
       models:
         description: "要跑的模型，逗号分隔"
         default: "cosyvoice_sft,cosyvoice2,qwen3_tts,kokoro_zh"
+      passage:
+        description: "整段合成的文本文件"
+        default: "voice_test/passage2.txt"
+      suffix:
+        description: "整段输出的套名后缀"
+        default: "_p2"
 
 concurrency:
   group: oss-tts
@@ -98,6 +104,9 @@ jobs:
           du -sh "$MODELS_DIR"/*; df -h /
       - if: steps.pick.outputs.run == '1'
         name: 合成
+        env:
+          PASSAGE: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.passage || 'voice_test/passage2.txt' }}
+          SUFFIX: ${{ github.event.inputs.suffix || '_p2' }}
         run: python -u video/oss_tts/synth.py ${{ matrix.model }} out
       - if: steps.pick.outputs.run == '1' && always()
         uses: actions/upload-artifact@v4
@@ -122,6 +131,21 @@ jobs:
           pattern: tts-*
           path: art
           merge-multiple: true
+      - name: 转写核对（检查有没有念出指令、漏字）
+        run: |
+          [ -d art ] || exit 0
+          pip install -q faster-whisper
+          python - <<'EOF'
+          import glob, json, os
+          from faster_whisper import WhisperModel
+          m = WhisperModel("small", device="cpu", compute_type="int8")
+          res = {}
+          for f in sorted(glob.glob("art/*/*.wav")):
+              segs, _ = m.transcribe(f, language="zh", beam_size=5)
+              res[f[4:]] = "".join(s.text for s in segs)
+              print(f, res[f[4:]], flush=True)
+          json.dump(res, open("art/asr.json", "w"), ensure_ascii=False, indent=1)
+          EOF
       - name: 提交回分支并触发配音盲听
         env:
           GH_TOKEN: ${{ github.token }}
@@ -130,11 +154,12 @@ jobs:
           mkdir -p voice_test/oss_timing
           for d in art/*/; do n=$(basename "$d"); rm -rf "voice_test/$n"; cp -r "$d" "voice_test/$n"; done
           cp art/timing_*.json voice_test/oss_timing/ 2>/dev/null || true
+          [ -f art/asr.json ] && cp art/asr.json "voice_test/oss_timing/asr_${{ github.run_id }}.json"
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add voice_test
           git diff --cached --quiet && { echo "无变化"; exit 0; }
-          git commit -q -m "开源配音：$(ls art | grep -v '^timing_' | tr '\n' ' ')"
+          git commit -q -m "开源配音：$(ls art | grep -v -e '^timing_' -e '^asr' | tr '\n' ' ')"
           for i in 1 2 3 4; do git pull -q --rebase origin claude/project-thread-l4wz3r && git push -q origin HEAD:claude/project-thread-l4wz3r && break; sleep $((i * 5)); done
           # GITHUB_TOKEN 推送不会触发其他 workflow，这里手动触发
           gh workflow run voice_test.yml --ref claude/project-thread-l4wz3r
