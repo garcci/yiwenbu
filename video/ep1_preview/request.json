@@ -1,0 +1,23 @@
+{
+  "title": "第一集借火",
+  "selected_sample": "05-配音盲听2-D.mp3",
+  "narrator": "zh_male_taocheng_uranus_bigtts",
+  "speech_rate": -5,
+  "narrator_style": "像一个普通年轻人平静地跟朋友讲一件自己经历过的真事，自然，不表演，不刻意，不加呼吸声和语气词",
+  "folder_id": "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR",
+  "target_seconds": 15,
+  "cost_check_expires_utc": "2026-11-01T10:17:00+00:00",
+  "tts_overage_disabled": true,
+  "actions_spending_blocked": true,
+  "opening": [
+    {"id": "grandfather", "role": "爷爷（临时配角，待试听）", "speaker": "zh_male_dayi_uranus_bigtts", "style": "一个年长男人平常地叫家里人帮个忙，自然、轻声，不演鬼，不加混响，不故意拖慢。", "text": "砚儿——借个火。", "gap_after": 0.3},
+    {"id": "shen", "role": "沈砚", "speaker": "zh_male_taocheng_uranus_bigtts", "text": "哎。", "gap_after": 0.5},
+    {"id": "narrator", "role": "沈砚旁白", "speaker": "zh_male_taocheng_uranus_bigtts", "text": "话一出口，我后背就凉了。我爷爷，是前天夜里死的。", "gap_after": 0.8}
+  ],
+  "reference_ids": ["1izYXoqjsd6iYHbWBbyrw8ygUfD6iIgxN", "1D-3CW3ZR2ytS1gYfs1PwHoMi4J9jjCBA"],
+  "frames": [
+    "同一堂屋深夜，从门内正面拍紧闭旧木门，门板完整，两侧一点土墙，画外普通煤油灯微弱暖光，木门缝只有微弱冷蓝雪光。门外没有人、手、眼睛、脚或影子，门不震动。画面中无人。室内不飘雪。",
+    "同一堂屋同一夜，参考图中的19岁沈砚站在紧闭木门内侧，胸肩中近景，旧军绿双排扣棉大衣已基本干燥，左虎口仅汽修旧疤，无新伤、包扎。自然应声后停住，双手在屋内，没有交出物品。木门保持关闭。画外暖灯微光，门和窗位置保持参考图一致。",
+    "严格沿用前一张沈砚中近景的脸、衣服、机位、房屋和光线，人物收住表情，视线停在紧闭的木门上，身体稍僵，双手仍在屋内。不是惊吓鬼脸，不哭喊，不新增物品或人物。仅是同一动作的下一个时刻。"
+  ]
+}
