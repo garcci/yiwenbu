@@ -206,18 +206,32 @@ def subtitles(audio, work):
 
 def frames(cfg, key, drive, headers, work):
     from PIL import Image
+    def compressed_reference(raw):
+        image = Image.open(io.BytesIO(raw)).convert("RGB")
+        image.thumbnail((1080, 1920))
+        buffer = io.BytesIO()
+        image.save(buffer, "JPEG", quality=82, optimize=True)
+        return "data:image/jpeg;base64," + base64.b64encode(buffer.getvalue()).decode()
     refs = []
     for fid in cfg["reference_ids"]:
-        im = Image.open(io.BytesIO(download_drive(fid, headers))).convert("RGB")
-        im.thumbnail((1080, 1920)); buf = io.BytesIO(); im.save(buf, "JPEG")
-        refs.append("data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode())
+        refs.append(compressed_reference(download_drive(fid, headers)))
     paths = []
     for i, prompt in enumerate(cfg["frames"]):
+        saved = cfg.get("reuse_frames", {}).get(str(i))
+        if saved:
+            raw = download_drive(saved["file_id"], headers)
+            if hashlib.sha256(raw).hexdigest() != saved["sha256"]:
+                raise ValueError("已验收底图摘要不匹配")
+            p = work / f"frame_{i}.png"
+            p.write_bytes(raw); paths.append(p)
+            print(f"复用已核对画面 {i + 1}/3", flush=True)
+            continue
         print(f"生成画面 {i + 1}/3", flush=True)
         prompt = "1999年冀北虚构矿村，冷峻写实、低饱和灰蓝和克制暖灯，竖屏9:16，无可读文字、遗体、血腥、现代设备。" + prompt
         linked = list(refs)
         if paths:
-            linked.append("data:image/png;base64," + base64.b64encode(paths[-1].read_bytes()).decode())
+            linked.append(compressed_reference(paths[-1].read_bytes()))
+        print("参考图编码总字节数", sum(len(x) for x in linked), flush=True)
         payload = {"model": "doubao-seedream-5.0-pro", "prompt": prompt, "size": "1440x2560",
                    "response_format": "b64_json", "watermark": True, "image": linked}
         with post(IMAGE_URL, payload, {"Content-Type": "application/json", "Authorization": f"Bearer {key}"}) as response:
