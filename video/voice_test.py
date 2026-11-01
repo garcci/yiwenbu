@@ -122,7 +122,7 @@ def round2():
     """第二轮：新配音稿“天快亮”一段，全部整段合成，不逐句拼接；编号单独一套 05-配音盲听2-X。"""
     text = (ROOT / "voice_test/passage2.txt").read_text(encoding="utf-8").strip()
     sets = {}
-    if KEY and not os.environ.get("SKIP_DOUBAO"):
+    if KEY:   # 第二轮每次都重出豆包（套餐内），保证 A–E 编号固定不被开源套顶替
         for v in VOICES + ["zh_male_shaonianzixin_uranus_bigtts"]:
             out = WORK / f"p2_{v}.wav"
             if doubao(text, v, out, style=REAL, rate=-5):
@@ -130,7 +130,8 @@ def round2():
     for d in sorted((ROOT / "voice_test").glob("*_p2/")):
         if (d / "full.wav").exists():
             sets[f"开源·{d.name}"] = d / "full.wav"
-    names = sorted(sets); random.Random(7).shuffle(names)
+    dou = [n for n in sets if n.startswith("豆包")]; random.Random(7).shuffle(dou)
+    names = dou + sorted(n for n in sets if not n.startswith("豆包"))   # 开源套按目录名固定排在后面
     h = {"Authorization": f"Bearer {gdrive._token()}"} if os.environ.get("GDRIVE_REFRESH_TOKEN") else None
     for label, name in zip("ABCDEFGHIJKLMNOP", names):
         tmp = WORK / f"r2_{label}.wav"; clean(sets[name], tmp, text, even=False)
