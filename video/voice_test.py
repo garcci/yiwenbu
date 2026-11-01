@@ -118,5 +118,28 @@ def main():
             print("云盘" + gdrive._put(h, o, FOLDER), o.name)
 
 
+def round2():
+    """第二轮：新配音稿“天快亮”一段，全部整段合成，不逐句拼接；编号单独一套 05-配音盲听2-X。"""
+    text = (ROOT / "voice_test/passage2.txt").read_text(encoding="utf-8").strip()
+    sets = {}
+    if KEY and not os.environ.get("SKIP_DOUBAO"):
+        for v in VOICES + ["zh_male_shaonianzixin_uranus_bigtts"]:
+            out = WORK / f"p2_{v}.wav"
+            if doubao(text, v, out, style=REAL, rate=-5):
+                sets[f"豆包整段+讲真事提示·{v}"] = out
+    for d in sorted((ROOT / "voice_test").glob("*_p2/")):
+        if (d / "full.wav").exists():
+            sets[f"开源·{d.name}"] = d / "full.wav"
+    names = sorted(sets); random.Random(7).shuffle(names)
+    h = {"Authorization": f"Bearer {gdrive._token()}"} if os.environ.get("GDRIVE_REFRESH_TOKEN") else None
+    for label, name in zip("ABCDEFGHIJKLMNOP", names):
+        tmp = WORK / f"r2_{label}.wav"; clean(sets[name], tmp, text, even=False)
+        out = WORK / f"05-配音盲听2-{label}.mp3"
+        ff("-i", str(tmp), "-af", "loudnorm=I=-16:TP=-1.5:LRA=7", "-ar", "44100", "-b:a", "160k", str(out))
+        print(f"{label} = {name}")
+        if h:
+            print("云盘" + gdrive._put(h, out, FOLDER), out.name)
+
+
 if __name__ == "__main__":
-    main()
+    round2() if (ROOT / "voice_test/passage2.txt").exists() else main()
