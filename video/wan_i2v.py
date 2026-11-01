@@ -24,7 +24,7 @@ task = None
 for model in req["models"]:
     body = {"model": model, "input": {"prompt": req["prompt"], "img_url": img},
             "parameters": {"resolution": req.get("resolution", "720P"), "duration": req.get("duration", 5),
-                           "prompt_extend": False}}
+                           "prompt_extend": False, "audio": False}}
     if req.get("negative_prompt"):
         body["input"]["negative_prompt"] = req["negative_prompt"]
     r = requests.post(f"{BASE}/services/aigc/video-generation/video-synthesis", json=body, timeout=120,
