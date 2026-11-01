@@ -10,14 +10,40 @@
   "tts_overage_disabled": true,
   "actions_spending_blocked": true,
   "opening": [
-    {"id": "grandfather", "role": "爷爷（临时配角，待试听）", "speaker": "zh_male_dayi_uranus_bigtts", "style": "一个年长男人平常地叫家里人帮个忙，自然、轻声，不演鬼，不加混响，不故意拖慢。", "text": "砚儿——借个火。", "gap_after": 0.3},
-    {"id": "shen", "role": "沈砚", "speaker": "zh_male_taocheng_uranus_bigtts", "text": "哎。", "gap_after": 0.5},
-    {"id": "narrator", "role": "沈砚旁白", "speaker": "zh_male_taocheng_uranus_bigtts", "text": "话一出口，我后背就凉了。我爷爷，是前天夜里死的。", "gap_after": 0.8}
+    {
+      "id": "grandfather",
+      "role": "爷爷（临时配角，待试听）",
+      "speaker": "zh_male_dayi_uranus_bigtts",
+      "style": "一个年长男人平常地叫家里人帮个忙，自然、轻声，不演鬼，不加混响，不故意拖慢。",
+      "text": "砚儿——借个火。",
+      "gap_after": 0.3
+    },
+    {
+      "id": "shen",
+      "role": "沈砚",
+      "speaker": "zh_male_taocheng_uranus_bigtts",
+      "text": "哎。",
+      "gap_after": 0.5
+    },
+    {
+      "id": "narrator",
+      "role": "沈砚旁白",
+      "speaker": "zh_male_taocheng_uranus_bigtts",
+      "text": "话一出口，我后背就凉了。我爷爷，是前天夜里死的。",
+      "gap_after": 0.8
+    }
   ],
-  "reference_ids": ["1izYXoqjsd6iYHbWBbyrw8ygUfD6iIgxN", "1D-3CW3ZR2ytS1gYfs1PwHoMi4J9jjCBA"],
+  "reference_ids": [
+    "1izYXoqjsd6iYHbWBbyrw8ygUfD6iIgxN",
+    "1D-3CW3ZR2ytS1gYfs1PwHoMi4J9jjCBA"
+  ],
   "frames": [
-    "同一堂屋深夜，从门内正面拍紧闭旧木门，门板完整，两侧一点土墙，画外普通煤油灯微弱暖光，木门缝只有微弱冷蓝雪光。门外没有人、手、眼睛、脚或影子，门不震动。画面中无人。室内不飘雪。",
-    "同一堂屋同一夜，参考图中的19岁沈砚站在紧闭木门内侧，胸肩中近景，旧军绿双排扣棉大衣已基本干燥，左虎口仅汽修旧疤，无新伤、包扎。自然应声后停住，双手在屋内，没有交出物品。木门保持关闭。画外暖灯微光，门和窗位置保持参考图一致。",
-    "严格沿用前一张沈砚中近景的脸、衣服、机位、房屋和光线，人物收住表情，视线停在紧闭的木门上，身体稍僵，双手仍在屋内。不是惊吓鬼脸，不哭喊，不新增物品或人物。仅是同一动作的下一个时刻。"
-  ]
+    "沿用堂屋参考图里的一扇单扇木板门（不是双开门），从室内正面拍。门扇完全关闭且贴合门框，可见室内横木插销插入门框锁住门。没有竖向通透裂口，不见室外雪地，不见门外景物。微弱冷色只在窗纸上，门板无背光透缝。木门只有普通生活磨损，完整、厚实。门两侧只露少量土墙及木格纸窗局部，普通画外煤油灯极弱暖光。室内不下雪，不拍任何灯笼、桌面、书本、人物。",
+    "同一堂屋同一夜，参考图中的19岁沈砚站在紧闭木门内侧，胸肩中近景，旧军绿双排扣棉大衣已基本干燥，左虎口仅汽修旧疤，无新伤、包扎。自然应声后停住，双手在屋内，没有交出物品。木门保持关闭。画外暖灯微光，门和窗位置保持参考图一致。 镜头后方木门是与第一帧同一扇完全闭合的单扇木门，插销锁住，不出现竖向通透门缝、不见室外；不拍参考图中的灯笼。",
+    "严格沿用前一张沈砚中近景的脸、衣服、机位、房屋和光线，人物收住表情，视线停在紧闭的木门上，身体稍僵，双手仍在屋内。不是惊吓鬼脸，不哭喊，不新增物品或人物。仅是同一动作的下一个时刻。 门是同一扇完全闭合的单扇木门，插销锁住，没有通透门缝、不见室外；不拍灯笼。"
+  ],
+  "resume": {
+    "file_id": "1Ggz5XdFAEBdrA09DJClVWmVx_GGaJzlD",
+    "sha256": "3c83b86f582b33b06d93a3fac2eb83aa8ca66642848ade8b542809f5cbaf3a08"
+  }
 }
