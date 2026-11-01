@@ -40,6 +40,11 @@ def validate(cfg, now=None):
         raise ValueError("云盘目标不匹配")
     if cfg["opening"][1]["speaker"] != cfg["narrator"] or cfg["opening"][2]["speaker"] != cfg["narrator"]:
         raise ValueError("沈砚必须使用用户选定的D")
+    if cfg.get("quality_still"):
+        if not (100 <= len(cfg.get("quality_still_prompt", "")) <= 3000):
+            raise ValueError("人物质量基准提示词长度异常")
+        if cfg.get("quality_refs") != ["1izYXoqjsd6iYHbWBbyrw8ygUfD6iIgxN", "1-7gR1aeDjN2haBBKqtrZotsZsAjKi1CT"]:
+            raise ValueError("人物质量基准只能使用已核对的两份参考")
     return cfg
 
 
@@ -224,9 +229,9 @@ def frames(cfg, key, drive, headers, work):
                 raise ValueError("已验收底图摘要不匹配")
             p = work / f"frame_{i}.png"
             p.write_bytes(raw); paths.append(p)
-            print(f"复用已核对画面 {i + 1}/3", flush=True)
+            print(f"复用已核对画面 {i + 1}/{len(cfg['frames'])}", flush=True)
             continue
-        print(f"生成画面 {i + 1}/3", flush=True)
+        print(f"生成画面 {i + 1}/{len(cfg['frames'])}", flush=True)
         prompt = "1999年冀北虚构矿村，冷峻写实、低饱和灰蓝和克制暖灯，竖屏9:16，无可读文字、遗体、血腥、现代设备。" + prompt
         linked = list(refs)
         if paths:
@@ -271,7 +276,8 @@ def main():
     args = parser.parse_args()
     cfg = validate(json.loads(CONFIG.read_text()))
     if not args.execute:
-        print("校验通过：D旁白、最多3次TTS（续跑复用）、3帧图片、固定套餐端点；未调用接口")
+        print("校验通过：仅1张人物质量基准图，无TTS，无视频模型调用；未调用接口" if cfg.get("quality_still") else
+              "校验通过：D旁白、最多3次TTS（续跑复用）、3帧图片、固定套餐端点；未调用接口")
         return
     required = ("ARK_API_KEY", "GDRIVE_CLIENT_ID", "GDRIVE_CLIENT_SECRET", "GDRIVE_REFRESH_TOKEN")
     if not all(os.environ.get(k, "").strip() for k in required):
@@ -281,6 +287,19 @@ def main():
     key = os.environ["ARK_API_KEY"].strip()
     work = ROOT / "work/ep1-preview"; work.mkdir(parents=True, exist_ok=True)
     headers = {"Authorization": f"Bearer {gdrive._token()}"}
+    if cfg.get("quality_still"):
+        print("人物质量基准：单张、两份职责明确的参考，不调用声音或视频模型", flush=True)
+        spec = dict(cfg, frames=[cfg["quality_still_prompt"]], reference_ids=cfg["quality_refs"], reuse_frames={})
+        result = frames(spec, key, gdrive, headers, work)[0]
+        output = work / "08-第一集借火-人物质感样张.png"
+        output.write_bytes(result.read_bytes())
+        with contextlib.redirect_stdout(io.StringIO()):
+            gdrive._put(headers, output, cfg["folder_id"])
+        fid = gdrive._find(headers, output.name, cfg["folder_id"])
+        if not fid:
+            raise RuntimeError("图片上传后未找到文件")
+        print("质量样张已生成，尚待视觉验收", f"https://drive.google.com/file/d/{fid}/view", flush=True)
+        return
     recovered = restore_audio(cfg, headers, work)
     print("恢复已生成音频" if recovered else "生成开场音频", flush=True)
     clips = [work / (item["id"] + ".wav") for item in cfg["opening"]] if recovered else [voice(item, cfg, key, work) for item in cfg["opening"]]
