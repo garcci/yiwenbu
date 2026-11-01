@@ -1,0 +1,28 @@
+name: 和Gemini讨论设定
+
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["discuss/r*_prompt.md"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  ask:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+      - run: pip install -q requests
+      - env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        run: python -u discuss/ask_gemini.py
+      - run: |
+          git config user.name "yiwenbu-bot"
+          git config user.email "yiwenbu-bot@users.noreply.github.com"
+          git add discuss/
+          git diff --cached --quiet && exit 0
+          git commit -m "Gemini 讨论回复"
+          for i in 1 2 3; do git pull --rebase -q origin ${GITHUB_REF_NAME} && git push origin HEAD:${GITHUB_REF_NAME} && break; sleep 5; done
