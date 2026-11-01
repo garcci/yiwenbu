@@ -75,7 +75,7 @@ def assemble(wavs, out):
 
 def main():
     sets = {}   # 套名 -> 逐句 wav 列表
-    if KEY:
+    if KEY and not os.environ.get("SKIP_DOUBAO"):
         ok = []
         for v in VOICES:
             d = WORK / f"doubao_{v}"; d.mkdir(exist_ok=True)
@@ -92,13 +92,14 @@ def main():
             whole = WORK / "doubao_whole.wav"
             if doubao("".join(LINES), ok[0], whole, style=STYLE):
                 sets[f"豆包整段带语气提示（现做法）·{ok[0]}"] = [whole]
-    for d in sorted((ROOT / "voice_test").glob("*/")):
-        files = sorted(d.glob("[0-9][0-9].wav"))
-        if len(files) == len(LINES):
-            sets[f"本地开源·{d.name}"] = files
     names = list(sets); random.Random(20261101).shuffle(names)
+    labels = list(zip("ABCDEFG", names))
+    # 本地开源模型的套固定从 H 往后编号，后续推送新套不会打乱豆包那几版的字母
+    local = [d for d in sorted((ROOT / "voice_test").glob("*/")) if len(list(d.glob("[0-9][0-9].wav"))) == len(LINES)]
+    for label, d in zip("HIJKLMN", local):
+        sets[f"本地开源·{d.name}"] = sorted(d.glob("[0-9][0-9].wav")); labels.append((label, f"本地开源·{d.name}"))
     outs = []
-    for label, name in zip("ABCDEFGHIJ", names):
+    for label, name in labels:
         files = sets[name]; tempos = []
         cleaned = []
         for i, f in enumerate(files):
