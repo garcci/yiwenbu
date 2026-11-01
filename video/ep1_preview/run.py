@@ -14,6 +14,7 @@ import sys
 import urllib.error
 import urllib.request
 import wave
+import zipfile
 
 ROOT = Path(__file__).resolve().parents[2]
 CONFIG = Path(__file__).with_name("request.json")
@@ -46,11 +47,46 @@ def post(url, payload, headers):
     # 固定套餐端点；不自动重试，不回退到按量付费，不记录响应体或密钥。
     if url not in (TTS_URL, IMAGE_URL):
         raise ValueError("禁止其他模型端点")
-    req = urllib.request.Request(url, data=json.dumps(payload, ensure_ascii=False).encode(), headers=headers)
+    import requests
     try:
-        return urllib.request.urlopen(req, timeout=240)
-    except urllib.error.HTTPError as exc:
-        raise RuntimeError(f"套餐请求失败 HTTP {exc.code}；停止，不切换计费路径") from None
+        response = requests.post(url, json=payload, headers=headers, timeout=(30, 360))
+    except requests.RequestException as exc:
+        print("套餐网络失败类型：", type(exc).__name__, flush=True)
+        raise RuntimeError("套餐网络请求失败；保留已完成素材") from None
+    if not response.ok:
+        print("套餐HTTP状态：", response.status_code, flush=True)
+        raise RuntimeError("套餐请求失败；停止，不切换计费路径")
+    return io.BytesIO(response.content)
+
+
+def download_drive(fid, headers):
+    import requests
+    response = requests.get(f"https://www.googleapis.com/drive/v3/files/{fid}",
+                            params={"alt": "media"}, headers=headers, timeout=(30, 90))
+    response.raise_for_status()
+    return response.content
+
+
+def restore_audio(cfg, headers, work):
+    resume = cfg.get("resume")
+    if not resume:
+        return None
+    blob = download_drive(resume["file_id"], headers)
+    if hashlib.sha256(blob).hexdigest() != resume["sha256"]:
+        raise ValueError("续跑素材包摘要不匹配")
+    allowed = {"grandfather.wav", "shen.wav", "narrator.wav", "opening.wav", "opening.srt", "opening.ass",
+               "resume.json", "06-第一集借火-开场配音待验收.mp3"}
+    with zipfile.ZipFile(io.BytesIO(blob)) as archive:
+        if set(archive.namelist()) != allowed or sum(x.file_size for x in archive.infolist()) > 20_000_000:
+            raise ValueError("续跑包文件清单异常")
+        metadata = json.loads(archive.read("resume.json"))
+        fields = {k: cfg[k] for k in ("narrator", "speech_rate", "narrator_style", "opening")}
+        signature = hashlib.sha256(json.dumps(fields, sort_keys=True, ensure_ascii=False).encode()).hexdigest()
+        if signature != metadata["voice_signature"]:
+            raise ValueError("续跑素材与当前音色或台词不符")
+        for name in allowed:
+            (work / name).write_bytes(archive.read(name))
+    return metadata
 
 
 def ff(*args):
@@ -172,13 +208,12 @@ def frames(cfg, key, drive, headers, work):
     from PIL import Image
     refs = []
     for fid in cfg["reference_ids"]:
-        request = urllib.request.Request(f"{drive.API}/{fid}?alt=media", headers=headers)
-        with urllib.request.urlopen(request, timeout=60) as response:
-            im = Image.open(io.BytesIO(response.read())).convert("RGB")
-            im.thumbnail((1080, 1920)); buf = io.BytesIO(); im.save(buf, "JPEG")
-            refs.append("data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode())
+        im = Image.open(io.BytesIO(download_drive(fid, headers))).convert("RGB")
+        im.thumbnail((1080, 1920)); buf = io.BytesIO(); im.save(buf, "JPEG")
+        refs.append("data:image/jpeg;base64," + base64.b64encode(buf.getvalue()).decode())
     paths = []
     for i, prompt in enumerate(cfg["frames"]):
+        print(f"生成画面 {i + 1}/3", flush=True)
         prompt = "1999年冀北虚构矿村，冷峻写实、低饱和灰蓝和克制暖灯，竖屏9:16，无可读文字、遗体、血腥、现代设备。" + prompt
         linked = list(refs)
         if paths:
@@ -222,7 +257,7 @@ def main():
     args = parser.parse_args()
     cfg = validate(json.loads(CONFIG.read_text()))
     if not args.execute:
-        print("校验通过：D旁白、3次TTS、3帧图片、固定套餐端点；未调用接口")
+        print("校验通过：D旁白、最多3次TTS（续跑复用）、3帧图片、固定套餐端点；未调用接口")
         return
     required = ("ARK_API_KEY", "GDRIVE_CLIENT_ID", "GDRIVE_CLIENT_SECRET", "GDRIVE_REFRESH_TOKEN")
     if not all(os.environ.get(k, "").strip() for k in required):
@@ -232,14 +267,23 @@ def main():
     key = os.environ["ARK_API_KEY"].strip()
     work = ROOT / "work/ep1-preview"; work.mkdir(parents=True, exist_ok=True)
     headers = {"Authorization": f"Bearer {gdrive._token()}"}
-    clips = [voice(item, cfg, key, work) for item in cfg["opening"]]
+    recovered = restore_audio(cfg, headers, work)
+    print("恢复已生成音频" if recovered else "生成开场音频", flush=True)
+    clips = [work / (item["id"] + ".wav") for item in cfg["opening"]] if recovered else [voice(item, cfg, key, work) for item in cfg["opening"]]
     audio, events, duration = mix_audio(cfg, clips, work)
-    srt, transcript = subtitles(audio, work)
+    if recovered:
+        srt = work / "opening.ass"
+        transcript = recovered["raw_asr_srt"]
+    else:
+        print("转写实际音轨", flush=True)
+        srt, transcript = subtitles(audio, work)
     images = frames(cfg, key, gdrive, headers, work)
+    print("渲染预览", flush=True)
     output = video(images, audio, srt, events, duration, work)
     report = work / "06-第一集借火-预览核查.json"
     report.write_text(json.dumps({"ai_generated": True, "status": "待人工音画验收", "selected_sample": cfg["selected_sample"],
         "seconds": duration, "events": events, "asr_text": transcript, "expected_text": "".join(EXPECTED_TEXT),
+        "reused_audio": bool(recovered), "subtitle_correction": recovered.get("subtitle_correction") if recovered else None,
         "note": "爷爷为临时配角音色，字幕为实际音轨转写待校对；未通过全季验收、未对外发布。",
         "video_sha256": hashlib.sha256(output.read_bytes()).hexdigest()}, ensure_ascii=False, indent=2))
     for p in (output, audio, report):
