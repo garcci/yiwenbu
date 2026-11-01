@@ -1,0 +1,140 @@
+name: 开源配音
+
+# 在免费 CPU runner 上跑开源中文 TTS，结果提交回 voice_test/，再触发「配音盲听」。
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/oss_tts/**", ".github/workflows/oss_tts.yml"]
+  workflow_dispatch:
+    inputs:
+      models:
+        description: "要跑的模型，逗号分隔"
+        default: "cosyvoice_sft,cosyvoice2,qwen3_tts,kokoro_zh"
+
+concurrency:
+  group: oss-tts
+  cancel-in-progress: false
+
+jobs:
+  synth:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - model: cosyvoice_sft
+            python: "3.10"
+          - model: cosyvoice2
+            python: "3.10"
+          - model: qwen3_tts
+            python: "3.12"
+          - model: kokoro_zh
+            python: "3.11"
+    env:
+      MODELS_DIR: /home/runner/models
+      HF_HOME: /home/runner/hf
+    steps:
+      - id: pick
+        run: |
+          want="${{ github.event.inputs.models || 'cosyvoice_sft,cosyvoice2,qwen3_tts,kokoro_zh' }}"
+          case ",$want," in *",${{ matrix.model }},"*) echo "run=1" >> "$GITHUB_OUTPUT";; *) echo "run=0" >> "$GITHUB_OUTPUT";; esac
+      - if: steps.pick.outputs.run == '1'
+        name: 腾磁盘空间
+        run: |
+          sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android /usr/local/share/boost
+          df -h /
+      - if: steps.pick.outputs.run == '1'
+        uses: actions/checkout@v4
+      - if: steps.pick.outputs.run == '1'
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - if: steps.pick.outputs.run == '1' && (matrix.model == 'qwen3_tts' || matrix.model == 'kokoro_zh')
+        uses: actions/cache@v4
+        with:
+          path: /home/runner/hf
+          key: hf-${{ matrix.model }}-v1
+      - if: steps.pick.outputs.run == '1'
+        name: 安装依赖
+        run: |
+          sudo apt-get update -q && sudo apt-get install -y -q ffmpeg libsndfile1 espeak-ng
+          python -m pip install -q -U pip
+          case "${{ matrix.model }}" in
+            cosyvoice_sft|cosyvoice2)
+              git clone -q --recursive https://github.com/FunAudioLLM/CosyVoice.git ~/CosyVoice
+              git -C ~/CosyVoice checkout -q 074ca6d && git -C ~/CosyVoice submodule update -q --init --recursive
+              pip install -q torch==2.3.1 torchaudio==2.3.1 --index-url https://download.pytorch.org/whl/cpu
+              pip install -q "setuptools<70" wheel && pip install -q --no-build-isolation openai-whisper==20231117
+              pip install -q conformer==0.3.2 diffusers==0.29.0 hydra-core==1.3.2 HyperPyYAML==1.2.3 inflect==7.3.1 \
+                librosa==0.10.2 lightning==2.2.4 matplotlib==3.7.5 modelscope==1.20.0 networkx==3.1 numpy==1.26.4 \
+                omegaconf==2.3.0 onnx==1.16.0 onnxruntime==1.18.0 protobuf==4.25 pyarrow==18.1.0 pydantic==2.7.0 \
+                pyworld==0.3.4 rich==13.7.1 soundfile==0.12.1 transformers==4.51.3 x-transformers==2.11.24 \
+                wetext==0.0.4 wget==3.2 gdown==5.1.0 huggingface_hub
+              ;;
+            qwen3_tts)
+              pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+              pip install -q -U qwen-tts soundfile librosa
+              ;;
+            kokoro_zh)
+              pip install -q torch --index-url https://download.pytorch.org/whl/cpu
+              pip install -q "kokoro==0.9.4" "misaki[zh]>=0.9.4" soundfile librosa
+              ;;
+          esac
+      - if: steps.pick.outputs.run == '1' && (matrix.model == 'cosyvoice_sft' || matrix.model == 'cosyvoice2')
+        name: 下载 CosyVoice 模型（只取推理要用的文件）
+        run: |
+          python - <<'EOF'
+          from huggingface_hub import snapshot_download
+          import os
+          base = os.environ["MODELS_DIR"]
+          common = ["campplus.onnx", "flow.pt", "hift.pt", "llm.pt", "spk2info.pt", "*.json", "*.md"]
+          snapshot_download("FunAudioLLM/CosyVoice-300M-SFT", local_dir=f"{base}/CosyVoice-300M-SFT",
+                            allow_patterns=common + ["cosyvoice.yaml", "speech_tokenizer_v1.onnx"])
+          if "${{ matrix.model }}" == "cosyvoice2":
+              snapshot_download("FunAudioLLM/CosyVoice2-0.5B", local_dir=f"{base}/CosyVoice2-0.5B",
+                                allow_patterns=common + ["cosyvoice2.yaml", "speech_tokenizer_v2.onnx", "CosyVoice-BlankEN/*"])
+          EOF
+          du -sh "$MODELS_DIR"/*; df -h /
+      - if: steps.pick.outputs.run == '1'
+        name: 合成
+        run: python -u video/oss_tts/synth.py ${{ matrix.model }} out
+      - if: steps.pick.outputs.run == '1' && always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tts-${{ matrix.model }}
+          path: out/
+          if-no-files-found: ignore
+
+  commit:
+    needs: synth
+    if: always()
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: claude/project-thread-l4wz3r
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: tts-*
+          path: art
+          merge-multiple: true
+      - name: 提交回分支并触发配音盲听
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -d art ] || { echo "没有产出"; exit 0; }
+          mkdir -p voice_test/oss_timing
+          for d in art/*/; do n=$(basename "$d"); rm -rf "voice_test/$n"; cp -r "$d" "voice_test/$n"; done
+          cp art/timing_*.json voice_test/oss_timing/ 2>/dev/null || true
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add voice_test
+          git diff --cached --quiet && { echo "无变化"; exit 0; }
+          git commit -q -m "开源配音：$(ls art | grep -v '^timing_' | tr '\n' ' ')"
+          for i in 1 2 3 4; do git pull -q --rebase origin claude/project-thread-l4wz3r && git push -q origin HEAD:claude/project-thread-l4wz3r && break; sleep $((i * 5)); done
+          # GITHUB_TOKEN 推送不会触发其他 workflow，这里手动触发
+          gh workflow run voice_test.yml --ref claude/project-thread-l4wz3r
