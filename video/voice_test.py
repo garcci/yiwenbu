@@ -95,16 +95,18 @@ def main():
     names = list(sets); random.Random(20261101).shuffle(names)
     labels = list(zip("ABCDEFG", names))
     # 本地开源模型的套固定从 H 往后编号，后续推送新套不会打乱豆包那几版的字母
-    local = [d for d in sorted((ROOT / "voice_test").glob("*/")) if len(list(d.glob("[0-9][0-9].wav"))) == len(LINES)]
-    for label, d in zip("HIJKLMN", local):
-        sets[f"本地开源·{d.name}"] = sorted(d.glob("[0-9][0-9].wav")); labels.append((label, f"本地开源·{d.name}"))
+    local = [d for d in sorted((ROOT / "voice_test").glob("*/"))
+             if len(list(d.glob("[0-9][0-9].wav"))) == len(LINES) or (d / "full.wav").exists()]
+    for label, d in zip("HIJKLMNOPQRSTUVWXYZ", local):
+        files = [d / "full.wav"] if (d / "full.wav").exists() else sorted(d.glob("[0-9][0-9].wav"))
+        sets[f"开源·{d.name}"] = files; labels.append((label, f"开源·{d.name}"))
     outs = []
     for label, name in labels:
         files = sets[name]; tempos = []
         cleaned = []
         for i, f in enumerate(files):
             dst = WORK / f"{label}_{i:02d}.wav"
-            even = len(files) == len(LINES)
+            even = False
             tempos.append(clean(f, dst, LINES[i] if even else "".join(LINES), even))
             cleaned.append(dst)
         out = WORK / f"04-配音盲听-{label}.mp3"
