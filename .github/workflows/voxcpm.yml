@@ -22,7 +22,10 @@ jobs:
       - run: |
           pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu
           pip install -q voxcpm soundfile
-      - run: python -u video/voxcpm/synth.py
+      - run: |
+          sudo fallocate -l 10G /swapfile2 && sudo chmod 600 /swapfile2 && sudo mkswap /swapfile2 && sudo swapon /swapfile2 || true
+          (while true; do free -m | awk 'NR==2{print "内存已用MB",$3}'; sleep 30; done) &
+          python -u video/voxcpm/synth.py
       - env:
           GH_TOKEN: ${{ github.token }}
         run: |
