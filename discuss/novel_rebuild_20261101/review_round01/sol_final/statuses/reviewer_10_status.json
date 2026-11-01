@@ -1,0 +1,19 @@
+{
+  "reviewer_id": "10",
+  "input_hash": "017e7cce699b4a8818fbc4467b9232f4a8d523c2d6070a98044583b6accdfeda",
+  "transport": "subagent",
+  "agent_task_id": "/root/reviewer_10_cinematic",
+  "call_id": "/root/reviewer_10_cinematic",
+  "model_label": "GPT-6.1 Sol / Medium (requested via spawn_agent)",
+  "success": true,
+  "agent_completed": true,
+  "extraction_complete": true,
+  "independent_session": true,
+  "participated_in_writing": false,
+  "response_truncated": false,
+  "api_error": null,
+  "response_sha256": "a4540538feb9650e0e203727d7c9b78925959508cc83a24622e43d31f7fe25b3",
+  "raw_source": "/Users/ziling/Documents/yiwenbu-discuss/discuss/novel_rebuild_20261101/review_round01/sol_raw/reviewer_10.json",
+  "completion_evidence": "Collaboration FINAL_ANSWER received and full JSON file read; no human audience claim.",
+  "normalization": "Response bytes unchanged; status records actual subagent completion, not literary acceptance."
+}

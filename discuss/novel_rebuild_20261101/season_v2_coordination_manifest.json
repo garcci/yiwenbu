@@ -1,0 +1,81 @@
+{
+  "schema_version": 1,
+  "source": "web_gemini_season_v2.md",
+  "source_sha256": "8db5a4e59c4174ec19131c96ce51e7092f50c2d32a01e284aed5fe08d53445fd",
+  "raw_sha256": "8db5a4e59c4174ec19131c96ce51e7092f50c2d32a01e284aed5fe08d53445fd",
+  "source_characters": 16676,
+  "candidate": "season_outline_candidate_v2.md",
+  "candidate_sha256": "03bf6d5a4ac0783305fd20cfaccdceb666abc2a2f4746c29314336b482bb5438",
+  "candidate_characters": 17362,
+  "patches_file": "season_v2_coordination_patches.json",
+  "episode_seconds": [
+    300,
+    320,
+    290,
+    330,
+    295,
+    315
+  ],
+  "unit_seconds": [
+    [
+      105,
+      54,
+      44,
+      46,
+      51
+    ],
+    [
+      95,
+      45,
+      95,
+      85
+    ],
+    [
+      65,
+      95,
+      70,
+      60
+    ],
+    [
+      75,
+      125,
+      70,
+      60
+    ],
+    [
+      80,
+      95,
+      45,
+      75
+    ],
+    [
+      100,
+      65,
+      55,
+      95
+    ]
+  ],
+  "total_seconds": 1850,
+  "total_plan": "30分50秒，文字计划；未实读未生成音画",
+  "episode01_candidate_sha256": "4cde2367caa90f2466ebf216689809df5d905739f0d57e4c2309ba2a6d9d1120",
+  "episode01_spoken_cjk": 682,
+  "episode01_seconds": 300,
+  "novel_source_sha256": "e6258013cc96de231509ce20f08969e1a733d8521b3ec48a14d287aa183625c8",
+  "status": "Gemini原件经批准的机械一致性与排时协调候选，未独立评分、不代表达标",
+  "patches_sha256": "4e23fd5dcee1b09899eb6e7392ce87fea7005921c5cdb17356b43d248afaabed",
+  "patch_record_count": 51,
+  "replacement_count": 54,
+  "episode01_raw_source": "web_gemini_episode01_v3.md",
+  "episode01_raw_source_sha256": "295c007d99864088124b098cf7dd7b17a2b0c7b32120d6a7a82e681439f491a2",
+  "verification": {
+    "all_recorded_edits_replayed_exactly": true,
+    "six_episode_headers_and_end_marker_preserved": true,
+    "gemini_raw_files_unchanged": true,
+    "episode01_only_requested_phrase_changed": true,
+    "spoken_lines": 28,
+    "spoken_cjk": 682,
+    "episode01_seconds": 300,
+    "season_seconds": 1850,
+    "limitations": "Only offline textual arithmetic, provenance and consistency checks; no literary scoring, reading performance or audiovisual validation."
+  }
+}

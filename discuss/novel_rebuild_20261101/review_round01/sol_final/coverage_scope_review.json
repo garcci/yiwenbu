@@ -1,0 +1,398 @@
+{
+  "schema_version": 1,
+  "input_hash": "017e7cce699b4a8818fbc4467b9232f4a8d523c2d6070a98044583b6accdfeda",
+  "manifest_sha256": "48b9756e79d02b08df9748e38254529c1745895e8c75a9cadb5b1f8655f94a1f",
+  "review_method": "Sol 主任务辅助代理逐条检查30条原始coverage措辞及元数据；不是新的文学评委或评分。",
+  "entries": [
+    {
+      "reviewer_id": "01",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "97fd944124b225e6a4f703f8e454e0330167b88075dfed1b77c91fd9dfaa05dd",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "完整阅读本次提供的小说全文；仅评价文字作品，不核验历史行业资料或现实司法结论。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "01",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "97fd944124b225e6a4f703f8e454e0330167b88075dfed1b77c91fd9dfaa05dd",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "完整阅读首集文字台本；时长为文本估算，未观看生成画面、表演、配音、剪辑或成片，不评价其实际效果。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "01",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "97fd944124b225e6a4f703f8e454e0330167b88075dfed1b77c91fd9dfaa05dd",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "完整阅读六集全季结构；仅评价结构中明示的安排，不以小说对白替代未生成的第二至六集台本，不评价尚未存在的音画和实际播放节奏。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "02",
+      "piece": "novel",
+      "decision": "no_limitation",
+      "response_sha256": "465d1e894cf0c3b335d197c99f86f819f92e78b086ee1f3f1b888a98552ee875",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": ""
+      },
+      "rationale": "声明未列限制；完整标志、精确字符数和源哈希另行硬校验，不能据此独立证明实际读完。"
+    },
+    {
+      "reviewer_id": "02",
+      "piece": "episode01",
+      "decision": "no_limitation",
+      "response_sha256": "465d1e894cf0c3b335d197c99f86f819f92e78b086ee1f3f1b888a98552ee875",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": ""
+      },
+      "rationale": "声明未列限制；完整标志、精确字符数和源哈希另行硬校验，不能据此独立证明实际读完。"
+    },
+    {
+      "reviewer_id": "02",
+      "piece": "season_outline",
+      "decision": "no_limitation",
+      "response_sha256": "465d1e894cf0c3b335d197c99f86f819f92e78b086ee1f3f1b888a98552ee875",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": ""
+      },
+      "rationale": "声明未列限制；完整标志、精确字符数和源哈希另行硬校验，不能据此独立证明实际读完。"
+    },
+    {
+      "reviewer_id": "03",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "98ffc009760111f68e410971c963d7c8a753eb66cdbd9af6bb53538a92baa24a",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "完整阅读此份文本。评价范围为完整短篇小说。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "03",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "98ffc009760111f68e410971c963d7c8a753eb66cdbd9af6bb53538a92baa24a",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "完整阅读此份文本。评价范围为第一集文字台本；未生成或审看音画，时长为文本估算。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "03",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "98ffc009760111f68e410971c963d7c8a753eb66cdbd9af6bb53538a92baa24a",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "完整阅读此份文本。评价范围为六集改编结构；第二至六集不是完整文字台本，未生成或审看音画。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "04",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "21694d0e83ea5b8449cbecfe840012730b0d64d77ffd9a8150aa284bda158056",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "完整阅读给定短篇，评价仅限封版文字；未判断音画或现实受众反应。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "04",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "21694d0e83ea5b8449cbecfe840012730b0d64d77ffd9a8150aa284bda158056",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "完整阅读第一集文字台本；时长和声音效果均为未录制的设计，不作实际播放或成片验收。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "04",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "21694d0e83ea5b8449cbecfe840012730b0d64d77ffd9a8150aa284bda158056",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "完整阅读六集结构，只评价结构已写出的选择、因果、信息与分配；没有六集完整台本或成片，不据此认证表演、播放时长和逐场对白。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "05",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "1537af949153ad55e9b846fbb405b3cec399c210ff78661928f17c31ae24aee9",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "已完整阅读本件文字。仅评价所提供文本；未进行真人受众测试。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "05",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "1537af949153ad55e9b846fbb405b3cec399c210ff78661928f17c31ae24aee9",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "已完整阅读本件文字。仅评价所提供文本；未进行真人受众测试。本件为首集台本，未提供成片，时长与表演效果未实测。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "05",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "1537af949153ad55e9b846fbb405b3cec399c210ff78661928f17c31ae24aee9",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "已完整阅读本件文字。仅评价所提供文本；未进行真人受众测试。本件为六集结构，未提供第二至六集完整台本，不据此评价其逐句执行。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "06",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "5831f7943f31dc3cbb62575a4909221fd3c43f479ff107d0f85f874bc7af68c9",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "完整阅读本次提交的完整短篇；判断仅针对文字，不代表真人受众调查。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "06",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "5831f7943f31dc3cbb62575a4909221fd3c43f479ff107d0f85f874bc7af68c9",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "完整阅读文字台本；时长仅为文本估算，不评价未制作的成片、配音或剪辑效果。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "06",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "5831f7943f31dc3cbb62575a4909221fd3c43f479ff107d0f85f874bc7af68c9",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "完整阅读六集结构；评价其场景、选择、信息及回报分配，不将结构提纲视为已经完成的六集台本。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "07",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "81dde29e4e7165b695b871c354e4ea019a20d79dbd09fe5639c8d163c690b5d2",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "完整阅读封版文字；仅评价文字及已写出的设计，未观看或评价未生成音画。本评委为 AI 模拟读者。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "07",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "81dde29e4e7165b695b871c354e4ea019a20d79dbd09fe5639c8d163c690b5d2",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "完整阅读封版文字；仅评价文字及已写出的设计，未观看或评价未生成音画。本评委为 AI 模拟读者。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "07",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "81dde29e4e7165b695b871c354e4ea019a20d79dbd09fe5639c8d163c690b5d2",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "完整阅读封版文字；仅评价文字及已写出的设计，未观看或评价未生成音画。本评委为 AI 模拟读者。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "08",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "f94d93c5fe67c59d703ba4a9f593fbf172bcce4205d3ce52e787ae61ce5f0e59",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "已完整阅读本份封版原文；未核实传统工艺、历史币值与地方公所制度。按完整短篇评价。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "08",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "f94d93c5fe67c59d703ba4a9f593fbf172bcce4205d3ce52e787ae61ce5f0e59",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "已完整阅读本份封版原文；未核实传统工艺、历史币值与地方公所制度。仅评价完整文字台本，音画成品与实际时长未生成、未核。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "08",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "f94d93c5fe67c59d703ba4a9f593fbf172bcce4205d3ce52e787ae61ce5f0e59",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "已完整阅读本份封版原文；未核实传统工艺、历史币值与地方公所制度。仅评价六集改编结构，未视为六集成片或六本完整台本。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "09",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "b21f66cb30e7ac1e4e54f5fac9dff1d0c69702fd2a5078970201d17ed39c1660",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "已完整阅读封版文字。仅为AI模拟独立审稿；不代表真实受众调查。按完整短篇评价。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "09",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "b21f66cb30e7ac1e4e54f5fac9dff1d0c69702fd2a5078970201d17ed39c1660",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "已完整阅读封版文字。仅为AI模拟独立审稿；不代表真实受众调查。评价文字台本，时长仅为估算，未评价未生成的图片、配音或实际成片。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "09",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "b21f66cb30e7ac1e4e54f5fac9dff1d0c69702fd2a5078970201d17ed39c1660",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "已完整阅读封版文字。仅为AI模拟独立审稿；不代表真实受众调查。评价六集改编结构，不将其视为六集完整剧本或成片。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "10",
+      "piece": "novel",
+      "decision": "scope_only",
+      "response_sha256": "a4540538feb9650e0e203727d7c9b78925959508cc83a24622e43d31f7fe25b3",
+      "source_sha256": "933621463c4abcc6d3a6c5f2d474c3120af98137b6bd771fa23312a86e685c08",
+      "coverage": {
+        "complete": true,
+        "read_characters": 19400,
+        "limitations": "已完整阅读给定封版文本；评价仅针对文字。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "10",
+      "piece": "episode01",
+      "decision": "scope_only",
+      "response_sha256": "a4540538feb9650e0e203727d7c9b78925959508cc83a24622e43d31f7fe25b3",
+      "source_sha256": "7f7c61e7795067c0a7c4df1cbd0078d1c6c452be97b0b86227edd398fcf3a881",
+      "coverage": {
+        "complete": true,
+        "read_characters": 2388,
+        "limitations": "已完整阅读给定封版文本；仅评价首集台本的可演设计，未验证实际语速、音画生成或播放效果。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    },
+    {
+      "reviewer_id": "10",
+      "piece": "season_outline",
+      "decision": "scope_only",
+      "response_sha256": "a4540538feb9650e0e203727d7c9b78925959508cc83a24622e43d31f7fe25b3",
+      "source_sha256": "4600205b3dfecdf1626c6dab9729642d0eb167cd0c489a5f5d1432a807ac09a1",
+      "coverage": {
+        "complete": true,
+        "read_characters": 4122,
+        "limitations": "已完整阅读给定封版文本；评价六集改编结构，不据此断言六集完整台本或成片已实现。"
+      },
+      "rationale": "已逐条检查原声明：确认完整阅读给定封版文字；所述限制仅指未提供的成片、完整后续台本、实际时长/受众测试或外部历史行业事实核验，不构成对给定文字漏读的自述。此核实只判别声明语义，不独立证明模型实际读完。"
+    }
+  ]
+}

@@ -1,0 +1,74 @@
+{
+  "sources": [
+    {
+      "file": "revision_v2_01.md",
+      "raw_source": "web_revision_v2_batch01_trim.md",
+      "raw_sha256": "61e8e02231fb6ff957c5e24e31363e0a62381be067f9fd3a30be3f6269126327",
+      "source_sha256": "5752ac808f33eb6441996c1895722d5baad26affd8c6a78288dbc603172a3771",
+      "cjk": 1726,
+      "modifications": "仅移除交付标记，添加章节标题；正文未改。",
+      "status": "采纳为下一轮整本候选；非验收通过"
+    },
+    {
+      "file": "revision_v2_02.md",
+      "raw_source": "web_revision_v2_batch01_trim.md",
+      "raw_sha256": "61e8e02231fb6ff957c5e24e31363e0a62381be067f9fd3a30be3f6269126327",
+      "source_sha256": "5978ff9b9609bd90358702b3c71bf4fffaa44ae3f98da807b29c1644a0ac10d1",
+      "cjk": 2477,
+      "modifications": "仅移除交付标记，添加章节标题；正文未改。",
+      "status": "采纳为下一轮整本候选；非验收通过"
+    },
+    {
+      "file": "revision_v2_03.md",
+      "raw_source": "web_revision_v2_section03_targeted.md",
+      "raw_sha256": "06a43cd717fc45eaf0430ff81e0ba1ac636b1d5eaae0776010248b03106f1edc",
+      "source_sha256": "f13a6ba93a7e32f85e775ed8e7b3db9388a3fb252d62e4b2799fe262c0d84749",
+      "cjk": 1955,
+      "modifications": "Gemini定点稿基础上8处协调事实/错字/衔接修正，详见revision_v2_03_coordination_patches.json",
+      "status": "整本候选，未评分未验收"
+    },
+    {
+      "file": "revision_v2_04.md",
+      "raw_source": "web_revision_v2_section04_targeted.md",
+      "raw_sha256": "8a061f714bb9084eb6cae18d52510c53f22bfa0831a72a9ac7ffc32a5957ad8c",
+      "source_sha256": "adf2a404d825f7b2407c345caff8d749da1f2888a67e29302b3667a7792ba465",
+      "cjk": 2373,
+      "modifications": "Gemini定点稿基础上17处协调事实/视角/日期/物件修正，见revision_v2_04_coordination_patches.json",
+      "status": "整本候选，未评分未验收"
+    },
+    {
+      "file": "revision_v2_05.md",
+      "raw_source": "sol_revision_v2/section05_06_candidate.md",
+      "raw_sha256": "168589527a8fa1587a6ca7be33c44253bdd113baf882002a7291dec99043e82e",
+      "source_sha256": "0c434d2b2702d6d6f71d6d5bc590ae24ac6558074c48a175fd3f380f630290b0",
+      "cjk": 1922,
+      "modifications": "Sol辅助作者已修开门及记话归属两处，提取正文未另改",
+      "status": "整本候选，待全篇核对未评分"
+    },
+    {
+      "file": "revision_v2_06.md",
+      "raw_source": "sol_revision_v2/section05_06_candidate.md",
+      "raw_sha256": "168589527a8fa1587a6ca7be33c44253bdd113baf882002a7291dec99043e82e",
+      "source_sha256": "bf129d8f3b03803cd70eca4aae4447293b61caee9b4e691c5e7e02a690254837",
+      "cjk": 1783,
+      "modifications": "Sol辅助作者已修开门及记话归属两处，提取正文未另改",
+      "status": "整本候选，待全篇核对未评分"
+    },
+    {
+      "file": "revision_v2_07.md",
+      "raw_source": "web_revision_v2_ending.md",
+      "raw_sha256": "407a8fdcbb7cf49000ee054a60aeab6c94ad0180e68e9d311537c65786783fb7",
+      "source_sha256": "9fbca6cb18ad15718f32580f00f6bedca337916583b6460389a9a52f528da4c8",
+      "cjk": 3197,
+      "modifications": "Gemini结尾基础上17处协调事实/衔接/删冗，见revision_v2_07_coordination_patches.json",
+      "status": "全篇候选，待独立审评"
+    }
+  ],
+  "characters": 18312,
+  "cjk_characters": 15473,
+  "sha256": "e6258013cc96de231509ce20f08969e1a733d8521b3ec48a14d287aa183625c8",
+  "ai_collaborative": true,
+  "accepted": false,
+  "review_status": "待重新冻结三件与十视角独立复核；无评分继承；不得称达标",
+  "authorship": "Gemini主笔第一至四及第七节；Sol辅助第五六节；协调事实/衔接修正单独记录，原始回复、失败和未采纳稿保留。"
+}

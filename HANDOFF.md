@@ -109,3 +109,33 @@
   1. 确认这两个运行是否成功，失败就看日志修。
   2. 把 F 往后的编号告诉用户去听。
   3. 等用户选声音，再按上面「下一步」继续。
+
+
+## 2026-11-02｜Codex当前文字修订与备份交接（追加，不替换以上历史）
+
+本次用户较新的AGENTS.md及明确授权优先于以上较早规则；已授权任务内的读取、编辑、验证与本任务分支普通非强制推送无需逐步重复审批。公开发布、生产写入/部署、费用、购买、签名认证、权限变更等仍按最新用户授权边界执行。零新增费用；不上传凭据、登录态或私钥。
+
+持续交接source of truth：[Google交接原件](https://docs.google.com/document/d/1S8MJ-5hafqAAKbRImdjcQP24ftSiGt0zRIcKkSP_jXA/edit)。本仓库HANDOFF是fallback入口。当前任务目录：`discuss/novel_rebuild_20261101/`。
+
+- [最新小说v3云原件](https://docs.google.com/document/d/1nApEHgezhPfpC9CDAy6DiPWUE61qy6C_g0kyvzxgJxM/edit?tab=t.2n1oox91uiw0)
+- [最新首集v4云原件](https://docs.google.com/document/d/1nu552mG0HWaH00-zmQr9oXVN6J4ydGvMeprpszUVEAM/edit?tab=t.nktou8fv2nec)
+- [最新全季结构v3云原件](https://docs.google.com/document/d/1nu552mG0HWaH00-zmQr9oXVN6J4ydGvMeprpszUVEAM/edit?tab=t.5takfst62596)
+
+本地对应`novel_complete_v3.md`、`episode01_candidate_v4.md`、`season_outline_candidate_v3.md`，与`review_round03/`冻结三源逐字节相同；input_hash=`d4ff7bf95b35150a1cb9f61d7ee691a18bc4dbb4dd356434e1ecd886bfdee57f`。首集29发声行691汉字、12场311秒；六集文字规划311/320/290/360/295/315秒，合1891秒（31:31），不是实读/成片时长。来源与变更见相邻manifest/coordination_record；Gemini为主要创作基础，小说五六节及本轮六七局部、首集衔接含Sol辅助，不能冒称全部Gemini。未采用有事实错误的Flash-Lite八补丁。
+
+门槛仍是十个独立AI模拟视角×十维×三作品，300格每格≥9.5；**目前未达，无本版新媒体**，新文件不继承旧评分。旧首轮完整Sol记录最低7.5、282格低于9.5；[评分表19](https://docs.google.com/spreadsheets/d/1jvdfFOQWyOaLUyXdtHqNtS6yGU0X9x-JNS038xoWR78/edit)仅旧首轮。round02只有08/09两个同源部分辅助原评，各最低8.5，不当十位齐备。Flash-Lite整本评审的有关依据在澄清中撤回，原件保留作审计，不作为有效正式终评；改稿者不评该稿。
+
+主要下一步：先取得高级Gemini真实可用后的独立终评，实质修稿并满足文字门槛，再确认免费/已有额度后生成音画与本地合成。上次高级模型页面显示用量100%、每周11%，提示11月2日08:20重置，页面时区未标；这些是历史状态，使用前重查，不能只因到点宣称恢复。不使用Astra，不换地区、账号或网络规避限制。
+
+`Result-4.wav`仅音色参考，不当最终配音；“未命名.m4a”及六个29秒片段只留本地、禁云盘。用户已认可参考图人物与质感，不等于当前成片通过。`video/local_renderer/`仅有历史编译与dry-run，当前导出/混音/同步未验证；不启动费用不明CI、不把编译成功当成片。
+
+备份精确payload及只读检查见`discuss/novel_rebuild_20261101/handoff_backup_allowlist.json`与`handoff_backup_preflight.md`。本次准备基于远端最新树，保留以上HANDOFF原字节，后续普通fast-forward更新必须用expected_sha防并发；本地落后18个提交与其他工作不被重置、变基或整体stage。本段只记录本地准备，不能当作已经提交或推送成功。
+
+
+### 同次备份追加：仍有效的制作约束与renderer边界
+
+- 用户“不在本机跑模型”的要求仍有效，包含tiny ASR，未被解除。不能因设备上能运行或体积小自行启动模型。
+- 生图后来改走GPT；连续多帧、分层视差、快切、局部动效的路线仍有效，“不做单张图推拉”仍有效。字幕单行。
+- 配音按整段自然表达，不逐句强拉统一语速、不强加固定停顿；最终实际音频决定时间线，文本秒数只是计划。
+- 据另一Sol本次返回，新版`Renderer.swift`刚扩展并编译到`/tmp/yiwenbu-local-renderer-check`，纯数据检查与dry-run通过；生产测试因只有1张旧PNG而正确拒绝。以上不代表真实视觉、导出、混音或同步成功。仓库旧binary未更新，正式执行须从新版源码重编；代码不在此次文字payload。当前不得生成素材。
+- 主代理已完成最新三件云端逐段回读：小说345、首集145、全季226个非空段分别相等；这仅验证云端文字同步，不是十视角通过。当前这版暂无十视角评分、无音画放行。高级模型08:20是历史页面重置计划，尚未复核恢复。

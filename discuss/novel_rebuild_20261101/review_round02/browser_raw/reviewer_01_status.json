@@ -1,0 +1,57 @@
+{
+  "url": "https://gemini.google.com/app/6a6dff0c88af4cd4",
+  "recorded_at_china": "2026-11-02T04:56:39+08:00",
+  "page_model_label": "3.5 Flash-Lite (menu); Flash-Lite (composer)",
+  "underlying_model_verified": false,
+  "submission_sha256": "7044a0f9cb70dce821b501a0e8ed5e0877ce54f87d67552e759c48975dc935f1",
+  "input_hash": "a7e2771ae897b537922c87264c4d03fbe12429f324bd7bfe514efb6532d7b230",
+  "attempts": 1,
+  "response_finished_in_ui": true,
+  "extracted": true,
+  "response_characters": 4758,
+  "json_parseable": true,
+  "audit": {
+    "novel": {
+      "dimensions": 10,
+      "quotes_not_verbatim": [
+        "悬念信息公平",
+        "节奏效率",
+        "结尾與追更回报"
+      ],
+      "declared_coverage": {
+        "complete": true,
+        "read_characters": 18312,
+        "limitations": ""
+      }
+    },
+    "episode01": {
+      "dimensions": 10,
+      "quotes_not_verbatim": [
+        "悬念信息公平",
+        "节奏效率",
+        "因果规则一致",
+        "對白與敘事呈現"
+      ],
+      "declared_coverage": {
+        "complete": true,
+        "read_characters": 4954,
+        "limitations": ""
+      }
+    },
+    "season_outline": {
+      "dimensions": 10,
+      "quotes_not_verbatim": [
+        "概念辨识",
+        "人物能动性",
+        "冲突递进",
+        "對白與敘事呈現"
+      ],
+      "declared_coverage": {
+        "complete": true,
+        "read_characters": 17362,
+        "limitations": ""
+      }
+    }
+  },
+  "note": "模型自报完整覆盖，未独立验证其实际阅读；引用逐字匹配为机械检查。"
+}
