@@ -518,7 +518,9 @@ def shot_clip(frame, out, dur, kind, fx, w, h):
               f"scale={w}:{h},format=yuv420p[fog];[base][fog]blend=all_mode=screen:all_opacity=0.10[out]")
     else:
         g += ";[base]null[out]"
-    g += f";[out]fade=t=in:st=0:d=0.3,fade=t=out:st={max(dur - 0.3, 0):.3f}:d=0.3[v]"
+    fd = min(0.3, dur * 0.06)  # 镜头短时转场也短，快切不发黑
+    fin = "fade=t=in:st=0:d=0.18:color=white" if "flash" in fx else f"fade=t=in:st=0:d={fd:.2f}"
+    g += f";[out]{fin},fade=t=out:st={max(dur - fd, 0):.3f}:d={fd:.2f}[v]"
     run(["ffmpeg", "-y", "-loop", "1", "-i", str(frame), "-filter_complex", g, "-map", "[v]",
          "-t", f"{dur:.3f}", "-r", str(FPS), "-pix_fmt", "yuv420p", "-c:v", "libx264", "-preset", "veryfast", str(out)])
 
@@ -801,7 +803,8 @@ def main():
         make_assets.cover(ep_path.stem, *size, name)
     import gdrive  # 配了云盘密钥就把本集全部文件写进云盘“第XX集”文件夹
     gdrive.upload([mp4, mp4.with_suffix(".mp3"), mp4.with_suffix(".txt")] +
-                  sorted(make_assets.OUT.glob(f"{ep_path.stem}_*.jpg")), f"第{int(ep_path.stem[2:]):02d}集")
+                  sorted(make_assets.OUT.glob(f"{ep_path.stem}_*.jpg")),
+                  "第{:02d}集{}".format(*(lambda m: (int(m.group(1)), m.group(2)))(re.match(r"ep(\d+)(.*)", ep_path.stem))))
 
 
 if __name__ == "__main__":
