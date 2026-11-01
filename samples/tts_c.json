@@ -1,0 +1,83 @@
+{
+ "ambience": "drone",
+ "shots": [],
+ "lines": [
+  {
+   "t": "第二天，袋子没了。门口摆着一双筷子。",
+   "tone": "normal",
+   "who": "man"
+  },
+  {
+   "t": "湿的。刚洗过。",
+   "tone": "afraid",
+   "who": "man",
+   "pause": 0.6
+  },
+  {
+   "t": "可那栋楼，早就停水了。",
+   "tone": "whisper",
+   "who": "man",
+   "sfx_after": "hit"
+  },
+  {
+   "t": "第五天，我没走。关了手电，蹲在楼梯口。",
+   "tone": "whisper",
+   "who": "man",
+   "pause": 0.8,
+   "sfx_after": "slipper"
+  },
+  {
+   "t": "门里，有拖鞋蹭地的声音。一步，一步。",
+   "tone": "afraid",
+   "who": "man"
+  },
+  {
+   "t": "走到门后，停了。",
+   "tone": "whisper",
+   "who": "man",
+   "pause": 1.0,
+   "sfx_after": "breath"
+  },
+  {
+   "t": "别敲……他还没回来。",
+   "tone": "old",
+   "who": "ghost",
+   "pause": 0.6
+  },
+  {
+   "t": "那声音，我太熟了。",
+   "tone": "afraid",
+   "who": "man"
+  },
+  {
+   "t": "敲门吧，面要坨了。",
+   "tone": "old",
+   "who": "ghost",
+   "pause": 0.4,
+   "sfx_after": "knock"
+  },
+  {
+   "t": "门自己开了。屋里没人。桌上一碗面，两双筷子。",
+   "tone": "whisper",
+   "who": "man",
+   "sfx": "creak",
+   "pause": 0.5
+  },
+  {
+   "t": "一双，用过了。",
+   "tone": "afraid",
+   "who": "man",
+   "pause": 0.8,
+   "sfx_after": "hit"
+  }
+ ],
+ "name": "配音对比C_豆包固定语速换男声",
+ "env": {
+  "DOUBAO_MODE": "steady"
+ },
+ "voices": {
+  "man": {
+   "doubao": "zh_male_ruyayichen_uranus_bigtts"
+  }
+ }
+}

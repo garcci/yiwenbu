@@ -12,6 +12,8 @@ import make_episode as me  # noqa: E402
 import gdrive  # noqa: E402
 
 spec = json.loads(Path(sys.argv[1]).read_text(encoding="utf-8"))
+for k, v in spec.get("env", {}).items():   # 小样可以覆盖环境变量（比如配音模式、语速）
+    me.os.environ[k] = str(v)
 if spec.get("episode"):  # 整集剧本小样：全集配音+音效，外加指定镜头的首帧图
     ep = json.loads((me.ROOT / spec["episode"]).read_text(encoding="utf-8"))
     spec.setdefault("ambience", ep.get("ambience", "drone"))

@@ -206,6 +206,11 @@ DOUBAO_STYLE = {"normal": "用低沉、平稳、讲故事的语气", "slow": "�
                 "old": "像一个很老的老太太隔着门板说话，很轻，很慢，有点含糊"}
 
 
+DOUBAO_WHO_STYLE = {"narrator": "用平稳、低沉、匀速的语气讲故事，语速始终一致，克制，不夸张",
+                    "man": "像普通人回忆自己亲身经历的怪事，匀速，声音压着，有点后怕，语速始终一致",
+                    "ghost": "像一个很老的老太太隔着门板说话，很轻，很慢，平平的没有情绪"}
+
+
 def _doubao_tts(text, out, who, tone):
     """豆包语音合成 2.0（火山方舟 Agent Plan 套餐里的 seed-tts-2.0），HTTP 流式返回分段 base64 音频。"""
     v = VOICES.get(who, VOICES.get("narrator", {})).get("doubao", "zh_female_vv_uranus_bigtts")
@@ -214,10 +219,18 @@ def _doubao_tts(text, out, who, tone):
          "Content-Type": "application/json"}
     if os.environ.get("DOUBAO_APPID"):
         h.update({"X-Api-App-Id": os.environ["DOUBAO_APPID"], "X-Api-Access-Key": os.environ.get("DOUBAO_TOKEN", "")})
-    speed = {"normal": -10, "slow": -25, "whisper": -20, "tense": 10}.get(tone, -10)
+    # 用户反馈“语速一下快一下慢，不协调”：默认全片固定语速、每个角色一种固定语气，tone 只影响句后停顿
+    mode = os.environ.get("DOUBAO_MODE") or SERIES.get("tts_mode", "steady")   # steady / plain / vary
+    if mode == "vary":
+        speed = {"normal": -10, "slow": -25, "whisper": -20, "tense": 10}.get(tone, -10)
+        style = DOUBAO_STYLE.get(tone, DOUBAO_STYLE["normal"])
+    else:
+        speed = int(os.environ.get("DOUBAO_RATE") or SERIES.get("speech_rate", -8))
+        style = None if mode == "plain" else DOUBAO_WHO_STYLE.get(who, DOUBAO_WHO_STYLE["narrator"])
     req = {"text": text.replace("……", "…"), "speaker": v,
-           "audio_params": {"format": "mp3", "sample_rate": 24000, "speech_rate": speed},
-           "additions": json.dumps({"context_texts": [DOUBAO_STYLE.get(tone, DOUBAO_STYLE["normal"])]}, ensure_ascii=False)}
+           "audio_params": {"format": "mp3", "sample_rate": 24000, "speech_rate": speed}}
+    if style:
+        req["additions"] = json.dumps({"context_texts": [style]}, ensure_ascii=False)
     for attempt in range(4):
         try:
             r = requests.post(DOUBAO_TTS_URL, headers=h, json={"user": {"uid": "yiwenbu"}, "req_params": req},
