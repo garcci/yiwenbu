@@ -8,6 +8,7 @@ import io
 import json
 import math
 import os
+import re
 from pathlib import Path
 import subprocess
 import sys
@@ -48,6 +49,23 @@ def validate(cfg, now=None):
     return cfg
 
 
+def safe_network_error(exc, headers):
+    message = str(exc)
+    for name in ("Authorization", "X-Api-Key"):
+        value = headers.get(name, "")
+        for secret in (value, value.removeprefix("Bearer ")):
+            if secret: message = message.replace(secret, "[REDACTED]")
+    message = re.sub(r"(https?://)[^/\s]*@", r"\1[REDACTED]@", message)
+    message = re.sub(r"\?[^\s'\"\)]+", "?[REDACTED]", message)
+    chain = []; seen = set(); pending = [exc]
+    while pending and len(chain) < 10:
+        item = pending.pop(0)
+        if id(item) in seen: continue
+        seen.add(id(item)); chain.append(type(item).__name__)
+        pending.extend(x for x in (getattr(item, "__cause__", None), getattr(item, "__context__", None), getattr(item, "reason", None), *getattr(item, "args", ())) if isinstance(x, BaseException))
+    return {"type": type(exc).__name__, "chain": chain, "message": message[:1800]}
+
+
 def post(url, payload, headers):
     # 固定套餐端点；不自动重试，不回退到按量付费，不记录响应体或密钥。
     if url not in (TTS_URL, IMAGE_URL):
@@ -56,7 +74,7 @@ def post(url, payload, headers):
     try:
         response = requests.post(url, json=payload, headers=headers, timeout=(30, 360))
     except requests.RequestException as exc:
-        print("套餐网络失败类型：", type(exc).__name__, flush=True)
+        print("套餐网络诊断：", json.dumps(safe_network_error(exc, headers), ensure_ascii=False), flush=True)
         raise RuntimeError("套餐网络请求失败；保留已完成素材") from None
     if not response.ok:
         print("套餐HTTP状态：", response.status_code, flush=True)
