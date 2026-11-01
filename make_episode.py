@@ -33,6 +33,9 @@ TONES = {
     "slow":    ("-22%", "-5Hz", "+0%",  0.75),
     "whisper": ("-18%", "-8Hz", "-25%", 0.70),
     "tense":   ("+6%",  "+0Hz", "+5%",  0.25),
+    "afraid":  ("-5%",  "-2Hz", "-15%", 0.55),
+    "cold":    ("-12%", "-4Hz", "+0%",  0.60),
+    "old":     ("-20%", "-6Hz", "-20%", 0.70),
 }
 VIDEO_PROVIDER = os.environ.get("VIDEO_PROVIDER", "none")  # none / minimax / seedance（seedance：每个镜头都生成动态）
 MOTIONS = ["push_in", "pan_right", "drift_up", "pull_out", "pan_left", "push_in"]
@@ -197,7 +200,10 @@ def _minimax_tts(text, out, who, tone):
 
 DOUBAO_TTS_URL = os.environ.get("DOUBAO_TTS_URL", "https://openspeech.bytedance.com/api/v3/plan/tts/unidirectional")
 DOUBAO_STYLE = {"normal": "用低沉、平稳、讲故事的语气", "slow": "放慢语速，压低声音，带一点神秘感",
-                "whisper": "压低嗓音，像贴着耳朵小声说，带一点害怕", "tense": "语速加快，声音紧张"}
+                "whisper": "压低嗓音，像贴着耳朵小声说，带一点害怕", "tense": "语速加快，声音紧张",
+                "afraid": "声音发抖，气息很重，像刚亲眼看到不该看的东西，强压着恐惧小声说",
+                "cold": "语气很平、很冷，没有一点情绪，一字一顿",
+                "old": "像一个很老的老太太隔着门板说话，很轻，很慢，有点含糊"}
 
 
 def _doubao_tts(text, out, who, tone):
@@ -271,8 +277,9 @@ def voice_line(text, tone, wav, tts_provider, who="narrator"):
         if tts_provider in ("minimax", "edge", "doubao"):
             # 轻微的房间混响，让声音像在屋里讲故事；“鬼”的声音再加一层空洞回声
             af = "aecho=0.8:0.6:45|90:0.18|0.10,highpass=f=70"
-            if who == "ghost":
-                af = "aecho=0.8:0.7:60|140|260:0.35|0.25|0.15,highpass=f=120,lowpass=f=5000"
+            if who == "ghost":  # 压低半个调、拖慢一点，再加空洞回声，像隔着门板
+                af = ("asetrate=24000*0.9,aresample=24000,atempo=1.0,"
+                      "aecho=0.8:0.7:60|140|260:0.35|0.25|0.15,highpass=f=150,lowpass=f=3800")
             run(["ffmpeg", "-y", "-i", str(mp3), "-af", af, "-ar", str(SR), "-ac", "1", str(wav)])
         else:  # silent：离线试跑，按语速估时长
             sec = max(1.2, len(text) / (4.6 if tone in ("normal", "tense") else 3.6))
@@ -300,6 +307,29 @@ SFX = {
     "water":     ("anoisesrc=c=pink:a=0.6:r={sr}:d=3,bandpass=f=900:w=600,tremolo=f=3:d=0.8,"
                   "afade=t=in:d=0.4,afade=t=out:st=2.4:d=0.6", 3.0),
     "gust":      ("anoisesrc=c=pink:a=0.9:r={sr}:d=2.5,bandpass=f=700:w=900,afade=t=in:d=1,afade=t=out:st=1.2:d=1.3", 2.5),
+    # 敲门三下：木门闷响（低频共振 + 短促闷噪）
+    "knock":     ("aevalsrc='(0.9*sin(2*PI*95*t)+0.5*sin(2*PI*210*t))*exp(-t*38)':s={sr}:d=0.42[k];"
+                  "anoisesrc=c=brown:a=0.9:r={sr}:d=0.42,lowpass=f=700,afade=t=out:st=0.0:d=0.06[n];"
+                  "[k][n]amix=2:normalize=0,volume=1.2,aloop=loop=2:size=18522", 1.3),
+    # 老门轴吱呀：频率慢慢漂移的摩擦声
+    "creak":     ("aevalsrc='0.35*sin(2*PI*(260+90*sin(2*PI*0.6*t))*t)*(0.55+0.45*sin(2*PI*31*t))':s={sr}:d=2.2,"
+                  "bandpass=f=900:w=1400,afade=t=in:d=0.3,afade=t=out:st=1.6:d=0.6,volume=38dB", 2.2),
+    # 拖鞋蹭地：一步一步，很慢
+    "slipper":   ("anoisesrc=c=pink:a=0.7:r={sr}:d=0.28,bandpass=f=2600:w=2200,afade=t=in:d=0.08,afade=t=out:st=0.12:d=0.16,"
+                  "apad=pad_dur=0.75,aloop=loop=3:size=45423,volume=42dB", 4.2),
+    # 低频上冲：吓人之前把心提起来
+    "riser":     ("aevalsrc='0.35*sin(2*PI*(38+14*t*t)*t)':s={sr}:d=3.2[a];"
+                  "anoisesrc=c=white:a=0.5:r={sr}:d=3.2,highpass=f=2500,volume=0.4[b];"
+                  "[a][b]amix=2:normalize=0,afade=t=in:d=3.0,afade=t=out:st=3.1:d=0.1,volume=0.8", 3.2),
+    # 重击：低频闷响 + 金属刺音
+    "hit":       ("aevalsrc='0.95*sin(2*PI*42*t)*exp(-t*3)':s={sr}:d=2.0[a];"
+                  "anoisesrc=c=white:a=0.6:r={sr}:d=2.0,highpass=f=3000,afade=t=out:st=0.0:d=0.5[b];"
+                  "[a][b]amix=2:normalize=0,volume=0.9", 2.0),
+    # 门后的呼吸：很近，很慢
+    "breath":    ("anoisesrc=c=pink:a=0.8:r={sr}:d=4,bandpass=f=900:w=900,"
+                  "volume='0.15+0.85*pow(sin(PI*t/2),2)':eval=frame,afade=t=in:d=0.5,afade=t=out:st=3.3:d=0.7,volume=36dB", 4.0),
+    # 耳鸣：静到发慌
+    "tinnitus":  ("sine=f=6800:r={sr}:d=4,volume=0.12,afade=t=in:d=1.2,afade=t=out:st=3:d=1", 4.0),
 }
 
 
@@ -628,7 +658,12 @@ def render(ep, workdir, out_mp4, img_provider, tts_provider, w=W, h=H, caption=T
             d = duration(a)
             cues.append((t, t + d, line["t"]))
             voice_parts.append((a, t))
-            t += d + pause
+            if line.get("sfx") in SFX:            # 和这句同时响
+                sfx_events.append((line["sfx"], max(t - 0.1, 0)))
+            t += d
+            if line.get("sfx_after") in SFX:      # 这句说完、静下来之后再响（吓人的点）
+                sfx_events.append((line["sfx_after"], t + 0.25 + float(line.get("pause", 0)) * 0.6))
+            t += pause + float(line.get("pause", 0))   # pause：额外留白秒数，制造“静”
         clip = workdir / f"{tag}clip{i:02d}.mp4"
         kind = shot.get("motion") or MOTIONS[i % len(MOTIONS)]
         vid = workdir / f"vid{i:02d}.mp4"
