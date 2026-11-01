@@ -4,3 +4,4 @@ __pycache__/
 work/**/*
 !work/*/
 !work/*/img*.jpg
+.serena/
