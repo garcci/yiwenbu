@@ -1,0 +1,67 @@
+{
+ "model": "qwen3_tts",
+ "set": "qwen3_tts_a",
+ "load_s": 65.5,
+ "items": [
+  {
+   "file": "qwen3_tts_a/01.wav",
+   "chars": 13,
+   "gen_s": 122.2,
+   "audio_s": 2.4,
+   "rtf": 50.93,
+   "peak_rss_gb": 6.9
+  },
+  {
+   "file": "qwen3_tts_a/02.wav",
+   "chars": 13,
+   "gen_s": 34.9,
+   "audio_s": 2.56,
+   "rtf": 13.63,
+   "peak_rss_gb": 6.93
+  },
+  {
+   "file": "qwen3_tts_a/03.wav",
+   "chars": 5,
+   "gen_s": 10.3,
+   "audio_s": 0.88,
+   "rtf": 11.74,
+   "peak_rss_gb": 6.93
+  },
+  {
+   "file": "qwen3_tts_a/04.wav",
+   "chars": 14,
+   "gen_s": 21.3,
+   "audio_s": 2.4,
+   "rtf": 8.86,
+   "peak_rss_gb": 6.93
+  },
+  {
+   "file": "qwen3_tts_a/05.wav",
+   "chars": 8,
+   "gen_s": 14.4,
+   "audio_s": 1.6,
+   "rtf": 9.02,
+   "peak_rss_gb": 6.93
+  },
+  {
+   "file": "qwen3_tts_a/06.wav",
+   "chars": 12,
+   "gen_s": 19.0,
+   "audio_s": 2.16,
+   "rtf": 8.78,
+   "peak_rss_gb": 6.93
+  },
+  {
+   "file": "qwen3_tts_a/07.wav",
+   "chars": 13,
+   "gen_s": 21.7,
+   "audio_s": 2.48,
+   "rtf": 8.76,
+   "peak_rss_gb": 6.93
+  }
+ ],
+ "total_gen_s": 243.8,
+ "total_audio_s": 14.48,
+ "rtf": 16.84,
+ "peak_rss_gb": 6.93
+}

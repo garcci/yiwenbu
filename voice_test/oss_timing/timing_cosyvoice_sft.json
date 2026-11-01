@@ -1,0 +1,67 @@
+{
+ "model": "cosyvoice_sft",
+ "set": "cosyvoice_sft_a",
+ "load_s": 57.1,
+ "items": [
+  {
+   "file": "cosyvoice_sft_a/01.wav",
+   "chars": 13,
+   "gen_s": 33.0,
+   "audio_s": 1.83,
+   "rtf": 17.96,
+   "peak_rss_gb": 4.56
+  },
+  {
+   "file": "cosyvoice_sft_a/02.wav",
+   "chars": 13,
+   "gen_s": 20.5,
+   "audio_s": 2.37,
+   "rtf": 8.64,
+   "peak_rss_gb": 4.56
+  },
+  {
+   "file": "cosyvoice_sft_a/03.wav",
+   "chars": 5,
+   "gen_s": 5.7,
+   "audio_s": 0.75,
+   "rtf": 7.59,
+   "peak_rss_gb": 4.56
+  },
+  {
+   "file": "cosyvoice_sft_a/04.wav",
+   "chars": 14,
+   "gen_s": 17.1,
+   "audio_s": 2.06,
+   "rtf": 8.3,
+   "peak_rss_gb": 4.56
+  },
+  {
+   "file": "cosyvoice_sft_a/05.wav",
+   "chars": 8,
+   "gen_s": 9.6,
+   "audio_s": 1.25,
+   "rtf": 7.67,
+   "peak_rss_gb": 4.56
+  },
+  {
+   "file": "cosyvoice_sft_a/06.wav",
+   "chars": 12,
+   "gen_s": 18.1,
+   "audio_s": 2.14,
+   "rtf": 8.48,
+   "peak_rss_gb": 4.56
+  },
+  {
+   "file": "cosyvoice_sft_a/07.wav",
+   "chars": 13,
+   "gen_s": 15.5,
+   "audio_s": 1.89,
+   "rtf": 8.19,
+   "peak_rss_gb": 4.56
+  }
+ ],
+ "total_gen_s": 119.5,
+ "total_audio_s": 12.29,
+ "rtf": 9.72,
+ "peak_rss_gb": 4.56
+}

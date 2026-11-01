@@ -1,0 +1,67 @@
+{
+ "model": "kokoro_zh",
+ "set": "kokoro_zh_a",
+ "load_s": 13.1,
+ "items": [
+  {
+   "file": "kokoro_zh_a/01.wav",
+   "chars": 13,
+   "gen_s": 4.2,
+   "audio_s": 3.58,
+   "rtf": 1.17,
+   "peak_rss_gb": 1.66
+  },
+  {
+   "file": "kokoro_zh_a/02.wav",
+   "chars": 13,
+   "gen_s": 2.6,
+   "audio_s": 3.55,
+   "rtf": 0.73,
+   "peak_rss_gb": 1.7
+  },
+  {
+   "file": "kokoro_zh_a/03.wav",
+   "chars": 5,
+   "gen_s": 1.4,
+   "audio_s": 1.95,
+   "rtf": 0.74,
+   "peak_rss_gb": 1.7
+  },
+  {
+   "file": "kokoro_zh_a/04.wav",
+   "chars": 14,
+   "gen_s": 2.5,
+   "audio_s": 3.33,
+   "rtf": 0.75,
+   "peak_rss_gb": 1.75
+  },
+  {
+   "file": "kokoro_zh_a/05.wav",
+   "chars": 8,
+   "gen_s": 1.8,
+   "audio_s": 2.5,
+   "rtf": 0.74,
+   "peak_rss_gb": 1.75
+  },
+  {
+   "file": "kokoro_zh_a/06.wav",
+   "chars": 12,
+   "gen_s": 2.3,
+   "audio_s": 3.3,
+   "rtf": 0.7,
+   "peak_rss_gb": 1.77
+  },
+  {
+   "file": "kokoro_zh_a/07.wav",
+   "chars": 13,
+   "gen_s": 2.5,
+   "audio_s": 3.5,
+   "rtf": 0.7,
+   "peak_rss_gb": 1.81
+  }
+ ],
+ "total_gen_s": 17.3,
+ "total_audio_s": 21.71,
+ "rtf": 0.8,
+ "peak_rss_gb": 1.81
+}
