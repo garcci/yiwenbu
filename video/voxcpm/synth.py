@@ -10,10 +10,11 @@ VOICES = {
     "voxcpm2_a": "一个十九岁的北方年轻男人，嗓音偏低、干净，像对着一个朋友讲一件自己亲身经历过的真事，自然有起伏，有情绪但克制，不表演，不播音腔",
     "voxcpm2_b": "一个二十岁左右的男生，声音有点沙哑，深夜里压低声音跟朋友讲自己遇到的怪事，语速自然，说到关键处会慢下来，带一点后怕，但不夸张",
 }
+import torch; torch.manual_seed(42)
 model = VoxCPM.from_pretrained("openbmb/VoxCPM2", load_denoiser=False, optimize=False)
 for name, desc in VOICES.items():
     t = time.time()
-    wav = model.generate(text=f"({desc}){TEXT}", cfg_value=2.0, inference_timesteps=10, seed=42)
+    wav = model.generate(text=f"({desc}){TEXT}", cfg_value=2.0, inference_timesteps=10)
     out = Path("voice_test") / f"{name}_p2" / "full.wav"; out.parent.mkdir(parents=True, exist_ok=True)
     sf.write(out, wav, model.tts_model.sample_rate)
     dur = len(wav) / model.tts_model.sample_rate
