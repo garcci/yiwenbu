@@ -1,0 +1,33 @@
+name: VoxCPM2配音
+
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/voxcpm/**"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: write
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    steps:
+      - uses: actions/checkout@v4
+      - run: sudo rm -rf /usr/share/dotnet /opt/ghc /usr/local/lib/android; sudo apt-get install -y -q ffmpeg libsndfile1
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.11"}
+      - run: |
+          pip install -q torch torchaudio --index-url https://download.pytorch.org/whl/cpu
+          pip install -q voxcpm soundfile
+      - run: python -u video/voxcpm/synth.py
+      - env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          git config user.name "github-actions"; git config user.email "actions@github.com"
+          git add voice_test/voxcpm2_*
+          git commit -m "VoxCPM2 配音盲听素材" || exit 0
+          for i in 1 2 3; do git pull -q --rebase origin claude/project-thread-l4wz3r && git push -q origin HEAD:claude/project-thread-l4wz3r && break; sleep 5; done
+          gh workflow run voice_test.yml --ref claude/project-thread-l4wz3r
