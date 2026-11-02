@@ -1,0 +1,8 @@
+{
+  "characters": 34,
+  "sha256": "abc10d503e80373ee4ac6a256234a15f43a3b0aa9dc4c23603c0441d37ac73f4",
+  "speaker": "zh_female_qingchezizi_uranus_bigtts",
+  "tts_requests_max": 1,
+  "billing_evidence_source": "Parent agent Safari read-only billing verification 2026-11-02; Actions compute $1.81/$12 included; Actions net $0; $0 budget Usage blocked; Agent Plan AFP approx 11k/100k, TTS2 overage off",
+  "quality": "not listened or approved"
+}

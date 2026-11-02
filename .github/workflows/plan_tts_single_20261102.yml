@@ -1,0 +1,30 @@
+name: Agent Plan 女主单段样音 20261102
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/plan_tts_single_20261102/paragraph.txt"]
+permissions:
+  contents: read
+concurrency:
+  group: agent-plan-tts-single-20261102
+  cancel-in-progress: false
+jobs:
+  single:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: 零请求校验
+        run: python3 video/plan_tts_single_20261102/single_paragraph.py video/plan_tts_single_20261102/paragraph.txt --sha256 abc10d503e80373ee4ac6a256234a15f43a3b0aa9dc4c23603c0441d37ac73f4 --speaker zh_female_qingchezizi_uranus_bigtts --style-file video/plan_tts_single_20261102/style.txt
+      - name: 仅一个自然段套餐请求，禁止重试
+        env:
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+        run: python3 video/plan_tts_single_20261102/single_paragraph.py video/plan_tts_single_20261102/paragraph.txt --sha256 abc10d503e80373ee4ac6a256234a15f43a3b0aa9dc4c23603c0441d37ac73f4 --speaker zh_female_qingchezizi_uranus_bigtts --style-file video/plan_tts_single_20261102/style.txt --execute
+      - uses: actions/upload-artifact@v4
+        if: success()
+        with:
+          name: tts-female-single-${{ github.run_id }}
+          path: tts-single-output/
+          retention-days: 1
+          if-no-files-found: error
