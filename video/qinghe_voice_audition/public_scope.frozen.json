@@ -1,0 +1,9 @@
+{
+  "authorization_id": "ep01-qinghe-voice-audition-20261102-01",
+  "sha256": {
+    "video/qinghe_voice_audition/bootstrap.py": "4da83b7d21c61ff1a093d94a586c473632db6383262e662149bad2792742ca39",
+    "video/qinghe_voice_audition/test_public_entry.py": "14791d5c8da46eca8cfe0cf6f7f488ac81db959360874a30369669df07a660d2",
+    "video/qinghe_voice_audition/execute_once.example.json": "d812579f98af34d3b78480132b3ab2d5113c168f00719fecf12cac409120643e",
+    ".github/workflows/qinghe_voice_audition_once.yml": "b06d2b455b7f9491ea277a7d13d95c9b044118e50f92eb60e0370b4a6735d190"
+  }
+}

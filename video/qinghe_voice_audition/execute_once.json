@@ -1,0 +1,9 @@
+{
+  "authorization_id": "ep01-qinghe-voice-audition-20261102-01",
+  "zero_added_cost_confirmed": true,
+  "cost_evidence_utc": "2026-11-02T08:57:00Z",
+  "compute_policy": "public_standard_linux",
+  "free_drive_storage_bytes_at_least": 314572800,
+  "upload_to_existing_private_drive": true,
+  "manifest_sha256": "310adfb881dcbd33eb14977872f28c6ed0c5cf7467e25c9c6aa0b41f5a44b535"
+}
