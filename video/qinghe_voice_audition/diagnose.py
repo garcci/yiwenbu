@@ -34,7 +34,10 @@ def main():
     def is_private(x):
         p=x.get('permissions'); return isinstance(p,list) and bool(p) and all(v.get('type') in ('user','group') for v in p)
     check('parent_permissions', lambda: (lambda x: x.get('mimeType')=='application/vnd.google-apps.folder' and is_private(x))(metadata(parent)))
-    check('package_metadata', lambda: (lambda x: x.get('parents')==[parent] and int(x['size'])<=4*1024**2 and is_private(x))(metadata(package)))
+    package_meta=check('package_readable', lambda: metadata(package))
+    check('package_private', lambda: is_private(package_meta))
+    check('package_size', lambda: int(package_meta['size'])<=4*1024**2)
+    check('package_parent_matches', lambda: package_meta.get('parents')==[parent])
     def read_package():
         r=session.get('https://www.googleapis.com/drive/v3/files/'+package,params={'alt':'media'},timeout=60,allow_redirects=False)
         r.raise_for_status(); raw=r.content
