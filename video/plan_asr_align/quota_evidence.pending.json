@@ -1,0 +1,26 @@
+{
+  "draft_only": false,
+  "confirmed_at_utc": "2026-11-02T06:32:00Z",
+  "authorization_id": "ep01-plan-asr-r06-pilot-20261102-01",
+  "inputs_sha256": "f997b17d44424d7bfaa642b0b17c36868044fc3944f46b432b77a0b68b5a01c9",
+  "actions_zero_budget_blocks_overage": true,
+  "actions_storage_within_free_allowance": true,
+  "actions_compute_used_usd": 1.83,
+  "actions_compute_included_usd": 12,
+  "asr_included_in_agent_plan": true,
+  "asr_overage_disabled": true,
+  "asr_audio_budget_verified": true,
+  "volc_afp_remaining": 88600,
+  "approved_max_connections": 1,
+  "approved_max_audio_ms": 60000,
+  "recorded_parent_observation": {
+    "observed_at_asia_shanghai": "2026-11-02T14:47:55+08:00",
+    "plan": "Medium",
+    "asr_model": "Doubao-Seed-ASR-2.0",
+    "asr_included": true,
+    "asr_overage_enabled": false,
+    "source": "Terra子代理Safari只读观察，主代理已收到原始数值"
+  },
+  "cost_source_note": "2026-11-02北京时间14:32 GitHub Actions compute $1.83/$12 included，storage 0GB/0.5GB显示7%，净额$0，Actions $0预算Usage blocked；14:47:55火山Agent Plan Medium约剩8.86万AFP、包含ASR2且超额未开启。TTL采用较早观察时间；官方ASR 450 AFP/小时，单次≤60秒至多约7.5 AFP，以实际计量为准。",
+  "official_rate_url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-afp-credits-billing-rules?lang=zh"
+}

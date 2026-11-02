@@ -1,0 +1,46 @@
+name: Agent Plan ASR r06 S1_01唯一验证（非27段批量）
+
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/plan_asr_align/execute_once.json"]
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ep01-plan-asr-r06-pilot-20261102-01
+  cancel-in-progress: false
+
+jobs:
+  pilot:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - name: 离线协议与对照边界检查
+        run: |
+          python3 -m unittest discover -s video/plan_asr_align/tests -v
+          python3 video/plan_asr_align/runner.py
+      - name: 安装云端解码与WebSocket传输依赖（不安装模型，不注入凭据）
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg
+          python3 -m pip install --quiet --require-hashes -r video/plan_asr_align/requirements.txt
+      - name: 只识别指定套餐S1_01原音一次，失败不重试
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+        run: python3 video/plan_asr_align/runner.py --execute
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: plan-asr-r06-S1_01-pilot
+          path: plan-asr-output/
+          retention-days: 1
+          if-no-files-found: warn

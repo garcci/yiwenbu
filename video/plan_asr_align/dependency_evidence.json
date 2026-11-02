@@ -1,0 +1,14 @@
+{
+  "package": "websocket-client",
+  "version": "1.9.2",
+  "metadata_source": "https://pypi.org/pypi/websocket-client/1.9.2/json",
+  "release_page": "https://pypi.org/project/websocket-client/1.9.2/",
+  "verified_on": "2026-11-02",
+  "requires_python": ">=3.10",
+  "wheel": "websocket_client-1.9.2-py3-none-any.whl",
+  "wheel_sha256": "e1a673830a9c7bfa47b1cd3d5e4178f4c9651d80a4eab02c9c23a1c3ec6250ce",
+  "uploaded_at": "2026-08-31T14:08:39.899926Z",
+  "verification": "Read official PyPI metadata and inspect wheel source/AST in memory; did not install or execute the package; no ASR call.",
+  "verified_source_apis": ["create_connection", "send_binary", "status property", "redirect_limit option", "enable_multithread option"],
+  "limitation": "API source compatibility and offline mock tests do not establish a successful live package handshake."
+}
