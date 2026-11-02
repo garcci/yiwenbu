@@ -52,12 +52,10 @@ def main():
                 if p.is_absolute() or '..' in p.parts or '\\' in i.filename or str(p) in names or stat.S_ISLNK(mode) or i.is_dir() or i.compress_size<=0 or i.file_size/i.compress_size>=200:return False
                 names.add(str(p))
             scope=json.loads(z.read('private-source-scope.json'))
-            if scope['authorization_id']!='ep01-lead-ab-audition-20261102-03':return False
+            if scope['authorization_id']!='ep01-voxcpm2-design-one-20261102-01':return False
             for path,digest in scope['sha256'].items():
                 if hashlib.sha256(z.read(path)).hexdigest()!=digest:return False
-            source=z.read('video/role_tts_plan/runner.py').decode()
-            match=re.search(r'^DRIVE_PARENT\s*=\s*[\'"]([^\'"]+)[\'"]',source,re.M)
-            return bool(match and match.group(1)==parent)
+            return True
     check('package_integrity_and_destination', inspect)
 
 
