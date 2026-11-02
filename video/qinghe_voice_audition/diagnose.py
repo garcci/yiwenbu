@@ -1,4 +1,4 @@
-"""Read-only fixed-label diagnostics; never calls TTS or prints private values."""
+"""Read-only fixed-label diagnostics for the dedicated audition destination."""
 import hashlib, io, json, os, re, stat, zipfile
 from pathlib import PurePosixPath
 import requests
