@@ -1,12 +1,17 @@
 """Cloud-only diagnostic: no model downloads, inference, uploads or secret logging."""
-import os, re, shutil, subprocess, sys
+import os, re, shutil, subprocess, sys, tempfile
 from pathlib import Path
 import requests
 
 
 def isolated_environment(source):
-    allowed=('PATH','HOME','LANG','LC_ALL','TMPDIR','RUNNER_TEMP','LD_LIBRARY_PATH','SSL_CERT_FILE')
-    return {k:source[k] for k in allowed if k in source}
+    allowed=('PATH','LANG','LC_ALL','TZ','GITHUB_REPOSITORY','GITHUB_REF','GITHUB_EVENT_NAME','GITHUB_RUN_ATTEMPT','GITHUB_RUN_ID','GITHUB_ACTIONS','RUNNER_OS','RUNNER_TEMP')
+    env={k:source[k] for k in allowed if k in source}
+    home=tempfile.mkdtemp(prefix='probe-model-env-',dir=source.get('RUNNER_TEMP'))
+    env.update({'HOME':home,'TMPDIR':home,'TMP':home,'TEMP':home,'XDG_CONFIG_HOME':home+'/config',
+                'XDG_CACHE_HOME':home+'/cache','HF_HOME':home+'/huggingface','HF_HUB_DISABLE_IMPLICIT_TOKEN':'1',
+                'HF_HUB_DISABLE_TELEMETRY':'1','DO_NOT_TRACK':'1','PIP_CONFIG_FILE':os.devnull,'PYTHONNOUSERSITE':'1'})
+    return env
 
 
 def check(name, fn):
