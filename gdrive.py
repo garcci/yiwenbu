@@ -78,9 +78,19 @@ def _put(h, path, parent):
         try:
             return _put_once(h, path, parent)
         except requests.RequestException as e:
-            print(f"  上传 {path.name} 第{attempt + 1}次失败：{e}")
+            # Exception messages can contain resumable session URLs or response data.
+            # Emit only fixed labels, never the exception text or media filename.
+            if isinstance(e, requests.Timeout):
+                category = "请求超时"
+            elif isinstance(e, requests.ConnectionError):
+                category = "连接错误"
+            elif isinstance(e, requests.HTTPError):
+                category = "服务端请求失败"
+            else:
+                category = "网络请求错误"
+            print(f"  云盘上传第{attempt + 1}次失败：{category}")
             time.sleep(10 * (attempt + 1))
-    raise SystemExit(f"上传云盘失败：{path.name}")
+    raise SystemExit("上传云盘失败")
 
 
 def upload(paths, subfolder):
