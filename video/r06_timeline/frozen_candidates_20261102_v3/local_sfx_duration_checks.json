@@ -1,0 +1,82 @@
+[
+  {
+    "id": "F01",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 1440000,
+    "actual_local_wav_seconds": 30.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F02",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 1440000,
+    "actual_local_wav_seconds": 30.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F03",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 960000,
+    "actual_local_wav_seconds": 20.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F04",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 960000,
+    "actual_local_wav_seconds": 20.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F05",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 192000,
+    "actual_local_wav_seconds": 4.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F06",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 240000,
+    "actual_local_wav_seconds": 5.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F07",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 288000,
+    "actual_local_wav_seconds": 6.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F11",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 192000,
+    "actual_local_wav_seconds": 4.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F12",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 144000,
+    "actual_local_wav_seconds": 3.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  },
+  {
+    "id": "F13",
+    "local_sha256_match": true,
+    "sample_rate": 48000,
+    "frames": 288000,
+    "actual_local_wav_seconds": 6.0,
+    "method": "Python wave WAV header/sample count; no listening; no voice audio accessed"
+  }
+]

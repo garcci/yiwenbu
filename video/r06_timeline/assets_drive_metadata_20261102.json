@@ -1,0 +1,2006 @@
+{
+  "local": [
+    {
+      "id": "I01",
+      "kind": "ai_still",
+      "drive_id": "1T6tm5bE1AzgkpucXYe0KUvr_ejg8zrYP",
+      "local_path": "/Users/ziling/Downloads/深夜电讯室的专注值班员.png",
+      "bytes": 1939030,
+      "sha256": "3fad4582e2afe0de9cb5bdc7bef638372e79a5c83cb4b62fc84190235a5415dc",
+      "md5": "ffe438c2bfab2b0ed8382720a13b485b",
+      "expected_sha256": "3fad4582e2afe0de9cb5bdc7bef638372e79a5c83cb4b62fc84190235a5415dc",
+      "source_record": {
+        "id": "I01",
+        "label": "机房夜班",
+        "kind": "ai_still",
+        "drive_id": "1T6tm5bE1AzgkpucXYe0KUvr_ejg8zrYP",
+        "drive_url": "https://drive.google.com/file/d/1T6tm5bE1AzgkpucXYe0KUvr_ejg8zrYP/view",
+        "local_candidate_path": "/Users/ziling/Downloads/深夜电讯室的专注值班员.png",
+        "local_sha256": "3fad4582e2afe0de9cb5bdc7bef638372e79a5c83cb4b62fc84190235a5415dc",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I02",
+      "kind": "ai_still",
+      "drive_id": "1hRtm5SVRagq3EVPA_8pwtngiFfjGeKDo",
+      "local_path": "/Users/ziling/Downloads/深夜复古电脑工作台.png",
+      "bytes": 1827074,
+      "sha256": "c7d3d97197b1c79ecf4a6f69a2df6c612da44d2885e77b33e51d714b3c05cc5e",
+      "md5": "395265e0ee9ef4677d2bda3ec5891f7f",
+      "expected_sha256": "c7d3d97197b1c79ecf4a6f69a2df6c612da44d2885e77b33e51d714b3c05cc5e",
+      "source_record": {
+        "id": "I02",
+        "label": "键盘",
+        "kind": "ai_still",
+        "drive_id": "1hRtm5SVRagq3EVPA_8pwtngiFfjGeKDo",
+        "drive_url": "https://drive.google.com/file/d/1hRtm5SVRagq3EVPA_8pwtngiFfjGeKDo/view",
+        "local_candidate_path": "/Users/ziling/Downloads/深夜复古电脑工作台.png",
+        "local_sha256": "c7d3d97197b1c79ecf4a6f69a2df6c612da44d2885e77b33e51d714b3c05cc5e",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I03",
+      "kind": "ai_still",
+      "drive_id": "1HfwOb28R3Yld9MOc7alDqwkgntWSnm5B",
+      "local_path": "/Users/ziling/Downloads/深夜办公室的专注时刻.png",
+      "bytes": 2026060,
+      "sha256": "958fc4eaff3f1310f535df1ec5fee288de77264324b9844d913e917ab570f6c3",
+      "md5": "5c49298cfaf8efb1475040546e4f2872",
+      "expected_sha256": "958fc4eaff3f1310f535df1ec5fee288de77264324b9844d913e917ab570f6c3",
+      "source_record": {
+        "id": "I03",
+        "label": "键盘特写",
+        "kind": "ai_still",
+        "drive_id": "1HfwOb28R3Yld9MOc7alDqwkgntWSnm5B",
+        "drive_url": "https://drive.google.com/file/d/1HfwOb28R3Yld9MOc7alDqwkgntWSnm5B/view",
+        "local_candidate_path": "/Users/ziling/Downloads/深夜办公室的专注时刻.png",
+        "local_sha256": "958fc4eaff3f1310f535df1ec5fee288de77264324b9844d913e917ab570f6c3",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I04",
+      "kind": "ai_still",
+      "drive_id": "1BLnQPkwH2ycDHcAzUDRhFW0WBE0siWtu",
+      "local_path": "/Users/ziling/Downloads/深夜办公室里的指导时刻.png",
+      "bytes": 1964463,
+      "sha256": "bc51dba4c02f41f7ccaf9da30ed6aa0fae9a4856bbb4a3f1bac708c29f4acf62",
+      "md5": "369fdee96ab36854db5e7aeac03a7c79",
+      "expected_sha256": "bc51dba4c02f41f7ccaf9da30ed6aa0fae9a4856bbb4a3f1bac708c29f4acf62",
+      "source_record": {
+        "id": "I04",
+        "label": "罗姐",
+        "kind": "ai_still",
+        "drive_id": "1BLnQPkwH2ycDHcAzUDRhFW0WBE0siWtu",
+        "drive_url": "https://drive.google.com/file/d/1BLnQPkwH2ycDHcAzUDRhFW0WBE0siWtu/view",
+        "local_candidate_path": "/Users/ziling/Downloads/深夜办公室里的指导时刻.png",
+        "local_sha256": "bc51dba4c02f41f7ccaf9da30ed6aa0fae9a4856bbb4a3f1bac708c29f4acf62",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I05",
+      "kind": "ai_still",
+      "drive_id": "1GRKCAoJmOIKzVAsX21R_wBSgsCk74yh7",
+      "local_path": "/Users/ziling/Downloads/暖灯下的空白旧账本.png",
+      "bytes": 2021644,
+      "sha256": "94b29ed56c4ed7768f1d4180dc0c0d7d0746eff760bf235b42b400a3fce72ef2",
+      "md5": "d9ce89828ff27a78742cd2721673cfcb",
+      "expected_sha256": "94b29ed56c4ed7768f1d4180dc0c0d7d0746eff760bf235b42b400a3fce72ef2",
+      "source_record": {
+        "id": "I05",
+        "label": "红簿",
+        "kind": "ai_still",
+        "drive_id": "1GRKCAoJmOIKzVAsX21R_wBSgsCk74yh7",
+        "drive_url": "https://drive.google.com/file/d/1GRKCAoJmOIKzVAsX21R_wBSgsCk74yh7/view",
+        "local_candidate_path": "/Users/ziling/Downloads/暖灯下的空白旧账本.png",
+        "local_sha256": "94b29ed56c4ed7768f1d4180dc0c0d7d0746eff760bf235b42b400a3fce72ef2",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I06",
+      "kind": "ai_still",
+      "drive_id": "1zDEVzGyzBiIPSkd6SRQ8PC9RJFk5WTYh",
+      "local_path": "/Users/ziling/Downloads/夜班茶水间的低语ಿನ್ನೆ.png",
+      "bytes": 2011316,
+      "sha256": "505275bedfb20540da16eb2d06a34448f0216fff27dfdc7aa01401e955b9bdb9",
+      "md5": "35958a6ec375ce823814ce357452ff7a",
+      "expected_sha256": "505275bedfb20540da16eb2d06a34448f0216fff27dfdc7aa01401e955b9bdb9",
+      "source_record": {
+        "id": "I06",
+        "label": "茶水间",
+        "kind": "ai_still",
+        "drive_id": "1zDEVzGyzBiIPSkd6SRQ8PC9RJFk5WTYh",
+        "drive_url": "https://drive.google.com/file/d/1zDEVzGyzBiIPSkd6SRQ8PC9RJFk5WTYh/view",
+        "local_candidate_path": "/Users/ziling/Downloads/夜班茶水间的低语ಿನ್ನೆ.png",
+        "local_sha256": "505275bedfb20540da16eb2d06a34448f0216fff27dfdc7aa01401e955b9bdb9",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I07",
+      "kind": "ai_still",
+      "drive_id": "17vimaQft3zl2LPX0WzEfgiCNHbTWW4H0",
+      "local_path": "/Users/ziling/Downloads/深夜值班的电话调度员.png",
+      "bytes": 1977331,
+      "sha256": "4709f555aeb65330da2acd3490175522132430278a7edcafcae3c2d259f095b0",
+      "md5": "fb1fefd42c6a0fbf6b9cb6b8a95de8dc",
+      "expected_sha256": "4709f555aeb65330da2acd3490175522132430278a7edcafcae3c2d259f095b0",
+      "source_record": {
+        "id": "I07",
+        "label": "青禾反应",
+        "kind": "ai_still",
+        "drive_id": "17vimaQft3zl2LPX0WzEfgiCNHbTWW4H0",
+        "drive_url": "https://drive.google.com/file/d/17vimaQft3zl2LPX0WzEfgiCNHbTWW4H0/view",
+        "local_candidate_path": "/Users/ziling/Downloads/深夜值班的电话调度员.png",
+        "local_sha256": "4709f555aeb65330da2acd3490175522132430278a7edcafcae3c2d259f095b0",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I08",
+      "kind": "ai_still",
+      "drive_id": "1xI9otdIH3uHlrq5ynzPKRD0yoWPNGpF4",
+      "local_path": "/Users/ziling/Downloads/雾晨台阶上的未竟挽留.png",
+      "bytes": 2215024,
+      "sha256": "b5f1dc9e50536264d983cb1583e124bf350d43d9c195b7af56ca92a3037aca7a",
+      "md5": "5c11dc5da6efb71f6842d4917b8466f2",
+      "expected_sha256": "b5f1dc9e50536264d983cb1583e124bf350d43d9c195b7af56ca92a3037aca7a",
+      "source_record": {
+        "id": "I08",
+        "label": "晨雾双人",
+        "kind": "ai_still",
+        "drive_id": "1xI9otdIH3uHlrq5ynzPKRD0yoWPNGpF4",
+        "drive_url": "https://drive.google.com/file/d/1xI9otdIH3uHlrq5ynzPKRD0yoWPNGpF4/view",
+        "local_candidate_path": "/Users/ziling/Downloads/雾晨台阶上的未竟挽留.png",
+        "local_sha256": "b5f1dc9e50536264d983cb1583e124bf350d43d9c195b7af56ca92a3037aca7a",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I09",
+      "kind": "ai_still",
+      "drive_id": "1Qc5o_pPPNRUG4XrUZuIZ3C2xPj9LSlOj",
+      "local_path": "/Users/ziling/Downloads/雾中未触及的手.png",
+      "bytes": 1968650,
+      "sha256": "d6b7d12e9af11b42b9ec1e639f9b5afcb19bed6c67d9b5f9e98dd19c0ed30e00",
+      "md5": "6805aa20a25edf024440986175193f28",
+      "expected_sha256": "d6b7d12e9af11b42b9ec1e639f9b5afcb19bed6c67d9b5f9e98dd19c0ed30e00",
+      "source_record": {
+        "id": "I09",
+        "label": "伸手",
+        "kind": "ai_still",
+        "drive_id": "1Qc5o_pPPNRUG4XrUZuIZ3C2xPj9LSlOj",
+        "drive_url": "https://drive.google.com/file/d/1Qc5o_pPPNRUG4XrUZuIZ3C2xPj9LSlOj/view",
+        "local_candidate_path": "/Users/ziling/Downloads/雾中未触及的手.png",
+        "local_sha256": "d6b7d12e9af11b42b9ec1e639f9b5afcb19bed6c67d9b5f9e98dd19c0ed30e00",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I10",
+      "kind": "ai_still",
+      "drive_id": "1U6YWM9ut4Hd71K29QhkR2apR8y3Xh-72",
+      "local_path": "/Users/ziling/Downloads/旧楼梯间的温柔安慰.png",
+      "bytes": 2172500,
+      "sha256": "e53de409a23526474de8cca9782171fb0d1e34ba10441dabfdef969e505b7608",
+      "md5": "1992984836d8ff95f7bcb49b35ee48a6",
+      "expected_sha256": "e53de409a23526474de8cca9782171fb0d1e34ba10441dabfdef969e505b7608",
+      "source_record": {
+        "id": "I10",
+        "label": "楼梯",
+        "kind": "ai_still",
+        "drive_id": "1U6YWM9ut4Hd71K29QhkR2apR8y3Xh-72",
+        "drive_url": "https://drive.google.com/file/d/1U6YWM9ut4Hd71K29QhkR2apR8y3Xh-72/view",
+        "local_candidate_path": "/Users/ziling/Downloads/旧楼梯间的温柔安慰.png",
+        "local_sha256": "e53de409a23526474de8cca9782171fb0d1e34ba10441dabfdef969e505b7608",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I11",
+      "kind": "ai_still",
+      "drive_id": "1fk1ER1GmaVUyzgEDssqMZP9SVPHJ05wP",
+      "local_path": "/Users/ziling/Downloads/老旧储物柜旁的秘密调查.png",
+      "bytes": 2035739,
+      "sha256": "9b922a77bfc05232bae59e63d26d64f70d554a323d069d49460e02e947723b24",
+      "md5": "6fb9caecd10e0c7a4a3422623f17d619",
+      "expected_sha256": "9b922a77bfc05232bae59e63d26d64f70d554a323d069d49460e02e947723b24",
+      "source_record": {
+        "id": "I11",
+        "label": "绿柜",
+        "kind": "ai_still",
+        "drive_id": "1fk1ER1GmaVUyzgEDssqMZP9SVPHJ05wP",
+        "drive_url": "https://drive.google.com/file/d/1fk1ER1GmaVUyzgEDssqMZP9SVPHJ05wP/view",
+        "local_candidate_path": "/Users/ziling/Downloads/老旧储物柜旁的秘密调查.png",
+        "local_sha256": "9b922a77bfc05232bae59e63d26d64f70d554a323d069d49460e02e947723b24",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I12",
+      "kind": "ai_still",
+      "drive_id": "1v0bLdXRjxOFev_E8bUwHJwzIOYYrMA0G",
+      "local_path": "/Users/ziling/Downloads/旧柜缝隙中的秘密纸片.png",
+      "bytes": 1809335,
+      "sha256": "e69a0a33b545db0b9ee0554f9da80b763cf08fb04d721372dfa75e732336192d",
+      "md5": "2136f20b79d0fc633a424bdb88ea92c6",
+      "expected_sha256": "e69a0a33b545db0b9ee0554f9da80b763cf08fb04d721372dfa75e732336192d",
+      "source_record": {
+        "id": "I12",
+        "label": "纸角",
+        "kind": "ai_still",
+        "drive_id": "1v0bLdXRjxOFev_E8bUwHJwzIOYYrMA0G",
+        "drive_url": "https://drive.google.com/file/d/1v0bLdXRjxOFev_E8bUwHJwzIOYYrMA0G/view",
+        "local_candidate_path": "/Users/ziling/Downloads/旧柜缝隙中的秘密纸片.png",
+        "local_sha256": "e69a0a33b545db0b9ee0554f9da80b763cf08fb04d721372dfa75e732336192d",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I13",
+      "kind": "ai_still",
+      "drive_id": "1zjqoQADDyOeQECRlp5HyxhEAKSSh_ywK",
+      "local_path": "/Users/ziling/Downloads/昏灯下的温柔对话.png",
+      "bytes": 1926699,
+      "sha256": "daa31e007d737485cfe6930f5938d2c6e8c2b28cfd2e85067fc5f5a021b7d51d",
+      "md5": "5082ff4fef5887fa8d993c8132912d50",
+      "expected_sha256": "daa31e007d737485cfe6930f5938d2c6e8c2b28cfd2e85067fc5f5a021b7d51d",
+      "source_record": {
+        "id": "I13",
+        "label": "母女",
+        "kind": "ai_still",
+        "drive_id": "1zjqoQADDyOeQECRlp5HyxhEAKSSh_ywK",
+        "drive_url": "https://drive.google.com/file/d/1zjqoQADDyOeQECRlp5HyxhEAKSSh_ywK/view",
+        "local_candidate_path": "/Users/ziling/Downloads/昏灯下的温柔对话.png",
+        "local_sha256": "daa31e007d737485cfe6930f5938d2c6e8c2b28cfd2e85067fc5f5a021b7d51d",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I14",
+      "kind": "ai_still",
+      "drive_id": "1aKwd8DVY4fKDv-x7wtPpnPoeQwuTgPkL",
+      "local_path": "/Users/ziling/Downloads/暖灯下的家常晚餐谈话.png",
+      "bytes": 1880792,
+      "sha256": "d6a75076d70b4f7720c68a68f4bddceeead57d12be57ce029db81be692e288d7",
+      "md5": "f1f7315ce012178c8d5b267e4dcc54fa",
+      "expected_sha256": "d6a75076d70b4f7720c68a68f4bddceeead57d12be57ce029db81be692e288d7",
+      "source_record": {
+        "id": "I14",
+        "label": "母亲",
+        "kind": "ai_still",
+        "drive_id": "1aKwd8DVY4fKDv-x7wtPpnPoeQwuTgPkL",
+        "drive_url": "https://drive.google.com/file/d/1aKwd8DVY4fKDv-x7wtPpnPoeQwuTgPkL/view",
+        "local_candidate_path": "/Users/ziling/Downloads/暖灯下的家常晚餐谈话.png",
+        "local_sha256": "d6a75076d70b4f7720c68a68f4bddceeead57d12be57ce029db81be692e288d7",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I15",
+      "kind": "ai_still",
+      "drive_id": "1R_j94R1994wbmUv1RQYKKuZwM6GTjMiC",
+      "local_path": "/Users/ziling/Downloads/磨砂门后的神秘身影.png",
+      "bytes": 2036911,
+      "sha256": "40aa119bb806125fc4c6f179c586f9b86b40f667ba4e7312eac8b27038ec9faf",
+      "md5": "5664d4196ce2588e77e8379470c8141c",
+      "expected_sha256": "40aa119bb806125fc4c6f179c586f9b86b40f667ba4e7312eac8b27038ec9faf",
+      "source_record": {
+        "id": "I15",
+        "label": "门口",
+        "kind": "ai_still",
+        "drive_id": "1R_j94R1994wbmUv1RQYKKuZwM6GTjMiC",
+        "drive_url": "https://drive.google.com/file/d/1R_j94R1994wbmUv1RQYKKuZwM6GTjMiC/view",
+        "local_candidate_path": "/Users/ziling/Downloads/磨砂门后的神秘身影.png",
+        "local_sha256": "40aa119bb806125fc4c6f179c586f9b86b40f667ba4e7312eac8b27038ec9faf",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "I16",
+      "kind": "ai_still",
+      "drive_id": "1xJgy4s8CvjqS5COxqGRBSIKL0iZbI26I",
+      "local_path": "/Users/ziling/Downloads/磨砂玻璃后的朦胧身影.png",
+      "bytes": 2245248,
+      "sha256": "3b0d7acb46c8f595403966b3dd944b5c95ea1881e367808404a71745681488a8",
+      "md5": "a8c09bef7b6567e3bf47f5f78c5579a3",
+      "expected_sha256": "3b0d7acb46c8f595403966b3dd944b5c95ea1881e367808404a71745681488a8",
+      "source_record": {
+        "id": "I16",
+        "label": "门闩",
+        "kind": "ai_still",
+        "drive_id": "1xJgy4s8CvjqS5COxqGRBSIKL0iZbI26I",
+        "drive_url": "https://drive.google.com/file/d/1xJgy4s8CvjqS5COxqGRBSIKL0iZbI26I/view",
+        "local_candidate_path": "/Users/ziling/Downloads/磨砂玻璃后的朦胧身影.png",
+        "local_sha256": "3b0d7acb46c8f595403966b3dd944b5c95ea1881e367808404a71745681488a8",
+        "local_status": "actual_hashed",
+        "mapping_status": "semantic_filename_candidate_only; cloud-byte identity and image content not verified in this task",
+        "motion_status": "still_only; no continuous action or lip_sync verified"
+      }
+    },
+    {
+      "id": "F01",
+      "kind": "procedural_sfx",
+      "drive_id": "1463ZzMqML6XtGQVvRT9CYAVu8qrC32fv",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/01_machine_room_bed_30s.wav",
+      "bytes": 2880044,
+      "sha256": "12f16f7edee2f3a196b66c1229cb2902f2cca1037def9b3f75dfaee41d61e804",
+      "md5": "dda9e5432bfe6dabc7aa2f9f2d581804",
+      "expected_sha256": "12f16f7edee2f3a196b66c1229cb2902f2cca1037def9b3f75dfaee41d61e804",
+      "source_record": {
+        "id": "F01",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/01_machine_room_bed_30s.wav",
+        "sha256": "12f16f7edee2f3a196b66c1229cb2902f2cca1037def9b3f75dfaee41d61e804",
+        "manifest_hash_matches": true,
+        "duration_seconds": 30,
+        "drive_id": "1463ZzMqML6XtGQVvRT9CYAVu8qrC32fv",
+        "drive_url": "https://drive.google.com/file/d/1463ZzMqML6XtGQVvRT9CYAVu8qrC32fv/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F02",
+      "kind": "procedural_sfx",
+      "drive_id": "1wYKhVwbde2hT_A09ok7lXeX9y1Ejlf0I",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/02_night_room_bed_30s.wav",
+      "bytes": 2880044,
+      "sha256": "5c4f2d41476583a84a005609e7180c1a854bdaf5e22abdc9151968ba1f05ba63",
+      "md5": "6f165dc2c0ca1d5189c89965788c8cdf",
+      "expected_sha256": "5c4f2d41476583a84a005609e7180c1a854bdaf5e22abdc9151968ba1f05ba63",
+      "source_record": {
+        "id": "F02",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/02_night_room_bed_30s.wav",
+        "sha256": "5c4f2d41476583a84a005609e7180c1a854bdaf5e22abdc9151968ba1f05ba63",
+        "manifest_hash_matches": true,
+        "duration_seconds": 30,
+        "drive_id": "1wYKhVwbde2hT_A09ok7lXeX9y1Ejlf0I",
+        "drive_url": "https://drive.google.com/file/d/1wYKhVwbde2hT_A09ok7lXeX9y1Ejlf0I/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F03",
+      "kind": "procedural_sfx",
+      "drive_id": "183ICALxf0-tLbXzp1O8cATIBHahtHc1M",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/03_backdoor_wind_20s.wav",
+      "bytes": 1920044,
+      "sha256": "d36379eaec4fbdf880e589f3027dc7b6eb1e08d60302515450b8674ecab9489c",
+      "md5": "5e56d23b3b18f0a4481a6898f84603f5",
+      "expected_sha256": "d36379eaec4fbdf880e589f3027dc7b6eb1e08d60302515450b8674ecab9489c",
+      "source_record": {
+        "id": "F03",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/03_backdoor_wind_20s.wav",
+        "sha256": "d36379eaec4fbdf880e589f3027dc7b6eb1e08d60302515450b8674ecab9489c",
+        "manifest_hash_matches": true,
+        "duration_seconds": 20,
+        "drive_id": "183ICALxf0-tLbXzp1O8cATIBHahtHc1M",
+        "drive_url": "https://drive.google.com/file/d/183ICALxf0-tLbXzp1O8cATIBHahtHc1M/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F04",
+      "kind": "procedural_sfx",
+      "drive_id": "1KM7aXgxtnz_OXMeRAbX1ym1JM4OWLasM",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/04_receiver_vent_20s.wav",
+      "bytes": 1920044,
+      "sha256": "df128e02493c8db35398b84461844062ba4e39e352d5e0a195ff12ddee194dbe",
+      "md5": "40fbfad869b6e04a1e81c50c0d062234",
+      "expected_sha256": "df128e02493c8db35398b84461844062ba4e39e352d5e0a195ff12ddee194dbe",
+      "source_record": {
+        "id": "F04",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/04_receiver_vent_20s.wav",
+        "sha256": "df128e02493c8db35398b84461844062ba4e39e352d5e0a195ff12ddee194dbe",
+        "manifest_hash_matches": true,
+        "duration_seconds": 20,
+        "drive_id": "1KM7aXgxtnz_OXMeRAbX1ym1JM4OWLasM",
+        "drive_url": "https://drive.google.com/file/d/1KM7aXgxtnz_OXMeRAbX1ym1JM4OWLasM/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F05",
+      "kind": "procedural_sfx",
+      "drive_id": "1mC_KBF9Q8M-wlwd2j62JDg24hMfg-ES9",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/05_pager_double_double_4s.wav",
+      "bytes": 384044,
+      "sha256": "8aa341b51778f1da588fbb44ae3a8b0b5f6e4faf706e442b492b81ccb528bb3e",
+      "md5": "181e50a83a3a732eb7ab0766a600667e",
+      "expected_sha256": "8aa341b51778f1da588fbb44ae3a8b0b5f6e4faf706e442b492b81ccb528bb3e",
+      "source_record": {
+        "id": "F05",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/05_pager_double_double_4s.wav",
+        "sha256": "8aa341b51778f1da588fbb44ae3a8b0b5f6e4faf706e442b492b81ccb528bb3e",
+        "manifest_hash_matches": true,
+        "duration_seconds": 4,
+        "drive_id": "1mC_KBF9Q8M-wlwd2j62JDg24hMfg-ES9",
+        "drive_url": "https://drive.google.com/file/d/1mC_KBF9Q8M-wlwd2j62JDg24hMfg-ES9/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F06",
+      "kind": "procedural_sfx",
+      "drive_id": "1Fd2n0wuiSVG_8LxUxcywFGZBYF4Q31Vf",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/06_mechanical_phone_ring_5s.wav",
+      "bytes": 480044,
+      "sha256": "98d66f2d0229fee99d52f766c4079690a762137b81b3b36d16fe1825053c043c",
+      "md5": "26f2418114d14aa61fccfbe1427c77c2",
+      "expected_sha256": "98d66f2d0229fee99d52f766c4079690a762137b81b3b36d16fe1825053c043c",
+      "source_record": {
+        "id": "F06",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/06_mechanical_phone_ring_5s.wav",
+        "sha256": "98d66f2d0229fee99d52f766c4079690a762137b81b3b36d16fe1825053c043c",
+        "manifest_hash_matches": true,
+        "duration_seconds": 5,
+        "drive_id": "1Fd2n0wuiSVG_8LxUxcywFGZBYF4Q31Vf",
+        "drive_url": "https://drive.google.com/file/d/1Fd2n0wuiSVG_8LxUxcywFGZBYF4Q31Vf/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F07",
+      "kind": "procedural_sfx",
+      "drive_id": "13m_KMhCJ4Qb5k_rxtkrt0NS9qTk6xgwS",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/07_heavy_wood_three_knocks_6s.wav",
+      "bytes": 576044,
+      "sha256": "a2297cc1732f76eb7d3b1e0001ef3da0c5233dca98d161fb362bed113abefe71",
+      "md5": "11aaff98c0d2a80c078d6574b393170b",
+      "expected_sha256": "a2297cc1732f76eb7d3b1e0001ef3da0c5233dca98d161fb362bed113abefe71",
+      "source_record": {
+        "id": "F07",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/07_heavy_wood_three_knocks_6s.wav",
+        "sha256": "a2297cc1732f76eb7d3b1e0001ef3da0c5233dca98d161fb362bed113abefe71",
+        "manifest_hash_matches": true,
+        "duration_seconds": 6,
+        "drive_id": "13m_KMhCJ4Qb5k_rxtkrt0NS9qTk6xgwS",
+        "drive_url": "https://drive.google.com/file/d/13m_KMhCJ4Qb5k_rxtkrt0NS9qTk6xgwS/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F08",
+      "kind": "procedural_sfx",
+      "drive_id": "1OA6knHkAxAZhrAyB8ztwIfrfJhr4xL6b",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/08_hollow_wall_two_knocks_3s.wav",
+      "bytes": 288044,
+      "sha256": "8812253eb9f1929b5d32ff32ebe26cd5a8d831008ebf909f1ccdcc7a0c92513b",
+      "md5": "f339e18b3378d5cb74f54e36b92e913e",
+      "expected_sha256": "8812253eb9f1929b5d32ff32ebe26cd5a8d831008ebf909f1ccdcc7a0c92513b",
+      "source_record": {
+        "id": "F08",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/08_hollow_wall_two_knocks_3s.wav",
+        "sha256": "8812253eb9f1929b5d32ff32ebe26cd5a8d831008ebf909f1ccdcc7a0c92513b",
+        "manifest_hash_matches": true,
+        "duration_seconds": 3,
+        "drive_id": "1OA6knHkAxAZhrAyB8ztwIfrfJhr4xL6b",
+        "drive_url": "https://drive.google.com/file/d/1OA6knHkAxAZhrAyB8ztwIfrfJhr4xL6b/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F09",
+      "kind": "procedural_sfx",
+      "drive_id": "1PFXAcQT0jPmsODoWeUk4rxubvId-avOr",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/09_locker_shift_4s.wav",
+      "bytes": 384044,
+      "sha256": "d1951361f7c4edddd0518144eda5a6635b78ac2215d6f454c3bb02411d9c2fa9",
+      "md5": "21540896715a5bcb92946ecd4eb68adf",
+      "expected_sha256": "d1951361f7c4edddd0518144eda5a6635b78ac2215d6f454c3bb02411d9c2fa9",
+      "source_record": {
+        "id": "F09",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/09_locker_shift_4s.wav",
+        "sha256": "d1951361f7c4edddd0518144eda5a6635b78ac2215d6f454c3bb02411d9c2fa9",
+        "manifest_hash_matches": true,
+        "duration_seconds": 4,
+        "drive_id": "1PFXAcQT0jPmsODoWeUk4rxubvId-avOr",
+        "drive_url": "https://drive.google.com/file/d/1PFXAcQT0jPmsODoWeUk4rxubvId-avOr/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F10",
+      "kind": "procedural_sfx",
+      "drive_id": "1rCoj8XyOxrix79FlqR-evE-J49w4GR9V",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/10_concrete_steps_6s.wav",
+      "bytes": 576044,
+      "sha256": "b58483419716de78281c584a1e1b26f7a83d08820877a33c0ff463eab25ecdce",
+      "md5": "addd10f20db4afb7292ef757cc3156e5",
+      "expected_sha256": "b58483419716de78281c584a1e1b26f7a83d08820877a33c0ff463eab25ecdce",
+      "source_record": {
+        "id": "F10",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/10_concrete_steps_6s.wav",
+        "sha256": "b58483419716de78281c584a1e1b26f7a83d08820877a33c0ff463eab25ecdce",
+        "manifest_hash_matches": true,
+        "duration_seconds": 6,
+        "drive_id": "1rCoj8XyOxrix79FlqR-evE-J49w4GR9V",
+        "drive_url": "https://drive.google.com/file/d/1rCoj8XyOxrix79FlqR-evE-J49w4GR9V/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F11",
+      "kind": "procedural_sfx",
+      "drive_id": "1qNNfegLmnAZhRaMW0qhfEsBx9Z0eGEn8",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/11_latch_and_wood_brace_4s.wav",
+      "bytes": 384044,
+      "sha256": "f0acdcc21a1593c7a6ff4d0f64b2a15a3c79fb6ce348d9f97f660e1445717f6b",
+      "md5": "90e0c31eafa53a9164a70d7b2431a42a",
+      "expected_sha256": "f0acdcc21a1593c7a6ff4d0f64b2a15a3c79fb6ce348d9f97f660e1445717f6b",
+      "source_record": {
+        "id": "F11",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/11_latch_and_wood_brace_4s.wav",
+        "sha256": "f0acdcc21a1593c7a6ff4d0f64b2a15a3c79fb6ce348d9f97f660e1445717f6b",
+        "manifest_hash_matches": true,
+        "duration_seconds": 4,
+        "drive_id": "1qNNfegLmnAZhRaMW0qhfEsBx9Z0eGEn8",
+        "drive_url": "https://drive.google.com/file/d/1qNNfegLmnAZhRaMW0qhfEsBx9Z0eGEn8/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F12",
+      "kind": "procedural_sfx",
+      "drive_id": "13LXkpSJOnPaghavy7CCI89MKAYtE2-ty",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/12_handset_lift_set_3s.wav",
+      "bytes": 288044,
+      "sha256": "e95babf639d6326cbb60b335de362b1e42038b39745d68e9e99652fffa5c4b15",
+      "md5": "29b6d3d06cda92c47aca7828c22bc66f",
+      "expected_sha256": "e95babf639d6326cbb60b335de362b1e42038b39745d68e9e99652fffa5c4b15",
+      "source_record": {
+        "id": "F12",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/12_handset_lift_set_3s.wav",
+        "sha256": "e95babf639d6326cbb60b335de362b1e42038b39745d68e9e99652fffa5c4b15",
+        "manifest_hash_matches": true,
+        "duration_seconds": 3,
+        "drive_id": "13LXkpSJOnPaghavy7CCI89MKAYtE2-ty",
+        "drive_url": "https://drive.google.com/file/d/13LXkpSJOnPaghavy7CCI89MKAYtE2-ty/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F13",
+      "kind": "procedural_sfx",
+      "drive_id": "1mUyLoZHL06vmi0kIicYdHrNu5Lzfb7Hl",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/13_book_pen_keys_6s.wav",
+      "bytes": 576044,
+      "sha256": "7161683106fb3c37337cbcef6b576aa43abbccd1f6c5c93428d5a0f65cfd3429",
+      "md5": "efb2e634e52c15ab7a9d5013d5ec25d7",
+      "expected_sha256": "7161683106fb3c37337cbcef6b576aa43abbccd1f6c5c93428d5a0f65cfd3429",
+      "source_record": {
+        "id": "F13",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/13_book_pen_keys_6s.wav",
+        "sha256": "7161683106fb3c37337cbcef6b576aa43abbccd1f6c5c93428d5a0f65cfd3429",
+        "manifest_hash_matches": true,
+        "duration_seconds": 6,
+        "drive_id": "1mUyLoZHL06vmi0kIicYdHrNu5Lzfb7Hl",
+        "drive_url": "https://drive.google.com/file/d/1mUyLoZHL06vmi0kIicYdHrNu5Lzfb7Hl/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F14",
+      "kind": "procedural_sfx",
+      "drive_id": "1FV9yax_KvkDENEKBaEBAqvoZhUGjaS-N",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/14_clock_tick_20s.wav",
+      "bytes": 1920044,
+      "sha256": "040ab3d1825bbba269a8d4624b1a9fbca062e93b055531638e7aa8e73740408a",
+      "md5": "6e5cbd9209a6916e1f25b68528adfa08",
+      "expected_sha256": "040ab3d1825bbba269a8d4624b1a9fbca062e93b055531638e7aa8e73740408a",
+      "source_record": {
+        "id": "F14",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/14_clock_tick_20s.wav",
+        "sha256": "040ab3d1825bbba269a8d4624b1a9fbca062e93b055531638e7aa8e73740408a",
+        "manifest_hash_matches": true,
+        "duration_seconds": 20,
+        "drive_id": "1FV9yax_KvkDENEKBaEBAqvoZhUGjaS-N",
+        "drive_url": "https://drive.google.com/file/d/1FV9yax_KvkDENEKBaEBAqvoZhUGjaS-N/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F15",
+      "kind": "procedural_sfx",
+      "drive_id": "1EGxkGQQrbk5SnfULUv_tOj62j2qfuV6a",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/15_kitchen_sizzle_15s.wav",
+      "bytes": 1440044,
+      "sha256": "4705f58439c55bfecf7d63008c841fb0aecae5a44413ed0d90d819a63a0754e2",
+      "md5": "82d650430494a257ad8f0787974d08ce",
+      "expected_sha256": "4705f58439c55bfecf7d63008c841fb0aecae5a44413ed0d90d819a63a0754e2",
+      "source_record": {
+        "id": "F15",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/15_kitchen_sizzle_15s.wav",
+        "sha256": "4705f58439c55bfecf7d63008c841fb0aecae5a44413ed0d90d819a63a0754e2",
+        "manifest_hash_matches": true,
+        "duration_seconds": 15,
+        "drive_id": "1EGxkGQQrbk5SnfULUv_tOj62j2qfuV6a",
+        "drive_url": "https://drive.google.com/file/d/1EGxkGQQrbk5SnfULUv_tOj62j2qfuV6a/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "F16",
+      "kind": "procedural_sfx",
+      "drive_id": "11qFU1UFNBA9V6s8lbJowKIskX9lEokJI",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/16_running_water_10s.wav",
+      "bytes": 960044,
+      "sha256": "87e50aee17f9f719d0f561f5d9771689924b1ac9128a5f6c224bb90de55e5a09",
+      "md5": "5c0ca559b5544c699e93c500a77e2c9b",
+      "expected_sha256": "87e50aee17f9f719d0f561f5d9771689924b1ac9128a5f6c224bb90de55e5a09",
+      "source_record": {
+        "id": "F16",
+        "kind": "procedural_sfx",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/output/ep01/sound_design/16_running_water_10s.wav",
+        "sha256": "87e50aee17f9f719d0f561f5d9771689924b1ac9128a5f6c224bb90de55e5a09",
+        "manifest_hash_matches": true,
+        "duration_seconds": 10,
+        "drive_id": "11qFU1UFNBA9V6s8lbJowKIskX9lEokJI",
+        "drive_url": "https://drive.google.com/file/d/11qFU1UFNBA9V6s8lbJowKIskX9lEokJI/view?usp=drivesdk",
+        "license": "original mathematical synthesis; no external samples; project use allowed per handoff",
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "M1",
+      "kind": "music",
+      "drive_id": "1yerZAZ2Y9-FK4f7Ut4yskhP5eM0lZawA",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/discuss/novel_rebuild_20261101/output/ep01/music/Long Note One.mp3",
+      "bytes": 17761954,
+      "sha256": "665aef3a5eaba25a0108f632e85895516868813a764a58bc203702829ac4c6c1",
+      "md5": "def03d2a1a998201a3e191a265961ae6",
+      "expected_sha256": "665aef3a5eaba25a0108f632e85895516868813a764a58bc203702829ac4c6c1",
+      "source_record": {
+        "id": "M1",
+        "kind": "music",
+        "title": "Long Note One.mp3",
+        "drive_id": "1yerZAZ2Y9-FK4f7Ut4yskhP5eM0lZawA",
+        "drive_url": "https://drive.google.com/file/d/1yerZAZ2Y9-FK4f7Ut4yskhP5eM0lZawA/view",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/discuss/novel_rebuild_20261101/output/ep01/music/Long Note One.mp3",
+        "sha256": "665aef3a5eaba25a0108f632e85895516868813a764a58bc203702829ac4c6c1",
+        "license": "CC BY 4.0; Kevin MacLeod; attribution required; see README_music_clearance.md",
+        "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100418",
+        "license_verified_in_this_task": false,
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "M2",
+      "kind": "music",
+      "drive_id": "1uGCoZfoVmlbA0HJDNoIVOBUAMCvEBofA",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/discuss/novel_rebuild_20261101/output/ep01/music/Evening Fall - Piano.mp3",
+      "bytes": 5397796,
+      "sha256": "5195c266275c694f9186dceb23e667c45ed74767d97f6615df01021fed3f048e",
+      "md5": "378f29bee7b9dcaf32d4fd488728b622",
+      "expected_sha256": "5195c266275c694f9186dceb23e667c45ed74767d97f6615df01021fed3f048e",
+      "source_record": {
+        "id": "M2",
+        "kind": "music",
+        "title": "Evening Fall - Piano.mp3",
+        "drive_id": "1uGCoZfoVmlbA0HJDNoIVOBUAMCvEBofA",
+        "drive_url": "https://drive.google.com/file/d/1uGCoZfoVmlbA0HJDNoIVOBUAMCvEBofA/view",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/discuss/novel_rebuild_20261101/output/ep01/music/Evening Fall - Piano.mp3",
+        "sha256": "5195c266275c694f9186dceb23e667c45ed74767d97f6615df01021fed3f048e",
+        "license": "CC BY 4.0; Kevin MacLeod; attribution required; see README_music_clearance.md",
+        "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100235",
+        "license_verified_in_this_task": false,
+        "audition_status": "not_listened_in_this_task"
+      }
+    },
+    {
+      "id": "M3",
+      "kind": "music",
+      "drive_id": "1lWvI84AZrLhhZqFjuOcc_9hdyWvdYdF5",
+      "local_path": "/Users/ziling/Documents/yiwenbu-discuss/discuss/novel_rebuild_20261101/output/ep01/music/Dark Walk.mp3",
+      "bytes": 3538605,
+      "sha256": "9844d103a492b51e02cb89daeabb6da02d0d15f2568f887913690a051a3fdec6",
+      "md5": "95730e760e26e8a98b3c7a61c31499ab",
+      "expected_sha256": "9844d103a492b51e02cb89daeabb6da02d0d15f2568f887913690a051a3fdec6",
+      "source_record": {
+        "id": "M3",
+        "kind": "music",
+        "title": "Dark Walk.mp3",
+        "drive_id": "1lWvI84AZrLhhZqFjuOcc_9hdyWvdYdF5",
+        "drive_url": "https://drive.google.com/file/d/1lWvI84AZrLhhZqFjuOcc_9hdyWvdYdF5/view",
+        "local_path": "/Users/ziling/Documents/yiwenbu-discuss/discuss/novel_rebuild_20261101/output/ep01/music/Dark Walk.mp3",
+        "sha256": "9844d103a492b51e02cb89daeabb6da02d0d15f2568f887913690a051a3fdec6",
+        "license": "CC BY 4.0; Kevin MacLeod; attribution required; see README_music_clearance.md",
+        "source_url": "https://incompetech.com/music/royalty-free/index.html?isrc=USUAN1100468",
+        "license_verified_in_this_task": false,
+        "audition_status": "not_listened_in_this_task"
+      }
+    }
+  ],
+  "metadata": [
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I01",
+        "drive_id": "1T6tm5bE1AzgkpucXYe0KUvr_ejg8zrYP",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1T6tm5bE1AzgkpucXYe0KUvr_ejg8zrYP",
+            "title": "第一集-第一场镜头1-AI生成-待验收.png",
+            "mime_type": "image/png",
+            "size": "1977331",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I02",
+        "drive_id": "1hRtm5SVRagq3EVPA_8pwtngiFfjGeKDo",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1hRtm5SVRagq3EVPA_8pwtngiFfjGeKDo",
+            "title": "第一集-第一场镜头2-AI生成-待验收.png",
+            "mime_type": "image/png",
+            "size": "1939030",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I03",
+        "drive_id": "1HfwOb28R3Yld9MOc7alDqwkgntWSnm5B",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1HfwOb28R3Yld9MOc7alDqwkgntWSnm5B",
+            "title": "开场CRT手部细节候选—AI生成未验收.png",
+            "mime_type": "image/png",
+            "size": "1827074",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I04",
+        "drive_id": "1BLnQPkwH2ycDHcAzUDRhFW0WBE0siWtu",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1BLnQPkwH2ycDHcAzUDRhFW0WBE0siWtu",
+            "title": "第一集-第二场取簿候选-AI生成-待验收.png",
+            "mime_type": "image/png",
+            "size": "1964463",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I05",
+        "drive_id": "1GRKCAoJmOIKzVAsX21R_wBSgsCk74yh7",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1GRKCAoJmOIKzVAsX21R_wBSgsCk74yh7",
+            "title": "第二场红皮簿特写—AI候选待审.png",
+            "mime_type": "image/png",
+            "size": "2021644",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I06",
+        "drive_id": "1zDEVzGyzBiIPSkd6SRQ8PC9RJFk5WTYh",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1zDEVzGyzBiIPSkd6SRQ8PC9RJFk5WTYh",
+            "title": "第一集-第三场茶水间候选-AI生成-待验收.png",
+            "mime_type": "image/png",
+            "size": "2011316",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I07",
+        "drive_id": "17vimaQft3zl2LPX0WzEfgiCNHbTWW4H0",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "17vimaQft3zl2LPX0WzEfgiCNHbTWW4H0",
+            "title": "第一集-第三场-青禾反应近景-GPT候选.png",
+            "mime_type": "image/png",
+            "size": "1926699",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I08",
+        "drive_id": "1xI9otdIH3uHlrq5ynzPKRD0yoWPNGpF4",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1xI9otdIH3uHlrq5ynzPKRD0yoWPNGpF4",
+            "title": "第一集-第四场楼下候选-AI生成-待验收.png",
+            "mime_type": "image/png",
+            "size": "2215024",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I09",
+        "drive_id": "1Qc5o_pPPNRUG4XrUZuIZ3C2xPj9LSlOj",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1Qc5o_pPPNRUG4XrUZuIZ3C2xPj9LSlOj",
+            "title": "第一集-第四场-伸手与提包特写-GPT候选.png",
+            "mime_type": "image/png",
+            "size": "1968650",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I10",
+        "drive_id": "1U6YWM9ut4Hd71K29QhkR2apR8y3Xh-72",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1U6YWM9ut4Hd71K29QhkR2apR8y3Xh-72",
+            "title": "第一集-第五场-楼梯对话-GPT候选.png",
+            "mime_type": "image/png",
+            "size": "2172500",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I11",
+        "drive_id": "1fk1ER1GmaVUyzgEDssqMZP9SVPHJ05wP",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1fk1ER1GmaVUyzgEDssqMZP9SVPHJ05wP",
+            "title": "第一集-第五场柜子候选-AI生成-待验收.png",
+            "mime_type": "image/png",
+            "size": "2035739",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I12",
+        "drive_id": "1v0bLdXRjxOFev_E8bUwHJwzIOYYrMA0G",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1v0bLdXRjxOFev_E8bUwHJwzIOYYrMA0G",
+            "title": "第一集-第五场-柜后线索特写-GPT候选.png",
+            "mime_type": "image/png",
+            "size": "1809335",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I13",
+        "drive_id": "1zjqoQADDyOeQECRlp5HyxhEAKSSh_ywK",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1zjqoQADDyOeQECRlp5HyxhEAKSSh_ywK",
+            "title": "第一集-第六场家中候选-AI生成-待验收.png",
+            "mime_type": "image/png",
+            "size": "1970213",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I14",
+        "drive_id": "1aKwd8DVY4fKDv-x7wtPpnPoeQwuTgPkL",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1aKwd8DVY4fKDv-x7wtPpnPoeQwuTgPkL",
+            "title": "第一集-第六场-母亲餐桌回忆-GPT候选.png",
+            "mime_type": "image/png",
+            "size": "1880792",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I15",
+        "drive_id": "1R_j94R1994wbmUv1RQYKKuZwM6GTjMiC",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1R_j94R1994wbmUv1RQYKKuZwM6GTjMiC",
+            "title": "第一集-第七场门外人影候选-AI生成-待验收.png",
+            "mime_type": "image/png",
+            "size": "2036911",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "I16",
+        "drive_id": "1xJgy4s8CvjqS5COxqGRBSIKL0iZbI26I",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1xJgy4s8CvjqS5COxqGRBSIKL0iZbI26I",
+            "title": "第一集-第七场-门闩特写-GPT候选.png",
+            "mime_type": "image/png",
+            "size": "2245248",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F01",
+        "drive_id": "1463ZzMqML6XtGQVvRT9CYAVu8qrC32fv",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1463ZzMqML6XtGQVvRT9CYAVu8qrC32fv",
+            "title": "三点零九分_SFX_01_machine_room_bed_30s.wav",
+            "mime_type": "audio/wav",
+            "size": "2880044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F02",
+        "drive_id": "1wYKhVwbde2hT_A09ok7lXeX9y1Ejlf0I",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1wYKhVwbde2hT_A09ok7lXeX9y1Ejlf0I",
+            "title": "三点零九分_SFX_02_night_room_bed_30s.wav",
+            "mime_type": "audio/wav",
+            "size": "2880044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F03",
+        "drive_id": "183ICALxf0-tLbXzp1O8cATIBHahtHc1M",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "183ICALxf0-tLbXzp1O8cATIBHahtHc1M",
+            "title": "三点零九分_SFX_03_backdoor_wind_20s.wav",
+            "mime_type": "audio/wav",
+            "size": "1920044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F04",
+        "drive_id": "1KM7aXgxtnz_OXMeRAbX1ym1JM4OWLasM",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1KM7aXgxtnz_OXMeRAbX1ym1JM4OWLasM",
+            "title": "三点零九分_SFX_04_receiver_vent_20s.wav",
+            "mime_type": "audio/wav",
+            "size": "1920044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F05",
+        "drive_id": "1mC_KBF9Q8M-wlwd2j62JDg24hMfg-ES9",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1mC_KBF9Q8M-wlwd2j62JDg24hMfg-ES9",
+            "title": "三点零九分_SFX_05_pager_double_double_4s.wav",
+            "mime_type": "audio/wav",
+            "size": "384044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F06",
+        "drive_id": "1Fd2n0wuiSVG_8LxUxcywFGZBYF4Q31Vf",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1Fd2n0wuiSVG_8LxUxcywFGZBYF4Q31Vf",
+            "title": "三点零九分_SFX_06_mechanical_phone_ring_5s.wav",
+            "mime_type": "audio/wav",
+            "size": "480044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F07",
+        "drive_id": "13m_KMhCJ4Qb5k_rxtkrt0NS9qTk6xgwS",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "13m_KMhCJ4Qb5k_rxtkrt0NS9qTk6xgwS",
+            "title": "三点零九分_SFX_07_heavy_wood_three_knocks_6s.wav",
+            "mime_type": "audio/wav",
+            "size": "576044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F08",
+        "drive_id": "1OA6knHkAxAZhrAyB8ztwIfrfJhr4xL6b",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1OA6knHkAxAZhrAyB8ztwIfrfJhr4xL6b",
+            "title": "三点零九分_SFX_08_hollow_wall_two_knocks_3s.wav",
+            "mime_type": "audio/wav",
+            "size": "288044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F09",
+        "drive_id": "1PFXAcQT0jPmsODoWeUk4rxubvId-avOr",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1PFXAcQT0jPmsODoWeUk4rxubvId-avOr",
+            "title": "三点零九分_SFX_09_locker_shift_4s.wav",
+            "mime_type": "audio/wav",
+            "size": "384044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F10",
+        "drive_id": "1rCoj8XyOxrix79FlqR-evE-J49w4GR9V",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1rCoj8XyOxrix79FlqR-evE-J49w4GR9V",
+            "title": "三点零九分_SFX_10_concrete_steps_6s.wav",
+            "mime_type": "audio/wav",
+            "size": "576044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F11",
+        "drive_id": "1qNNfegLmnAZhRaMW0qhfEsBx9Z0eGEn8",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1qNNfegLmnAZhRaMW0qhfEsBx9Z0eGEn8",
+            "title": "三点零九分_SFX_11_latch_and_wood_brace_4s.wav",
+            "mime_type": "audio/wav",
+            "size": "384044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F12",
+        "drive_id": "13LXkpSJOnPaghavy7CCI89MKAYtE2-ty",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "13LXkpSJOnPaghavy7CCI89MKAYtE2-ty",
+            "title": "三点零九分_SFX_12_handset_lift_set_3s.wav",
+            "mime_type": "audio/wav",
+            "size": "288044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F13",
+        "drive_id": "1mUyLoZHL06vmi0kIicYdHrNu5Lzfb7Hl",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1mUyLoZHL06vmi0kIicYdHrNu5Lzfb7Hl",
+            "title": "三点零九分_SFX_13_book_pen_keys_6s.wav",
+            "mime_type": "audio/wav",
+            "size": "576044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F14",
+        "drive_id": "1FV9yax_KvkDENEKBaEBAqvoZhUGjaS-N",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1FV9yax_KvkDENEKBaEBAqvoZhUGjaS-N",
+            "title": "三点零九分_SFX_14_clock_tick_20s.wav",
+            "mime_type": "audio/wav",
+            "size": "1920044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F15",
+        "drive_id": "1EGxkGQQrbk5SnfULUv_tOj62j2qfuV6a",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1EGxkGQQrbk5SnfULUv_tOj62j2qfuV6a",
+            "title": "三点零九分_SFX_15_kitchen_sizzle_15s.wav",
+            "mime_type": "audio/wav",
+            "size": "1440044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "F16",
+        "drive_id": "11qFU1UFNBA9V6s8lbJowKIskX9lEokJI",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "11qFU1UFNBA9V6s8lbJowKIskX9lEokJI",
+            "title": "三点零九分_SFX_16_running_water_10s.wav",
+            "mime_type": "audio/wav",
+            "size": "960044",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "M1",
+        "drive_id": "1yerZAZ2Y9-FK4f7Ut4yskhP5eM0lZawA",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1yerZAZ2Y9-FK4f7Ut4yskhP5eM0lZawA",
+            "title": "ep01_music_Long Note One_Kevin MacLeod_CC-BY-4.0.mp3",
+            "mime_type": "audio/mpeg",
+            "size": "17761954",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "M2",
+        "drive_id": "1uGCoZfoVmlbA0HJDNoIVOBUAMCvEBofA",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1uGCoZfoVmlbA0HJDNoIVOBUAMCvEBofA",
+            "title": "ep01_music_Evening Fall Piano_Kevin MacLeod_CC-BY-4.0.mp3",
+            "mime_type": "audio/mpeg",
+            "size": "5397796",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    },
+    {
+      "status": "fulfilled",
+      "value": {
+        "id": "M3",
+        "drive_id": "1lWvI84AZrLhhZqFjuOcc_9hdyWvdYdF5",
+        "result": {
+          "content": [
+            {
+              "type": "text",
+              "text": "Action completed."
+            }
+          ],
+          "structuredContent": {
+            "id": "1lWvI84AZrLhhZqFjuOcc_9hdyWvdYdF5",
+            "title": "ep01_music_Dark Walk_Kevin MacLeod_CC-BY-4.0.mp3",
+            "mime_type": "audio/mpeg",
+            "size": "3538605",
+            "url": null,
+            "file_or_folder": "file",
+            "created_time": null,
+            "modified_time": null,
+            "parent_ids": [
+              "11uMWY64q_tLolJ210NmLhfqnkW1D5fBR"
+            ],
+            "drive_id": null,
+            "current_user_can_share": null,
+            "has_augmented_permissions": null,
+            "shared": null,
+            "permissions": null,
+            "source_visibility_status": "access_not_verified"
+          },
+          "isError": false
+        }
+      }
+    }
+  ],
+  "queried_fields": "id,name,mimeType,size,parents,md5Checksum,sha256Checksum",
+  "note": "35 connector responses omit checksum fields; no MD5 equality established"
+}

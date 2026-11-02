@@ -1,0 +1,1330 @@
+{
+  "schema_version": "1.0",
+  "episode": "三点零九分 EP01",
+  "revision": "r06",
+  "status": "executable_data_plan_only; not rendered; exact timeline blocked by pending 27 new API lines",
+  "added_cost": 0,
+  "source_files": {
+    "episode01_sound_production_r06.md": "e86dacd4ec82e080cb99c05cd901929a0407aa2793aaee9ac504cd7495b82382",
+    "voice_lines_r06.json": "a76ec9ede362d96df0ef10c0c49d5ed368a0d1951ccb01e87137edf5849bf1f7",
+    "silent_visual_plan_r06.md": "6369a659be645bac1bcdcc9ae8504646bf2acd2798aff9282ae5ba57bdea2b4c"
+  },
+  "video": {
+    "width": 720,
+    "height": 1280,
+    "fps": 25,
+    "stills_push_zoom": false,
+    "subtitles": "single_line; safe_area_to_test"
+  },
+  "voice_policy": {
+    "allowed": "27 new subscription/API outputs with provenance",
+    "denied": "all experience audio; Result-10; Result-4; unnamed audio; old assembly soundtrack",
+    "fallback": null,
+    "time_stretch": false,
+    "force_uniform_pauses": false,
+    "local_model": false
+  },
+  "beats": [
+    {
+      "id": "S1B01",
+      "scene": 1,
+      "title": "号码栏空白",
+      "voice_line_ids": [],
+      "image_asset_ids": [
+        "I01",
+        "I02",
+        "I03"
+      ],
+      "visual_clue_card": "1998年12月10日 03:09；号码栏由数字变空白（不自报空号）",
+      "planned_visible_event": "终端局部叠加字符图层，号码消失后青禾手停住",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F01",
+          "trigger": "scene_entry",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -10,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M1",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": null
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "终端号码消失状态",
+        "手指悬停多帧"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S1B02",
+      "scene": 1,
+      "title": "异时留言1",
+      "voice_line_ids": [
+        "S1_01"
+      ],
+      "image_asset_ids": [
+        "I01",
+        "I07"
+      ],
+      "visual_clue_card": "五句之一：妈，我没事。；一次短字“那是我的声音”",
+      "planned_visible_event": "耳麦/人物反应与终端逐句打字交替；童声只能用新API且需验证年龄表现",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F01",
+          "trigger": "voice_start",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -16,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S1B01"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "同一人五种时代/情绪的新合法配音"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S1B03",
+      "scene": 1,
+      "title": "异时留言2",
+      "voice_line_ids": [
+        "S1_02"
+      ],
+      "image_asset_ids": [
+        "I01",
+        "I07"
+      ],
+      "visual_clue_card": "五句之一：灯别关。",
+      "planned_visible_event": "耳麦/人物反应与终端逐句打字交替；童声只能用新API且需验证年龄表现",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F01",
+          "trigger": "voice_start",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -16,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S1B02"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "同一人五种时代/情绪的新合法配音"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S1B04",
+      "scene": 1,
+      "title": "异时留言3",
+      "voice_line_ids": [
+        "S1_03"
+      ],
+      "image_asset_ids": [
+        "I01",
+        "I07"
+      ],
+      "visual_clue_card": "五句之一：三号柜后面。",
+      "planned_visible_event": "耳麦/人物反应与终端逐句打字交替；童声只能用新API且需验证年龄表现",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F01",
+          "trigger": "voice_start",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -16,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S1B03"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "同一人五种时代/情绪的新合法配音"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S1B05",
+      "scene": 1,
+      "title": "异时留言4",
+      "voice_line_ids": [
+        "S1_04"
+      ],
+      "image_asset_ids": [
+        "I01",
+        "I07"
+      ],
+      "visual_clue_card": "五句之一：是他，他手上有铁锈味。",
+      "planned_visible_event": "耳麦/人物反应与终端逐句打字交替；童声只能用新API且需验证年龄表现",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F01",
+          "trigger": "voice_start",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -16,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S1B04"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "同一人五种时代/情绪的新合法配音",
+        "原创无歌词男声哼唱（不能用配乐替代）"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S1B06",
+      "scene": 1,
+      "title": "异时留言5",
+      "voice_line_ids": [
+        "S1_05"
+      ],
+      "image_asset_ids": [
+        "I01",
+        "I07"
+      ],
+      "visual_clue_card": "五句之一：别回头，小雯。",
+      "planned_visible_event": "耳麦/人物反应与终端逐句打字交替；童声只能用新API且需验证年龄表现",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F01",
+          "trigger": "voice_start",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -16,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S1B05"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "同一人五种时代/情绪的新合法配音"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S1B07",
+      "scene": 1,
+      "title": "自己的声音与未明片段",
+      "voice_line_ids": [
+        "S1_06"
+      ],
+      "image_asset_ids": [
+        "I01",
+        "I03"
+      ],
+      "visual_clue_card": "终端五句原字；最后手指悬在发送键",
+      "planned_visible_event": "五句同屏阅读后留人物反应",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F13",
+          "trigger": "typed_characters_visible",
+          "source_in_seconds": 3.4,
+          "source_out_seconds": 5.6,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M1",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S1B06"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "逐字终端图层"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S2B01",
+      "scene": 2,
+      "title": "罗姐制止发送",
+      "voice_line_ids": [
+        "S2_07"
+      ],
+      "image_asset_ids": [
+        "I04",
+        "I03"
+      ],
+      "visual_clue_card": "按住键盘；暗红本接替屏幕",
+      "planned_visible_event": "按键被制止→摊本→先抄本再抄随身纸→清屏",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F13",
+          "trigger": "page_open",
+          "source_in_seconds": 0.3,
+          "source_out_seconds": 0.8,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F13",
+          "trigger": "copy_finished_clear_key",
+          "source_in_seconds": 3.4,
+          "source_out_seconds": 3.7,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M1",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S1B07"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "按键制止/复制/清屏连续状态"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S2B02",
+      "scene": 2,
+      "title": "旧案纸面证据",
+      "voice_line_ids": [
+        "S2_08"
+      ],
+      "image_asset_ids": [
+        "I05"
+      ],
+      "visual_clue_card": "12月8日：凤，我没喝酒。我找到晚晚了。三号柜。\n红字：十二月九日，城南水闸捞出",
+      "planned_visible_event": "本页透视叠字；旧留言与后补红字分先后近景",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F13",
+          "trigger": "turn_previous_page",
+          "source_in_seconds": 2.15,
+          "source_out_seconds": 2.65,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M1",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S2B01"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 3.0,
+      "missing_assets": [
+        "红簿跟踪文字图层；空白原图不可当已完成"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S2B03",
+      "scene": 2,
+      "title": "1991空白结局",
+      "voice_line_ids": [],
+      "image_asset_ids": [
+        "I05",
+        "I04"
+      ],
+      "visual_clue_card": "1991；罗素英；七行断句；末尾无红字/日期",
+      "planned_visible_event": "掠过旧页→指尖停→合本锁抽屉",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F13",
+          "trigger": "book_close",
+          "source_in_seconds": 1,
+          "source_out_seconds": 1.3,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S2B02"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "1991七行内容尚无获准正文，不自行编造；可仅让七行形态可辨但文字不可读",
+        "合本锁抽屉状态"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S3B01",
+      "scene": 3,
+      "title": "气味旧话",
+      "voice_line_ids": [
+        "S3_09"
+      ],
+      "image_asset_ids": [
+        "I06"
+      ],
+      "visual_clue_card": "草稿“是他，他手上有铁锈味”；短字“你上个月说过”只对应气味描述",
+      "planned_visible_event": "小雯指草稿→青禾杯手一颤→烫红手背",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F16",
+          "trigger": "visible_pouring_only",
+          "source_in_seconds": 0,
+          "source_out_seconds": 2,
+          "gain_db_initial": -22,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S2B03"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "草稿可读插镜",
+        "杯/烫伤反应连续状态；水流音不能冒充沸腾"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S3B02",
+      "scene": 3,
+      "title": "周牧消息",
+      "voice_line_ids": [
+        "S3_10"
+      ],
+      "image_asset_ids": [
+        "I07"
+      ],
+      "visual_clue_card": "周牧：下班我在后门等你，有重要的事跟你说。",
+      "planned_visible_event": "四蜂鸣后亮屏，旁白在蜂鸣结束后入",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F05",
+          "trigger": "pager_before_screen_on",
+          "source_in_seconds": 0,
+          "source_out_seconds": 1.7,
+          "gain_db_initial": -6,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M1",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S3B01"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "寻呼机显示原文的可读插镜；不能只靠字幕"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S4B01",
+      "scene": 4,
+      "title": "后门相见",
+      "voice_line_ids": [
+        "S4_11"
+      ],
+      "image_asset_ids": [
+        "I08"
+      ],
+      "visual_clue_card": "清晨06:40；周牧神情温和",
+      "planned_visible_event": "晨雾中迎上，接近脚步由远到近",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F03",
+          "trigger": "scene_entry",
+          "source_in_seconds": 0,
+          "source_out_seconds": 20,
+          "gain_db_initial": -10,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F10",
+          "trigger": "visible_steps",
+          "source_in_seconds": 0,
+          "source_out_seconds": 1.6,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M2",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S3B02"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "迎上连续帧",
+        "与S1_04一致的原创无歌词哼唱；尚未制作"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S4B02",
+      "scene": 4,
+      "title": "手与退让",
+      "voice_line_ids": [
+        "S4_12"
+      ],
+      "image_asset_ids": [
+        "I09",
+        "I08"
+      ],
+      "visual_clue_card": "掌纹黑油污/厚茧；草稿“铁锈味”；兜口红丝绒盒",
+      "planned_visible_event": "青禾攥包退半步→绕开→周牧茫然收手",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F03",
+          "trigger": "voice_start",
+          "source_in_seconds": 0,
+          "source_out_seconds": 20,
+          "gain_db_initial": -16,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F10",
+          "trigger": "visible_departure",
+          "source_in_seconds": 2,
+          "source_out_seconds": 4,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M2",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S4B01"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "红丝绒盒插镜",
+        "后退/绕开/收手连续帧；不要恶人表情"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S5B01",
+      "scene": 5,
+      "title": "大厅追问与小雯自责",
+      "voice_line_ids": [
+        "S5_13",
+        "S5_14"
+      ],
+      "image_asset_ids": [
+        "I10"
+      ],
+      "visual_clue_card": "10:15；营业厅哭诉→楼梯小雯握袖；七年前晚晚失踪",
+      "planned_visible_event": "周凤画外声建立空间，小雯急于解释；不把画外声当出现本人",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F02",
+          "trigger": "stairwell_quiet",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -14,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S4B02"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "大厅/周凤可读空间提示",
+        "小雯握袖反应连续帧"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S5B02",
+      "scene": 5,
+      "title": "先自然问发卡",
+      "voice_line_ids": [
+        "S5_15"
+      ],
+      "image_asset_ids": [
+        "I10"
+      ],
+      "visual_clue_card": "无草稿预览；抚发发现发卡不在",
+      "planned_visible_event": "问句完整自然说完→才凝住→抽纸比对“三号柜后面”",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S5B01"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "抚发/问完停顿/抽纸三状态；必须按此顺序"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S5B03",
+      "scene": 5,
+      "title": "上楼与三号柜",
+      "voice_line_ids": [
+        "S5_16"
+      ],
+      "image_asset_ids": [
+        "I11"
+      ],
+      "visual_clue_card": "四楼女更衣室；3号柜；草稿第三句",
+      "planned_visible_event": "楼梯转场→柜号→推柜半寸→敲木墙裙",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F10",
+          "trigger": "visible_upstairs_steps",
+          "source_in_seconds": 0,
+          "source_out_seconds": 3,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F09",
+          "trigger": "visible_locker_shift",
+          "source_in_seconds": 0.2,
+          "source_out_seconds": 2.7,
+          "gain_db_initial": -10,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F08",
+          "trigger": "shift_stopped_then_wall_tap",
+          "source_in_seconds": 0,
+          "source_out_seconds": 2,
+          "gain_db_initial": -8,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S5B02"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "楼层过渡",
+        "推柜/敲墙连续动作",
+        "柜号跟踪字"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S5B04",
+      "scene": 5,
+      "title": "只露纸角",
+      "voice_line_ids": [],
+      "image_asset_ids": [
+        "I12"
+      ],
+      "visual_clue_card": "泛黄硬质物角；不取出、不展示后文",
+      "planned_visible_event": "木响结束后停在纸角，留环境空隙",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F02",
+          "trigger": "after_wall_tap_tail",
+          "source_in_seconds": 0,
+          "source_out_seconds": 2,
+          "gain_db_initial": -16,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M3",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S5B03"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S6B01",
+      "scene": 6,
+      "title": "回家设防",
+      "voice_line_ids": [
+        "S6_17"
+      ],
+      "image_asset_ids": [
+        "I13",
+        "I16"
+      ],
+      "visual_clue_card": "17:30；门栓推进、木棍顶住",
+      "planned_visible_event": "插栓→顶棍→母亲端鱼疑问",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F11",
+          "trigger": "visible_latch_then_brace",
+          "source_in_seconds": 0,
+          "source_out_seconds": 3.2,
+          "gain_db_initial": -8,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F15",
+          "trigger": "kitchen_direction",
+          "source_in_seconds": 0,
+          "source_out_seconds": 15,
+          "gain_db_initial": -22,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F02",
+          "trigger": "scene_entry",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -14,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S5B04"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "独立无黑影的傍晚门闩/撑棍图；I16如含门影不可提前用",
+        "端鱼连续帧"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S6B02",
+      "scene": 6,
+      "title": "叮嘱与求证",
+      "voice_line_ids": [
+        "S6_18",
+        "S6_19"
+      ],
+      "image_asset_ids": [
+        "I13"
+      ],
+      "visual_clue_card": "夜里有动静先叫我；青禾主动盛饭问童年",
+      "planned_visible_event": "洗烫伤→关水→桌边叮嘱→盛饭问话",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F16",
+          "trigger": "visible_washing_hand",
+          "source_in_seconds": 0,
+          "source_out_seconds": 4,
+          "gain_db_initial": -20,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M2",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S6B01"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "洗手/盛饭连续帧；无现今关灯冲突"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S6B03",
+      "scene": 6,
+      "title": "六岁灯句",
+      "voice_line_ids": [
+        "S6_20",
+        "S6_21"
+      ],
+      "image_asset_ids": [
+        "I14",
+        "I13"
+      ],
+      "visual_clue_card": "六岁那年腊月；父亲卷铺盖离开；孩子门边拽框；灯别关",
+      "planned_visible_event": "母亲停筷→夹鱼入女儿碗；可用回忆文字插卡避免假造闪回",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F02",
+          "trigger": "mother_memory",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -18,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M2",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S6B02"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 2.0,
+      "missing_assets": [
+        "停筷到夹鱼连续帧",
+        "童年闪回未制作；零费优先极简回忆插卡"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S6B04",
+      "scene": 6,
+      "title": "未知是他",
+      "voice_line_ids": [
+        "S6_22"
+      ],
+      "image_asset_ids": [
+        "I13"
+      ],
+      "visual_clue_card": "已知：灯别关/铁锈味旧话；未知：“是他”来源",
+      "planned_visible_event": "青禾看母亲再看亮灯；不预判凶手",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F02",
+          "trigger": "narration",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -18,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S6B03"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "看母亲/抬头灯的连续反应"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S7B01",
+      "scene": 7,
+      "title": "次夜来电",
+      "voice_line_ids": [
+        "S7_23"
+      ],
+      "image_asset_ids": [
+        "I07"
+      ],
+      "visual_clue_card": "家中 次日03:15；室内灯全开；小剪刀/座机在手边",
+      "planned_visible_event": "铃声→两秒内拿起→立即停铃",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F02",
+          "trigger": "scene_entry",
+          "source_in_seconds": 0,
+          "source_out_seconds": 30,
+          "gain_db_initial": -14,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F14",
+          "trigger": "clock_visible",
+          "source_in_seconds": 0,
+          "source_out_seconds": 20,
+          "gain_db_initial": -14,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F06",
+          "trigger": "phone_ring_start",
+          "source_in_seconds": 0,
+          "source_out_seconds": 1.8,
+          "gain_db_initial": -6,
+          "timing_status": "event-relative; timeline unresolved"
+        },
+        {
+          "asset_id": "F12",
+          "trigger": "handset_lift_cut_ring",
+          "source_in_seconds": 0,
+          "source_out_seconds": 1,
+          "gain_db_initial": -10,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "M1",
+        "trigger": "beat_entry_after_visual_recognition",
+        "source_in_seconds_proposed": 0,
+        "duck_db_initial": -24,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S6B04"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "家中03:15清醒持剪刀/座机近景；I07若是机房不可当家中"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S7B02",
+      "scene": 7,
+      "title": "台里重来/旧末句",
+      "voice_line_ids": [
+        "S7_24",
+        "S7_25"
+      ],
+      "image_asset_ids": [
+        "I07"
+      ],
+      "visual_clue_card": "台里03:09（听筒侧字）；家中03:15；家中草稿旧末句“别回头，小雯”→最后一句变了",
+      "planned_visible_event": "只给女主/听筒/自留草稿；此时绝不提前露门影或护母动作",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F04",
+          "trigger": "telephone_voice_only",
+          "source_in_seconds": 0,
+          "source_out_seconds": 20,
+          "gain_db_initial": -15,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S7B01"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "家中电话单人反应与草稿旧末句插镜；红本不得在家"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S7B03",
+      "scene": 7,
+      "title": "警告完整落地",
+      "voice_line_ids": [
+        "S7_26"
+      ],
+      "image_asset_ids": [
+        "I07"
+      ],
+      "visual_clue_card": "听筒旁独立短字“妈，别开门”",
+      "planned_visible_event": "最后字门的语音尾部结束才允许下一beat；门影不可抢先",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F04",
+          "trigger": "warning_start_duck_extra_9dB",
+          "source_in_seconds": 0,
+          "source_out_seconds": 3,
+          "gain_db_initial": -24,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S7B02"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "准确语音结束标记；不能按字数估算"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S7B04",
+      "scene": 7,
+      "title": "警告后才三敲",
+      "voice_line_ids": [],
+      "image_asset_ids": [
+        "I15",
+        "I16"
+      ],
+      "visual_clue_card": "三下可见门板轻振；毛玻璃影停驻，不揭身份",
+      "planned_visible_event": "首敲后才显门板/黑影；独立三事件与波形同步",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F07",
+          "trigger": "S7_26.speech_end_plus_0.0_to_0.2s_FILE_START",
+          "source_in_seconds": 0,
+          "source_out_seconds": 6,
+          "gain_db_initial": -6,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S7B03"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "门板三次轻振待制作；静图不能称已敲击"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S7B05",
+      "scene": 7,
+      "title": "先护母后抵门",
+      "voice_line_ids": [
+        "S7_27"
+      ],
+      "image_asset_ids": [
+        "I13",
+        "I15",
+        "I16"
+      ],
+      "visual_clue_card": "放听筒→横身拦母→抵住门和木棍→禁声",
+      "planned_visible_event": "母亲掀帘出声，青禾先归还听筒再护母；门影无位移",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F12",
+          "trigger": "handset_set_down_before_interpose",
+          "source_in_seconds": 1.5,
+          "source_out_seconds": 2.8,
+          "gain_db_initial": -12,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S7B04"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "挂听筒/拦母/抵门/禁声四状态；旧图仍持听筒不可冒充连续动作"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    },
+    {
+      "id": "S7B06",
+      "scene": 7,
+      "title": "黑屏与署名",
+      "voice_line_ids": [],
+      "image_asset_ids": [],
+      "visual_clue_card": "片尾音乐署名及修改说明；不透露门外身份",
+      "planned_visible_event": "环境尾0.8—1.2秒后黑屏，另设片尾署名卡",
+      "actual_continuous_action_status": "not_produced",
+      "sfx_cues": [
+        {
+          "asset_id": "F02",
+          "trigger": "end_tail",
+          "source_in_seconds": 0,
+          "source_out_seconds": 1.2,
+          "gain_db_initial": -18,
+          "timing_status": "event-relative; timeline unresolved"
+        }
+      ],
+      "music": {
+        "asset_id": "none",
+        "trigger": "mute",
+        "source_in_seconds_proposed": null,
+        "duck_db_initial": null,
+        "status": "proposed; choose excerpt after listening; never mask lines"
+      },
+      "start_anchor": {
+        "type": "after_beat",
+        "beat_id": "S7B05"
+      },
+      "duration_seconds": null,
+      "voice_start_seconds": null,
+      "min_visual_read_hold_seconds_proposed": 1.0,
+      "missing_assets": [
+        "片尾署名卡"
+      ],
+      "exit_condition": "all assigned voice ends + required visible event + readable clue hold; resolve from measured audio and visual edit",
+      "zero_cost_fallback": "editor-made readable insert/card + cut between existing stills; explicitly label as still animatic, do not claim acted movement"
+    }
+  ],
+  "timing_rules": {
+    "absolute_timecode": null,
+    "dialogue": "measure decoded sample counts; manually listen and mark speech start/end per line; preserve breath and natural delivery",
+    "beat_duration": "max(audio end with intended pauses, action readiness, clue readable hold); never fit to r06 230s estimate or old239.88s",
+    "subtitles": "new API word/phrase timestamps if provided then manual verify; otherwise human phrase markers; no character-count timing accepted as exact; manual correction required before SRT export",
+    "knocks": "F07 FILE START >= S7_26 speech_end; first impact occurs +0.40s within F07, not at file start; allow file_start speech_end+0.0..0.2s; impact +0.4..0.6s",
+    "clock": "home03:15 distinct from switchboard03:09",
+    "render_gate": "fail closed if any voice duration missing, prohibited provenance, missing exact speech_end for S7_26, or pending required motion advertised as continuous action"
+  }
+}

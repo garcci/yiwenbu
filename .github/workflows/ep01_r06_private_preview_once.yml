@@ -1,0 +1,38 @@
+name: r06第一集私人云盘草稿一次性合成
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/r06_timeline/execute_once.json"]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ep01-r06-private-preview-20261102-once
+  cancel-in-progress: false
+jobs:
+  private-preview:
+    if: ${{ github.repository == 'garcci/yiwenbu' && github.ref == 'refs/heads/claude/project-thread-l4wz3r' && github.event_name == 'push' && github.run_attempt == 1 }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 55
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装编码、字体和传输库（不安装模型）
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-noto-cjk python3-pil python3-requests
+      - name: 校验唯一触发范围与当前费用证据（不读取Drive凭据）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 video/r06_timeline/run_private_preview.py --preflight
+      - name: 离线边界与时间轴测试
+        run: python3 -m unittest discover -s video/r06_timeline -v
+      - name: 两批API声音与冻结素材核验、渲染、完整解码后写入原私人Drive
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: 11uMWY64q_tLolJ210NmLhfqnkW1D5fBR
+        run: python3 video/r06_timeline/run_private_preview.py --execute
+      - name: 记录草稿边界
+        run: echo 'r06私人草稿已渲染、完整解码并回传私人Drive。音色、表演、静音叙事及同步仍待实际审阅；无ASR模式字幕明确UNALIGNED。未调用生成API、未更改分享、未删除原件。' >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,8 @@
+{
+  "source_assets_sha256": "1d38c131733596bd05391f7d39cdbdccaf967b4ec831e613d2449ca0f756ee7c",
+  "files": {
+    "inputs.assets-candidate.json": "124dd013a183b4323406fec62e7c8972182b60bf9dc381562fd43529faad32dd",
+    "asset_pairing_audit.json": "4492dea81bce8ceea87a972962cfb58188ac2e96c85c4b7fd7aa78088552a62a"
+  },
+  "render_ready": false
+}

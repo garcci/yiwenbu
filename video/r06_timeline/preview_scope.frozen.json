@@ -1,0 +1,22 @@
+{
+  "repository": "garcci/yiwenbu",
+  "branch": "claude/project-thread-l4wz3r",
+  "workflow_install_required": true,
+  "sha256": {
+    "video/r06_timeline/build.py": "5f36bcc6e6e7aa68db2db8ba9c08b8c4d67ecbe52f31cc445b5cda0948b3f5bb",
+    "video/r06_timeline/apply_asr.py": "9346974d0e0ad2d831a8b4c28f6495112a83cac76338785d69af05e531d01c72",
+    "video/r06_timeline/fetch_api_batches.py": "1cd4d927e57d390cfc2388a4fec17debfa642c17daa8c4ec8699ff322cd00185",
+    "video/r06_timeline/fetch_candidate_assets.py": "0912840cfb126d84bb7d98d71e54cd9a5e82ffd1111868017c88b7ab3eddb8c7",
+    "video/r06_timeline/import_batches.py": "c57c11269ee58f2dfd8106831b2009cb27c700924870086f2295176d32bed81d",
+    "video/r06_timeline/probe_catalog.py": "5ee9b314c5e831f5c797e2f46659c6dabd4ebb9441a46dbc24ffb1f318978c56",
+    "video/r06_timeline/run_private_preview.py": "add462675c66571620baea202785404e70db57155adb4057f9b71f0c0ad7701a",
+    "video/r06_timeline/edit_plan_r06.json": "fd2d571b40849b9f731c784a0b2479440d830eebc65feb51b665653473933c68",
+    "video/r06_timeline/voice_lines_r06.json": "a76ec9ede362d96df0ef10c0c49d5ed368a0d1951ccb01e87137edf5849bf1f7",
+    "video/ci_render/render.py": "e8491fbcf2c4bfb4b2d62303daec6e42d9557a246832d0a968e00da89964baec",
+    "video/ci_render/drive_io.py": "69df55a4b88f9ab194559b82501f4484fd3345ae68b6618a7f72661e44c56222",
+    "gdrive.py": "ebe071904e71b6492bc4074e628885924d1503b0b2d96893b4da02c0d103a643",
+    ".github/workflows/ep01_r06_private_preview_once.yml": "e3bb57e64f7706df9cb024df9bb481bbb5bb81d71201196860bf3dee521ec81d",
+    "video/r06_timeline/frozen_candidates_20261102_v3/inputs.assets-candidate.json": "78c4e9c802b52676a9e513e3f9101d37f298551585d7cf0f0db98ffbd06c6944"
+  },
+  "status": "v3 reviewed-source candidate; dependency install precedes preflight; no trigger or execution"
+}

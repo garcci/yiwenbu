@@ -1,0 +1,10 @@
+{
+  "supersedes": "frozen_candidates_20261102_v2",
+  "sha256": {
+    "inputs.assets-candidate.json": "78c4e9c802b52676a9e513e3f9101d37f298551585d7cf0f0db98ffbd06c6944",
+    "local_sfx_duration_checks.json": "5c52b455303d51b7bd876f7abed0f8b991dd4e9328c05cd858cc292ad6ca57be"
+  },
+  "cloud_hash_verified": false,
+  "voice_duration_measured": false,
+  "status": "review candidate; no run"
+}

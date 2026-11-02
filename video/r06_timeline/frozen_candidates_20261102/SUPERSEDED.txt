@@ -1,0 +1,1 @@
+准备阶段候选含一个未使用的CREDIT_IMAGE占位；保留审计。当前有效候选为../frozen_candidates_20261102_v2/inputs.assets-candidate.json；v2去除占位，不覆盖原plan。
