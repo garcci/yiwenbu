@@ -6,7 +6,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
-from render import asset_references, plan, resolve_assets, ass_time, qc, shot_filter, final_filter, story_layout, plain_story_line
+from render import asset_references, plan, resolve_assets, ass_time, qc, shot_filter, final_filter, story_layout, plain_story_line, audio_fades, audio_track_filter, ffmpeg_time
 
 
 def fixture():
@@ -177,6 +177,55 @@ class ValidationTests(unittest.TestCase):
             story_layout(dict(cue, width=40), FakeMeasuredFont())
         with self.assertRaisesRegex(ValueError, 'too tall'):
             story_layout(dict(cue, height=30), FakeMeasuredFont())
+
+    def test_audio_fades_defaults_and_explicit_zero_preserve_old_filter(self):
+        track = fixture()['audio'][0]
+        baseline = audio_track_filter(track, 0)
+        self.assertEqual(audio_fades(track), (0, 0))
+        self.assertNotIn('afade=', baseline)
+        self.assertEqual(audio_track_filter(dict(track, fadeIn=0, fadeOut=0), 0), baseline)
+        plan(fixture())
+
+    def test_audio_fades_apply_after_trim_and_pts_before_delay_without_speed_change(self):
+        track = dict(fixture()['audio'][0], sourceStart=.2, duration=1.6, fadeIn=.3, fadeOut=.4)
+        graph = audio_track_filter(track, 2)
+        self.assertIn('atrim=start=0.2:duration=1.6,asetpts=PTS-STARTPTS', graph)
+        self.assertIn('afade=t=in:st=0:d=0.3:curve=tri', graph)
+        self.assertIn('afade=t=out:st=1.2:d=0.4:curve=tri', graph)
+        self.assertLess(graph.index('asetpts='), graph.index('afade='))
+        self.assertLess(graph.rindex('afade='), graph.index('adelay='))
+        self.assertNotIn('atempo', graph)
+        self.assertEqual(audio_fades(dict(track, fadeIn=1.6, fadeOut=1.6)), (1.6, 1.6))
+        m = fixture(); m['audio'] = [track]
+        self.assertEqual(plan(m)['duration'], 2)
+
+    def test_audio_fades_reject_negative_nonfinite_boolean_and_exceeding_slice(self):
+        for key in ('fadeIn', 'fadeOut'):
+            for value in (-.01, 1.71, float('nan'), float('inf'), True, '0.2'):
+                m = fixture(); m['audio'][0][key] = value
+                with self.assertRaises(ValueError):
+                    plan(m)
+
+    def test_audio_duration_uses_fixed_decimal_for_small_fades_and_derived_start(self):
+        track = dict(fixture()['audio'][0], sourceStart=.00001, duration=.00101,
+                     fadeIn=.00001, fadeOut=.001)
+        graph = audio_track_filter(track, 0)
+        self.assertIn('atrim=start=0.00001:duration=0.00101', graph)
+        self.assertIn('afade=t=in:st=0:d=0.00001', graph)
+        self.assertIn('afade=t=out:st=0.00001:d=0.001', graph)
+        self.assertNotRegex(graph, r'\d[eE][+-]?\d')
+        self.assertEqual(ffmpeg_time(.000001), '0.000001')
+        self.assertEqual(ffmpeg_time(.0000004), '0')  # Derived times round to a microsecond.
+        self.assertEqual(ffmpeg_time(1.23456789), '1.234568')
+        for key in ('fadeIn', 'fadeOut'):
+            valid = dict(fixture()['audio'][0], **{key: .000001})
+            self.assertIn('d=0.000001', audio_track_filter(valid, 0))
+            invalid = dict(fixture()['audio'][0], **{key: .000000999})
+            with self.assertRaisesRegex(ValueError, 'at least one microsecond'):
+                audio_fades(invalid)
+            m = fixture(); m['audio'] = [invalid]
+            with self.assertRaisesRegex(ValueError, 'at least one microsecond'):
+                plan(m)
 
     def test_ass_timestamp_carry(self):
         self.assertEqual(ass_time(59.999), '0:01:00.00')

@@ -1,1 +1,1 @@
-2026-11-02: Run synthetic FFmpeg, timed visual cards and subtitle smoke test on the project branch.
+2026-11-02: Run synthetic audio fades, visual cards, and subtitle smoke on the project branch.

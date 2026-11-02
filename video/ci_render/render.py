@@ -146,6 +146,7 @@ def plan(manifest):
         number(track.get('sourceStart', 0), 'audio source start')
         d = number(track['duration'], 'audio duration', 0.001)
         number(track.get('volume', 1), 'audio volume', 0, 4)
+        audio_fades(track)
         require(s + d <= duration + 0.00001, 'Audio exceeds video duration')
     badge = m.get('badge', '')
     require('AI' in badge and len(badge) <= 40 and not any(c in badge for c in '\r\n{}\\'), 'Visible AI badge required')
@@ -157,6 +158,37 @@ def plan(manifest):
          'font_size': font_size, 'inset': inset, 'caption_bottom': bottom}
     p['story_overlays'] = plan_story_overlays(m.get('story_overlays', []), p)
     return p
+
+
+def audio_fades(track):
+    length = number(track['duration'], 'audio duration', .001)
+    fade_in = number(track.get('fadeIn', 0), 'audio fadeIn', 0, length)
+    fade_out = number(track.get('fadeOut', 0), 'audio fadeOut', 0, length)
+    require(all(value == 0 or value >= .000001 for value in (fade_in, fade_out)),
+            'Positive audio fades must be at least one microsecond')
+    return fade_in, fade_out
+
+
+def ffmpeg_time(value):
+    # FFmpeg duration options need decimal seconds, never Python exponent form.
+    # Use microsecond precision consistently, including derived fade-out starts.
+    return format(value, '.6f').rstrip('0').rstrip('.') or '0'
+
+
+def audio_track_filter(track, index):
+    fade_in, fade_out = audio_fades(track)
+    start, length = track.get('sourceStart', 0), track['duration']
+    filters = [f'atrim=start={ffmpeg_time(start)}:duration={ffmpeg_time(length)}', 'asetpts=PTS-STARTPTS',
+               'aresample=48000', 'aformat=sample_fmts=fltp:channel_layouts=stereo',
+               f"volume={track.get('volume', 1)}"]
+    # Fade times are relative to the trimmed paragraph/music segment, not the
+    # original source or global timeline. Defaults do not alter voice processing.
+    if fade_in > 0:
+        filters.append(f'afade=t=in:st=0:d={ffmpeg_time(fade_in)}:curve=tri')
+    if fade_out > 0:
+        filters.append(f'afade=t=out:st={ffmpeg_time(length - fade_out)}:d={ffmpeg_time(fade_out)}:curve=tri')
+    filters.append(f"adelay={round(track['offset'] * 48000)}S:all=1")
+    return f'[{index}:a]' + ','.join(filters) + f'[a{index}]'
 
 
 def plain_story_line(text):
@@ -369,13 +401,11 @@ def render(m, assets, output_dir, font):
             start, length = track.get('sourceStart', 0), track['duration']
             require(start + length <= source_duration + .01, 'Audio slice exceeds source; no silent truncation')
             args += ['-i', str(source)]
-            delay = round(track['offset'] * 48000)
-            filters.append(f'[{i}:a]atrim=start={start}:duration={length},asetpts=PTS-STARTPTS,'
-                           f"aresample=48000,aformat=sample_fmts=fltp:channel_layouts=stereo,volume={track.get('volume', 1)},"
-                           f'adelay={delay}S:all=1[a{i}]')
+            filters.append(audio_track_filter(track, i))
             labels.append(f'[a{i}]')
             tracks_report.append({'index': i, 'source_sha256': digest(source), 'source_duration': source_duration,
-                                  'source_start': start, 'duration': length, 'offset': track['offset'], 'speed': 1})
+                                  'source_start': start, 'duration': length, 'offset': track['offset'], 'speed': 1,
+                                  'fadeIn': audio_fades(track)[0], 'fadeOut': audio_fades(track)[1]})
         filters.append(''.join(labels) + f"amix=inputs={len(labels)}:normalize=0:dropout_transition=0,"
                        f"apad,atrim=duration={p['duration']}[mix]")
         (work / 'audio.filters').write_text(';\n'.join(filters))
@@ -400,6 +430,7 @@ def render(m, assets, output_dir, font):
              '-movflags', '+faststart', candidate.name], work)
         report = qc(candidate, p)
         report['source_tracks'] = tracks_report
+        report['audio_filter_time_precision_seconds'] = .000001
         report['shot_timeline'] = [{k: s[k] for k in ('start', 'end')} for s in p['shots']]
         report['caption_timeline'] = m.get('captions', [])
         report['story_overlay_timeline'] = [dict(cue, png_sha256=digest(card))

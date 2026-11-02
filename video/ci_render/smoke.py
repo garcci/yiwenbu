@@ -9,7 +9,7 @@ import shutil
 import struct
 import tempfile
 import wave
-from render import digest, render, resolve_assets, encode_shot, run
+from render import digest, render, resolve_assets, encode_shot, run, audio_track_filter
 from test_render import fixture
 
 
@@ -68,6 +68,36 @@ def story_timing_smoke(video, report):
     assert report['silent_story_comprehension'] == 'not_assessed'
 
 
+def audio_fade_smoke(root):
+    from array import array
+    import sys
+    # Compare the exact production track filter with/without fades on the same
+    # synthetic sine source. Inspect PCM before AAC to avoid codec edge padding.
+    streams = []
+    for fade in (0, .4, .00001, .000001):
+        track = {'sourceStart': .2, 'duration': 1.6, 'offset': .1, 'volume': .2,
+                 'fadeIn': fade, 'fadeOut': fade}
+        pcm = run(['ffmpeg', '-v', 'error', '-i', str(root / 'tone.wav'),
+                   '-filter_complex', audio_track_filter(track, 0), '-map', '[a0]',
+                   '-c:a', 'pcm_f32le', '-f', 'f32le', '-'])
+        samples = array('f'); samples.frombytes(pcm)
+        if sys.byteorder != 'little':
+            samples.byteswap()
+        assert len(samples) == round(1.7 * 48000) * 2, ('fade changed track duration', len(samples))
+        streams.append(samples)
+    def rms(samples, start, end):
+        segment = samples[round(start * 48000) * 2:round(end * 48000) * 2]
+        return math.sqrt(sum(x * x for x in segment) / len(segment))
+    baseline, faded = streams[:2]
+    center = rms(baseline, .8, .9)
+    assert center > .001
+    assert .95 < rms(faded, .8, .9) / center < 1.05
+    for start, end in ((.11, .14), (1.66, 1.69)):
+        assert .9 < rms(baseline, start, end) / center < 1.1
+        assert rms(faded, start, end) < rms(baseline, start, end) * .15
+    assert rms(faded, 0, .08) < .00001, 'Fade must not move audio before its delay'
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--font', type=Path, default=Path('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'))
@@ -84,7 +114,9 @@ def main():
             audio.setparams((1, 2, 48000, 0, 'NONE', 'not compressed'))
             audio.writeframes(b''.join(struct.pack('<h', round(4000 * math.sin(2 * math.pi * 440 * i / 48000)))
                                        for i in range(48000 * 2)))
+        audio_fade_smoke(root)
         m = fixture()
+        m['audio'][0].update(fadeIn=.2, fadeOut=.3)
         m['fontSize'] = 20
         m['safeInset'] = 24
         m['story_overlays'] = [
@@ -96,9 +128,11 @@ def main():
                    for name in ('a.ppm', 'b.ppm', 'tone.wav')}
         report = render(m, resolve_assets(m, mapping, root), root / 'output', args.font)
         assert report['video_frames'] == 50
+        assert report['source_tracks'][0]['fadeIn'] == .2
+        assert report['source_tracks'][0]['fadeOut'] == .3
         story_timing_smoke(root / 'output/draft.mp4', report)
         print(json.dumps({'synthetic_smoke_pass': True, 'frames': report['video_frames'],
-                          'alpha_and_aspect_fit_pixels_pass': True, 'story_card_timing_and_text_pixels_pass': True, 'human_media_used': False, 'production_acceptance': False}))
+                          'alpha_and_aspect_fit_pixels_pass': True, 'synthetic_audio_fade_edges_pass': True, 'microsecond_fade_parse_pass': True, 'story_card_timing_and_text_pixels_pass': True, 'human_media_used': False, 'production_acceptance': False}))
 
 
 if __name__ == '__main__':
