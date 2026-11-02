@@ -4,6 +4,11 @@ from pathlib import Path
 import requests
 
 
+def isolated_environment(source):
+    allowed=('PATH','HOME','LANG','LC_ALL','TMPDIR','RUNNER_TEMP','LD_LIBRARY_PATH','SSL_CERT_FILE')
+    return {k:source[k] for k in allowed if k in source}
+
+
 def check(name, fn):
     try:
         if not fn(): raise ValueError()
@@ -28,9 +33,11 @@ def main():
     def quota():
         r=session.get('https://www.googleapis.com/drive/v3/about',params={'fields':'storageQuota'},timeout=30,allow_redirects=False);r.raise_for_status();q=r.json()['storageQuota'];return int(q['limit'])-int(q['usage'])>=300*1024**2
     check('drive_capacity',quota)
+    # Installed packages and their subprocesses must not inherit Drive credentials.
+    clean_env=isolated_environment(os.environ)
     base=[sys.executable,'-m','pip','install','--disable-pip-version-check','--no-cache-dir']
     def install(args):
-        r=subprocess.run(base+args,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=360)
+        r=subprocess.run(base+args,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=360,env=clean_env)
         if r.returncode:
             err=r.stderr.lower()
             for needle,label in ((b'no space left','disk'),(b'resolutionimpossible','dependency'),(b'no matching distribution','package'),(b'timed out','network')):
@@ -44,7 +51,7 @@ def main():
         return m['MemAvailable']>=12*1024**3 and shutil.disk_usage(os.environ['RUNNER_TEMP']).free>=8*1024**3
     check('resource_gate',resources)
     def sdk():
-        env=dict(os.environ,HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',HF_DATASETS_OFFLINE='1',HTTP_PROXY='http://127.0.0.1:1',HTTPS_PROXY='http://127.0.0.1:1',NO_PROXY='')
+        env=dict(clean_env,HF_HUB_OFFLINE='1',TRANSFORMERS_OFFLINE='1',HF_DATASETS_OFFLINE='1',HTTP_PROXY='http://127.0.0.1:1',HTTPS_PROXY='http://127.0.0.1:1',NO_PROXY='')
         code="import inspect,importlib.metadata;from voxcpm import VoxCPM;assert importlib.metadata.version('voxcpm')=='2.0.3';assert 'seed' not in inspect.signature(VoxCPM._generate).parameters"
         return subprocess.run([sys.executable,'-c',code],env=env,stdout=subprocess.PIPE,stderr=subprocess.PIPE,timeout=90).returncode==0
     check('offline_sdk_import',sdk)
