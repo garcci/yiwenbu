@@ -52,7 +52,7 @@ def main():
                 if p.is_absolute() or '..' in p.parts or '\\' in i.filename or str(p) in names or stat.S_ISLNK(mode) or i.is_dir() or i.compress_size<=0 or i.file_size/i.compress_size>=200:return False
                 names.add(str(p))
             scope=json.loads(z.read('private-source-scope.json'))
-            if scope['authorization_id']!='ep01-qinghe-voice-audition-20261102-01':return False
+            if scope['authorization_id']!='ep01-qinghe-voice-audition-20261102-v2-02':return False
             for path,digest in scope['sha256'].items():
                 if hashlib.sha256(z.read(path)).hexdigest()!=digest:return False
             source=z.read('video/role_tts_plan/runner.py').decode()

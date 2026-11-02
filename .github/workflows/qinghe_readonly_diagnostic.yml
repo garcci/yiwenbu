@@ -14,8 +14,8 @@ jobs:
       - run: sudo apt-get update -qq && sudo apt-get install -y --no-install-recommends python3-requests
       - name: Check fixed status labels without generation
         env:
-          AUDITION_PRIVATE_PACKAGE_ID: ${{ secrets.AUDITION_PRIVATE_PACKAGE_ID }}
-          AUDITION_PRIVATE_PACKAGE_SHA256: ${{ secrets.AUDITION_PRIVATE_PACKAGE_SHA256 }}
+          AUDITION_PRIVATE_PACKAGE_ID: ${{ secrets.AUDITION_V2_PRIVATE_PACKAGE_ID }}
+          AUDITION_PRIVATE_PACKAGE_SHA256: ${{ secrets.AUDITION_V2_PRIVATE_PACKAGE_SHA256 }}
           GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
           GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
           GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
