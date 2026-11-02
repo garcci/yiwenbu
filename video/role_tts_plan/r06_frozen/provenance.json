@@ -1,0 +1,313 @@
+{
+  "source_voice_lines_sha256": "a76ec9ede362d96df0ef10c0c49d5ed368a0d1951ccb01e87137edf5849bf1f7",
+  "source_script_sha256": "e86dacd4ec82e080cb99c05cd901929a0407aa2793aaee9ac504cd7495b82382",
+  "approval_meaning": "Content production authorized by user; voice candidates not heard or accepted. approval_state=approved only permits execution after fresh quota and unique-run gates; it is not voice-quality approval.",
+  "manifest_hashes": {
+    "batch01": "9147640684bda6bdc88f56dbf7b8b704d01343aed40cfde502088c36901fdca9",
+    "batch02": "6c45872ff0ef53569c904108e4e6a3c5f2d5674350d14cc9f934cd8351854a9d"
+  },
+  "segments": [
+    {
+      "id": "S1_01",
+      "scene": 1,
+      "source_line": 14,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "b4d9bd7ea845287f4eda37d6bfe14e48df54181766716e89a44da0eb8345601a",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S1_02",
+      "scene": 1,
+      "source_line": 15,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾_幼年",
+      "text_sha256": "8cd7df43dc509c2b05010125aa28f1f5fae2fa6bd9fc2d5708ee1fd9135bf975",
+      "candidate_voice": "zh_male_tiancaitongsheng_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S1_03",
+      "scene": 1,
+      "source_line": 16,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "d483bc31b1203261c6c42c67369b31cccdd5bdb4c2d1adb33d30619768bed655",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S1_04",
+      "scene": 1,
+      "source_line": 17,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "e814463c12e82e4526cb3b3811f4e8e75a32b78edd8ce9fd0fe3fc2968ca73d8",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S1_05",
+      "scene": 1,
+      "source_line": 18,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "97037d4fdf8d6b6814efa997f7adb2936ba97ca8f262028a0f04a24d09ad9974",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S1_06",
+      "scene": 1,
+      "source_line": 20,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "23a687265d1d32bd01b0778e3b5e7851794188236be4ef2f95b7f8d382d7eaf1",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S2_07",
+      "scene": 2,
+      "source_line": 29,
+      "original_role": "罗素英",
+      "runtime_role": "罗素英",
+      "text_sha256": "93e1ef57fa1f1299af6395d5739185717f2faf2ab7ec9ee06d9bacc0dc485856",
+      "candidate_voice": "zh_female_zhixingnv_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S2_08",
+      "scene": 2,
+      "source_line": 34,
+      "original_role": "罗素英",
+      "runtime_role": "罗素英",
+      "text_sha256": "36d7b470683f45fd5c67aba4ef26e4b26c9cd9b3e3c784ca9103daf700f5eb9c",
+      "candidate_voice": "zh_female_zhixingnv_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S3_09",
+      "scene": 3,
+      "source_line": 44,
+      "original_role": "小雯",
+      "runtime_role": "小雯",
+      "text_sha256": "29a08114676582786853b9563b8e28cdba8de993bcba1e2c4d107c8d0476a1ad",
+      "candidate_voice": "zh_female_linjianvhai_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S3_10",
+      "scene": 3,
+      "source_line": 48,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "544fe0bd10dbf45a90672a679e6900527d404aa26bb1a0f761c409e1b147d7a8",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S4_11",
+      "scene": 4,
+      "source_line": 58,
+      "original_role": "周牧",
+      "runtime_role": "周牧",
+      "text_sha256": "5f8b960a61098b777479274133cdf9122807ffe44aefa4b6e6bed67be3f39510",
+      "candidate_voice": "zh_male_taocheng_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S4_12",
+      "scene": 4,
+      "source_line": 61,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "7f187638b07c8b694c4bdc6d143791c9ba9fdb03bef2b83eb7c66958d7c51051",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S5_13",
+      "scene": 5,
+      "source_line": 70,
+      "original_role": "周凤",
+      "runtime_role": "周凤",
+      "text_sha256": "34ee9a420dddbfaeb6bd15a730a683ed9920c57a48444c714088c4ea557f82c3",
+      "candidate_voice": "zh_female_shuangkuaisisi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S5_14",
+      "scene": 5,
+      "source_line": 72,
+      "original_role": "小雯",
+      "runtime_role": "小雯",
+      "text_sha256": "ea7f9dbe0d0c8feee5d1955fcd801f48defc69759e464fd8f0024ee98ec21c8e",
+      "candidate_voice": "zh_female_linjianvhai_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S5_15",
+      "scene": 5,
+      "source_line": 74,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "14638b4769837e9b34c306e5752d99dbc6a593580f84cb0e60693384ef885003",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S5_16",
+      "scene": 5,
+      "source_line": 80,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "58b0d0878aebd77e6d80e0a81a49b9cf50bfad22de242bde47a21aa5f8fbb3e1",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S6_17",
+      "scene": 6,
+      "source_line": 91,
+      "original_role": "陆母",
+      "runtime_role": "陆母",
+      "text_sha256": "6697b4664f2de17754c9b78bdf0c8352cdcee72688da246ffdc7c38d760d1594",
+      "candidate_voice": "zh_female_wenrouxiaoya_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S6_18",
+      "scene": 6,
+      "source_line": 94,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "5f621fe437c2af9801649bc158d83d58d1f6c561c7549faad663e1ae9068dd39",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S6_19",
+      "scene": 6,
+      "source_line": 97,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "c9c377f1205602b7ff04ee288f882163f7a559578a590745f804790dd5315eb7",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S6_20",
+      "scene": 6,
+      "source_line": 100,
+      "original_role": "陆母",
+      "runtime_role": "陆母",
+      "text_sha256": "885fe963c79e73366c045681abfe8413c6904041350c7172147e5f72ada837c5",
+      "candidate_voice": "zh_female_wenrouxiaoya_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S6_21",
+      "scene": 6,
+      "source_line": 103,
+      "original_role": "陆母",
+      "runtime_role": "陆母",
+      "text_sha256": "ea8167747403603db805102d2c73092efa96d9af65a22917d96313165fb63021",
+      "candidate_voice": "zh_female_wenrouxiaoya_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S6_22",
+      "scene": 6,
+      "source_line": 106,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "451b6c45023d415a78a016fcab29b451e74b762a5ae76cb862deb0464bf6f114",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S7_23",
+      "scene": 7,
+      "source_line": 115,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "e33287c20a0ac53b3a8798f4ad548df864ec4289fd4ae378c135416206a1b37b",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S7_24",
+      "scene": 7,
+      "source_line": 117,
+      "original_role": "小雯",
+      "runtime_role": "小雯",
+      "text_sha256": "1bf16af37e4f5965c149f500e46d00ee55dabbf2494e04edc7a0a6e3d05740aa",
+      "candidate_voice": "zh_female_linjianvhai_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S7_25",
+      "scene": 7,
+      "source_line": 118,
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾",
+      "text_sha256": "12e9d8e312fb01bd1801dc11c80eeb3353babede70d67630d6900b28e25ed581",
+      "candidate_voice": "zh_female_qingchezizi_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S7_26",
+      "scene": 7,
+      "source_line": 120,
+      "original_role": "小雯",
+      "runtime_role": "小雯",
+      "text_sha256": "6d50c5cf404197eb750d8a63ff6389bc6af4466dcbd32f1eca41e8ba418aca1f",
+      "candidate_voice": "zh_female_linjianvhai_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    },
+    {
+      "id": "S7_27",
+      "scene": 7,
+      "source_line": 124,
+      "original_role": "陆母",
+      "runtime_role": "陆母",
+      "text_sha256": "382228c9b60603812bfd4f63d07691b647862070fdd7d1d86945b1c4db386299",
+      "candidate_voice": "zh_female_wenrouxiaoya_uranus_bigtts",
+      "voice_status": "candidate_not_user_listening_approved",
+      "performance_context_origin": "r06 scene notes expanded conservatively; no spoken text edits"
+    }
+  ],
+  "voice_limitations": {
+    "childhood": "天才童声名称为男童，是否适合幼年青禾女童未知，须待实际听审；与成人身份独立。",
+    "all_candidates": "候选ID来自主代理提供的官方列表；只有成人清澈梓梓此前有单段套餐成功记录，旧D陶澄有历史用户选声依据，不能推广为本轮台词适配或质量验收。"
+  },
+  "network_calls_in_preparation": 0
+}

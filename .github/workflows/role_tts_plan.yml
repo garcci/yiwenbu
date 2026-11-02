@@ -1,0 +1,42 @@
+name: 第一集角色配音唯一批次 ep01-role-tts-once-20261102-01
+
+# 仅execute_once.json首次push触发；候选清单与占位证据推送不会运行。
+# 每实例仅接受当前唯一可见push run，不是持久原子消费服务。
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/role_tts_plan/batches/batch01/execute_once.json"]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: ep01-r06-role-tts-project
+  cancel-in-progress: false
+jobs:
+  paragraphs:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: 离线验证清单和边界
+        run: |
+          python3 -m unittest discover -s video/role_tts_plan/tests -v
+          python3 video/role_tts_plan/runner.py --manifest video/role_tts_plan/batches/batch01/manifest.candidate.json
+      - name: 安装Drive上传依赖（不注入任何密钥）
+        run: python3 -m pip install --quiet requests
+      - name: 只读Drive预检后逐自然段生成并上传；失败即停
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+        run: python3 video/role_tts_plan/runner.py --manifest video/role_tts_plan/batches/batch01/manifest.candidate.json --quota-evidence video/role_tts_plan/batches/batch01/quota_evidence.pending.json --request video/role_tts_plan/batches/batch01/execute_once.json --execute --upload-drive
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: role-tts-output-ep01-role-tts-once-20261102-01
+          path: role-tts-output/
+          retention-days: 1
+          if-no-files-found: warn

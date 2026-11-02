@@ -1,0 +1,15 @@
+{
+  "confirmed_at_utc": "2000-01-01T00:00:00Z",
+  "authorization_id": "ep01-role-tts-once-20261102-01",
+  "approved_manifest_sha256": "REPLACE_WITH_EXACT_REVIEWED_MANIFEST_HASH",
+  "actions_zero_budget_blocks_overage": false,
+  "actions_storage_within_free_allowance": false,
+  "volc_tts_overage_disabled": false,
+  "volc_afp_remaining": 0,
+  "volc_character_budget_verified": false,
+  "approved_max_requests": 0,
+  "approved_max_characters": 0,
+  "source_note": "占位示例，不是实际账单证据。运行前只读核查当前免费分钟、存储及套餐余量，确认本批字符范围在余量内；不要记录令牌、截图登录态或任何凭据。",
+  "actions_compute_used_usd": null,
+  "actions_compute_included_usd": null
+}

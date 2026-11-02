@@ -1,0 +1,134 @@
+{
+  "status": "offline_audit_only_no_generation_no_quota_check",
+  "source_manifest": "voice_lines_r06.json",
+  "source_sha256": "a76ec9ede362d96df0ef10c0c49d5ed368a0d1951ccb01e87137edf5849bf1f7",
+  "script_source": "episode01_sound_production_r06.md",
+  "script_sha256": "e86dacd4ec82e080cb99c05cd901929a0407aa2793aaee9ac504cd7495b82382",
+  "segments": 27,
+  "characters_including_punctuation": 838,
+  "unique_ids": true,
+  "text_mismatches": [],
+  "batches": [
+    {
+      "range": "S1_01 through S6_20",
+      "segments": 20,
+      "characters": 640
+    },
+    {
+      "range": "S6_21 through S7_27",
+      "segments": 7,
+      "characters": 198
+    }
+  ],
+  "roles_without_api_voice_ids": {
+    "陆青禾": 15,
+    "罗素英": 2,
+    "小雯": 4,
+    "周牧": 1,
+    "周凤": 1,
+    "陆母": 4
+  },
+  "field_mapping": {
+    "id": "segment.id",
+    "speaker": "segment.role (NOT segment.speaker)",
+    "text": "segment.text; copy unchanged",
+    "delivery": "part of performance_context after review; not spoken text",
+    "performance_reference": "expand scene-specific acting context, strip Markdown; not spoken text",
+    "source_line": "provenance audit only, not accepted in runtime segment schema",
+    "scene": "provenance grouping only, not accepted in runtime segment schema",
+    "missing_required_fields": [
+      "API voice id -> segment.speaker",
+      "detailed performance_context (30..1500 chars)",
+      "rhythm.speech_rate",
+      "rhythm.direction"
+    ],
+    "top_level_runtime_fields": [
+      "schema_version=1",
+      "project",
+      "approval_state",
+      "segments"
+    ]
+  },
+  "special_handling": [
+    {
+      "id": "S1_02",
+      "issue": "Source calls for childhood voice and tape noise. Do not blindly apply the 22–25 adult female sample style. Select an allowed built-in voice/age treatment deliberately; tape noise belongs to later sound design."
+    },
+    {
+      "ids": [
+        "S1_01",
+        "S1_02",
+        "S1_04",
+        "S5_13",
+        "S7_24"
+      ],
+      "issue": "TV, tape noise, humming, counter impacts, fan etc are sound-design notes; do not insert them into spoken text or treat TTS as actual produced ambience."
+    },
+    {
+      "ids": [
+        "S6_17",
+        "S6_18",
+        "S6_19",
+        "S6_20",
+        "S6_21",
+        "S6_22",
+        "S7_24",
+        "S7_26"
+      ],
+      "issue": "Placeholder reference must be resolved from actual preceding script line before building detailed context."
+    }
+  ],
+  "resolved_preceding_context": {
+    "S6_17": "- **陆母**（表演动机：见女儿动作异常心生关切，顺带转达周牧问询，生活化唠叨）：",
+    "S6_18": "- **陆青禾**（表演动机：压抑内心惊疑，本能保护母亲，不愿让母亲无端恐慌）：",
+    "S6_19": "- **陆青禾**（表演动机：借盛饭掩饰，状似随口向母亲求证童年旧事，内心高度戒备）：",
+    "S6_20": "- **陆母**（第一段，表演动机：被触动被弃往事，心酸与自责交织，语气低缓沉重）：",
+    "S6_21": "- **陆母**（第二段，表演动机：忆及女儿当年惨痛状态，疼惜难抑，语调微颤）：",
+    "S6_22": "- **旁白（陆青禾）**（表演动机：确认已知生活记忆，定格未知的真实恐惧，克制而紧绷）：",
+    "S7_24": "- 听筒内（小雯带着极度惊恐的泣音，伴随着机房换气扇的呼呼声）：  ",
+    "S7_26": "- 听筒那头小雯颤抖着吐出四个字：  "
+  },
+  "known_voice_evidence": "zh_female_qingchezizi_uranus_bigtts previously returned a 7.872-second adult female sample through Agent Plan. That does not approve all performances or establish voices for other roles. D old male voice is taocheng, not liufei.",
+  "execution_gate": "No executable approved manifest created. Both batches require independent unique one-push workflow/authorization instances and a fresh actual quota/budget read immediately before execution.",
+  "candidate_voices_record_only": {
+    "source_url": "https://docs.volcengine.com/docs/doubao-voice/tone-list-3?lang=zh",
+    "source_status": "Parent agent supplied official-list candidates; this audit did not independently reopen that page.",
+    "candidates": [
+      {
+        "name": "清澈梓梓",
+        "id": "zh_female_qingchezizi_uranus_bigtts"
+      },
+      {
+        "name": "邻家女孩",
+        "id": "zh_female_linjianvhai_uranus_bigtts"
+      },
+      {
+        "name": "知性女声",
+        "id": "zh_female_zhixingnv_uranus_bigtts"
+      },
+      {
+        "name": "温柔小雅",
+        "id": "zh_female_wenrouxiaoya_uranus_bigtts"
+      },
+      {
+        "name": "爽快思思",
+        "id": "zh_female_shuangkuaisisi_uranus_bigtts"
+      },
+      {
+        "name": "天才童声",
+        "id": "zh_male_tiancaitongsheng_uranus_bigtts"
+      }
+    ],
+    "zhoumu_candidate": {
+      "id": "zh_male_taocheng_uranus_bigtts",
+      "basis": "Parent reports user previously accepted old D voice; candidate only, no new request."
+    },
+    "identity_override_needed": {
+      "id": "S1_02",
+      "original_role": "陆青禾",
+      "runtime_role": "陆青禾_幼年",
+      "reason": "Distinct childhood speaker identity preserves one-role-one-voice within runtime batch. Exact voice remains unselected."
+    },
+    "limitations": "Names alone do not prove current Agent Plan availability, fit or user acceptance. Select by character and actual audition. No candidates have been called in this task."
+  }
+}

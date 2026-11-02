@@ -1,0 +1,77 @@
+{
+  "confirmed_at_utc": "2026-11-02T06:28:55Z",
+  "authorization_id": "ep01-role-tts-once-20261102-01",
+  "approved_manifest_sha256": "9147640684bda6bdc88f56dbf7b8b704d01343aed40cfde502088c36901fdca9",
+  "actions_zero_budget_blocks_overage": true,
+  "actions_storage_within_free_allowance": true,
+  "volc_tts_overage_disabled": true,
+  "volc_afp_remaining": 88600,
+  "volc_character_budget_verified": true,
+  "approved_max_requests": 20,
+  "approved_max_characters": 640,
+  "source_note": "主代理Safari分时现场核查：火山正确账号于北京时间14:28:55显示Medium用量11.40244%、约剩8.86万AFP，TTS2列于套餐且超额后付费关闭；GitHub于14:32显示compute $1.83 used/$12 included，总消费$1.89抵扣$1.89净额$0，storage显示0GB used/0.5GB included、进度7%，明细27.46 GB-hr应计$0，预算$0/$0 Usage blocked。只记录核查快照，不推断剩余分钟，不承诺未来状态。TTL采用较早的火山时间。",
+  "draft_only": true,
+  "observations": {
+    "observed_by": "parent_agent_safari",
+    "volc": {
+      "observed_at_asia_shanghai": "2026-11-02T14:28:55+08:00",
+      "plan": "Medium",
+      "monthly_afp_total": 100000,
+      "used_percent": 11.40244,
+      "remaining_afp_estimate_from_percentage": 88597.56,
+      "remaining_afp_display_rounded": 88600,
+      "tts2_overage_enabled": false
+    },
+    "github": {
+      "observed_at_asia_shanghai": "2026-11-02T14:32+08:00",
+      "timestamp_precision": "minute; exact seconds were not supplied",
+      "compute_used_usd": 1.83,
+      "compute_included_usd": 12,
+      "compute_remaining_value_usd": 10.17,
+      "gross_usage_usd": 1.89,
+      "discount_usd": 1.89,
+      "billable_usd": 0,
+      "storage_used_display_gb": 0,
+      "storage_included_display_gb": 0.5,
+      "storage_progress_percent": 7,
+      "storage_detail_gb_hours": 27.46,
+      "storage_billable_usd": 0,
+      "budget_usd": 0,
+      "budget_status": "Usage blocked",
+      "free_minutes": "not displayed; not inferred"
+    },
+    "ttl_basis": "earlier of the two independent observations",
+    "ttl_expires_at_utc": "2026-11-02T07:28:55Z"
+  },
+  "package_estimate": {
+    "source": "Parent supplied official rate, platform actual metering controls final consumption",
+    "afp_per_10000_characters": 1350,
+    "this_batch_characters_including_punctuation": 640,
+    "this_batch_estimated_afp": 86.4,
+    "all_27_segments_characters": 838,
+    "all_27_segments_estimated_afp": 113.13,
+    "not_a_billing_settlement": true
+  },
+  "page_basis": [
+    {
+      "page": "火山方舟正确账号Agent Plan配额与套餐TTS列表",
+      "source": "主代理Safari现场读回；当前页面精确URL未转达，不编造"
+    },
+    {
+      "page": "GitHub Billing usage",
+      "url": "https://github.com/settings/billing/usage"
+    },
+    {
+      "page": "GitHub Actions budgets",
+      "url": "https://github.com/settings/billing/budgets"
+    },
+    {
+      "page": "Agent Plan语音模型官方资料入口",
+      "url": "https://docs.volcengine.com/docs/ark/agent-plan-personal-voice-model?lang=zh",
+      "source": "主代理提供的资料入口；此记录未独立重开网页"
+    }
+  ],
+  "unverified_fields": [],
+  "actions_compute_used_usd": 1.83,
+  "actions_compute_included_usd": 12
+}

@@ -1,0 +1,250 @@
+{
+  "status": "文本待实测，未生成配音",
+  "instruction": "只将各行text交给TTS。speaker/delivery/performance_reference仅用于选声和表演，不朗读。按实际生成音频定时长；不强制统一停顿。",
+  "source": "episode01_sound_production_r06.md",
+  "lines": [
+    {
+      "id": "S1_01",
+      "scene": 1,
+      "speaker": "陆青禾",
+      "delivery": "耳机片段",
+      "text": "妈，我没事。",
+      "source_line": 14,
+      "performance_reference": "  - 【女声 1·音质平稳清晰，背景有电视低语和轻微电流声】：*"
+    },
+    {
+      "id": "S1_02",
+      "scene": 1,
+      "speaker": "陆青禾",
+      "delivery": "耳机片段",
+      "text": "灯别关。",
+      "source_line": 15,
+      "performance_reference": "  - 【女声 2·带老磁带严重底噪的幼童声，含混发颤】：*"
+    },
+    {
+      "id": "S1_03",
+      "scene": 1,
+      "speaker": "陆青禾",
+      "delivery": "耳机片段",
+      "text": "三号柜后面。",
+      "source_line": 16,
+      "performance_reference": "  - 【女声 3·成年女声，普通自然找东西问句截段】：*"
+    },
+    {
+      "id": "S1_04",
+      "scene": 1,
+      "speaker": "陆青禾",
+      "delivery": "耳机片段",
+      "text": "是他，他手上有铁锈味。",
+      "source_line": 17,
+      "performance_reference": "  - 【女声 4·压抑低沉，近处伴随一个男人若有若无哼唱原创的无歌词短旋律】：*"
+    },
+    {
+      "id": "S1_05",
+      "scene": 1,
+      "speaker": "陆青禾",
+      "delivery": "耳机片段",
+      "text": "别回头，小雯。",
+      "source_line": 18,
+      "performance_reference": "  - 【女声 5·带着哭腔的仓皇急促】：*"
+    },
+    {
+      "id": "S1_06",
+      "scene": 1,
+      "speaker": "陆青禾",
+      "delivery": "旁白",
+      "text": "那是我的声音。‘妈，我没事’是我下晚班打电话常说的，‘灯别关’听着像我小时候……剩下的话，我一时想不起来。",
+      "source_line": 20,
+      "performance_reference": "- **旁白（陆青禾）**："
+    },
+    {
+      "id": "S2_07",
+      "scene": 2,
+      "speaker": "罗素英",
+      "delivery": "对白",
+      "text": "别动发送键。拿笔抄在簿子上，一字不许改。抄完再把屏幕上的字清掉。",
+      "source_line": 29,
+      "performance_reference": "- **罗素英**（低声，语气严厉且平静）："
+    },
+    {
+      "id": "S2_08",
+      "scene": 2,
+      "speaker": "罗素英",
+      "delivery": "对白",
+      "text": "苏建国。前天半夜里接进来的，昨天下午人从城南水闸捞出来了。",
+      "source_line": 34,
+      "performance_reference": "- **罗素英**（视线扫过纸面，声音压在嗓子眼里）："
+    },
+    {
+      "id": "S3_09",
+      "scene": 3,
+      "speaker": "小雯",
+      "delivery": "对白",
+      "text": "青禾姐，‘他手上有铁锈味’……这不是上个月在开水房你跟我说的吗？你说周牧手上有铁锈味，闻着踏实。",
+      "source_line": 44,
+      "performance_reference": "- **小雯**（小声打趣）："
+    },
+    {
+      "id": "S3_10",
+      "scene": 3,
+      "speaker": "陆青禾",
+      "delivery": "旁白",
+      "text": "周牧上周刚转了正式工，他母亲私下把存折塞给了他。他今天在楼下要说什么，我原本心里一清二楚。",
+      "source_line": 48,
+      "performance_reference": "- **旁白（陆青禾）**："
+    },
+    {
+      "id": "S4_11",
+      "scene": 4,
+      "speaker": "周牧",
+      "delivery": "对白",
+      "text": "禾禾！下夜班饿了吧？今天顶棚风大，我下车间顺路……",
+      "source_line": 58,
+      "performance_reference": "- **周牧**（低头看见她，快步迎上来，眼带血丝但神情温和）："
+    },
+    {
+      "id": "S4_12",
+      "scene": 4,
+      "speaker": "陆青禾",
+      "delivery": "对白",
+      "text": "周牧，我刚下夜班，台里还有点事。等忙完，我找你。",
+      "source_line": 61,
+      "performance_reference": "- **陆青禾**（攥紧提包，喉咙发紧）："
+    },
+    {
+      "id": "S5_13",
+      "scene": 5,
+      "speaker": "周凤",
+      "delivery": "大厅画外喊话",
+      "text": "……纸条上写得清清楚楚！建国说他没喝酒！七年前我家晚晚也是在这栋楼里当话务员跑丢的！你们今天必须给我查清楚！",
+      "source_line": 70,
+      "performance_reference": "- 远景与声音：营业大厅方向隐约传来妇人的哭嚎与拍打柜台声："
+    },
+    {
+      "id": "S5_14",
+      "scene": 5,
+      "speaker": "小雯",
+      "delivery": "对白",
+      "text": "青禾姐，真不怪我。前天半夜那是空号，声音哑得不行，可真的太像苏叔了。我当时以为他喝多了，我才好心转给周阿姨的。谁能想到，昨天人就在水闸没了？我害怕，青禾姐，这事不能跟我转的那条有关吧？",
+      "source_line": 72,
+      "performance_reference": "- **小雯**（语速发颤，急于解释以求免责）："
+    },
+    {
+      "id": "S5_15",
+      "scene": 5,
+      "speaker": "陆青禾",
+      "delivery": "对白",
+      "text": "小雯，你顺便帮我瞅一眼，我那根玳瑁发卡是不是掉在更衣室三号柜后面了？",
+      "source_line": 74,
+      "performance_reference": "- **陆青禾**（下意识四下打量，随口寻物）："
+    },
+    {
+      "id": "S5_16",
+      "scene": 5,
+      "speaker": "陆青禾",
+      "delivery": "旁白",
+      "text": "我没有收到任何指令，是我自己的嘴，在最自然的一刻，把第三句话吐了出来。",
+      "source_line": 80,
+      "performance_reference": "- **旁白（陆青禾）**："
+    },
+    {
+      "id": "S6_17",
+      "scene": 6,
+      "speaker": "陆母",
+      "delivery": "对白",
+      "text": "青禾，这时候拿木棍顶门干什么？下班那会儿周牧往咱家座机打了电话，问你是不是哪儿不舒服，听着急得不行。",
+      "source_line": 91,
+      "performance_reference": "见该台词上一行，仅作表演参考，不发声"
+    },
+    {
+      "id": "S6_18",
+      "scene": 6,
+      "speaker": "陆青禾",
+      "delivery": "对白",
+      "text": "妈，夜里要是外头有动静或者有人敲门，你别一个人去开，先叫我。",
+      "source_line": 94,
+      "performance_reference": "见该台词上一行，仅作表演参考，不发声"
+    },
+    {
+      "id": "S6_19",
+      "scene": 6,
+      "speaker": "陆青禾",
+      "delivery": "对白",
+      "text": "妈……我小时候，是不是爱说‘灯别关’？",
+      "source_line": 97,
+      "performance_reference": "见该台词上一行，仅作表演参考，不发声"
+    },
+    {
+      "id": "S6_20",
+      "scene": 6,
+      "speaker": "陆母",
+      "delivery": "对白",
+      "text": "怎么突然翻这旧账。那年腊月，你才六岁。你爸卷着铺盖走的那晚，屋里黑透了。",
+      "source_line": 100,
+      "performance_reference": "见该台词上一行，仅作表演参考，不发声"
+    },
+    {
+      "id": "S6_21",
+      "scene": 6,
+      "speaker": "陆母",
+      "delivery": "对白",
+      "text": "你在门边死死拽着门框不撒手，哭得上气不接下气。就那一句话，‘灯别关’，翻来覆去喊了整整一夜。",
+      "source_line": 103,
+      "performance_reference": "见该台词上一行，仅作表演参考，不发声"
+    },
+    {
+      "id": "S6_22",
+      "scene": 6,
+      "speaker": "陆青禾",
+      "delivery": "旁白",
+      "text": "‘灯别关’是我六岁的惊恐，‘铁锈味’也是我说过的旧话。可开头那声‘是他’……我根本不知道是从哪儿来的。",
+      "source_line": 106,
+      "performance_reference": "见该台词上一行，仅作表演参考，不发声"
+    },
+    {
+      "id": "S7_23",
+      "scene": 7,
+      "speaker": "陆青禾",
+      "delivery": "对白",
+      "text": "小雯？",
+      "source_line": 115,
+      "performance_reference": "- 特写：青禾两秒内抓起听筒，压低呼吸："
+    },
+    {
+      "id": "S7_24",
+      "scene": 7,
+      "speaker": "小雯",
+      "delivery": "电话",
+      "text": "青禾姐……3点09分……那个空号又打进来了！还是你的声音！前面全没变……可最后一句、最后一句变了！罗姐刚才把登记本夺过去了！",
+      "source_line": 117,
+      "performance_reference": "见该台词上一行，仅作表演参考，不发声"
+    },
+    {
+      "id": "S7_25",
+      "scene": 7,
+      "speaker": "陆青禾",
+      "delivery": "对白",
+      "text": "最后一句变成什么了？",
+      "source_line": 118,
+      "performance_reference": "- 青禾握紧听筒，指节发白："
+    },
+    {
+      "id": "S7_26",
+      "scene": 7,
+      "speaker": "小雯",
+      "delivery": "电话",
+      "text": "……‘妈，别开门’。",
+      "source_line": 120,
+      "performance_reference": "见该台词上一行，仅作表演参考，不发声"
+    },
+    {
+      "id": "S7_27",
+      "scene": 7,
+      "speaker": "陆母",
+      "delivery": "对白",
+      "text": "禾禾，这三更半夜的，谁敲门啊……",
+      "source_line": 124,
+      "performance_reference": "- 镜头特写：里屋门帘掀开，陆母披着厚棉袄揉着眼角走出来："
+    }
+  ]
+}

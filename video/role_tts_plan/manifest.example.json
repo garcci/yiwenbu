@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "project": "ep01-schema-example",
+  "approval_state": "draft",
+  "segments": [
+    {
+      "id": "ep01_s01_xiaowen_p001",
+      "role": "小雯（结构示例，未定稿）",
+      "text": "这是输入结构示例，正式对白尚未审定，不得生成。",
+      "speaker": "zh_female_qingchezizi_uranus_bigtts",
+      "performance_context": "22至25岁的年轻女性在深夜小声、亲近地说话，声音清爽透亮而不尖，像真的在跟熟人说话，略带紧张但努力克制。不要播音腔、广告解说腔，不刻意气声，不把上下文读出。不模仿任何真人或引用音频。",
+      "rhythm": {
+        "speech_rate": 0,
+        "direction": "按自然语义换气和停顿，轻重有变化，不逐句拼接，不固定句间时长。"
+      }
+    },
+    {
+      "id": "ep01_s01_narrator_p001",
+      "role": "旁白（结构示例，未定稿）",
+      "text": "这一段同样只是结构示例，不是第一集最终台词。",
+      "speaker": "zh_male_taocheng_uranus_bigtts",
+      "performance_context": "年轻成年男性旁白，像向熟人平静讲述一件事，表达清楚而自然。以语义带动轻重，克制但有内在情绪，不刻意压低声音，不使用广告腔或夸张恐怖解说腔，不加额外台词、不读上下文，不模仿真人。",
+      "rhythm": {
+        "speech_rate": 0,
+        "direction": "整自然段连贯表达，按意思自然停顿，不用统一速度强拉伸，也不机械地句句停同样时长。"
+      }
+    }
+  ]
+}
