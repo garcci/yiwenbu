@@ -1,0 +1,39 @@
+name: Lead role same-text blind audition A B
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/lead_voice_ab/execute_once.json"]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: lead-ab-audition-20261102-03
+  cancel-in-progress: false
+jobs:
+  hq-private-delivery:
+    if: ${{ github.repository == 'garcci/yiwenbu' && github.ref == 'refs/heads/claude/project-thread-l4wz3r' && github.event_name == 'push' && github.run_attempt == 1 }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install standard encoding and transport libraries
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends python3-requests
+      - name: Public scope and budget preflight
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 video/lead_voice_ab/bootstrap.py --preflight
+      - name: Bootstrap safety tests without private inputs
+        run: python3 -m unittest discover -s video/lead_voice_ab -v
+      - name: Read approved private audition package and deliver privately
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          LEAD_AB_PRIVATE_PACKAGE_ID: ${{ secrets.LEAD_AB_PRIVATE_PACKAGE_ID }}
+          LEAD_AB_PRIVATE_PACKAGE_SHA256: ${{ secrets.LEAD_AB_PRIVATE_PACKAGE_SHA256 }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.AUDITION_DRIVE_FOLDER_ID }}
+        run: python3 video/lead_voice_ab/bootstrap.py --execute

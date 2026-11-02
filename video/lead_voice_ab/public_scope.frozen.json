@@ -1,0 +1,9 @@
+{
+  "authorization_id": "ep01-lead-ab-audition-20261102-03",
+  "sha256": {
+    "video/lead_voice_ab/bootstrap.py": "32603df46cb4cbca8200edf7a09abfe88c4eab450e6a4a81ea204408e3890946",
+    "video/lead_voice_ab/test_public_entry.py": "5b5430485ce80e68ec00967079941156e125a293c1c479a24de73a5061e09dcc",
+    "video/lead_voice_ab/execute_once.example.json": "26f619a18342296b3b8a8db5eb455eabd7a05a7dec5df41fc82b8230a593f558",
+    ".github/workflows/lead_ab_audition_once.yml": "4bc90cd7c8002c6f9bc38b0b50b663c90024e132987c06011176dd0f59e6c610"
+  }
+}
