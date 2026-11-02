@@ -1,0 +1,18 @@
+{
+  "draft_only": false,
+  "confirmed_at_utc": "2026-11-02T07:18:00Z",
+  "authorization_id": "ep01-plan-asr-r06-remaining26-20261102-01",
+  "inputs_sha256": "f997b17d44424d7bfaa642b0b17c36868044fc3944f46b432b77a0b68b5a01c9",
+  "scope_sha256": "18aa896e00619034d730bf09bd6509c1c0144a8d9cbb46b3264fd5ee05ff8e1e",
+  "actions_zero_budget_blocks_overage": true,
+  "actions_storage_within_free_allowance": true,
+  "actions_compute_used_usd": 1.86,
+  "actions_compute_included_usd": 12.0,
+  "asr_included_in_agent_plan": true,
+  "asr_overage_disabled": true,
+  "asr_audio_budget_verified": true,
+  "volc_afp_remaining": 88000,
+  "approved_max_connections": 26,
+  "approved_max_audio_ms": 600000,
+  "instruction": "15:18 Beijing: GitHub included compute $1.86/$12 and $0 Actions budget usage blocked; storage under included. Agent Plan Medium ASR included and overage off, 11.52% of 100000 AFP used; conservatively record 88000 AFP remaining. 600 seconds ASR at 450 AFP/hour <=75 AFP; billing can lag."
+}

@@ -35,6 +35,12 @@ MAX_SEGMENTS = 27
 PILOT_VOICE_ID = "S1_01"
 
 
+def pilot_scope():
+    return {"authorization_id": AUTHORIZATION, "workflow": WORKFLOW,
+            "name": "pilot_S1_01_only", "voice_ids": (PILOT_VOICE_ID,),
+            "max_total_ms": MAX_TOTAL_MS}
+
+
 class Stop(Exception):
     pass
 
@@ -308,7 +314,8 @@ def compare(row, final_payload, duration_ms):
             "quality_note": "ASR comparison only; not listening approval or guaranteed word synchronization"}
 
 
-def quota_check(evidence, now=None):
+def quota_check(evidence, now=None, scope=None):
+    scope = scope or pilot_scope()
     if evidence.get("draft_only") is True:
         raise Stop("Draft ASR evidence is not executable")
     try:
@@ -316,8 +323,10 @@ def quota_check(evidence, now=None):
         age = ((now or datetime.now(timezone.utc)) - observed).total_seconds()
         if not 0 <= age <= 3600:
             raise Stop("ASR quota evidence is stale/future-dated")
-        if evidence["authorization_id"] != AUTHORIZATION or evidence["inputs_sha256"] != FROZEN_INPUT_SHA256:
+        if evidence["authorization_id"] != scope["authorization_id"] or evidence["inputs_sha256"] != FROZEN_INPUT_SHA256:
             raise Stop("ASR evidence authorizes a different frozen input")
+        if scope.get("scope_sha256") and evidence.get("scope_sha256") != scope["scope_sha256"]:
+            raise Stop("ASR evidence authorizes a different paragraph selection")
         for field in ("actions_zero_budget_blocks_overage", "actions_storage_within_free_allowance",
                       "asr_included_in_agent_plan", "asr_overage_disabled", "asr_audio_budget_verified"):
             if evidence[field] is not True:
@@ -327,13 +336,14 @@ def quota_check(evidence, now=None):
             raise Stop("Invalid ASR budget snapshot")
         if used < 0 or included - used < .5 or afp <= 0:
             raise Stop("Insufficient confirmed included budget")
-        if evidence["approved_max_connections"] != 1 or evidence["approved_max_audio_ms"] != MAX_TOTAL_MS:
+        if evidence["approved_max_connections"] != len(scope["voice_ids"]) or evidence["approved_max_audio_ms"] != scope["max_total_ms"]:
             raise Stop("ASR request/duration budget differs from fixed caps")
     except (KeyError, TypeError, ValueError, OverflowError):
         raise Stop("Malformed ASR quota evidence") from None
 
 
-def first_run_gate():
+def first_run_gate(scope=None):
+    scope = scope or pilot_scope()
     env = os.environ
     if (env.get("GITHUB_ACTIONS") != "true" or env.get("GITHUB_EVENT_NAME") != "push"
             or env.get("GITHUB_REPOSITORY") != REPOSITORY or env.get("GITHUB_RUN_ATTEMPT") != "1"
@@ -343,11 +353,11 @@ def first_run_gate():
     if not token:
         raise Stop("Actions read token missing")
     headers = {"Authorization": "Bearer " + token, "Accept": "application/vnd.github+json"}
-    base = "https://api.github.com/repos/" + REPOSITORY + "/actions/workflows/" + WORKFLOW
+    base = "https://api.github.com/repos/" + REPOSITORY + "/actions/workflows/" + scope["workflow"]
     workflow = json.loads(http_bytes(base, headers))
     history = json.loads(http_bytes(base + "/runs?per_page=100&page=1", headers))
     runs = history.get("workflow_runs")
-    if workflow.get("path") != ".github/workflows/" + WORKFLOW or history.get("total_count") != 1 or not isinstance(runs, list) or len(runs) != 1:
+    if workflow.get("path") != ".github/workflows/" + scope["workflow"] or history.get("total_count") != 1 or not isinstance(runs, list) or len(runs) != 1:
         raise Stop("ASR workflow has another run or uncertain history; no replay")
     run = runs[0]
     if (str(run.get("id")) != env.get("GITHUB_RUN_ID") or run.get("run_attempt") != 1
@@ -356,9 +366,10 @@ def first_run_gate():
         raise Stop("ASR current first-run identity unconfirmed")
 
 
-def execute(inputs, evidence, output):
-    quota_check(evidence)
-    first_run_gate()
+def execute(inputs, evidence, output, scope=None):
+    scope = scope or pilot_scope()
+    quota_check(evidence, scope=scope)
+    first_run_gate(scope=scope)
     key = os.environ.get("ARK_API_KEY", "").strip()
     if not key:
         raise Stop("Package API secret missing")
@@ -368,16 +379,16 @@ def execute(inputs, evidence, output):
     if not callable(getattr(websocket, "create_connection", None)):
         raise Stop("WebSocket dependency unavailable")
     drive = FixedDriveReader(inputs)
-    selected = [row for row in inputs["segments"] if row["voice_id"] == PILOT_VOICE_ID]
-    if len(selected) != 1:
-        raise Stop("Fixed one-paragraph pilot is missing")
+    selected = [row for row in inputs["segments"] if row["voice_id"] in scope["voice_ids"]]
+    if tuple(row["voice_id"] for row in selected) != tuple(scope["voice_ids"]):
+        raise Stop("Fixed ASR paragraph selection is missing or reordered")
     for folder in {row["folder_id"] for row in selected}:
         drive.private_folder(folder)
     output.mkdir()
     original_dir = output / "originals"
     original_dir.mkdir()
     prepared, total_ms = [], 0
-    # Pilot only: never identify all 27 before the first real protocol check.
+    # Verify only this frozen scope; the remaining26 scope excludes the successful pilot.
     for row in selected:
         receipt = drive.download(row, receipt=True)
         validate_receipt(row, receipt)
@@ -387,14 +398,15 @@ def execute(inputs, evidence, output):
         (original_dir / row["receipt_filename"]).write_bytes(receipt)
         pcm = decode_pcm(path)
         total_ms += len(pcm) / 32
-        if total_ms > MAX_TOTAL_MS:
+        if total_ms > scope["max_total_ms"]:
             raise Stop("Total audio exceeds approved ASR duration")
         prepared.append((row, pcm))
     report = {"schema_version": 1, "time_unit": "seconds", "inputs_sha256": FROZEN_INPUT_SHA256,
-              "run_scope": "pilot_S1_01_only", "expected_segments": 1,
+              "run_scope": scope["name"], "expected_segments": len(selected),
               "source_total_segments": MAX_SEGMENTS, "complete_for_episode": False,
               "segments": [], "human_checked": False, "auto_match_all": False}
-    state = {"authorization_id": AUTHORIZATION, "inputs_sha256": FROZEN_INPUT_SHA256,
+    state = {"authorization_id": scope["authorization_id"], "inputs_sha256": FROZEN_INPUT_SHA256,
+             "run_scope": scope["name"],
              "actual_audio_ms": total_ms, "segments": {}, "human_checked": False}
     write_json(output / "state.json", state)
     write_json(output / "quota_evidence.json", evidence)
@@ -413,6 +425,7 @@ def execute(inputs, evidence, output):
         write_json(output / "state.json", state)
         print("ASR paragraph completed; human_checked=false")
     report["auto_match_all"] = all(s["auto_match"] for s in report["segments"])
+    report["complete_for_scope"] = len(report["segments"]) == len(selected)
     write_json(output / "alignment.json", report)
 
 

@@ -1,0 +1,46 @@
+name: Agent Plan ASR r06余26段唯一批次（排除S1_01）
+
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/plan_asr_align/remaining26/execute_once.json"]
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: ep01-plan-asr-r06-remaining26-20261102-01
+  cancel-in-progress: false
+
+jobs:
+  remaining26:
+    if: github.run_attempt == 1
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - name: 离线协议与固定26段范围检查
+        run: |
+          python3 -m unittest discover -s video/plan_asr_align/tests -v
+          python3 video/plan_asr_align/remaining26/run.py
+      - name: 安装云端解码与已核验WebSocket依赖，不安装模型
+        run: |
+          sudo apt-get update -q
+          sudo apt-get install -y -q ffmpeg
+          python3 -m pip install --quiet --require-hashes -r video/plan_asr_align/requirements.txt
+      - name: 逐段套餐ASR校准；失败即停，无自动重试
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+          ARK_API_KEY: ${{ secrets.ARK_API_KEY }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+        run: python3 video/plan_asr_align/remaining26/run.py --execute
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: plan-asr-r06-remaining26
+          path: plan-asr-remaining26-output/
+          retention-days: 1
+          if-no-files-found: warn

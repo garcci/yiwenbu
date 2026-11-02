@@ -1,0 +1,68 @@
+{
+  "run_id": 41404174217,
+  "url": "https://github.com/garcci/yiwenbu/actions/runs/41404174217",
+  "head_sha": "d9c7d7e1b337002fd769f4bc48af7d5330e64808",
+  "status": "completed",
+  "conclusion": "success",
+  "run_attempt": 1,
+  "workflow_history_total_count": 1,
+  "completed_at_utc": "2026-11-02T07:07:22Z",
+  "verified_by": "Read-only remote run/API plus downloaded actual artifact",
+  "asr_result": {
+    "auto_match_all": true,
+    "complete_for_episode": false,
+    "expected_segments": 1,
+    "human_checked": false,
+    "inputs_sha256": "f997b17d44424d7bfaa642b0b17c36868044fc3944f46b432b77a0b68b5a01c9",
+    "run_scope": "pilot_S1_01_only",
+    "schema_version": 1,
+    "segments": [
+      {
+        "audio_sha256": "5a6a288e206745147ae723b4cfcbd9a92f342cf71bea0965f1bd8733a18d5939",
+        "auto_match": true,
+        "differences": [],
+        "duration_seconds": 1.248,
+        "exact_text_match": false,
+        "expected_text": "妈，我没事。",
+        "flags": [],
+        "human_checked": false,
+        "normalized_text_match": true,
+        "quality_note": "ASR comparison only; not listening approval or guaranteed word synchronization",
+        "recognized_text": "妈，我没事",
+        "utterances": [
+          {
+            "end": 1.08,
+            "start": 0.08,
+            "text": "妈，我没事"
+          }
+        ],
+        "voice_id": "S1_01",
+        "words": [
+          {
+            "end": 0.32,
+            "start": 0.08,
+            "text": "妈"
+          },
+          {
+            "end": 0.72,
+            "start": 0.48,
+            "text": "我"
+          },
+          {
+            "end": 0.88,
+            "start": 0.72,
+            "text": "没"
+          },
+          {
+            "end": 1.08,
+            "start": 0.88,
+            "text": "事"
+          }
+        ]
+      }
+    ],
+    "source_total_segments": 27,
+    "time_unit": "seconds"
+  },
+  "limitation": "No user listening approval; punctuation-normalized text match only; not whole episode alignment."
+}
