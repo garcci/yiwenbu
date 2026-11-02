@@ -1,0 +1,21 @@
+{
+  "base": "season_outline_candidate_v3.md",
+  "base_sha256": "d6dbcb860bf9e55ec277f9e8a0897b132b4d2da731324827620125a28a4bc788",
+  "output": "season_outline_candidate_v4.md",
+  "sha256": "6a3538b1a2931285431addcd8adaa45b79ca0371d628577b657a0faf702bb42f",
+  "characters": 16593,
+  "patch_count": 16,
+  "episodes02_06_and_appendix_exactly_unchanged": true,
+  "episode_estimates": [
+    322,
+    320,
+    290,
+    360,
+    295,
+    315
+  ],
+  "estimated_seconds": 1902,
+  "actual_media_generated": false,
+  "patch_file": "season_v4_alignment_patches.json",
+  "status": "candidate awaiting independent review"
+}

@@ -1,0 +1,16 @@
+{
+  "reviewer_id": "02",
+  "input_hash": "d4ff7bf95b35150a1cb9f61d7ee691a18bc4dbb4dd356434e1ecd886bfdee57f",
+  "transport": "browser",
+  "success": true,
+  "independent_session": true,
+  "call_id": "1d161a6ae13d21fc",
+  "response_sha256": "4c172f83180a94ab29fd0bd7160c0d2cc7d261362772a71ab823659857d668bf",
+  "response_completed": true,
+  "extraction_complete": true,
+  "private_session": true,
+  "session_url": "https://gemini.google.com/app/1d161a6ae13d21fc",
+  "model_label": "3.1 Pro",
+  "response_truncated": false,
+  "api_error": null
+}

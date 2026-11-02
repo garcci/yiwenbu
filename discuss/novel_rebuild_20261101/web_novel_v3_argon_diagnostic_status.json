@@ -1,0 +1,18 @@
+{
+  "session_url": "https://gemini.google.com/app/8ed552ad9ac56aaf",
+  "call_id": "8ed552ad9ac56aaf",
+  "model_label": "4 Argon",
+  "private_session": true,
+  "independent_session": true,
+  "purpose": "novel diagnostic, not scored final review",
+  "response_completed": true,
+  "extraction_complete": true,
+  "source_sha256": "0b04e3e0f93f345b426c9a2ad71405d3f401eaffbd5db402cef9f59579deebb5",
+  "input_readback_sha256": "75f5fd270fed2670e4f6a9e5f0a5c4eb0c94c31f97b11d32f439262e469640af",
+  "input_normalized_equivalent": true,
+  "normalization": "whitespace and line-leading Markdown list markers",
+  "response_sha256": "1dcf433820e480646bd69005e05a2523e092e62e6466b06fb7bb67adae568fb1",
+  "response_chars": 1772,
+  "observation": "页面显示回复末尾及反馈、复制按钮，无停止生成按钮；经网页复制按钮保存",
+  "recorded_at": "2026-11-02T08:53:30.910490+08:00"
+}

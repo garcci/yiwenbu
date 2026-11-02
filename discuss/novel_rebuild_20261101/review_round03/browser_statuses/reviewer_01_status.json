@@ -1,0 +1,16 @@
+{
+  "reviewer_id": "01",
+  "input_hash": "d4ff7bf95b35150a1cb9f61d7ee691a18bc4dbb4dd356434e1ecd886bfdee57f",
+  "transport": "browser",
+  "success": true,
+  "independent_session": true,
+  "call_id": "ef4e7c0f2a7e9500",
+  "response_sha256": "ed42dbf88a155fd6a63619fe50009a1cfef77737155194ec05076c584ab2e6f2",
+  "response_completed": true,
+  "extraction_complete": true,
+  "private_session": true,
+  "session_url": "https://gemini.google.com/app/ef4e7c0f2a7e9500",
+  "model_label": "3.1 Pro（选择菜单）；Pro（输入区）",
+  "response_truncated": false,
+  "api_error": null
+}

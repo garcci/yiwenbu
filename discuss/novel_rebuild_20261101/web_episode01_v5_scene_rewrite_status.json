@@ -1,0 +1,19 @@
+{
+  "session_url": "https://gemini.google.com/app/1c6df4fa46683781",
+  "model_label": "4 Argon",
+  "role": "same-session editing, not independent reviewer",
+  "response_completed": true,
+  "extraction_complete": true,
+  "source_sha256": "ae30c77bab6c0bc23bee5221067cc2240d05422efe16feccf9e36233e231989c",
+  "input_readback_sha256": "806f4897628c9567b62d5569620141edb88ba42188b351f481e91a1f56532f7b",
+  "input_whitespace_normalized_equal": true,
+  "response_sha256": "a082c3c5da7b9448da0a2bc1496cfe5f6983c06edd814e66683448f334d6cad2",
+  "response_chars": 2771,
+  "scene_tags_present": {
+    "4": true,
+    "5": true,
+    "11": true,
+    "12": true
+  },
+  "recorded_at": "2026-11-02T08:51:42.746091+08:00"
+}

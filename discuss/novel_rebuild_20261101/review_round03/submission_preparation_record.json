@@ -1,0 +1,66 @@
+{
+  "time_utc": "2026-11-01T22:55:36.205738+00:00",
+  "change": "Append previously fixed dimension definitions to all not-yet-submitted reviewers equally; no target scores, no old ratings, source texts and scoring anchors unchanged.",
+  "files": [
+    {
+      "file": "reviewer_01.submission.txt",
+      "old_sha256": "3929f1a3cab8000ac0734a7247d4806f18b8dd2fb80dbc4e67cfe60e3d9da7eb",
+      "new_sha256": "0254069fec97f2ab4dc14d2eee72060a06d3ed90b0267354f047bcf140a6de4e",
+      "characters": 46907
+    },
+    {
+      "file": "reviewer_02.submission.txt",
+      "old_sha256": "67af9e3a6f6157b0bc325bf057f2eb3a341bfc206e9a40a2004692d47ba9ff1d",
+      "new_sha256": "21a2ef9fe6d3fdb42b5807cafe8c3fb1d8e7556ef04be5ed5756139fe50befcb",
+      "characters": 46908
+    },
+    {
+      "file": "reviewer_03.submission.txt",
+      "old_sha256": "05c2605c00741fe416e997ed21e54ea7e33b890910b4bdc3307d9a173b111576",
+      "new_sha256": "d1cfe3eee74ec81be105ed5e570bc8603e259f278fbcad3eaa548ef5eb87d93d",
+      "characters": 46908
+    },
+    {
+      "file": "reviewer_04.submission.txt",
+      "old_sha256": "c4a9898bddba2d2663778fe648bfe20295af7b7b081b45552f0a67dc855ebe4a",
+      "new_sha256": "04a96df543133ce6a469ccf21c85ae3494f2b3c907768fbd10f6761a310ce326",
+      "characters": 46914
+    },
+    {
+      "file": "reviewer_05.submission.txt",
+      "old_sha256": "b1175a5bcbcfdbecb1db9b040d222cdc8529876f16c3869b00b9b8a931cbba1e",
+      "new_sha256": "a3c7e7a1c70e599f8a2faab9ec2bbe6b4807242d6b8e9685d886789db4c58d24",
+      "characters": 46909
+    },
+    {
+      "file": "reviewer_06.submission.txt",
+      "old_sha256": "c31dda9b15665c651c2473d3dc42c6193333069621f7016fc308eabce95a4bf5",
+      "new_sha256": "17c10607554059103e1b833c43f17d507f183aca5dcd6b78c8cd673401ca8e7f",
+      "characters": 46908
+    },
+    {
+      "file": "reviewer_07.submission.txt",
+      "old_sha256": "ed920945e0729b9e8b9c57793567108fca7980819b973d2d64fb6704c975b33a",
+      "new_sha256": "78854b55734f0691bcea1153edacd496e8aa1c04930337ec9e3a88d8498d853b",
+      "characters": 46909
+    },
+    {
+      "file": "reviewer_08.submission.txt",
+      "old_sha256": "ee0752550ed53a03f327db223099ee884b804972b225c49cc16ef2b99640c995",
+      "new_sha256": "65842feea8fa19522a686ef67fa7ee7f7ac134c1f85178d36a280060056d41a6",
+      "characters": 46909
+    },
+    {
+      "file": "reviewer_09.submission.txt",
+      "old_sha256": "d84aa4c78dd089c24bb25e24be102ab6ca48a02c3073557f02ec13de0c3eb1d4",
+      "new_sha256": "99e998d35ec0d5ba71804a8d01ff2137daaba9198c686bd9fecf0a5a1e5a3e8f",
+      "characters": 46906
+    },
+    {
+      "file": "reviewer_10.submission.txt",
+      "old_sha256": "a286bf1844b3cdf4f001b0fe9ec252587bb270d78c5379b2102830997b03662d",
+      "new_sha256": "a326d1928787fbdd762b92a70e9718ff27bc43e8bd7cfe961414272c0f6f9e96",
+      "characters": 46910
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Source SHA256 04a96df543133ce6a469ccf21c85ae3494f2b3c907768fbd10f6761a310ce326; readback SHA256 98ba3d5fefbcb42a9d89ffe0c9a8396d3383b4ef17f121e8e468b1998c8b4c39. After removing whitespace and equivalent line-leading Markdown list markers, character sequences are equal (42963 characters).

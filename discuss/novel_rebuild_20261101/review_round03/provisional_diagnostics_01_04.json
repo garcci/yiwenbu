@@ -1,0 +1,142 @@
+{
+  "status": "PROVISIONAL_RAW_DIAGNOSTICS_NOT_A_VALID_300_CELL_ACCEPTANCE",
+  "input_hash": "d4ff7bf95b35150a1cb9f61d7ee691a18bc4dbb4dd356434e1ecd886bfdee57f",
+  "reviewers": [
+    {
+      "reviewer_id": "01",
+      "raw_sha256": "ed42dbf88a155fd6a63619fe50009a1cfef77737155194ec05076c584ab2e6f2",
+      "count": 30,
+      "minimum": 9,
+      "below95": 5,
+      "exact_evidence_count": 25,
+      "markdown_or_space_only_count": 5,
+      "other_evidence_mismatch": [],
+      "reported_character_count_mismatch": []
+    },
+    {
+      "reviewer_id": "02",
+      "raw_sha256": "4c172f83180a94ab29fd0bd7160c0d2cc7d261362772a71ab823659857d668bf",
+      "count": 30,
+      "minimum": 9,
+      "below95": 18,
+      "exact_evidence_count": 27,
+      "markdown_or_space_only_count": 2,
+      "other_evidence_mismatch": [
+        {
+          "piece": "episode01",
+          "dimension": "悬念信息公平",
+          "quote": "铜锅边缘留着一圈干泥印，管口内壁塞着半截泡烂的细柳叶"
+        }
+      ],
+      "reported_character_count_mismatch": []
+    },
+    {
+      "reviewer_id": "03",
+      "raw_sha256": "7f283b725d8ee3af771979412c919c43aac2c77ccfd4d280b08d8a07c7140a02",
+      "count": 30,
+      "minimum": 8.5,
+      "below95": 17,
+      "exact_evidence_count": 20,
+      "markdown_or_space_only_count": 1,
+      "other_evidence_mismatch": [
+        {
+          "piece": "novel",
+          "dimension": "人物能动性",
+          "quote": "今明两日我先把绸头理顺、料桶备好。后天一早下缸时，能不能请您派个熟手伙计过来"
+        },
+        {
+          "piece": "novel",
+          "dimension": "情感可信度",
+          "quote": "最后溢出来的，只有一句发颤的低语：你把自己带回来呀。"
+        },
+        {
+          "piece": "episode01",
+          "dimension": "开篇钩子",
+          "quote": "许绾在油灯下将斑竹烟管从冷水盆中提起，管内突然传出半截带水汽呛咳的嘶喊"
+        },
+        {
+          "piece": "episode01",
+          "dimension": "情感可信度",
+          "quote": "许绾（手不松劲，语气果决）：不用。万祥布庄的林掌柜今早还要送生坯来，这门关不得。"
+        },
+        {
+          "piece": "episode01",
+          "dimension": "对白与叙事呈现",
+          "quote": "许绾（手不松劲，语气果决）：不用。万祥布庄的林掌柜今早还要送生坯来"
+        },
+        {
+          "piece": "episode01",
+          "dimension": "结尾与追更回报",
+          "quote": "许绾（低声自语，仍有余悸）：明早，去沈家看借据。"
+        },
+        {
+          "piece": "season_outline",
+          "dimension": "节奏效率",
+          "quote": "每集文字计划合计311＋320＋290＋360＋295＋315＝1891秒"
+        },
+        {
+          "piece": "season_outline",
+          "dimension": "冲突递进",
+          "quote": "从被催租的经济压力到发现可能被爱人背叛的心理压力，再到发现物理危机的递进"
+        },
+        {
+          "piece": "season_outline",
+          "dimension": "因果规则一致",
+          "quote": "第四夜后试管无声；水盆移去接漏雨，烟管擦净收进账匣旁小抽屉"
+        }
+      ],
+      "reported_character_count_mismatch": []
+    },
+    {
+      "reviewer_id": "04",
+      "raw_sha256": "d2cc079a21fd3be707abb79ce459dad581aab0719961240ca3ac482f136d5e08",
+      "count": 30,
+      "minimum": 8,
+      "below95": 26,
+      "exact_evidence_count": 22,
+      "markdown_or_space_only_count": 4,
+      "other_evidence_mismatch": [
+        {
+          "piece": "novel",
+          "dimension": "人物能动性",
+          "quote": "今明两日我先把绸头理顺、料桶备好。后天一早下缸时，能不能请您派个熟手伙计过来帮我抬竿、看半日料桶？工钱算我的"
+        },
+        {
+          "piece": "episode01",
+          "dimension": "因果规则一致",
+          "quote": "三十块租钱，我们一人十五。我这份攒了半年。……还有十块押金，是他私下问我借的"
+        },
+        {
+          "piece": "season_outline",
+          "dimension": "悬念信息公平",
+          "quote": "据母子当场供述与现有物证形成的经过，细节仍有分歧……许绾据此推测二者有关。"
+        },
+        {
+          "piece": "season_outline",
+          "dimension": "对白与叙事呈现",
+          "quote": "许绾在新的染活中把自身工钱与雇工协作成本算足。……许绾在门框前退后半步、掌心往怀里收一寸、换微斜角度独自将长竹竿送进屋里。"
+        }
+      ],
+      "reported_character_count_mismatch": [
+        {
+          "piece": "novel",
+          "reported": 8254,
+          "actual": 18273
+        },
+        {
+          "piece": "episode01",
+          "reported": 2223,
+          "actual": 5114
+        },
+        {
+          "piece": "season_outline",
+          "reported": 5914,
+          "actual": 16439
+        }
+      ]
+    }
+  ],
+  "total_raw_scores": 120,
+  "below95": 66,
+  "score_changes_made": false
+}

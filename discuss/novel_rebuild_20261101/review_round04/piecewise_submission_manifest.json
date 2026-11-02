@@ -1,0 +1,157 @@
+{
+  "input_hash": "ef1e3adc2597999fe25906d2a70c32cee895d0efc44dc08af33859c847cfe91f",
+  "status": "prepared only, no review invoked",
+  "method": "One source per new independent Gemini conversation; same ten personas, dimensions and anchors. Evidence and explanation precede the numerical score. All prior raw scores retained; no target score or prior grade provided.",
+  "files": [
+    {
+      "file": "reviewer_01_episode01.submission.txt",
+      "characters": 8721,
+      "sha256": "0acc3d763a858787e47a94796a183175dde40b318d531dd44724d45eb4faa23d"
+    },
+    {
+      "file": "reviewer_01_novel.submission.txt",
+      "characters": 21750,
+      "sha256": "244d89511ee2202042f4c72477b0bf36daa165be38c9bef1e54cac29278f3cd4"
+    },
+    {
+      "file": "reviewer_01_season_outline.submission.txt",
+      "characters": 20110,
+      "sha256": "d7872f5c74f5b40a24cbcbf5b1a059b39290d553b0dcda4a75137220447db2a6"
+    },
+    {
+      "file": "reviewer_02_episode01.submission.txt",
+      "characters": 8722,
+      "sha256": "118e20b3ca505ee697a5f812238f0d97704f5fe67b4c15585a170562eab64ba0"
+    },
+    {
+      "file": "reviewer_02_novel.submission.txt",
+      "characters": 21751,
+      "sha256": "1c51d5955912a494fb43f797be59e45b38c9e8baaca2f823e95134668a69d07f"
+    },
+    {
+      "file": "reviewer_02_season_outline.submission.txt",
+      "characters": 20111,
+      "sha256": "17f881d53c8323b5b5eaa26f2dcc49fa9e5b67c5145b6366d1041922aee8fc2d"
+    },
+    {
+      "file": "reviewer_03_episode01.submission.txt",
+      "characters": 8722,
+      "sha256": "bddb43fb66856dcb0b17c7cdadbbfaeb1dec5c449dd40965ff7f55c75a9ec70c"
+    },
+    {
+      "file": "reviewer_03_novel.submission.txt",
+      "characters": 21751,
+      "sha256": "fc8160a2be3298420ba1604ab118a2e205b83abdcbb486d499dc36146a2728c1"
+    },
+    {
+      "file": "reviewer_03_season_outline.submission.txt",
+      "characters": 20111,
+      "sha256": "f2602051ad157c57c2a25ad418ef425660cba0c9c0f54aaa53f9f88dc8516271"
+    },
+    {
+      "file": "reviewer_04_episode01.submission.txt",
+      "characters": 8728,
+      "sha256": "896825d5fcce711f07954a63a801caaf4856c360901903f25c6188c132845c66"
+    },
+    {
+      "file": "reviewer_04_novel.submission.txt",
+      "characters": 21757,
+      "sha256": "75f1af33ed664bbc3b4b9a0eddb428cc7f7d9a8fb02319fd4d5cc1051d7ca75c"
+    },
+    {
+      "file": "reviewer_04_season_outline.submission.txt",
+      "characters": 20117,
+      "sha256": "54b72790b67e24e244a4fdc407b581b31d48f0e6dfd812bc445e2f0918ae9820"
+    },
+    {
+      "file": "reviewer_05_episode01.submission.txt",
+      "characters": 8723,
+      "sha256": "9f893fe1fb0672b028990b2e6274c34fbc4678f0c6ebfeaf2a44dc25d4b05b2f"
+    },
+    {
+      "file": "reviewer_05_novel.submission.txt",
+      "characters": 21752,
+      "sha256": "5b96f2ba4766a109f3782755750300ed79dd31ec0401d117a7a934509c8dc8ec"
+    },
+    {
+      "file": "reviewer_05_season_outline.submission.txt",
+      "characters": 20112,
+      "sha256": "34e7b9ad76f6ebf2c7449b7b62a0afd871293113453290b497e5420c8566fa9a"
+    },
+    {
+      "file": "reviewer_06_episode01.submission.txt",
+      "characters": 8722,
+      "sha256": "762e175328fbfa7c0865173cef83d5c42524b3a20d36f1bdb536788a9d1dacc9"
+    },
+    {
+      "file": "reviewer_06_novel.submission.txt",
+      "characters": 21751,
+      "sha256": "ce5ed2d628b0ef1aa93bc7eeac0208786bd1f31c867619b4dbc9b2d49a3c3ab3"
+    },
+    {
+      "file": "reviewer_06_season_outline.submission.txt",
+      "characters": 20111,
+      "sha256": "cbb22339fb5cc3aabf0ca264dc63dc1d43bd1061e8c1eb22cfce9d5dc2329744"
+    },
+    {
+      "file": "reviewer_07_episode01.submission.txt",
+      "characters": 8723,
+      "sha256": "4fd942ddc650c988be0681089332281dd7681ced9c0aeadd41029587f451ed1b"
+    },
+    {
+      "file": "reviewer_07_novel.submission.txt",
+      "characters": 21752,
+      "sha256": "e5fbdc97139945cedbad5d044ad6b60c5e6f1fabf3dce6ba05fe5d2eb7da74f7"
+    },
+    {
+      "file": "reviewer_07_season_outline.submission.txt",
+      "characters": 20112,
+      "sha256": "90ce91f02e63fcc3736ddd4888b1a00456144e88e2bbba42b4d8cf7c70ded7e8"
+    },
+    {
+      "file": "reviewer_08_episode01.submission.txt",
+      "characters": 8723,
+      "sha256": "139fca87f4e6dad8b32bfce0d109abc93e3073160fdb1a74bf7d573e4bfd436c"
+    },
+    {
+      "file": "reviewer_08_novel.submission.txt",
+      "characters": 21752,
+      "sha256": "1cb0eca268909d832dda6830ef60ac6eb16e5473b3d82de12dd0f8cbbd40ec05"
+    },
+    {
+      "file": "reviewer_08_season_outline.submission.txt",
+      "characters": 20112,
+      "sha256": "fdd0381485e5d068e16b6bc40cdfd7e6bc21cff888d5d27c6fd99e6b75a93e8b"
+    },
+    {
+      "file": "reviewer_09_episode01.submission.txt",
+      "characters": 8720,
+      "sha256": "334ad1c08eeb0c3c056d44d180902eeb45d51db09f10eedd75968ebb853eabfe"
+    },
+    {
+      "file": "reviewer_09_novel.submission.txt",
+      "characters": 21749,
+      "sha256": "622e55e45c24aac6f337cef786e4daba89e327b1d0b9673748ef2442cc34fadd"
+    },
+    {
+      "file": "reviewer_09_season_outline.submission.txt",
+      "characters": 20109,
+      "sha256": "d04529f9396d5c463ea969be6e4b01320d15ff85247c31a4322ffaa2e3fdac92"
+    },
+    {
+      "file": "reviewer_10_episode01.submission.txt",
+      "characters": 8724,
+      "sha256": "8f662cc77b45257f2e7e1ec92c3b4c2549de90f0f461e36f9dab5be0459fa55c"
+    },
+    {
+      "file": "reviewer_10_novel.submission.txt",
+      "characters": 21753,
+      "sha256": "d582f2d796f9211bfa448e73765d6496d9f58d1410a494bceef3de776a7787cc"
+    },
+    {
+      "file": "reviewer_10_season_outline.submission.txt",
+      "characters": 20113,
+      "sha256": "06b76a8ebcf51409bbed1e8bf364b9c84b554d07d841ce2a9cfdf1d1793dd165"
+    }
+  ]
+}

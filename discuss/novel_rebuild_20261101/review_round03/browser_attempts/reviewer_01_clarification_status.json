@@ -1,0 +1,10 @@
+{
+  "reviewer_id": "01",
+  "type": "clarification",
+  "session_url": "https://gemini.google.com/app/ef4e7c0f2a7e9500",
+  "model_label": "Pro",
+  "response_completed": true,
+  "extraction_complete": true,
+  "response_sha256": "88e76ea471015275d538d183abc57a70c58c550cd32acf69af4a38812767a4f4",
+  "original_response_preserved": true
+}

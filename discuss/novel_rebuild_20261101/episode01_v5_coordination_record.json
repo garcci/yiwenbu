@@ -1,0 +1,66 @@
+{
+  "base_file": "episode01_candidate_v4.md",
+  "base_sha256": "c55cf43007c0548cc207b25399979a5c39944babf202689f9b8e2c6f60953158",
+  "output_file": "episode01_candidate_v5.md",
+  "output_sha256": "4e687474dae80d06c7278e8bc5aff7d62cfa945e59fc3b6048dc3ec5c6371e2c",
+  "characters": 5224,
+  "spoken_cjk": 715,
+  "spoken_rows": 29,
+  "scene_estimates": [
+    8,
+    45,
+    22,
+    33,
+    35,
+    24,
+    22,
+    22,
+    40,
+    14,
+    22,
+    35
+  ],
+  "estimated_seconds": 322,
+  "media_or_actual_reading_performed": false,
+  "author_source_files": [
+    "web_episode01_v5_scene_rewrite.md",
+    "web_episode01_v5_scene12_refined.md"
+  ],
+  "replaced_scene_numbers": [
+    4,
+    5,
+    11,
+    12
+  ],
+  "coordinator_patches": [
+    {
+      "scene": 4,
+      "old": "南坝",
+      "new": "南边",
+      "reason": "Keep the existing novel location wording; do not invent a named southern dam."
+    },
+    {
+      "scene": 11,
+      "old": "仅复用冷开场最后约2秒提管滴水动作",
+      "new": "仅复用冷开场中的约2秒提管滴水动作",
+      "reason": "The cold-open final seconds also include the reaction and time cut; do not misidentify the reused shot."
+    },
+    {
+      "scene": 5,
+      "old": "预估时长：27秒",
+      "new": "预估时长：35秒",
+      "reason": "Conservative text schedule for the longer inquiry and visible reactions; not an actual reading or audio test."
+    },
+    {
+      "scene": 12,
+      "old": "预估时长：31秒",
+      "new": "预估时长：35秒",
+      "reason": "Conservative text schedule for fear, the short memory, and the added uncertain question; actual audio will determine duration."
+    }
+  ],
+  "metadata_updates": [
+    "total estimated duration",
+    "actual extracted spoken CJK count"
+  ],
+  "status": "candidate awaiting independent review; no media release"
+}

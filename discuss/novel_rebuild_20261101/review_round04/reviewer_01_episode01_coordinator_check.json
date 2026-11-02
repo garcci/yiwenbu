@@ -1,0 +1,15 @@
+{
+  "count": 10,
+  "exact_evidence": 10,
+  "minimum": 8.5,
+  "below95": 8,
+  "opening_exact": false,
+  "opening_format_equivalent": true,
+  "ending_exact": true,
+  "coverage": {
+    "complete": true,
+    "read_characters": 5224,
+    "limitations": "已完整阅读单篇待评台本全部5224字符；仅基于所给文字台本评审，未对实际配音或成片画面做认证。"
+  },
+  "score_changes_made": false
+}

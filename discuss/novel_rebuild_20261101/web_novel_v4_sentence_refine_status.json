@@ -1,0 +1,13 @@
+{
+  "session_url": "https://gemini.google.com/app/8ed552ad9ac56aaf",
+  "model_label": "4 Argon",
+  "role": "same-session editor, not independent reviewer",
+  "response_completed": true,
+  "extraction_complete": true,
+  "source_sha256": "a57a6ffbde6d0bfe400524ffb219092fc6491623d018a3794877756477278850",
+  "input_readback_sha256": "3684d0d68ba98d4358191023ddf10be6983c6b0e2e6b2f5dbce26d2cf37adbec",
+  "input_whitespace_normalized_equal": true,
+  "response_sha256": "fba333d23550fd81442a0b29191c761102311825810423f27e30cbb8b978858d",
+  "response_chars": 98,
+  "recorded_at": "2026-11-02T08:59:23.179562+08:00"
+}

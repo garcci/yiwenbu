@@ -1,0 +1,19 @@
+{
+  "base": "novel_complete_v3.md",
+  "base_sha256": "0d820ac95bb50a0efe55d7a3751b4d33dc443464c126a873cbc67bfce75a54fd",
+  "output": "novel_complete_v4.md",
+  "sha256": "c36052bb04f4f1c2b5e14676aaa392064bb7b3ee665e2d05ff1ed4ffb2a5fb49",
+  "characters": 18270,
+  "cjk": 15387,
+  "author_source": "web_novel_v4_sentence_refine.md",
+  "patch": {
+    "old": "见许绾转身要去拉门栓，温素琴猛地伸手按住门板，急促地喘息道：",
+    "new": "许绾往门边走去。温素琴猛地伸手按住门板，急促地喘息道："
+  },
+  "metadata_patch": {
+    "old": "完整修订候选v3",
+    "new": "完整修订候选v4"
+  },
+  "scope": "One Gemini-authored action lead-in; all subsequent confession and seven-section content retained. Not a proven omniscience defect; clarity edit only.",
+  "status": "candidate; no independent scoring or media release"
+}
