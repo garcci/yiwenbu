@@ -1,0 +1,11 @@
+{
+  "authorization_id": "ep01-voxcpm2-safe-diagnostic-20261102-01",
+  "zero_added_cost_confirmed": true,
+  "cost_evidence_utc": "2026-11-02T10:01:00Z",
+  "compute_policy": "public_standard_linux",
+  "free_drive_storage_bytes_at_least": 314572800,
+  "no_model_loading": true,
+  "no_audio_generation": true,
+  "install_packages": true,
+  "source_manifest_sha256": "af408c94ed7ad11f4fc1b4285c2a2215fff9caeba129177bfb0348d5e20ece67"
+}

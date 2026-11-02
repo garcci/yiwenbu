@@ -1,0 +1,9 @@
+{
+  "authorization_id": "ep01-voxcpm2-safe-diagnostic-20261102-01",
+  "sha256": {
+    ".github/workflows/voxcpm_safe_diagnostic_once.yml": "869935019dbeeba7adfb260bd5732c1d0665545498c0d7ede0ee94afb4e16cde",
+    "video/voxcpm_safe_diagnostic/bootstrap.py": "ce1b388dec6c8d74bda624eaa3c2de62b45fda82115dc559aaafc11d92ef0160",
+    "video/voxcpm_safe_diagnostic/test_diagnostic.py": "dabf955f0e181f32a60feb539943179a3242ebccbe592d2af0d0729fe9641049",
+    "video/voxcpm_safe_diagnostic/execute_once.example.json": "f1ebd7c7379b039a6920ad5369be3dd7efba0cff8efc0576f9076f04af97afaf"
+  }
+}

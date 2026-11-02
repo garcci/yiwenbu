@@ -1,0 +1,35 @@
+name: Zero-model staged environment diagnostic
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/voxcpm_safe_diagnostic/execute_once.json"]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: voxcpm-safe-diagnostic-20261102-01
+  cancel-in-progress: false
+jobs:
+  private-single-candidate:
+    if: ${{ github.repository == 'garcci/yiwenbu' && github.ref == 'refs/heads/claude/project-thread-l4wz3r' && github.event_name == 'push' && github.run_attempt == 1 }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 18
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install public transport dependency
+        run: python3 -m pip install --disable-pip-version-check requests==2.32.5
+      - name: Verify public entry without private material
+        run: python3 -m unittest discover -s video/voxcpm_safe_diagnostic -q
+      - name: Run read-only-source and package-install diagnostic without loading models
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VOX_DESIGN_V2_PRIVATE_PACKAGE_ID: ${{ secrets.VOX_DESIGN_V2_PRIVATE_PACKAGE_ID }}
+          VOX_DESIGN_V2_PRIVATE_PACKAGE_SHA256: ${{ secrets.VOX_DESIGN_V2_PRIVATE_PACKAGE_SHA256 }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.AUDITION_DRIVE_FOLDER_ID }}
+        run: python3 video/voxcpm_safe_diagnostic/bootstrap.py --execute
