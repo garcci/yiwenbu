@@ -9,6 +9,8 @@ from pathlib import Path
 import shutil
 import subprocess
 import tempfile
+import re
+import unicodedata
 
 BLOCKED = {'result-4.wav', 'result-10.wav', '未命名.m4a'}
 
@@ -151,8 +153,100 @@ def plan(manifest):
     inset = number(m.get('safeInset', 54), 'safeInset', 0, w / 3)
     bottom = number(m.get('captionBottom', h * .2), 'captionBottom', h * .18, h * .7)
     require(bottom + font_size * 2 < h, 'Caption outside canvas')
-    return {'duration': duration, 'width': w, 'height': h, 'fps': int(fps), 'shots': shots,
-            'font_size': font_size, 'inset': inset, 'caption_bottom': bottom}
+    p = {'duration': duration, 'width': w, 'height': h, 'fps': int(fps), 'shots': shots,
+         'font_size': font_size, 'inset': inset, 'caption_bottom': bottom}
+    p['story_overlays'] = plan_story_overlays(m.get('story_overlays', []), p)
+    return p
+
+
+def plain_story_line(text):
+    return (isinstance(text, str) and bool(text.strip()) and len(text) <= 60
+            and not any(c in '{}\\' or unicodedata.category(c).startswith('C')
+                        or unicodedata.category(c) in ('Zl', 'Zp') for c in text))
+
+
+def plan_story_overlays(cues, p):
+    require(isinstance(cues, list) and len(cues) <= 32, 'At most 32 story cards allowed')
+    result, identifiers = [], set()
+    # Coordinates use top-left origin. Reserve badge top and the entire lower
+    # caption/platform band; this stays reserved even when no caption is visible.
+    top = max(80, 40 + max(12, round(p['font_size'] * .65)) * 2)
+    bottom = math.floor(p['height'] - p['caption_bottom'] - p['font_size'] * 3)
+    for cue in cues:
+        require(isinstance(cue, dict) and set(cue) <=
+                {'id', 'start', 'end', 'x', 'y', 'width', 'height', 'fontSize', 'lines'}, 'Unknown story card field')
+        identifier = cue.get('id', '')
+        require(isinstance(identifier, str) and re.fullmatch(r'[A-Za-z0-9_-]{1,40}', identifier)
+                and identifier not in identifiers, 'Story card needs a unique plain ID')
+        identifiers.add(identifier)
+        start = number(cue['start'], 'story start', 0, p['duration'])
+        end = number(cue['end'], 'story end', 0, p['duration'])
+        require(start < end and all(abs(t * p['fps'] - round(t * p['fps'])) < .001 for t in (start, end)),
+                'Story timing must be nonempty and frame aligned')
+        rect = [cue.get(k) for k in ('x', 'y', 'width', 'height')]
+        require(all(isinstance(v, int) and not isinstance(v, bool) for v in rect), 'Story rectangle needs integer pixels')
+        x, y, width, height = rect
+        require(width > 0 and height > 0 and p['inset'] <= x and x + width <= p['width'] - p['inset']
+                and top <= y and y + height <= bottom, 'Story card intersects reserved safe area or leaves canvas')
+        require(width * height <= p['width'] * p['height'] * .35, 'Story card too large')
+        lines = cue.get('lines')
+        require(isinstance(lines, list) and 1 <= len(lines) <= 4 and all(plain_story_line(line) for line in lines),
+                'Story card needs 1-4 short plain lines without controls')
+        size = cue.get('fontSize', max(16, round(p['font_size'])))
+        require(isinstance(size, int) and not isinstance(size, bool) and 12 <= size <= 100, 'Invalid story font size')
+        planned = dict(cue, fontSize=size, start_frame=round(start * p['fps']), end_frame_exclusive=round(end * p['fps']))
+        for other in result:
+            time_overlap = start < other['end'] and end > other['start']
+            space_overlap = (x < other['x'] + other['width'] and x + width > other['x']
+                             and y < other['y'] + other['height'] and y + height > other['y'])
+            require(not (time_overlap and space_overlap), 'Simultaneous story cards must not cover each other')
+        result.append(planned)
+    return result
+
+
+def story_layout(cue, font):
+    padding = max(8, cue['fontSize'] // 2)
+    gap = max(4, cue['fontSize'] // 4)
+    boxes = [font.getbbox(line) for line in cue['lines']]
+    heights = [b[3] - b[1] for b in boxes]
+    require(all(max(font.getlength(line), box[2] - box[0]) <= cue['width'] - 2 * padding
+                for line, box in zip(cue['lines'], boxes)), 'Story text too wide; shorten the explicit text')
+    require(sum(heights) + gap * (len(boxes) - 1) <= cue['height'] - 2 * padding,
+            'Story text too tall; change the explicit card layout')
+    positions, y = [], padding
+    for box, height in zip(boxes, heights):
+        positions.append((padding - box[0], y - box[1]))
+        y += height + gap
+    return positions
+
+
+def write_story_cards(p, font_path, directory):
+    from PIL import Image, ImageDraw, ImageFont
+    cards = []
+    for i, cue in enumerate(p['story_overlays']):
+        font = ImageFont.truetype(str(font_path), cue['fontSize'])
+        positions = story_layout(cue, font)
+        image = Image.new('RGBA', (cue['width'], cue['height']), (12, 16, 20, 248))
+        draw = ImageDraw.Draw(image)
+        draw.rectangle((0, 0, cue['width'] - 1, cue['height'] - 1), outline=(242, 190, 72, 255), width=2)
+        for text, position in zip(cue['lines'], positions):
+            draw.text(position, text, font=font, fill=(255, 255, 255, 255))
+        path = directory / f'story-{i}.png'
+        image.save(path)
+        cards.append(path)
+    return cards
+
+
+def final_filter(p):
+    filters, current = ['[0:v]setpts=PTS-STARTPTS[base]'], 'base'
+    for i, cue in enumerate(p['story_overlays']):
+        filters.append(f'[{i + 2}:v]format=rgba,setpts=PTS-STARTPTS[card{i}]')
+        filters.append(f"[{current}][card{i}]overlay=x={cue['x']}:y={cue['y']}:format=auto:alpha=straight:"
+                       f"shortest=1:enable='gte(n,{cue['start_frame']})*lt(n,{cue['end_frame_exclusive']})'[story{i}]")
+        current = f'story{i}'
+    filters.append(f'[{current}]ass=captions.ass:fontsdir=fonts,format=yuv420p[out]')
+    return ';\n'.join(filters)
+
 
 
 def ass_time(t):
@@ -289,15 +383,32 @@ def render(m, assets, output_dir, font):
         # Subtitle filename is fixed and safe; fontsdir ensures the measured CJK family is installed for libass.
         (work / 'fonts').mkdir()
         shutil.copyfile(font, work / 'fonts' / font.name)
+        cards = write_story_cards(p, font, work)
         candidate = work / 'draft.mp4'
-        run(['ffmpeg', '-v', 'error', '-nostdin', '-i', 'picture.mp4', '-i', 'mix.wav', '-map', '0:v', '-map', '1:a',
-             '-vf', 'ass=captions.ass:fontsdir=fonts', '-t', str(p['duration']), '-c:v', 'libx264', '-preset', 'fast',
+        final_inputs = ['ffmpeg', '-v', 'error', '-nostdin', '-i', 'picture.mp4', '-i', 'mix.wav']
+        for card in cards:
+            final_inputs += ['-loop', '1', '-framerate', str(p['fps']), '-i', card.name]
+        (work / 'final.filters').write_text(final_filter(p))
+        if cards:
+            filter_options = ['-filter_complex_threads', '1', '-filter_complex_script', 'final.filters',
+                              '-map', '[out]', '-map', '1:a']
+        else:
+            # Preserve the already exercised no-card path for existing manifests.
+            filter_options = ['-map', '0:v', '-map', '1:a', '-vf', 'ass=captions.ass:fontsdir=fonts']
+        run(final_inputs + filter_options + ['-t', str(p['duration']), '-c:v', 'libx264', '-preset', 'fast',
              '-crf', '18', '-pix_fmt', 'yuv420p', '-threads', '2', '-c:a', 'aac', '-b:a', '192k',
              '-movflags', '+faststart', candidate.name], work)
         report = qc(candidate, p)
         report['source_tracks'] = tracks_report
         report['shot_timeline'] = [{k: s[k] for k in ('start', 'end')} for s in p['shots']]
         report['caption_timeline'] = m.get('captions', [])
+        report['story_overlay_timeline'] = [dict(cue, png_sha256=digest(card))
+                                            for cue, card in zip(p['story_overlays'], cards)]
+        report['silent_story_comprehension'] = 'not_assessed'
+        if cards:
+            (output_dir / 'story-cards').mkdir()
+            for card in cards:
+                shutil.copyfile(card, output_dir / 'story-cards' / card.name)
         report['output_sha256'] = digest(candidate)
         shutil.copyfile(candidate, output_dir / 'draft.mp4')
         shutil.copyfile(work / 'captions.ass', output_dir / 'captions.ass')

@@ -42,6 +42,32 @@ def alpha_and_fit_smoke(root):
             assert all(abs(a - b) <= 12 for a, b in zip(actual, wanted)), (fit, x, actual, wanted)
 
 
+def story_timing_smoke(video, report):
+    # Check immediately before/on/after both cards, including the scene cut.
+    frames = (9, 10, 19, 20, 24, 25, 34, 35)
+    select = '+'.join(f'eq(n,{n})' for n in frames)
+    rgb = run(['ffmpeg', '-v', 'error', '-i', str(video), '-vf', f"select='{select}'",
+               '-vsync', '0', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-'])
+    stride = 320 * 568 * 3
+    assert len(rgb) == len(frames) * stride
+    for i, frame in enumerate(frames):
+        expected = 10 <= frame < 20 or 25 <= frame < 35
+        offset = i * stride + (161 * 320 + 33) * 3
+        red, green, blue = rgb[offset:offset + 3]
+        visible = red > 150 and green > 100 and blue < 140
+        assert visible == expected, ('story card boundary', frame, (red, green, blue), expected)
+        if expected:
+            white_pixels = 0
+            for y in range(168, 250):
+                for x in range(40, 280):
+                    offset = i * stride + (y * 320 + x) * 3
+                    if min(rgb[offset:offset + 3]) > 180:
+                        white_pixels += 1
+            assert white_pixels > 20, ('story text missing', frame, white_pixels)
+    assert [(c['start_frame'], c['end_frame_exclusive']) for c in report['story_overlay_timeline']] == [(10, 20), (25, 35)]
+    assert report['silent_story_comprehension'] == 'not_assessed'
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--font', type=Path, default=Path('/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc'))
@@ -61,12 +87,18 @@ def main():
         m = fixture()
         m['fontSize'] = 20
         m['safeInset'] = 24
+        m['story_overlays'] = [
+            {'id': 'screen', 'start': .4, 'end': .8, 'x': 32, 'y': 160, 'width': 256, 'height': 100,
+             'fontSize': 16, 'lines': ['屏幕：空号']},
+            {'id': 'ledger', 'start': 1, 'end': 1.4, 'x': 32, 'y': 160, 'width': 256, 'height': 100,
+             'fontSize': 16, 'lines': ['红簿旧留言', '十二月九日｜已捞出']}]
         mapping = {name: {'path': name, 'sha256': digest(root / name), 'authorized_for_this_draft': True}
                    for name in ('a.ppm', 'b.ppm', 'tone.wav')}
         report = render(m, resolve_assets(m, mapping, root), root / 'output', args.font)
         assert report['video_frames'] == 50
+        story_timing_smoke(root / 'output/draft.mp4', report)
         print(json.dumps({'synthetic_smoke_pass': True, 'frames': report['video_frames'],
-                          'alpha_and_aspect_fit_pixels_pass': True, 'human_media_used': False, 'production_acceptance': False}))
+                          'alpha_and_aspect_fit_pixels_pass': True, 'story_card_timing_and_text_pixels_pass': True, 'human_media_used': False, 'production_acceptance': False}))
 
 
 if __name__ == '__main__':

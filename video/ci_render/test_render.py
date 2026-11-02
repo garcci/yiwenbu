@@ -6,7 +6,7 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
-from render import asset_references, plan, resolve_assets, ass_time, qc, shot_filter
+from render import asset_references, plan, resolve_assets, ass_time, qc, shot_filter, final_filter, story_layout, plain_story_line
 
 
 def fixture():
@@ -127,6 +127,56 @@ class ValidationTests(unittest.TestCase):
             with patch('render.digest', side_effect=AssertionError('must not hash')):
                 with self.assertRaisesRegex(ValueError, 'Symlinks forbidden'):
                     resolve_assets(fixture(), mapping, root)
+
+    def test_story_cards_frame_boundaries_and_separate_filter_order(self):
+        m = fixture()
+        m['story_overlays'] = [{'id': 'screen', 'start': .4, 'end': .8,
+            'x': 60, 'y': 120, 'width': 200, 'height': 80, 'fontSize': 16, 'lines': ['屏幕：空号']}]
+        original_audio = copy.deepcopy(m['audio'])
+        p = plan(m)
+        self.assertEqual(m['audio'], original_audio)
+        cue = p['story_overlays'][0]
+        self.assertEqual((cue['start_frame'], cue['end_frame_exclusive']), (10, 20))
+        self.assertEqual(cue['lines'], ['屏幕：空号'])
+        graph = final_filter(p)
+        self.assertIn("enable='gte(n,10)*lt(n,20)'", graph)
+        self.assertIn('[2:v]format=rgba', graph)
+        self.assertIn('overlay=x=60:y=120', graph)
+        self.assertLess(graph.index('overlay='), graph.index('ass=captions.ass'))
+        self.assertNotIn('屏幕', graph)  # User text never enters filter syntax or ASS.
+        self.assertEqual(plan(fixture())['story_overlays'], [])
+
+    def test_story_safe_regions_controls_and_simultaneous_occlusion_rejected(self):
+        cue = {'id': 'ledger', 'start': .4, 'end': 1.2, 'x': 60, 'y': 120,
+               'width': 200, 'height': 80, 'fontSize': 16, 'lines': ['红簿旧留言', '十二月九日']}
+        variants = [dict(cue, x=-1), dict(cue, y=20), dict(cue, y=400), dict(cue, width=300),
+                    dict(cue, start=.41), dict(cue, end=3), dict(cue, lines=['文字\n换行']),
+                    dict(cue, lines=['文字\u202e反向']), dict(cue, lines=['{\\pos(0,0)}']),
+                    dict(cue, lines=['a' * 61]), dict(cue, fontSize=1), dict(cue, id='bad:filter'),
+                    dict(cue, unexpected='field')]
+        for variant in variants:
+            m = fixture(); m['story_overlays'] = [variant]
+            with self.assertRaises(ValueError):
+                plan(m)
+        m = fixture(); m['story_overlays'] = [cue, dict(cue, id='second')]
+        with self.assertRaisesRegex(ValueError, 'must not cover'):
+            plan(m)
+        m['story_overlays'][1].update(start=1.2, end=1.6)
+        self.assertEqual(len(plan(m)['story_overlays']), 2)  # Exact handoff is allowed.
+        self.assertFalse(plain_story_line('line\u2028separator'))
+
+    def test_story_real_font_measurements_must_fit_no_automatic_shrink(self):
+        class FakeMeasuredFont:
+            def getbbox(self, text):
+                return (0, 2, len(text) * 16, 18)
+            def getlength(self, text):
+                return len(text) * 16
+        cue = {'fontSize': 16, 'width': 120, 'height': 60, 'lines': ['空号', '十二月九日']}
+        self.assertEqual(story_layout(cue, FakeMeasuredFont()), [(8, 6), (8, 26)])
+        with self.assertRaisesRegex(ValueError, 'too wide'):
+            story_layout(dict(cue, width=40), FakeMeasuredFont())
+        with self.assertRaisesRegex(ValueError, 'too tall'):
+            story_layout(dict(cue, height=30), FakeMeasuredFont())
 
     def test_ass_timestamp_carry(self):
         self.assertEqual(ass_time(59.999), '0:01:00.00')
