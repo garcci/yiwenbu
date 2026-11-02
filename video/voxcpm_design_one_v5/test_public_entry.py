@@ -1,0 +1,56 @@
+import ast,importlib.util,json,re,unittest
+from datetime import datetime,timezone
+from pathlib import Path
+P=Path(__file__).resolve().parent
+W=P/'workflow.voxcpm_design_one_v5_once.yml'
+if not W.exists():
+    import os
+    W=Path(os.environ['GITHUB_WORKSPACE'])/'.github/workflows/voxcpm_design_one_v5_once.yml'
+spec=importlib.util.spec_from_file_location('safe_bootstrap',P/'bootstrap.py');b=importlib.util.module_from_spec(spec);spec.loader.exec_module(b)
+class SafetyTests(unittest.TestCase):
+    def test_draft_refused(self):
+        with self.assertRaises(ValueError):b.validate_trigger(json.loads((P/'execute_once.example.json').read_text()),datetime.now(timezone.utc))
+    def test_actual_environment_names(self):
+        tree=ast.parse((P/'bootstrap.py').read_text())
+        needed={n.slice.value for n in ast.walk(tree) if isinstance(n,ast.Subscript) and isinstance(n.value,ast.Attribute) and n.value.attr=='environ' and isinstance(n.slice,ast.Constant)}
+        workflow=W.read_text()
+        for name in needed-{'GITHUB_WORKSPACE','GITHUB_EVENT_PATH'}:self.assertRegex(workflow,r'(?m)^\s+'+name+r':')
+        self.assertIn('GDRIVE_FOLDER_ID: ${{ secrets.AUDITION_DRIVE_FOLDER_ID }}',workflow)
+        self.assertIn('run: python3 -m unittest discover -s video/voxcpm_design_one_v5 -q',workflow)
+        self.assertNotIn('VOX_DESIGN_PRIVATE_PACKAGE_',workflow)
+        self.assertEqual(b.WORKFLOW,'.github/workflows/voxcpm_design_one_v5_once.yml')
+    def test_no_public_content_or_artifacts(self):
+        workflow=W.read_text()
+        for token in ('upload-artifact','git push','voxcpm.yml','ARK_API_KEY','Result-','prompt_wav'):
+            self.assertNotIn(token,workflow)
+        self.assertIn('timeout-minutes: 55',workflow);self.assertIn('runs-on: ubuntu-24.04',workflow)
+        self.assertIn('video/voxcpm_design_one_v5/execute_once.json',workflow)
+    def test_raw_failure_hidden(self):
+        import contextlib,io
+        from unittest.mock import patch
+        s=io.StringIO()
+        with patch('sys.argv',['bootstrap','--execute']),patch.object(b,'preflight',side_effect=RuntimeError('PRIVATE_URL_TOKEN')):
+            with contextlib.redirect_stdout(s),self.assertRaises(SystemExit) as e:b.main()
+        self.assertNotIn('PRIVATE_URL_TOKEN',str(e.exception));self.assertTrue(all(b.status.validate(json.loads(line)) for line in s.getvalue().splitlines()))
+
+    def test_timeout_replays_only_safe_partial_stdout_and_never_stderr(self):
+        import contextlib,io,subprocess
+        from unittest.mock import patch
+        row={'stage':'MODEL_LOAD','status':'START','category':'NONE','seconds':0}
+        safe=json.dumps(row)+'\n'
+        private='PRIVATE_STDOUT_TOKEN_URL\n'+json.dumps(dict(row,url='PRIVATE_URL'))+'\n'
+        for payload in ((safe+private).encode(),safe+private):
+            output=io.StringIO();error=subprocess.TimeoutExpired('worker',1,output=payload,stderr=b'PRIVATE_STDERR_TOKEN_URL')
+            with patch.object(b.subprocess,'run',side_effect=error) as spawn,contextlib.redirect_stdout(output):
+                with self.assertRaises(b.status.Stop):b.status.stage('PRIVATE_START',lambda:b.run_private_worker(Path('/fake')))
+            spawn.assert_called_once();self.assertNotIn('PRIVATE_STD',output.getvalue());self.assertNotIn('PRIVATE_URL',output.getvalue())
+            rows=[json.loads(line) for line in output.getvalue().splitlines()]
+            self.assertTrue(all(b.status.validate(x) for x in rows));self.assertIn(row,rows)
+            self.assertEqual(rows[-1]['stage'],'PRIVATE_START');self.assertEqual(rows[-1]['category'],'CHILD_TIMEOUT')
+    def test_timeout_partial_replay_is_bounded_and_filters_invalid_json(self):
+        import contextlib,io
+        row={'stage':'MODEL_DOWNLOAD','status':'PASS','category':'NONE','seconds':1}
+        raw=(json.dumps(row)+'\n'+'PRIVATE'*15000).encode()+b'\xff'
+        output=io.StringIO()
+        with contextlib.redirect_stdout(output):accepted=b.status.replay_partial(raw)
+        self.assertEqual(accepted,[row]);self.assertNotIn('PRIVATE',output.getvalue())

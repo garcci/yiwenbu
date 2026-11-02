@@ -1,0 +1,9 @@
+{
+  "authorization_id": "ep01-voxcpm2-design-one-20261102-v5-01",
+  "zero_added_cost_confirmed": true,
+  "cost_evidence_utc": "2026-11-02T11:37:00Z",
+  "compute_policy": "public_standard_linux",
+  "free_drive_storage_bytes_at_least": 314572800,
+  "upload_to_existing_private_drive": true,
+  "manifest_sha256": "ca675a0763ab148f20092338f0e2da7fc2784195ffa2fe9e5321121ea0efb2fb"
+}
