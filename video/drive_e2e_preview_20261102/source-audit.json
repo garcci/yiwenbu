@@ -1,0 +1,22 @@
+{
+  "image": {
+    "drive_id": "1hRtm5SVRagq3EVPA_8pwtngiFfjGeKDo",
+    "bytes": 1939030,
+    "sha256": "3fad4582e2afe0de9cb5bdc7bef638372e79a5c83cb4b62fc84190235a5415dc",
+    "width": 941,
+    "height": 1672
+  },
+  "audio": {
+    "drive_id": "1g6an4mkAYoft_PVoaT42OqMdaDRDSxtX",
+    "bytes": 63021,
+    "sha256": "d6687916aed6bd292f33306e110bef687fbe78c60b964fa70936fe912beed447",
+    "decoded_pcm_frames": 188928,
+    "sample_rate": 24000,
+    "channels": 1,
+    "decoded_duration_seconds": 7.872,
+    "decoded_pcm_provenance": "existing afconvert complete decode; afinfo current estimate agrees"
+  },
+  "cloud_hash_match": "not_yet_verified; CI must download and compare SHA256 before rendering",
+  "voice_acceptance": "not_assessed",
+  "preview_status": "prepared_not_run"
+}

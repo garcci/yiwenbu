@@ -1,0 +1,37 @@
+name: 云盘到云盘8秒技术预览一次性测试20261102
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/drive_e2e_preview_20261102/execute-once.json"]
+permissions:
+  contents: read
+  actions: read
+concurrency:
+  group: drive-e2e-technical-preview-20261102-once
+  cancel-in-progress: false
+jobs:
+  preview:
+    if: ${{ github.repository == 'garcci/yiwenbu' && github.ref == 'refs/heads/claude/project-thread-l4wz3r' && github.event_name == 'push' && github.run_attempt == 1 }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: 一次性范围校验（不读取云盘凭据）
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: python3 video/drive_e2e_preview_20261102/run_preview.py --preflight
+      - name: 安装编码与中文依赖（不安装模型）
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-noto-cjk python3-pil python3-requests
+      - name: 冻结清单与安全边界自测
+        run: python3 -m unittest discover -s video/drive_e2e_preview_20261102 -v
+      - name: 仅两条授权资源合成与完整检查后回传原私有项目目录
+        env:
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: 11uMWY64q_tLolJ210NmLhfqnkW1D5fBR
+        run: python3 video/drive_e2e_preview_20261102/run_preview.py --execute
+      - name: 记录结果边界
+        run: echo '仅8秒真实素材技术预览完成，结构检查/完整解码通过并写入原云盘私有目录；非正式第一集，配音及画面验收仍待用户审阅。未调用生成API、未更改分享、未删除文件。' >> "$GITHUB_STEP_SUMMARY"

@@ -1,0 +1,69 @@
+{
+  "purpose": "8-second Drive-to-Actions technical preview; not the formal first episode; human review pending",
+  "manifest": {
+    "duration": 8,
+    "width": 360,
+    "height": 640,
+    "fps": 25,
+    "fontSize": 16,
+    "safeInset": 28,
+    "captionBottom": 128,
+    "badge": "AI画面·AI配音｜技术预览待审",
+    "scenes": [
+      {
+        "start": 0,
+        "end": 4,
+        "image": "authorized-gpt-image.png"
+      },
+      {
+        "start": 4,
+        "end": 8,
+        "layers": [
+          {
+            "image": "authorized-gpt-image.png",
+            "x": 0,
+            "y": 0,
+            "width": 360,
+            "height": 640,
+            "crop": {
+              "x": 0.12,
+              "y": 0.05,
+              "width": 0.76,
+              "height": 0.76
+            },
+            "opacity": 1
+          }
+        ]
+      }
+    ],
+    "captions": [
+      {
+        "text": "云盘端到端测试｜非正式成片",
+        "start": 0.2,
+        "end": 7.8
+      }
+    ],
+    "audio": [
+      {
+        "file": "authorized-plan-paragraph.mp3",
+        "offset": 0.08,
+        "sourceStart": 0,
+        "duration": 7.872,
+        "volume": 1
+      }
+    ]
+  },
+  "assets": {
+    "authorized-gpt-image.png": {
+      "path": "assets/image.png",
+      "drive_file_id": "1hRtm5SVRagq3EVPA_8pwtngiFfjGeKDo",
+      "sha256": "3fad4582e2afe0de9cb5bdc7bef638372e79a5c83cb4b62fc84190235a5415dc"
+    },
+    "authorized-plan-paragraph.mp3": {
+      "path": "assets/paragraph.mp3",
+      "drive_file_id": "1g6an4mkAYoft_PVoaT42OqMdaDRDSxtX",
+      "sha256": "d6687916aed6bd292f33306e110bef687fbe78c60b964fa70936fe912beed447",
+      "authorized_for_this_draft": true
+    }
+  }
+}
