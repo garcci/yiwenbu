@@ -1,0 +1,9 @@
+{
+  "authorization_id": "ep01-voxcpm2-design-one-20261102-v2-01",
+  "sha256": {
+    ".github/workflows/voxcpm_design_one_v2_once.yml": "73d118301ad86de4e9997d807a7e7137d91752df3333ecec853ed83a09d3698f",
+    "video/voxcpm_design_one_v2/bootstrap.py": "9e30d172c94e84566a702e1a6bc72d85e67c88b54f2b982c93c87a72b619569a",
+    "video/voxcpm_design_one_v2/test_public_entry.py": "39290d3020c54712ab6c0545b682cb8ef29958808222e218a108ab3e7745e6af",
+    "video/voxcpm_design_one_v2/execute_once.example.json": "3499768685c2b0c8e4f7c6d2a515666186209ae954790ffdf97bc0134acbc805"
+  }
+}
