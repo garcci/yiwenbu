@@ -1,0 +1,1 @@
+2026-11-02: Run only the synthetic FFmpeg and subtitle smoke test on the project branch.

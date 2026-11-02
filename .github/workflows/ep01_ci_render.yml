@@ -1,0 +1,94 @@
+name: 第一集 FFmpeg 草稿合成与结构检查
+
+on:
+  push:
+    branches: [claude/project-thread-l4wz3r]
+    paths: ["video/ci_render/ci_smoke_trigger.txt"]
+  workflow_dispatch:
+    inputs:
+      zero_cost_confirmed:
+        description: 已核实本次 Actions 分钟/存储/云盘均不会产生新增费用
+        type: boolean
+        required: true
+        default: false
+      bundle_drive_id:
+        description: 云盘输入包 JSON 文件 ID；留空仅执行合成素材烟测
+        type: string
+        required: false
+      upload_to_drive:
+        description: 明确将通过结构检查的草稿写入已配置云盘 ci-drafts/本次运行目录
+        type: boolean
+        required: true
+        default: false
+      keep_github_artifact:
+        description: 保留 GitHub 草稿产物一天（需已核实免费存储额度）
+        type: boolean
+        required: true
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ep01-ci-render-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  render-draft:
+    if: ${{ github.event_name == 'push' || inputs.zero_cost_confirmed }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - name: 安装编码、中文字体和文件传输依赖（没有模型）
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg fonts-noto-cjk python3-pil python3-requests
+      - name: 规范自测与合成素材烟测
+        run: |
+          python3 -m unittest discover -s video/ci_render -v
+          python3 video/ci_render/smoke.py
+      - name: 下载明确列出的云盘输入
+        if: ${{ inputs.bundle_drive_id != '' }}
+        env:
+          BUNDLE_ID: ${{ inputs.bundle_drive_id }}
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+        run: python3 video/ci_render/drive_io.py fetch --bundle-id "$BUNDLE_ID" --destination "$RUNNER_TEMP/ep01-input"
+      - name: 合成草稿与完整解码检查
+        if: ${{ inputs.bundle_drive_id != '' }}
+        run: |
+          python3 video/ci_render/render.py \
+            --manifest "$RUNNER_TEMP/ep01-input/manifest.json" \
+            --asset-map "$RUNNER_TEMP/ep01-input/asset-map.json" \
+            --asset-root "$RUNNER_TEMP/ep01-input" \
+            --output-dir "$RUNNER_TEMP/ep01-output"
+      - name: 将检查通过的草稿写入云盘
+        if: ${{ inputs.bundle_drive_id != '' && inputs.upload_to_drive }}
+        env:
+          GDRIVE_CLIENT_ID: ${{ secrets.GDRIVE_CLIENT_ID }}
+          GDRIVE_CLIENT_SECRET: ${{ secrets.GDRIVE_CLIENT_SECRET }}
+          GDRIVE_REFRESH_TOKEN: ${{ secrets.GDRIVE_REFRESH_TOKEN }}
+          GDRIVE_FOLDER_ID: ${{ secrets.GDRIVE_FOLDER_ID }}
+        run: |
+          python3 video/ci_render/drive_io.py upload \
+            --directory "$RUNNER_TEMP/ep01-output" \
+            --subfolder "ci-drafts/run-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+      - name: 保存可审阅的草稿和检查报告
+        if: ${{ inputs.bundle_drive_id != '' && inputs.keep_github_artifact }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: ep01-draft-${{ github.run_id }}-${{ github.run_attempt }}
+          path: ${{ runner.temp }}/ep01-output/
+          retention-days: 1
+          if-no-files-found: error
+      - name: 写明本次结果的范围
+        env:
+          BUNDLE_ID: ${{ inputs.bundle_drive_id }}
+        run: |
+          if [ -n "$BUNDLE_ID" ]; then
+            echo '草稿已合成，ffprobe 结构检查与完整解码通过；画面、配音、音画同步和剧情验收仍待人工审看。' >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo '仅合成色块与正弦音烟测通过；没有读取或合成第一集真实素材，没有生成获用户接受的配音。' >> "$GITHUB_STEP_SUMMARY"
+          fi
