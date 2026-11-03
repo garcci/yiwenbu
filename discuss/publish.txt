@@ -1,3 +1,2 @@
 # 本地文件|云盘文件夹ID|文档名
-# discuss/05-设定集-v3.md|1gnSv8eSD1HPJxncsUgVI40mGJ7e6g1qG|05-第一季设定集-定稿
-discuss/07-第一集制作包-v2.md|11uMWY64q_tLolJ210NmLhfqnkW1D5fBR|01-第一集砚速回-制作包
+discuss/SUPER_PROMPT_BIBLE_500K.md|1gnSv8eSD1HPJxncsUgVI40mGJ7e6g1qG|00-老井诡契五十万字超级小说提示词圣经

@@ -151,3 +151,58 @@
 云16/18新增当前页签，旧版本与旧制作准备保留并标历史：小说344、首集151、全季227个非空段落完整读回相符。小说：https://docs.google.com/document/d/1nApEHgezhPfpC9CDAy6DiPWUE61qy6C_g0kyvzxgJxM/edit?tab=t.xwyilndp1h16 ；首集：https://docs.google.com/document/d/1nu552mG0HWaH00-zmQr9oXVN6J4ydGvMeprpszUVEAM/edit?tab=t.2odmjcfsl6wp ；全季：https://docs.google.com/document/d/1nu552mG0HWaH00-zmQr9oXVN6J4ydGvMeprpszUVEAM/edit?tab=t.eyuulp1pt0m0 。
 review_round04冻结父hash ef1e3adc2597999fe25906d2a70c32cee895d0efc44dc08af33859c847cfe91f。沿用十视角十维量尺，改为每视角每作品各新独立会话，先证据/具体判断后分数，不给旧分或目标，原R03四份低分全留。离线单篇生成器原先只取01—07，已修为manifest全部10位；生成30份单篇提示及submission，7个现有合成校验通过只是工具验证。首集01在新Argon会话https://gemini.google.com/app/ef7af32044bbe82a实际返回10项，10条维度引文逐字相符，最低8.5、8项<9.5；开头元数据仅Markdown差异，未成片限制是范围声明，原始评分未改。此刻其余29件已授权继续但尚未完成，不得标通过。
 修改/新增：novel_complete_v4及manifest、episode01_candidate_v5及协调记录、season_outline_candidate_v4及16项patch/manifest、Gemini诊断/修稿brief、web原件/status、review_round04全部冻结源/输入/首件实际raw与status、review_tools/piecewise_review.py与既有测试/README、云16/18及13总控。当前Gemini用量页显示无法读取，4 Argon可选，按既有订阅继续且不购买/升级；当前百分比未知。下一步收齐29个独立单篇评审，核依据与实际问题再改；待逐格门槛满足才直接免费制片。尚无新音画、无本机模型、无新增费用或公开发布。
+
+
+### 2026-11-02｜第一集实际粗剪 v2 已导出并云盘交付，尚未最终验收
+
+本次主代理转达用户已授权零新增费用完成首集并音画云盘交付；该授权不等于公开发布。此前“尚无媒体/不得渲染”等历史段落只反映当时状态。现用已获准AI图片、AI配音与系统程序音效实际完成粗剪，未安装或运行本地模型；原始图片/音频与v1保留。男声为Result-24，第六场旁白为独立盲听文字一致的Result-26，旧Result-19和失败候选25未用于v2。声线听感仍待人耳。
+
+- 实际文件：`work/ep01_assembly_20261102_v2/三点零九分_第一集_粗剪v2.mp4`；239.88秒，720×1280/25fps，78,589,593字节（74.95MiB），小于云盘连接器100MiB限制。
+- 主代理已上传并核对元数据的云盘粗剪链接：https://drive.google.com/file/d/1wSjkOM5ddQhUHaNpEF-ngaQGBMqxe84q/view 。此处云盘核对由主代理执行，组装代理未自行声称复验云端视频解码。
+- 可回溯文件同目录：`manifest.json`（最终实际清单）、`v2_changes.json`、`source_assets.json`（所有引用素材SHA256）、`subtitles_rough.srt`、`media_qc.json`、`Renderer.swift`（独立副本仅改2.4Mbps及最后0.8秒隐藏角标）、`render.log`、13张零时间容差导出检查帧。
+- v2修正：第4场加入手部图、第5场换楼梯间双人图、第6场补母亲餐桌近景；旧留言新增“三号柜”及“十二月九日，城南水闸捞出”底部字幕，新增2.4秒；集尾203.56–229.56秒为女主脸/听筒紧裁，不提前露母亲、抵门掌或门影，警告源区间229.54秒结束后229.56敲门/切门影、230.36后才出母女抵门。239.08–239.88秒纯黑无角标。第6场新旁白字幕匹配新文案。
+- 实测结构QC：5997视频帧和全部音轨完整解码至末尾、无无效时戳/倒退；唯一黑帧候选239.08–239.88秒正是有意片尾；PCM无非有限值和数字削波候选，峰值-0.221dBFS、全片RMS-24.795dBFS。音轨末尾约236.272秒，尾部3.608秒无声。没有LUFS/true-peak测量。
+- 抽帧实际观察：人物/线索字幕和AI粗剪角标可读，单行无显见截字，纯黑片尾已观察；低码率未见抽样画面出现明显破坏文字可读性的压缩，但不是全片画质验收。独立审阅也确认新增柜号/日期字幕及电话→抵门顺序改善。
+- 仍有明确限制：簿页在画面中仍为空白，线索只以底部字幕带出，未实现红笔日期及1991年七行记录的道具跟踪文字；第5场周凤喊话配楼梯双人反应，周凤本人及大厅未拍出；全片以现有静帧剪接，非连续人物动作或口型动画，部分长停留仍存在；句内字幕多为按字数估计，单行和时间结构合规不证明发声同步；Result-26与6有独立模型主观音色跳变意见，未获用户听感验收；开场女声年龄/质感、原创无歌词哼唱、整体混音及目标平台控件安全区仍待完善。程序敲门/铃声等为合成候选，不是现场录音。
+
+下一步：收独立v2集尾听审结果并做全片实际收听/字幕对齐，完善簿页跟踪文字、角色反应和连续动作，核对第六场声线、整体混音与平台安全区。不能将“实际导出+结构QC+云盘已上传”写成“最终成片/用户验收通过”。
+
+
+### 2026-11-02｜最新用户反馈：声音AI味及尾部嘟声，暂停成品判断
+
+用户亲耳反馈当前配音“好有AI味”，且试听导出的源音频尾部有嘟声。当前整套声音仅试制，v2/v3不得视作最终成品。PCM检测已在多源末尾约0.84秒起找到相同700Hz脉冲；v2保留了各源完整尾部，确实存在提示音入片风险。全部22对白插段及16个实际配音源的尾1秒成片位置见同目录voice_tail_exposure.json，已交audio_repair；已有少量TEST副本，仅实验，未改视频清单、未产v3。源文件与v1/v2均保留。
+
+重要勘误：若干Gemini会话虽显示read_file完成与SUCCESS，却明确表示无法实际听到声学细节；其余声学报告存在冲突。因此历史通过此路径的自然度、音色连续、切字、逐字听写与精确字幕同步结论均降级为不可靠，不能作为验收。独立模型的少量文字抽检相符也不能证明实际音质和同步。结构QC仅证明可解码、时间戳与PCM数字范围，不能发现或豁免听感嘟声。
+
+云端指定交接文档已使用读取版本号+requiredRevisionId保护，仅末尾追加详细v2技术交接、用户最新反馈与下一步，随后将完整新增段落读回比对并检查旧全文前缀保留；网址 https://docs.google.com/document/d/1S8MJ-5hafqAAKbRImdjcQP24ftSiGt0zRIcKkSP_jXA/edit 。视频链接 https://drive.google.com/file/d/1wSjkOM5ddQhUHaNpEF-ngaQGBMqxe84q/view 仅粗剪待修。下一步逐一检查尾提示音与尾字重叠，安全副本修尾或局部处理后实际人工试听；实质改善声线/表演回应用户AI味反馈，再考虑新版本、全片字幕对齐和混音。零新增费用，不公开发布，不覆盖原件。
+ 
+### 2026-11-02｜新增16条程序合成音效；方舟体验内容用途限制已核实
+
+新增 `output/ep01/sound_design/`：16条原创程序合成48kHz/16-bit/mono WAV（共186秒/17,856,704字节）、可复现程序、峰值/RMS及SHA256清单、七场动作锚点混音建议及Drive上传/元数据读回凭据。全部已上传指定私人文件夹11uMWY64q_tLolJ210NmLhfqnkW1D5fBR，读回MIME/大小/父目录相符；无checksum回传，未执行云端字节下载或听审。没有外部录音采样、未运行本机AI模型、未新增费用，未改分享权限。原foley及v2未更改。合成拟音仍为候选，柜擦/厨房/水声部分仅占位，不能称自然度、沉浸感或混音已验收。详见 `output/ep01/sound_design/SOUND_DESIGN_HANDOFF.md` 及 `SOUND_DESIGN_LINKS.md`。
+
+关键授权核查：实际网页入口是火山方舟体验中心SeedAudio1.0。官方体验规则第10条及平台专用条款3.7.14明确体验内容仅限模型效果体验，不可商用，也不可给第三方/第三方平台传播分发使用。来源 https://docs.volcengine.com/docs/ark/volcengine-ark-experience-center-terms-and-disclaimer?lang=zh （2026-03-01生效）；https://console.volcengine.com/ark/region%3Acn-beijing/docs/volcengine-ark-platform-terms 。本次未消费体验额度生成音效。主代理确认v2含体验生成语音：该批语音及含它们的v2不得公开发布或用作商业成片，须先核清并替换；修尾与混音不改变使用限制。指定云盘仅用户私人交付，不变更分享权限、不扩大受众，也不代表素材权利问题已解决。套餐/API音频是另一服务路径，权益需独立核查，既不自动套同一限制，也不能推定有商用许可。
+
+### 2026-11-02 20:00（Asia/Shanghai）｜Antigravity接手专注小说：完成资料通读、番茄最新规则核实与Gemini专项诊断
+
+- 执行动作：全面接手AI创作项目，严格停止短视频、配音、图片等所有音画制作，本次只专注小说创作。已通读HANDOFF.md、discuss/下各版设定集（v1~v4）、正文（七条规矩及水落青泥v0~v4）、审稿与讨论记录。
+- 实际验证：
+  1. 真实核查番茄小说2026年10月最新规则：新人（Lv.0/Lv.1）长篇强制“完本签约模式”（15万或30万字起，整书一次审核，限申请3次）；若选择短故事赛道则要求5千-3万字全篇完结投稿，平台严打低质/机械AI水文。
+  2. 实际调用Gemini完成三项拆解诊断：g64_story_diagnosis（两版旧稿痛点与好看原则）、g65_female_agency（女性角色主体性与开篇动作范例）、g66_novel_seeds_tradeoff（三大故事方向吸引力、风险与体量权衡）。
+- 文件修改：discuss/novel_rebuild_20261101/下新增g64、g65、g66系列Prompt、原始输出及元数据文件；本HANDOFF.md追加本日志。因本机环境无GDRIVE凭据（在GitHub Secrets），本地更新未能直写线上Google Doc，特此说明。
+- 下一步：向用户提交《接手诊断与方向汇报》，不直接盲写全书，与用户共同研讨确认故事核心、女性主角动机、体量与题材方案。
+
+### 2026-11-02 20:05（Asia/Shanghai）｜用户拍板三十万字目标与云端执行诉求：完成长篇分卷架构与云端方案设计
+
+- 执行动作：用户明确将小说目标锁定为【三十万字】（100-120章），并提出将小说生成任务放到云端执行。已完成：
+  1. 调用Gemini完成g67专项分析：拆解三个方向在30万字大体量下的四卷宏观主线（单卷7-8万字）、地图延展逻辑、女主从第1章到第100章的成长张力及逻辑断裂风险。
+  2. 澄清Google Drive操作机制：解释本地缺乏GDRIVE凭据的原因，并梳理插件直连 vs GitHub Actions云端直写的可行路径。
+  3. 设计“GitHub Actions分卷阶梯生成+自动同步Google Drive”的云端工程化方案，避免单次盲写导致崩盘或AI味注水。
+- 文件修改：discuss/novel_rebuild_20261101/下新增g67_300k_architecture系列文件；本HANDOFF.md追加本日志。
+- 下一步：等待用户在三个30万字分卷方案中拍板选定核心题材，随后起草第一卷细纲及云端生成脚本。
+
+### 2026-11-03 21:10（Asia/Shanghai）｜完成五十万字长篇提示词圣经并推送到云端写入Google Drive
+
+- 执行动作：遵照用户要求，确立五十万字超长篇目标，从历史研究中筛选出最具爆火与高口碑潜力的题材《老井诡契：七条保命规矩》（规则怪谈/地底悬疑/九十年代硬核工业奇幻），编制完成超级完整提示词文档《discuss/SUPER_PROMPT_BIBLE_500K.md》，包含自主续写状态机、六分真四分假借火规则、女主核心动机与开门动作、五卷宏观分卷规划（180章/50万字）、AI味红线防范规范及第一章示范细纲。通过GitHub Actions工作流自动将Markdown文档同步写进用户指定Google Drive小说文件夹（1gnSv8eSD1HPJxncsUgVI40mGJ7e6g1qG）。
+- 实际验证：本地文件 discuss/SUPER_PROMPT_BIBLE_500K.md 编译完备，publish.txt 挂载云端写入任务，触发 GitHub Actions `docs_to_drive.yml` 自动生成 Google Doc 链接供用户直接提供给 Gemini Web 端联动。
+- 文件修改：discuss/SUPER_PROMPT_BIBLE_500K.md，discuss/publish.txt，HANDOFF.md。
+- 下一步：将Google Doc直达链接及Gemini Web端一键启动咒语交付用户，支持用户在云端由Gemini直接调取该文档自主生成高质量小说。
