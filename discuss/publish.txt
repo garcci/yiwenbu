@@ -1,2 +1,3 @@
 # 本地文件|云盘文件夹ID|文档名
 discuss/SUPER_PROMPT_BIBLE_500K.md|1gnSv8eSD1HPJxncsUgVI40mGJ7e6g1qG|00-老井诡契五十万字超级小说提示词圣经
+discuss/novel_chapters/01_子夜白灯.md|1gnSv8eSD1HPJxncsUgVI40mGJ7e6g1qG|第一卷-第01章-子夜白灯
